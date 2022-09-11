@@ -62,6 +62,11 @@ require('packer').startup(function(use)
   use 'm-pilia/vim-ccls'  -- supports some additional methods provided by ccls, which are not part of the standard Language Server Protocol (LSP)  
   use 'jackguo380/vim-lsp-cxx-highlight'   -- semantic highlighting using the language server protocol.
 
+  -- Debug
+  use 'mfussenegger/nvim-dap'
+  use 'rcarriga/nvim-dap-ui'
+  use 'theHamsta/nvim-dap-virtual-text'
+
   -- Colorscheme
   -- use 'Mofiqul/vscode.nvim' -- VSCode dark theme
   use 'lunarvim/darkplus.nvim'

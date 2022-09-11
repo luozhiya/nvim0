@@ -85,7 +85,7 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 keymap("n", "<tab>", ":bnext<CR>", opts)
-keymap("n", "<C-w>", ":Bdelete<CR>", opts)
+keymap("n", "<C-w>", ":Bdelete!<CR>", opts)
 
 -- To use `ALT+{h,j,k,l}` to navigate windows from any mode:
 vim.cmd([[
@@ -109,3 +109,11 @@ keymap("n", "<C-A-v>", ":ToggleTerm size=40 direction=vertical<CR>", opts)
 -- vim.cmd([[
 -- noremap <C-A-t> :ToggleTerm size=12 direction=horizontal<CR>
 -- ]])
+
+-- Debug
+keymap("n", "<S-F9>", ":lua _CONTINUE()<cr>", opts)
+keymap("n", "<C-F2>", ":DapTeminate<cr>", opts)
+keymap("n", "<C-F8>", ":lua _TOGGLE_BREAKPOINT()<cr>", opts)
+keymap("n", "<F8>", ":lua _STEP_OVER()<cr>", opts)
+keymap("n", "<F7>", ":lua _STEP_INTO()<cr>", opts)
+keymap("n", "<S-F8>", ":lua _STEP_OUT()<cr>", opts)

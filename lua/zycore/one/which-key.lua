@@ -182,6 +182,18 @@ local mappings = {
     h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
     v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
   },
+
+  d = {
+    name = 'Debugger',
+    b = { "<cmd>lua _TOGGLE_BREAKPOINT()<cr>", 'dap: toggle breakpoint' },
+    B = { "<cmd>lua _SET_BREAKPOINT()<cr>", 'dap: set breakpoint' },
+    c = { "<cmd>lua _CONTINUE()<cr>", 'dap: continue or start debugging' },
+    e = { "<cmd>lua _STEP_OUT()<cr>", 'dap: step out' },
+    i = { "<cmd>lua _STEP_INTO()<cr>", 'dap: step into' },
+    o = { "<cmd>lua _STEP_OVER()<cr>", 'dap: step over' },
+    l = { "<cmd>lua _RUN_LAST()<cr>", 'dap REPL: run last' },
+    t = { "<cmd>lua _REPL_TOGGLE()<cr>", 'dap REPL: toggle' },
+  },  
 }
 
 which_key.setup(setup)
