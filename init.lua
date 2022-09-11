@@ -1,0 +1,5 @@
+require("zycore.option")
+require("zycore.keymap")
+require("zycore.plugin")
+require("zycore.colorscheme")
+require("zycore.lsp")
