@@ -332,22 +332,6 @@ local function truncate(str, max_len)
 end
 hardworking.truncate = truncate
 
----Determine if a value of any type is empty
----@param item any
----@return boolean
-local function empty(item)
-  if not item then
-    return true
-  end
-  local item_type = type(item)
-  if item_type == 'string' then
-    return item == ''
-  elseif item_type == 'table' then
-    return vim.tbl_isempty(item)
-  end
-end
-hardworking.empty = empty
-
 ---Require a module using [pcall] and report any errors
 ---@param module string
 ---@param opts table?
@@ -365,7 +349,7 @@ hardworking.safe_require = safe_require
 ---Reload lua modules
 ---@param path string
 ---@param recursive string
-local function invalidate(path, recursive)
+local function reload_lua_module(path, recursive)
   if recursive then
     for key, value in pairs(package.loaded) do
       if key ~= '_G' and value and fn.match(key, path) ~= -1 then
@@ -378,7 +362,7 @@ local function invalidate(path, recursive)
     require(path)
   end
 end
-hardworking.invalidate = invalidate
+hardworking.reload_lua_module = reload_lua_module
 
 --- Usage:
 --- 1. Call `local stop = utils.profile('my-log')` at the top of the file
