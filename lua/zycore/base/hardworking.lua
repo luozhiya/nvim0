@@ -8,6 +8,32 @@ local style_constexpr = require('zycore.base.style_constexpr')
 ----------------------------------------------------------------------------------------------------
 -- API
 ----------------------------------------------------------------------------------------------------
+---Check the value is nil or not.
+---@generic T|nil|vim.NIL
+---@param v T
+---@return T|nil
+local function safe(v)
+  if v == nil or v == vim.NIL then
+    return nil
+  end
+  return v
+end
+hardworking.safe = safe
+
+---Set value to deep object
+---@param t table
+---@param keys string[]
+---@param v any
+local function set(t, keys, v)
+  local c = t
+  for i = 1, #keys - 1 do
+    local key = keys[i]
+    c[key] = hardworking.safe(c[key]) or {}
+    c = c[key]
+  end
+  c[keys[#keys]] = v
+end
+hardworking.set = set
 
 ---Find an item in a list
 ---@generic T
