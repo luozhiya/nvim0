@@ -1,8 +1,8 @@
 local fn = vim.fn
 local api = vim.api
 local fmt = string.format
-
 local style_constexpr = require('zycore.base.style_constexpr')
+
 local hardworking = {}
 
 ----------------------------------------------------------------------------------------------------
