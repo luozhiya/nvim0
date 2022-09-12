@@ -69,8 +69,21 @@ local option = {
   hidden = true, -- 即使 buffer 被改变还没保存，也允许其隐藏
   autoread = true, -- 自动加载在外部被改变的文件
   whichwrap = vim.opt.whichwrap:append('<,>,[,],h,l'), -- 让 backspace， cursor 移动时可以跨行
-  shortmess = 'actI', -- 减少启动时画面显示的东西
   mousemoveevent = true,
+  -- shortmess = 'actI', -- 减少启动时画面显示的东西
+  -- Message output on vim actions
+  shortmess = {
+    t = true, -- truncate file messages at start
+    A = true, -- ignore annoying swap file messages
+    o = true, -- file-read message overwrites previous
+    O = true, -- file-read message overwrites previous
+    T = true, -- truncate non-file messages in middle
+    f = true, -- (file x of x) instead of just (x of x
+    F = true, -- Don't give file info when editing a file, NOTE: this breaks autocommand messages
+    s = true,
+    c = true,
+    W = true, -- Don't show [w] or written when writing
+  },
 }
 
 for k, v in pairs(option) do
