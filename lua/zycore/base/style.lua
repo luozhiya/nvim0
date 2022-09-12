@@ -19,6 +19,8 @@ local palette = {
   bright_blue = '#51afef',
   teal = '#15AABF',
   vim_blue = '#569cd6',
+  white = '#FFFFFF',
+  vs_blue = '#007ACC',
 }
 
 local style = {

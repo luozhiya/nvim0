@@ -3,16 +3,10 @@ if not bufferline_ok then
   return
 end
 
--- local zycore_base_ok, _ = pcall(require, "base.style")
--- if not zycore_base_ok then
---   print (zycore.base.style.palette.vim_blue)
---   return
--- end
+local style = require('zycore.base.style')
 
--- print (zycore.base.style.palette.vim_blue)
-
-local vs_selected_fg = '#FFFFFF'
-local vs_selected_bg = '#007ACC'
+local vs_selected_fg = style.palette.white
+local vs_selected_bg = style.palette.vs_blue
 
 bufferline.setup({
   options = {
@@ -318,8 +312,8 @@ bufferline.setup({
       italic = false,
     },
     offset_separator = {
-      fg = win_separator_fg,
-      bg = separator_background_color,
+      fg = normal_bg,
+      bg = normal_bg,
     },
   },
 })
