@@ -37,11 +37,10 @@ bufferline.setup({
       delay = 200,
       reveal = { 'close' },
     },
-    max_name_length = 25,
-    truncate_names = false, -- whether or not tab names should be truncated
-    tab_size = 25,
+    max_name_length = 18,
+    truncate_names = true, -- whether or not tab names should be truncated
+    tab_size = 18,
     max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
-    color_icons = false,
     separator_style = 'thin',
     enforce_regular_tabs = true,
     buffer_close_icon = '',
@@ -49,11 +48,12 @@ bufferline.setup({
     close_icon = '',
     left_trunc_marker = '',
     right_trunc_marker = '',
-    show_buffer_icons = false,
-    show_buffer_close_icons = false,
+    color_icons = false,
+    show_buffer_icons = true,
+    show_buffer_close_icons = true,
     show_close_icon = false,
     show_tab_indicators = true,
-    show_buffer_default_icon = false,
+    show_buffer_default_icon = true,
   },
   highlights = {
     fill = {
