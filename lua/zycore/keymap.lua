@@ -7,13 +7,15 @@
 --   command_mode = "c",
 -- Key
 --   <M-> = Alt
+--   <A-> = Alt
 --   <C-> = Ctrl
+--   <S-> = Shift
 
 local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
 
 -- Shorten function name
-local keymap = vim.api.nvim_set_keymap
+local set_keymap = vim.api.nvim_set_keymap
 local nnoremap = function(lhs, rhs)
   vim.api.nvim_set_keymap('n', lhs, rhs, opts)
 end
@@ -22,7 +24,7 @@ local vnoremap = function(lhs, rhs)
 end
 
 -- Remap ',' as leader key
--- keymap("", ",", "<Nop>", opts)
+-- set_keymap("", ",", "<Nop>", opts)
 vim.g.mapleader = ','
 vim.g.maplocalleader = ','
 
@@ -63,29 +65,30 @@ nnoremap('<C-k>', '15gk')
 
 -- Insert --
 -- Press jk fast to exit insert mode
--- keymap("i", "jk", "<ESC>", opts)
+-- set_keymap("i", "jk", "<ESC>", opts)
 
 -- Move text up and down
-keymap('i', '<A-j>', '<Esc>:m .+1<CR>==gi', opts)
-keymap('i', '<A-k>', '<Esc>:m .-2<CR>==gi', opts)
+set_keymap('i', '<A-j>', '<Esc>:m .+1<CR>==gi', opts)
+set_keymap('i', '<A-k>', '<Esc>:m .-2<CR>==gi', opts)
 
 -- Move text up and down
-keymap('v', '<A-j>', ':m .+1<CR>==', opts)
-keymap('v', '<A-k>', ':m .-2<CR>==', opts)
-keymap('v', 'p', '"_dP', opts)
+set_keymap('v', '<A-j>', ':m .+1<CR>==', opts)
+set_keymap('v', '<A-k>', ':m .-2<CR>==', opts)
+set_keymap('v', 'p', '"_dP', opts)
 
 -- Visual Block --
 -- Move text up and down
-keymap('x', 'J', ":move '>+1<CR>gv-gv", opts)
-keymap('x', 'K', ":move '<-2<CR>gv-gv", opts)
-keymap('x', '<A-j>', ":move '>+1<CR>gv-gv", opts)
-keymap('x', '<A-k>', ":move '<-2<CR>gv-gv", opts)
+set_keymap('x', 'J', ":move '>+1<CR>gv-gv", opts)
+set_keymap('x', 'K', ":move '<-2<CR>gv-gv", opts)
+set_keymap('x', '<A-j>', ":move '>+1<CR>gv-gv", opts)
+set_keymap('x', '<A-k>', ":move '<-2<CR>gv-gv", opts)
 
 -- Navigate buffers
-keymap('n', '<S-l>', ':bnext<CR>', opts)
-keymap('n', '<S-h>', ':bprevious<CR>', opts)
-keymap('n', '<tab>', ':bnext<CR>', opts)
-keymap('n', '<C-w>', ':Bdelete!<CR>', opts)
+set_keymap('n', '<S-l>', ':bnext<CR>', opts)
+set_keymap('n', '<S-h>', ':bprevious<CR>', opts)
+set_keymap('n', '<tab>', ':bnext<CR>', opts)
+set_keymap('n', '<C-w>', ':Bdelete<CR>', opts)
+set_keymap('n', '<A-w>', ':Bdelete!<CR>', opts)
 
 -- To use `ALT+{h,j,k,l}` to navigate windows from any mode:
 vim.cmd([[
@@ -104,16 +107,16 @@ nnoremap <A-l> <C-w>l
 ]])
 
 -- CTRL + ALT + x open terminal
-keymap('n', '<C-A-x>', ':ToggleTerm size=10 direction=horizontal<CR>', opts)
-keymap('n', '<C-A-v>', ':ToggleTerm size=40 direction=vertical<CR>', opts)
+set_keymap('n', '<C-A-x>', ':ToggleTerm size=10 direction=horizontal<CR>', opts)
+set_keymap('n', '<C-A-v>', ':ToggleTerm size=40 direction=vertical<CR>', opts)
 -- vim.cmd([[
 -- noremap <C-A-t> :ToggleTerm size=12 direction=horizontal<CR>
 -- ]])
 
 -- Debug
-keymap('n', '<S-F9>', ':lua _CONTINUE()<cr>', opts)
-keymap('n', '<C-F2>', ':DapTeminate<cr>', opts)
-keymap('n', '<C-F8>', ':lua _TOGGLE_BREAKPOINT()<cr>', opts)
-keymap('n', '<F8>', ':lua _STEP_OVER()<cr>', opts)
-keymap('n', '<F7>', ':lua _STEP_INTO()<cr>', opts)
-keymap('n', '<S-F8>', ':lua _STEP_OUT()<cr>', opts)
+set_keymap('n', '<S-F9>', ':lua _CONTINUE()<cr>', opts)
+set_keymap('n', '<C-F2>', ':DapTeminate<cr>', opts)
+set_keymap('n', '<C-F8>', ':lua _TOGGLE_BREAKPOINT()<cr>', opts)
+set_keymap('n', '<F8>', ':lua _STEP_OVER()<cr>', opts)
+set_keymap('n', '<F7>', ':lua _STEP_INTO()<cr>', opts)
+set_keymap('n', '<S-F8>', ':lua _STEP_OUT()<cr>', opts)

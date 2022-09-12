@@ -1,0 +1,7 @@
+local base = require('zycore.base')
+local option = require('zycore.option')
+local keymap = require('zycore.keymap')
+local numbers = require('zycore.number')
+local plugin = require('zycore.plugin')
+local colorscheme = require('zycore.colorscheme')
+local lsp = require('zycore.lsp')

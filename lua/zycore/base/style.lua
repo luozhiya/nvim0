@@ -21,10 +21,11 @@ local palette = {
   vim_blue = '#569cd6',
 }
 
-style = {
+local style = {
   border = {
     line = { '🭽', '▔', '🭾', '▕', '🭿', '▁', '🭼', '▏' },
     rectangle = { '┌', '─', '┐', '│', '┘', '─', '└', '│' },
+    round = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
   },
   icons = {
     lsp = {
@@ -153,29 +154,31 @@ style = {
       Text = '',
       Method = '',
       Function = '',
-      Constructor = '',
-      Field = '', -- '',
-      Variable = '', -- '',
-      Class = '', -- '',
+      Constructor = '',
+      Field = '', -- '',
+      Variable = '', -- '',
+      Class = '',
       Interface = '',
       Module = '',
-      Property = 'ﰠ',
-      Unit = '塞',
+      Property = '',
+      Unit = '',
       Value = '',
       Enum = '',
-      Keyword = '', -- '',
-      Snippet = '', -- '', '',
+      Keyword = '',
+      Snippet = '',
       Color = '',
       File = '',
-      Reference = '', -- '',
+      Reference = '',
       Folder = '',
       EnumMember = '',
-      Constant = '', -- '',
-      Struct = '', -- 'פּ',
+      Constant = '',
+      Struct = '',
       Event = '',
       Operator = '',
-      TypeParameter = '',
+      TypeParameter = '',
     },
   },
   palette = palette,
 }
+
+return style

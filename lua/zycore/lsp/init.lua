@@ -3,6 +3,6 @@ if not ok then
   return
 end
 
-require('zycore.lsp.config')
+require('zycore.lsp.config_servers')
 require('zycore.lsp.handler').setup()
-require('zycore.lsp.null-ls')
+require('zycore.lsp.null_ls')

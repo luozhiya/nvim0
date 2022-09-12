@@ -13,6 +13,8 @@ if not lspkind_ok then
   return
 end
 
+local style = require('zycore.base.style')
+
 require('luasnip/loaders/from_vscode').lazy_load()
 
 local check_backspace = function()
@@ -20,33 +22,7 @@ local check_backspace = function()
   return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s')
 end
 
-local kind_icons = {
-  Text = '',
-  Method = 'm',
-  Function = '',
-  Constructor = '',
-  Field = '',
-  Variable = '',
-  Class = '',
-  Interface = '',
-  Module = '',
-  Property = '',
-  Unit = '',
-  Value = '',
-  Enum = '',
-  Keyword = '',
-  Snippet = '',
-  Color = '',
-  File = '',
-  Reference = '',
-  Folder = '',
-  EnumMember = '',
-  Constant = '',
-  Struct = '',
-  Event = '',
-  Operator = '',
-  TypeParameter = '',
-}
+local kind_icons = style.lsp.kinds
 
 local ELLIPSIS_CHAR = '…'
 local MAX_LABEL_WIDTH = 25
@@ -56,7 +32,7 @@ local get_ws = function(max, len)
   return (' '):rep(max - len)
 end
 
-local M = {
+local Native = {
   fields = { 'kind', 'abbr', 'menu' },
   format = function(entry, vim_item)
     -- Kind icons
@@ -146,12 +122,6 @@ cmp.setup({
     { name = 'buffer' },
     { name = 'path' },
   },
-  -- source = {
-  --   {name = "nvim_lsp"},
-  --   {name = "luasnip"},
-  --   {name = "buffer"},
-  --   {name = "path"},
-  -- },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,
     select = false,
@@ -159,9 +129,9 @@ cmp.setup({
   window = {
     -- completion = cmp.config.window.bordered(),
     -- documentation = cmp.config.window.bordered(),
-    -- documentation = {
-    --   border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-    -- },
+    documentation = {
+      border = style.border.round,
+    },
   },
   experimental = {
     ghost_text = false,

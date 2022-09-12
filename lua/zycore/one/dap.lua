@@ -4,6 +4,7 @@ if not dap_ok then
 end
 
 local fn = vim.fn
+
 function _REPL_TOGGLE()
   dap.repl.toggle(nil, 'botright split')
 end

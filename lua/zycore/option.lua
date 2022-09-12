@@ -12,7 +12,7 @@ local option = {
   number = true, -- set numberd liens
   ruler = true, -- show row/col in status line
   relativenumber = true, -- set relative numbered lines
-  signcolumn = 'auto:2', -- always show the sign column, otherwise it would shift the text each time
+  signcolumn = 'auto:2-5', -- always show the sign column, otherwise it would shift the text each time
   termguicolors = true, -- bufferline: You are *strongly* advised to use `termguicolors` for this plugin
 
   showmatch = true, -- 输入代码时高亮显示匹配的括号
@@ -50,9 +50,14 @@ local option = {
   -- Font
   -- guifont = "monospace:h17"    -- the font used in graphical neovim application
 
+  -- Timings
+  updatetime = 300, -- faster completion (4000ms default)
+  timeout = true,
+  timeoutlen = 500,
+  ttimeoutlen = 10,
+
   -- Completion
   pumheight = 10, -- pop up menu height
-  updatetime = 300, -- faster completion (4000ms default)
   -- wildmenu = true,               -- 开启 command 补齐
   -- wildmode = {"list:longest", "full"},         -- 列出所有最长子串的补齐，和其他完整的匹配
   -- completeopt = {"menu", "menuone", "longest"},   --关闭 preview 窗口
@@ -91,3 +96,4 @@ for k, v in pairs(option) do
 end
 
 -- vim.cmd "set whichwrap+=<,>,[,],h,l"
+return option
