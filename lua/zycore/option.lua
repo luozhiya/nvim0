@@ -21,16 +21,27 @@ local option = {
   wrap = false, -- display lines as one long line
 
   -- Indent
-  -- autoindent = true, -- neovim default true
+  -- length of an actual \t character
   tabstop = 4, -- 一个 tab 等于多少 space
+  -- if set, only insert spaces; otherwise insert \t and complete with spaces
   expandtab = true, -- tab 转换成 space, 不出现制表字符
-  smarttab = true, -- 根据文件整体情况来决定 tab 是几个 space
+  -- smarttab = true, -- 根据文件整体情况来决定 tab 是几个 space
 
-  shiftwidth = 4, -- 一级 indent 是多少 space
-  softtabstop = 4, -- 按一次 del 或者 backspace 时，应该删除多少个 space
+  -- length to use when shifting text (eg. <<, >> and == commands)
+  -- (0 for ‘tabstop’)
+  shiftwidth = 0, -- 一级 indent 是多少 space
+  -- length to use when editing text (eg. TAB and BS keys)
+  -- (0 for ‘tabstop’, -1 for ‘shiftwidth’)
+  softtabstop = 0, -- 按一次 del 或者 backspace 时，应该删除多少个 space
+  -- round indentation to multiples of 'shiftwidth' when shifting text
+  -- (so that it behaves like Ctrl-D / Ctrl-T)
   shiftround = true, -- 自动 indent 应该是 shiftwidth 的整数倍
+  -- try to be smart (increase the indenting level after ‘{’,
+  -- decrease it after ‘}’, and so on) 
   smartindent = true,
 
+  -- keep indentation produced by 'autoindent' if leaving the line blank:
+  -- cinoptions = vim.opt.cinoptions:append('I')
   cinoptions = vim.opt.cinoptions:append('g0'), -- C++ public等不额外产生indent
 
   -- Find
@@ -64,18 +75,23 @@ local option = {
   -- completeopt = {"menu", "menuone", "longest"},   --关闭 preview 窗口
   completeopt = { 'menu', 'menuone', 'noselect' },
 
-  -- Advance
-  clipboard = 'unnamedplus', -- allows neovim to access the system clipboard
+  -- Mouse
+  mouse = 'a', -- allows the mouse to be used in neovim
+  mousefocus = true,
+  mousemoveevent = true,
+
+  -- BACKUP AND SWAPS
   backup = false, -- creates a backup file
   swapfile = false, -- creates a swapfile
-  mouse = 'a', -- allows the mouse to be used in neovim
   undofile = false, -- enable persistent undo
+
+  -- Advance
+  clipboard = 'unnamedplus', -- allows neovim to access the system clipboard
   undolevels = 100, -- 很多的 undo
   history = 100, -- 搜索和 command 的历史
   hidden = true, -- 即使 buffer 被改变还没保存，也允许其隐藏
   autoread = true, -- 自动加载在外部被改变的文件
   whichwrap = vim.opt.whichwrap:append('<,>,[,],h,l'), -- 让 backspace， cursor 移动时可以跨行
-  mousemoveevent = true,
   -- shortmess = 'actI', -- 减少启动时画面显示的东西
   -- Message output on vim actions
   shortmess = {
@@ -90,15 +106,17 @@ local option = {
     c = true,
     W = true, -- Don't show [w] or written when writing
   },
+
+  -- Neovim default
+  -- use language‐specific plugins for indenting (better):
+  -- vim.cmd([[filetype plugin indent on]])
+  -- reproduce the indentation of the previous line
+  -- autoindent = true, -- neovim default true  
 }
 
 for k, v in pairs(option) do
   vim.opt[k] = v
 end
-
-vim.cmd([[
-autocmd FileType lua setlocal tabstop=2
-]])
 
 -- vim.cmd "set whichwrap+=<,>,[,],h,l"
 return option
