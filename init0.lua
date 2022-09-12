@@ -10,7 +10,7 @@ opt.cmdheight = 1
 opt.showmode = true
 
 opt.title = true
-opt.clipboard = "unnamedplus"
+opt.clipboard = 'unnamedplus'
 opt.cursorline = true
 opt.scrolloff = 3
 opt.number = true
@@ -30,14 +30,21 @@ opt.ignorecase = true
 opt.smartcase = true
 
 -------------------------------------------------------------
--- Plugin 
+-- Plugin
 -------------------------------------------------------------
 local ensure_packer = function()
   local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
   if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
+    fn.system({
+      'git',
+      'clone',
+      '--depth',
+      '1',
+      'https://github.com/wbthomason/packer.nvim',
+      install_path,
+    })
+    vim.cmd([[packadd packer.nvim]])
     return true
   end
   return false
@@ -46,12 +53,12 @@ end
 local packer_bootstrap = ensure_packer()
 
 require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
-  use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
-  use 'Mofiqul/vscode.nvim' -- VSCode dark theme
-  use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
-  use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
-  
+  use('wbthomason/packer.nvim')
+  use('neovim/nvim-lspconfig') -- Configurations for Nvim LSP
+  use('Mofiqul/vscode.nvim') -- VSCode dark theme
+  use('hrsh7th/nvim-cmp') -- Autocompletion plugin
+  use('hrsh7th/cmp-nvim-lsp') -- LSP source for nvim-cmp
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
@@ -63,7 +70,7 @@ require('vscode').change_style('dark')
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap=true, silent=true }
+local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
@@ -77,7 +84,7 @@ local on_attach = function(client, bufnr)
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
@@ -95,44 +102,43 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 end
 
-require('lspconfig')['pyright'].setup{
-    on_attach = on_attach,
-}
+require('lspconfig')['pyright'].setup({
+  on_attach = on_attach,
+})
 
-require('lspconfig')['ccls'].setup {
+require('lspconfig')['ccls'].setup({
   on_attach = on_attach,
   init_options = {
-    highlight = { lsRanges = true };	  
+    highlight = { lsRanges = true },
     cache = {
-	    directory = "/tmp/ccls-cache"
-    };
-    compilationDatabaseDirectory = "build";
+      directory = '/tmp/ccls-cache',
+    },
+    compilationDatabaseDirectory = 'build',
     index = {
-      threads = 0;
-    };
+      threads = 0,
+    },
     clang = {
-      excludeArgs = { "-frounding-math"} ;
-    };
-  }
-}
+      excludeArgs = { '-frounding-math' },
+    },
+  },
+})
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 -- nvim-cmp setup
-local cmp = require 'cmp'
-cmp.setup {
-  snippet = {
-  },
+local cmp = require('cmp')
+cmp.setup({
+  snippet = {},
   mapping = cmp.mapping.preset.insert({
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
-    ['<CR>'] = cmp.mapping.confirm {
+    ['<CR>'] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
-    },
+    }),
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -151,18 +157,4 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
   },
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+})
