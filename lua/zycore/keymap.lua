@@ -11,17 +11,13 @@
 --   <C-> = Ctrl
 --   <S-> = Shift
 
-local opts = { noremap = true, silent = true }
-local term_opts = { silent = true }
+local api = vim.api
+local hardworking = require('zycore.base.hardworking')
 
--- Shorten function name
-local set_keymap = vim.api.nvim_set_keymap
-local nnoremap = function(lhs, rhs)
-  vim.api.nvim_set_keymap('n', lhs, rhs, opts)
-end
-local vnoremap = function(lhs, rhs)
-  vim.api.nvim_set_keymap('v', lhs, rhs, opts)
-end
+local nnoremap = hardworking.nnoremap
+local inoremap = hardworking.inoremap
+local vnoremap = hardworking.vnoremap
+local xnoremap = hardworking.xnoremap
 
 -- Remap ',' as leader key
 -- set_keymap("", ",", "<Nop>", opts)
@@ -30,7 +26,7 @@ vim.g.maplocalleader = ','
 
 -- 打开 .nvimrc
 vim.cmd([[
-noremap <leader>e :e! $MYVIMRC<CR>
+noremap <leader>o :e! $MYVIMRC<CR>
 ]])
 
 -- Normal
@@ -68,27 +64,27 @@ nnoremap('<C-k>', '15gk')
 -- set_keymap("i", "jk", "<ESC>", opts)
 
 -- Move text up and down
-set_keymap('i', '<A-j>', '<Esc>:m .+1<CR>==gi', opts)
-set_keymap('i', '<A-k>', '<Esc>:m .-2<CR>==gi', opts)
+inoremap('<A-j>', '<Esc>:m .+1<CR>==gi')
+inoremap('<A-k>', '<Esc>:m .-2<CR>==gi')
 
 -- Move text up and down
-set_keymap('v', '<A-j>', ':m .+1<CR>==', opts)
-set_keymap('v', '<A-k>', ':m .-2<CR>==', opts)
-set_keymap('v', 'p', '"_dP', opts)
+vnoremap('<A-j>', ':m .+1<CR>==')
+vnoremap('<A-k>', ':m .-2<CR>==')
+vnoremap('p', '"_dP')
 
 -- Visual Block --
 -- Move text up and down
-set_keymap('x', 'J', ":move '>+1<CR>gv-gv", opts)
-set_keymap('x', 'K', ":move '<-2<CR>gv-gv", opts)
-set_keymap('x', '<A-j>', ":move '>+1<CR>gv-gv", opts)
-set_keymap('x', '<A-k>', ":move '<-2<CR>gv-gv", opts)
+xnoremap('J', ":move '>+1<CR>gv-gv")
+xnoremap('K', ":move '<-2<CR>gv-gv")
+xnoremap('<A-j>', ":move '>+1<CR>gv-gv")
+xnoremap('<A-k>', ":move '<-2<CR>gv-gv")
 
 -- Navigate buffers
-set_keymap('n', '<S-l>', ':bnext<CR>', opts)
-set_keymap('n', '<S-h>', ':bprevious<CR>', opts)
-set_keymap('n', '<tab>', ':bnext<CR>', opts)
-set_keymap('n', '<C-w>', ':Bdelete<CR>', opts)
-set_keymap('n', '<A-w>', ':Bdelete!<CR>', opts)
+nnoremap('<S-l>', ':bnext<CR>')
+nnoremap('<S-h>', ':bprevious<CR>')
+nnoremap('<tab>', ':bnext<CR>')
+nnoremap('<C-w>', ':Bdelete<CR>')
+nnoremap('<A-w>', ':Bdelete!<CR>')
 
 -- To use `ALT+{h,j,k,l}` to navigate windows from any mode:
 vim.cmd([[
@@ -107,16 +103,16 @@ nnoremap <A-l> <C-w>l
 ]])
 
 -- CTRL + ALT + x open terminal
-set_keymap('n', '<C-A-x>', ':ToggleTerm size=10 direction=horizontal<CR>', opts)
-set_keymap('n', '<C-A-v>', ':ToggleTerm size=40 direction=vertical<CR>', opts)
+nnoremap('<C-A-x>', ':ToggleTerm size=10 direction=horizontal<CR>')
+nnoremap('<C-A-v>', ':ToggleTerm size=40 direction=vertical<CR>')
 -- vim.cmd([[
 -- noremap <C-A-t> :ToggleTerm size=12 direction=horizontal<CR>
 -- ]])
 
 -- Debug
-set_keymap('n', '<S-F9>', ':lua _CONTINUE()<cr>', opts)
-set_keymap('n', '<C-F2>', ':DapTeminate<cr>', opts)
-set_keymap('n', '<C-F8>', ':lua _TOGGLE_BREAKPOINT()<cr>', opts)
-set_keymap('n', '<F8>', ':lua _STEP_OVER()<cr>', opts)
-set_keymap('n', '<F7>', ':lua _STEP_INTO()<cr>', opts)
-set_keymap('n', '<S-F8>', ':lua _STEP_OUT()<cr>', opts)
+nnoremap('<S-F9>', ':lua _CONTINUE()<cr>')
+nnoremap('<C-F2>', ':DapTeminate<cr>')
+nnoremap('<C-F8>', ':lua _TOGGLE_BREAKPOINT()<cr>')
+nnoremap('<F8>', ':lua _STEP_OVER()<cr>')
+nnoremap('<F7>', ':lua _STEP_INTO()<cr>')
+nnoremap('<S-F8>', ':lua _STEP_OUT()<cr>')

@@ -3,6 +3,7 @@
 -- 2. numbers.vim - https://github.com/myusuf3/numbers.vim/blob/master/plugin/numbers.vim
 
 local api = vim.api
+local hardworking = require('zycore.base.hardworking')
 
 vim.g.number_filetype_exclusions = {
   'netrw',
@@ -113,12 +114,7 @@ local function disable_relative_number()
   end
 end
 
-local function command(name, rhs, opts)
-  opts = opts or {}
-  api.nvim_create_user_command(name, rhs, opts)
-end
-
-command('ToggleRelativeNumber', function()
+hardworking.command('ToggleRelativeNumber', function()
   is_enabled = not is_enabled
   if is_enabled then
     enable_relative_number()
@@ -127,25 +123,7 @@ command('ToggleRelativeNumber', function()
   end
 end)
 
-local function augroup(name, commands)
-  local id = api.nvim_create_augroup(name, { clear = true })
-  for _, autocmd in ipairs(commands) do
-    local is_callback = type(autocmd.command) == 'function'
-    api.nvim_create_autocmd(autocmd.event, {
-      group = name,
-      pattern = autocmd.pattern,
-      desc = autocmd.description,
-      callback = is_callback and autocmd.command or nil,
-      command = not is_callback and autocmd.command or nil,
-      once = autocmd.once,
-      nested = autocmd.nested,
-      buffer = autocmd.buffer,
-    })
-  end
-  return id
-end
-
-augroup('ToggleRelativeLineNumbers', {
+hardworking.augroup('ToggleRelativeLineNumbers', {
   {
     event = { 'BufEnter', 'FileType', 'FocusGained', 'InsertLeave' },
     pattern = { '*' },

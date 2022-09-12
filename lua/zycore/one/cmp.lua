@@ -13,7 +13,7 @@ if not lspkind_ok then
   return
 end
 
-local style = require('zycore.base.style')
+local style_constexpr = require('zycore.base.style_constexpr')
 
 require('luasnip/loaders/from_vscode').lazy_load()
 
@@ -22,7 +22,7 @@ local check_backspace = function()
   return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s')
 end
 
-local kind_icons = style.lsp.kinds
+local kind_icons = style_constexpr.lsp.kinds
 
 local ELLIPSIS_CHAR = '…'
 local MAX_LABEL_WIDTH = 25
@@ -130,7 +130,7 @@ cmp.setup({
     -- completion = cmp.config.window.bordered(),
     -- documentation = cmp.config.window.bordered(),
     documentation = {
-      border = style.border.round,
+      border = style_constexpr.border.round,
     },
   },
   experimental = {

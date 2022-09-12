@@ -3,10 +3,10 @@ if not bufferline_ok then
   return
 end
 
-local style = require('zycore.base.style')
+local style_constexpr = require('zycore.base.style_constexpr')
 
-local vs_selected_fg = style.palette.white
-local vs_selected_bg = style.palette.vs_blue
+local vs_selected_fg = style_constexpr.palette.white
+local vs_selected_bg = style_constexpr.palette.vs_blue
 
 bufferline.setup({
   options = {
@@ -37,6 +37,10 @@ bufferline.setup({
       delay = 200,
       reveal = { 'close' },
     },
+    max_name_length = 25,
+    truncate_names = false, -- whether or not tab names should be truncated
+    tab_size = 25,
+    max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
     color_icons = false,
     separator_style = 'thin',
     enforce_regular_tabs = true,
