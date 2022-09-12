@@ -57,6 +57,7 @@ require('packer').startup(function(use)
   use('numToStr/Comment.nvim') -- Smart and powerful comment plugin for neovim
   use('windwp/nvim-autopairs') -- autopairs for neovim written by lua
   use('lukas-reineke/indent-blankline.nvim') -- Indent guides for Neovim
+  use('NMAC427/guess-indent.nvim') -- Automatic indentation style detection for Neovim
 
   -- Format
   use('sbdchd/neoformat') -- why not use .clang-format?

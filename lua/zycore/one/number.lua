@@ -128,14 +128,14 @@ hardworking.augroup('ToggleRelativeLineNumbers', {
     event = { 'BufEnter', 'FileType', 'FocusGained', 'InsertLeave' },
     pattern = { '*' },
     command = function()
-      disable_relative_number()
+      enable_relative_number()
     end,
   },
   {
     event = { 'FocusLost', 'BufLeave', 'InsertEnter', 'TermOpen' },
     pattern = { '*' },
     command = function()
-      enable_relative_number()
+      disable_relative_number()
     end,
   },
 })

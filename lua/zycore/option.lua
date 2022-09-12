@@ -21,6 +21,7 @@ local option = {
   wrap = false, -- display lines as one long line
 
   -- Indent
+  -- autoindent = true, -- neovim default true
   tabstop = 4, -- 一个 tab 等于多少 space
   expandtab = true, -- tab 转换成 space, 不出现制表字符
   smarttab = true, -- 根据文件整体情况来决定 tab 是几个 space
@@ -94,6 +95,10 @@ local option = {
 for k, v in pairs(option) do
   vim.opt[k] = v
 end
+
+vim.cmd([[
+autocmd FileType lua setlocal tabstop=2
+]])
 
 -- vim.cmd "set whichwrap+=<,>,[,],h,l"
 return option

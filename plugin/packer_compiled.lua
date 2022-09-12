@@ -144,6 +144,11 @@ _G.packer_plugins = {
     path = "/home/luozhiya/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
+  ["guess-indent.nvim"] = {
+    loaded = true,
+    path = "/home/luozhiya/.local/share/nvim/site/pack/packer/start/guess-indent.nvim",
+    url = "https://github.com/NMAC427/guess-indent.nvim"
+  },
   ["impatient.nvim"] = {
     loaded = true,
     path = "/home/luozhiya/.local/share/nvim/site/pack/packer/start/impatient.nvim",
