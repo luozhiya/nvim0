@@ -1,1 +1,1 @@
-require "zycore.base.style"
+require('zycore.base.style')

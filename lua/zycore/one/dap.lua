@@ -1,6 +1,6 @@
-local dap_ok, dap = pcall(require, "dap")
+local dap_ok, dap = pcall(require, 'dap')
 if not dap_ok then
-	return
+  return
 end
 
 local fn = vim.fn
@@ -31,8 +31,8 @@ end
 
 dap.adapters.lldb = {
   type = 'executable',
-  command = "lldb-vscode",
-  name = "lldb",
+  command = 'lldb-vscode',
+  name = 'lldb',
 }
 
 dap.configurations.cpp = {
@@ -65,7 +65,7 @@ dap.configurations.cpp = {
 -- If you want to use this for Rust and C, add something like this:
 
 dap.configurations.c = dap.configurations.cpp
-dap.configurations.rust = dap.configurations.cpp  
+dap.configurations.rust = dap.configurations.cpp
 
 -- dap.setup({
 --   require('which-key').register({
@@ -86,7 +86,7 @@ dap.configurations.rust = dap.configurations.cpp
 -- })
 
 -- local M = {}
--- function M.config() 
+-- function M.config()
 --   local icons = zycore.base.style.icons
 --   fn.sign_define({
 --     {
@@ -124,8 +124,7 @@ dap.configurations.rust = dap.configurations.cpp
 
 --   dap.adapters.nlua = function(callback, config)
 --     callback({ type = 'server', host = config.host, port = config.port })
---   end  
+--   end
 -- end
 
 -- dap.config = M.config
-

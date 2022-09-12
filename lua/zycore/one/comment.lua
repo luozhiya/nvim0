@@ -1,9 +1,9 @@
-local ok, comment = pcall(require, "Comment")
+local ok, comment = pcall(require, 'Comment')
 if not ok then
   return
 end
 
-comment.setup {
+comment.setup({
   ---Add a space b/w comment and the line
   padding = true,
   ---Whether the cursor should stay at its position
@@ -46,23 +46,23 @@ comment.setup {
   ---Function to call before (un)comment
   -- pre_hook = nil,
   pre_hook = function(ctx)
-    local U = require "Comment.utils"
+    local U = require('Comment.utils')
 
     local location = nil
     if ctx.ctype == U.ctype.block then
-      location = require("ts_context_commentstring.utils").get_cursor_location()
+      location = require('ts_context_commentstring.utils').get_cursor_location()
     elseif ctx.cmotion == U.cmotion.v or ctx.cmotion == U.cmotion.V then
-      location = require("ts_context_commentstring.utils").get_visual_start_location()
+      location = require('ts_context_commentstring.utils').get_visual_start_location()
     end
 
-    return require("ts_context_commentstring.internal").calculate_commentstring {
-      key = ctx.ctype == U.ctype.line and "__default" or "__multiline",
+    return require('ts_context_commentstring.internal').calculate_commentstring({
+      key = ctx.ctype == U.ctype.line and '__default' or '__multiline',
       location = location,
-    }
-  end,  
+    })
+  end,
   ---Function to call after (un)comment
-  post_hook = nil,    
-}
+  post_hook = nil,
+})
 
 -- local opts = { noremap = true, silent = true }
 -- local keymap = vim.api.nvim_set_keymap
