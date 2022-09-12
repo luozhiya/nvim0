@@ -16,9 +16,7 @@ M.setup = function()
     -- disable virtual text
     virtual_text = true,
     -- show signs
-    signs = {
-      active = true,
-    },
+    signs = true,
     update_in_insert = true,
     underline = true,
     severity_sort = true,

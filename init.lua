@@ -1,6 +1,10 @@
-require("zycore.option")
-require("zycore.keymap")
-require("zycore.plugin")
-require("zycore.colorscheme")
-require("zycore.lsp")
-require("zycore.base")
+local base = require("zycore.base")
+local option = require("zycore.option")
+local keymap = require("zycore.keymap")
+local plugin = require("zycore.plugin")
+local colorscheme = require("zycore.colorscheme")
+local lsp = require("zycore.lsp")
+
+local zycore = {}
+
+return zycore

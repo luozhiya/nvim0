@@ -12,7 +12,7 @@ local option = {
 	number = true, -- set numberd liens
 	ruler = true, -- show row/col in status line
 	relativenumber = true, -- set relative numbered lines
-	signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
+	signcolumn = "auto:2", -- always show the sign column, otherwise it would shift the text each time
 
 	showmatch = true, -- 输入代码时高亮显示匹配的括号
 	matchtime = 5, -- 匹配括号时高亮的时间。500ms
