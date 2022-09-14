@@ -3,6 +3,8 @@ if not lualine_ok then
   return
 end
 
+local style_constexpr = require('zycore.base.style_constexpr')
+
 local hide_in_width = function()
   return vim.fn.winwidth(0) > 80
 end
@@ -65,6 +67,7 @@ end
 
 lualine.setup({
   options = {
+    color = { fg = style_constexpr.palette.white, bg = style_constexpr.palette.vs_blue },
     icons_enabled = true,
     theme = 'auto',
     component_separators = { left = '', right = '' },
