@@ -10,4 +10,6 @@ endtry
 
 -- Font
 -- guifont = "monospace:h17"    -- the font used in graphical neovim application
-vim.opt['guifont'] = 'inconsolata:h17' -- the font used in graphical neovim application
+-- vim.opt['guifont'] = 'inconsolata:h17' -- the font used in graphical neovim application
+
+vim.opt['guifont'] = 'Inconsolata Nerd Font:h17' -- the font used in graphical neovim application

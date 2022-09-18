@@ -4,7 +4,7 @@ if not ok then
 end
 
 configs.setup({
-  ensure_installed = 'all', -- one of "all" or a list of languages
+  ensure_installed = {'c', 'cpp', 'cmake', 'lua'}, -- one of "all" or a list of languages
   ignore_install = { 'phpdoc', 'dart' }, -- List of parsers to ignore installing
   highlight = {
     enable = true, -- false will disable the whole extension
