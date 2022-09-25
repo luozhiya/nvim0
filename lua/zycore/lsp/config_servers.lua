@@ -4,13 +4,23 @@ if not ok then
 end
 
 local lspconfig = require('lspconfig')
-local servers = { 'jsonls', 'sumneko_lua', 'pyright', 'ccls', 'cmake', 'vimls' }
+local servers = { 'jsonls', 'sumneko_lua', 'pyright', 'clangd', 'cmake', 'vimls' }
+local ignore_setup_servers = { 'clangd' }
+
+local needed_setup_servers = {}
+for _, server in pairs(servers) do
+  for _, ignore in pairs(ignore_setup_servers) do
+    if server ~= ignore then
+      table.insert(needed_setup_servers, server)
+    end
+  end
+end
 
 lsp_installer.setup({
-  ensure_installed = servers,
+  ensure_installed = needed_setup_servers,
 })
 
-for _, server in pairs(servers) do
+for _, server in pairs(needed_setup_servers) do
   local opts = {
     on_attach = require('zycore.lsp.handler').on_attach,
     capabilities = require('zycore.lsp.handler').capabilities,

@@ -58,6 +58,7 @@ require('packer').startup(function(use)
   use('windwp/nvim-autopairs') -- autopairs for neovim written by lua
   use('lukas-reineke/indent-blankline.nvim') -- Indent guides for Neovim
   use('NMAC427/guess-indent.nvim') -- Automatic indentation style detection for Neovim
+  use('andrewferrier/wrapping.nvim') -- Plugin to make it easier to switch between 'soft' and 'hard' line wrapping in NeoVim
 
   -- Format
   use('sbdchd/neoformat') -- why not use .clang-format?
@@ -69,6 +70,7 @@ require('packer').startup(function(use)
   -- C++
   use('m-pilia/vim-ccls') -- supports some additional methods provided by ccls, which are not part of the standard Language Server Protocol (LSP)
   use('jackguo380/vim-lsp-cxx-highlight') -- semantic highlighting using the language server protocol.
+  use('p00f/clangd_extensions.nvim') -- Clangd's off-spec features for neovim's LSP client.
 
   -- Debug
   use('mfussenegger/nvim-dap')

@@ -94,6 +94,11 @@ _G.packer_plugins = {
     path = "/home/luozhiya/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
     url = "https://github.com/akinsho/bufferline.nvim"
   },
+  ["clangd_extensions.nvim"] = {
+    loaded = true,
+    path = "/home/luozhiya/.local/share/nvim/site/pack/packer/start/clangd_extensions.nvim",
+    url = "https://github.com/p00f/clangd_extensions.nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/luozhiya/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -298,6 +303,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/luozhiya/.local/share/nvim/site/pack/packer/start/which-key.nvim",
     url = "https://github.com/folke/which-key.nvim"
+  },
+  ["wrapping.nvim"] = {
+    loaded = true,
+    path = "/home/luozhiya/.local/share/nvim/site/pack/packer/start/wrapping.nvim",
+    url = "https://github.com/andrewferrier/wrapping.nvim"
   }
 }
 
