@@ -3,15 +3,30 @@ if not ok then
   return
 end
 
+-- ccls
+-- clangd
+local hardworking = require('zycore.base.hardworking')
+local cxx_lsp = require('zycore.goforit').cxx_lsp
+
 local lspconfig = require('lspconfig')
-local servers = { 'jsonls', 'sumneko_lua', 'pyright', 'clangd', 'cmake', 'vimls' }
-local ignore_setup_servers = { 'clangd' }
+local servers = { 'jsonls', 'sumneko_lua', 'pyright', 'cmake', 'vimls'}
+servers = hardworking.merge_simple_list(servers, cxx_lsp)
+--[[ hardworking.dump(servers) ]]
+
+local ignore_setup_servers = {}
+if vim.tbl_contains(cxx_lsp, 'clangd') then
+  table.insert(ignore_setup_servers, 'clangd')
+end
 
 local needed_setup_servers = {}
-for _, server in pairs(servers) do
-  for _, ignore in pairs(ignore_setup_servers) do
-    if server ~= ignore then
-      table.insert(needed_setup_servers, server)
+if hardworking.empty(ignore_setup_servers) then
+  needed_setup_servers = servers
+else
+  for _, server in pairs(servers) do
+    for _, ignore in pairs(ignore_setup_servers) do
+      if server ~= ignore then
+        table.insert(needed_setup_servers, server)
+      end
     end
   end
 end

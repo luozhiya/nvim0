@@ -3,13 +3,19 @@ if not ok then
   return
 end
 
-clangd_extensions.setup({
-  server = {
+local server_clangd = {}
+local cxx_lsp = require('zycore.goforit').cxx_lsp
+if vim.tbl_contains(cxx_lsp, 'clangd') and vim.tbl_count(cxx_lsp) == 1 then
+  server_clangd = {
     -- options to pass to nvim-lspconfig
     -- i.e. the arguments to require("lspconfig").clangd.setup({})
     on_attach = require('zycore.lsp.handler').on_attach,
     capabilities = require('zycore.lsp.handler').capabilities,
-  },
+  }
+end
+
+local opts = {
+  server = server_clangd,
   extensions = {
     -- defaults:
     -- Automatically set inlay hints (type hints)
@@ -93,4 +99,8 @@ clangd_extensions.setup({
       border = 'none',
     },
   },
-})
+}
+
+if vim.tbl_contains(cxx_lsp, 'clangd') then
+  clangd_extensions.setup(opts)
+end

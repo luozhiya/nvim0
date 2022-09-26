@@ -79,6 +79,24 @@ hardworking.empty = function(v)
   return false
 end
 
+hardworking.dump = function(tbl)
+  for k, v in pairs(tbl) do
+    print(k .. ': ' .. v)
+  end
+end
+
+hardworking.merge_simple_list = function(v1, v2)
+  local ret = {}
+  for k, v in pairs(v1) do
+    ret[k] = v
+  end
+  local ofs = vim.tbl_count(ret)
+  for k, v in pairs(v2) do
+    ret[k+ofs] = v
+  end
+  return ret
+end
+
 ---The symbol to remove key in misc.merge.
 hardworking.none = vim.NIL
 
@@ -143,6 +161,7 @@ local function safe(v)
   end
   return v
 end
+
 hardworking.safe = safe
 
 ---Treat 1/0 as bool value
@@ -169,6 +188,7 @@ local function set(t, keys, v)
   end
   c[keys[#keys]] = v
 end
+
 hardworking.set = set
 
 ---Copy table
@@ -280,6 +300,7 @@ local function find(haystack, matcher)
   end
   return found
 end
+
 hardworking.find = find
 
 local installed
@@ -297,6 +318,7 @@ local function plugin_installed(plugin_name)
   end
   return vim.tbl_contains(installed, plugin_name)
 end
+
 hardworking.plugin_installed = plugin_installed
 
 ---NOTE: this plugin returns the currently loaded state of a plugin given
@@ -308,6 +330,7 @@ local function plugin_loaded(plugin_name)
   local plugins = packer_plugins or {}
   return plugins[plugin_name] and plugins[plugin_name].loaded
 end
+
 hardworking.plugin_loaded = plugin_loaded
 
 ---Check whether or not the location or quickfix list is open
@@ -323,13 +346,16 @@ local function is_vim_list_open()
   end
   return false
 end
+
 hardworking.is_vim_list_open = is_vim_list_open
 
 local function truncate(str, max_len)
   assert(str and max_len, 'string and max_len must be provided')
-  return api.nvim_strwidth(str) > max_len and str:sub(1, max_len) .. style_constexpr.icons.misc.ellipsis
-      or str
+  return api.nvim_strwidth(str) > max_len
+      and str:sub(1, max_len) .. style_constexpr.icons.misc.ellipsis
+    or str
 end
+
 hardworking.truncate = truncate
 
 ---Require a module using [pcall] and report any errors
@@ -344,6 +370,7 @@ local function safe_require(module, opts)
   end
   return ok, result
 end
+
 hardworking.safe_require = safe_require
 
 ---Reload lua modules
@@ -362,6 +389,7 @@ local function reload_lua_module(path, recursive)
     require(path)
   end
 end
+
 hardworking.reload_lua_module = reload_lua_module
 
 --- Usage:
@@ -385,6 +413,7 @@ local function profile(filename)
     end, 1000)
   end
 end
+
 hardworking.profile = profile
 
 ----------------------------------------------------------------------------------------------------
@@ -423,6 +452,7 @@ local function augroup(name, commands)
   end
   return id
 end
+
 hardworking.augroup = augroup
 
 --- @class CommandArgs
@@ -438,6 +468,7 @@ local function command(name, rhs, opts)
   opts = opts or {}
   api.nvim_create_user_command(name, rhs, opts)
 end
+
 hardworking.command = command
 
 ---Source a lua or vimscript file
@@ -450,6 +481,7 @@ local function source(path, prefix)
     vim.cmd(fmt('source %s/%s', vim.g.vim_dir, path))
   end
 end
+
 hardworking.source = source
 
 ---Check if a cmd is executable
@@ -458,6 +490,7 @@ hardworking.source = source
 local function executable(e)
   return fn.executable(e) > 0
 end
+
 hardworking.executable = executable
 
 ---A terser proxy for `nvim_replace_termcodes`
@@ -466,6 +499,7 @@ hardworking.executable = executable
 local function replace_termcodes(str)
   return api.nvim_replace_termcodes(str, true, true, true)
 end
+
 hardworking.replace_termcodes = replace_termcodes
 
 ---check if a certain feature/version/commit exists in nvim
@@ -474,6 +508,7 @@ hardworking.replace_termcodes = replace_termcodes
 local function has(feature)
   return vim.fn.has(feature) > 0
 end
+
 hardworking.has = has
 
 ----------------------------------------------------------------------------------------------------
@@ -497,6 +532,7 @@ local function make_mapper(mode, o)
     vim.keymap.set(mode, lhs, rhs, vim.tbl_extend('keep', opts, parent_opts))
   end
 end
+
 hardworking.make_mapper = make_mapper
 
 local map_opts = { remap = true, silent = true }
