@@ -31,15 +31,15 @@ local style = {
   },
   icons = {
     lsp = {
-      error = '✗',
-      warn = '',
+      error = '✗', -- 
+      warn = '', -- 
       info = '',
       hint = '',
     },
     git = {
-      add = '', -- '',
-      mod = '',
-      remove = '', -- '',
+      add = '', -- '',
+      mod = '', -- 
+      remove = '', -- 
       ignore = '',
       rename = '',
       diff = '',

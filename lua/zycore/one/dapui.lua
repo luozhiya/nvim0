@@ -3,6 +3,8 @@ if not dapui_ok then
   return
 end
 
+local dap = require('dap')
+
 dapui.setup({
   icons = { expanded = '▾', collapsed = '▸', current_frame = '▸' },
   mappings = {
@@ -60,54 +62,29 @@ dapui.setup({
   },
 })
 
-local dap = require('dap')
-dap.listeners.after.event_initialized['dapui_config'] = function()
-  dapui.open()
+local M = {}
+function M.config()
+  local opts = { noremap = true, silent = true }
+  local keymap = vim.api.nvim_set_keymap
+  local nnoremap = function(lhs, rhs)
+    vim.api.nvim_set_keymap('n', lhs, rhs, opts)
+  end
+
+  nnoremap('<leader>duc', 'dap-ui: close')
+  nnoremap('<leader>dut', 'dap-ui: toggle')
+
+  -- NOTE: this opens dap UI automatically when dap starts
+  dap.listeners.after.event_initialized['dapui_config'] = function()
+    dapui.open()
+  end
+  dap.listeners.before.event_terminated['dapui_config'] = function()
+    dapui.close()
+  end
+  dap.listeners.before.event_exited['dapui_config'] = function()
+    dapui.close()
+  end
 end
-dap.listeners.before.event_terminated['dapui_config'] = function()
-  dapui.close()
-end
-dap.listeners.before.event_exited['dapui_config'] = function()
-  dapui.close()
-end
 
--- local opts = { noremap = true, silent = true }
--- local keymap = vim.api.nvim_set_keymap
--- local nnoremap = function(lhs, rhs)
---     vim.api.nvim_set_keymap('n', lhs, rhs, opts)
--- end
+dapui.config = M.config
+dapui.config()
 
--- nnoremap('<leader>duc', 'dap-ui: close')
--- nnoremap('<leader>dut', 'dap-ui: toggle')
-
--- -- NOTE: this opens dap UI automatically when dap starts
--- local dap = require('dap')
--- -- dap.listeners.after.event_initialized['dapui_config'] = function()
--- --   dapui.open()
--- -- end
--- dap.listeners.before.event_terminated['dapui_config'] = function()
--- require('dapui').close()
--- end
--- dap.listeners.before.event_exited['dapui_config'] = function()
--- require('dapui').close()
--- end
-
--- local M = {}
--- function M.config()
---   nnoremap('<leader>duc', 'dap-ui: close')
---   nnoremap('<leader>dut', 'dap-ui: toggle')
-
---   -- NOTE: this opens dap UI automatically when dap starts
---   local dap = require('dap')
---   -- dap.listeners.after.event_initialized['dapui_config'] = function()
---   --   dapui.open()
---   -- end
---   dap.listeners.before.event_terminated['dapui_config'] = function()
---     require('dapui').close()
---   end
---   dap.listeners.before.event_exited['dapui_config'] = function()
---     require('dapui').close()
---   end
--- end
-
--- dapui.config = M.config

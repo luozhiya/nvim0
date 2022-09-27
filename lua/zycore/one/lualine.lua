@@ -13,16 +13,21 @@ local diagnostics = {
   'diagnostics',
   sources = { 'nvim_diagnostic' },
   sections = { 'error', 'warn' },
-  symbols = { error = ' ', warn = ' ' },
+  symbols = { error = style_constexpr.icons.lsp.error .. ' ', warn = style_constexpr.icons.lsp.warn .. ' '},
   colored = false,
   update_in_insert = false,
   always_visible = true,
 }
 
+-- 
 local diff = {
   'diff',
   colored = false,
-  symbols = { added = ' ', modified = ' ', removed = ' ' }, -- changes diff symbols
+  symbols = {
+    added = style_constexpr.icons.git.add,
+    modified = style_constexpr.icons.git.mod,
+    removed = style_constexpr.icons.git.remove,
+  }, -- changes diff symbols
   cond = hide_in_width,
 }
 
@@ -35,6 +40,12 @@ local mode = {
 
 local filetype = {
   'filetype',
+  icons_enabled = false,
+  icon = nil,
+}
+
+local fileformat = {
+  'fileformat',
   icons_enabled = false,
   icon = nil,
 }
@@ -88,7 +99,7 @@ lualine.setup({
     lualine_b = { mode },
     lualine_c = {},
     -- lualine_x = { "encoding", "fileformat", "filetype" },
-    lualine_x = { diff, spaces, 'encoding', filetype },
+    lualine_x = { diff, spaces, 'encoding', fileformat, filetype },
     lualine_y = { location },
     lualine_z = { ratio_progress },
   },

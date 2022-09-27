@@ -43,7 +43,7 @@ comment.setup({
     ---Extended mapping; `g>` `g<` `g>[count]{motion}` `g<[count]{motion}`
     extended = false,
   },
-  ---Function to call before (un)comment
+  -- Function to call before (un)comment
   -- pre_hook = nil,
   pre_hook = function(ctx)
     local U = require('Comment.utils')
@@ -76,3 +76,10 @@ vim.cmd([[
 nmap <A-\> gcc
 vmap <A-\> gc
 ]])
+
+local dash = '--%s'
+local dash_bracket = '--[[%s]]'
+local ft = require('Comment.ft')
+-- Set only line comment
+ft.lua = dash
+
