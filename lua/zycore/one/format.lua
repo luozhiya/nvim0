@@ -41,33 +41,14 @@ autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
 ]])
 end
 
--- cappyzawa/trim.nvim
-if true then
-  require('trim').setup({
-    -- if you want to ignore markdown file.
-    -- you can specify filetypes.
-    disable = { 'markdown' },
-
-    -- if you want to ignore space of top
-    patterns = {
-      [[%s/\s\+$//e]], -- remove unwanted spaces
-      -- [[%s/\($\n\s*\)\+\%$//]],  -- trim last line
-      -- [[%s/\%^\n\+//]],          -- trim first line
-      -- [[%s/\(\n\n\)\n\+/\1/]],   -- replace multiple blank lines with a single line
-    },
-  })
-end
-
 -- JbzClangFormat
-if false then
-  -- function! s:JbzClangFormat(first, last)
-  --   let l:winview = winsaveview()
-  --   execute a:first . "," . a:last . "!/home/luozhiya/.cache/yay/llvm-git/src/_build/bin/clang-format"
-  --   call winrestview(l:winview)
-  -- endfunction
-  -- command! -range=% JbzClangFormat call <sid>JbzClangFormat (<line1>, <line2>)
+-- function! s:JbzClangFormat(first, last)
+--   let l:winview = winsaveview()
+--   execute a:first . "," . a:last . "!/home/luozhiya/.cache/yay/llvm-git/src/_build/bin/clang-format"
+--   call winrestview(l:winview)
+-- endfunction
+-- command! -range=% JbzClangFormat call <sid>JbzClangFormat (<line1>, <line2>)
 
-  -- " Autoformatting with clang-format
-  -- au FileType c,cpp nnoremap <buffer><leader>lf :<C-u>JbzClangFormat<CR>
-  -- au FileType c,cpp vnoremap <buffer><leader>lf :JbzClangFormat<CR>
-end
+-- " Autoformatting with clang-format
+-- au FileType c,cpp nnoremap <buffer><leader>lf :<C-u>JbzClangFormat<CR>
+-- au FileType c,cpp vnoremap <buffer><leader>lf :JbzClangFormat<CR>

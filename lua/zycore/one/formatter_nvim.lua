@@ -1,7 +1,7 @@
 -- mhartington/formatter.nvim
 
 -- Utilities for creating configurations
-local util_ok, util = require('formatter.util')
+local util_ok, util = pcall(require, 'formatter.util')
 if not util_ok then
   return
 end

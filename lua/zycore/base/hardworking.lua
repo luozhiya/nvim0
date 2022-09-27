@@ -6,6 +6,34 @@ local style_constexpr = require('zycore.base.style_constexpr')
 local hardworking = {}
 
 ----------------------------------------------------------------------------------------------------
+-- Environment
+----------------------------------------------------------------------------------------------------
+local is_windows = function()
+  return fn.has('win32') or fn.has('win64')
+end
+hardworking.is_windows = is_windows
+
+local is_linux = function()
+  return fn.has('unix') and not fn.has('macunix') and not fn.has('win32unix')
+end
+hardworking.is_linux = is_linux
+
+local is_osx = function()
+  return fn.has('macunix')
+end
+hardworking.is_osx = is_osx
+
+local is_wsl = function()
+  return fn.has('wsl')
+end
+hardworking.is_wsl = is_wsl
+
+local is_gui_running = function()
+  return fn.has('gui_running')
+end
+hardworking.is_gui_running = is_gui_running
+
+----------------------------------------------------------------------------------------------------
 -- API
 ----------------------------------------------------------------------------------------------------
 ---Create once callback
@@ -92,7 +120,7 @@ hardworking.merge_simple_list = function(v1, v2)
   end
   local ofs = vim.tbl_count(ret)
   for k, v in pairs(v2) do
-    ret[k+ofs] = v
+    ret[k + ofs] = v
   end
   return ret
 end

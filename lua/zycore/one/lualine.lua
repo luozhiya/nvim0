@@ -61,6 +61,14 @@ local progress = function()
   return chars[index]
 end
 
+local ratio_progress = function()
+  local current_line = vim.fn.line('.')
+  local total_lines = vim.fn.line('$')
+  local line_ratio = current_line / total_lines * 100
+  -- return tostring(line_ratio)
+  return string.format('%02d', line_ratio)
+end
+
 local spaces = function()
   return 'spaces: ' .. vim.api.nvim_buf_get_option(0, 'shiftwidth')
 end
@@ -82,7 +90,7 @@ lualine.setup({
     -- lualine_x = { "encoding", "fileformat", "filetype" },
     lualine_x = { diff, spaces, 'encoding', filetype },
     lualine_y = { location },
-    lualine_z = { progress },
+    lualine_z = { ratio_progress },
   },
   inactive_sections = {
     lualine_a = {},

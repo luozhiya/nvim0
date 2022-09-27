@@ -79,7 +79,8 @@ require('packer').startup(function(use)
 
   -- Colorscheme
   -- use 'Mofiqul/vscode.nvim' -- VSCode dark theme
-  use('lunarvim/darkplus.nvim')
+  -- use('lunarvim/darkplus.nvim')
+  use('luozhiya/darkplus.nvim')
 
   -- Completion
   use('hrsh7th/nvim-cmp') -- Autocompletion plugin

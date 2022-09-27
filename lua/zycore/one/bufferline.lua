@@ -316,8 +316,8 @@ bufferline.setup({
       bg = visible_bg,
     },
     warning_selected = {
-      fg = warning_fg,
-      bg = normal_bg,
+      fg = vs_selected_fg,
+      bg = vs_selected_bg,
       bold = false,
       italic = false,
       underline = has_underline_indicator,
