@@ -58,8 +58,9 @@ nvim_tree.setup({
     },
   },
   view = {
-    adaptive_size = true,
+    adaptive_size = false,
     side = 'left',
+    preserve_window_proportions = true,
     mappings = {
       list = {
         { key = { 'l', '<CR>', 'o' }, cb = tree_cb('edit') },
@@ -68,4 +69,15 @@ nvim_tree.setup({
       },
     },
   },
+  actions = {  
+    open_file = {
+      resize_window = false,
+    },   
+  },
 })
+
+vim.cmd([[
+" hi NvimTreeWinSeparator guifg=black guibg=black
+" hi NvimTreeStatusLineNC ctermbg=black ctermfg=black
+" hi NvimTreeStatusLine ctermbg=black ctermfg=black
+]])

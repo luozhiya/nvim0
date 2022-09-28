@@ -117,9 +117,9 @@ bufferline.setup({
         filetype = 'NvimTree',
         text = 'File Explorer',
         highlight = 'Directory',
-        separator = true,
+        separator = false,
         text_align = 'left',
-        -- padding = 10,
+        padding = 1,
       },
     },
     hover = {
@@ -131,7 +131,7 @@ bufferline.setup({
     truncate_names = true, -- whether or not tab names should be truncated
     tab_size = 18,
     max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
-    separator_style = 'thin',
+    separator_style = 'none',
     enforce_regular_tabs = true,
     buffer_close_icon = '',
     modified_icon = '●',
@@ -460,8 +460,10 @@ bufferline.setup({
       italic = false,
     },
     offset_separator = {
-      fg = win_separator_fg,
-      bg = separator_background_color,
+      fg = normal_bg,
+      bg = normal_bg,
+      -- fg = win_separator_fg,
+      -- bg = separator_background_color,
     },
   },
 })
