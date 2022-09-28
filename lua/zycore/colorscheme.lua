@@ -7,3 +7,7 @@ catch /^Vim\%((\a\+)\)\=:E185/
   set background=dark
 endtry
 ]])
+
+local hl = vim.api.nvim_set_hl
+local split_bg = "#686868"
+hl(0, "NvimTreeVertSplit", { fg = split_bg, bg = split_bg })
