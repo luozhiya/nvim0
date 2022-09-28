@@ -15,6 +15,7 @@ hardworking.is_windows = is_windows
 
 local is_linux = function()
   return fn.has('unix') == 1 and not fn.has('macunix') == 1 and not fn.has('win32unix') == 1
+  -- return vim.loop.os_uname().sysname == 'Linux'
 end
 hardworking.is_linux = is_linux
 
@@ -24,12 +25,12 @@ end
 hardworking.is_osx = is_osx
 
 local is_wsl = function()
-  return fn.has('wsl')
+  return fn.has('wsl') == 1
 end
 hardworking.is_wsl = is_wsl
 
 local is_gui_running = function()
-  return fn.has('gui_running')
+  return fn.has('gui_running') == 1
 end
 hardworking.is_gui_running = is_gui_running
 
