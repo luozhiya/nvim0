@@ -87,4 +87,3 @@ end
 
 dapui.config = M.config
 dapui.config()
-

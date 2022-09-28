@@ -5,4 +5,3 @@ end
 
 require('zycore.lsp.config_servers')
 require('zycore.lsp.handler').setup()
-

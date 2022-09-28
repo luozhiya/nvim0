@@ -9,7 +9,7 @@ local hardworking = require('zycore.base.hardworking')
 local cxx_lsp = require('zycore.goforit').cxx_lsp
 
 local lspconfig = require('lspconfig')
-local servers = { 'jsonls', 'sumneko_lua', 'pyright', 'cmake', 'vimls'}
+local servers = { 'jsonls', 'sumneko_lua', 'pyright', 'cmake', 'vimls' }
 servers = hardworking.merge_simple_list(servers, cxx_lsp)
 --[[ hardworking.dump(servers) ]]
 

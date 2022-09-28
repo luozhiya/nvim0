@@ -13,7 +13,10 @@ local diagnostics = {
   'diagnostics',
   sources = { 'nvim_diagnostic' },
   sections = { 'error', 'warn' },
-  symbols = { error = style_constexpr.icons.lsp.error .. ' ', warn = style_constexpr.icons.lsp.warn .. ' '},
+  symbols = {
+    error = style_constexpr.icons.lsp.error .. ' ',
+    warn = style_constexpr.icons.lsp.warn .. ' ',
+  },
   colored = false,
   update_in_insert = false,
   always_visible = true,

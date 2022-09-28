@@ -29,4 +29,3 @@ local opts = {
 }
 
 -- null_ls.setup(opts)
-

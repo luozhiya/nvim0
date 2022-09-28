@@ -6,7 +6,7 @@ end
 local opts = {
   -- if you want to ignore markdown file.
   -- you can specify filetypes.
-  disable = { 'markdown'},
+  disable = { 'markdown' },
 
   -- if you want to ignore space of top
   patterns = {
@@ -19,4 +19,3 @@ local opts = {
 
 -- cappyzawa/trim.nvim
 -- trim.setup()
-

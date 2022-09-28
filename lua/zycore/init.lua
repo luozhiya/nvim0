@@ -6,4 +6,3 @@ local plugin = require('zycore.plugin')
 local colorscheme = require('zycore.colorscheme')
 local lsp = require('zycore.lsp')
 local one = require('zycore.one')
-

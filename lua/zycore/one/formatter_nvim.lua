@@ -54,7 +54,7 @@ local opts = {
 }
 
 -- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
-local fmt = require('formatter');
+local fmt = require('formatter')
 
 require('formatter').setup(opts)
 

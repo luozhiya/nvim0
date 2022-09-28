@@ -37,7 +37,7 @@ local option = {
   -- (so that it behaves like Ctrl-D / Ctrl-T)
   shiftround = true, -- 自动 indent 应该是 shiftwidth 的整数倍
   -- try to be smart (increase the indenting level after ‘{’,
-  -- decrease it after ‘}’, and so on) 
+  -- decrease it after ‘}’, and so on)
   smartindent = true,
 
   -- keep indentation produced by 'autoindent' if leaving the line blank:
@@ -111,7 +111,7 @@ local option = {
   -- use language‐specific plugins for indenting (better):
   -- vim.cmd([[filetype plugin indent on]])
   -- reproduce the indentation of the previous line
-  -- autoindent = true, -- neovim default true  
+  -- autoindent = true, -- neovim default true
 }
 
 for k, v in pairs(option) do

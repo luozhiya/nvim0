@@ -131,4 +131,3 @@ end
 
 dap.config = M.config
 dap.config()
-
