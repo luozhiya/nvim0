@@ -2,24 +2,31 @@
 set mouse=a
 
 " choose the primary font, and cjk fallback font
-let s:codefontsize = 13
-let s:cjkfontsize = s:codefontsize
-let s:codefont = "JetBrainsMono Nerd Font Mono"
-let s:cjkfont = "Sarasa Mono SC Nerd"
+if has('win32')
+  let s:codefontsize = 13
+  let s:cjkfontsize = s:codefontsize
+  let s:codefont = "JetBrainsMono Nerd Font Mono"
+  let s:cjkfont = "Sarasa Mono SC Nerd"
+else
+  let s:codefontsize= 15
+  let s:cjkfontsize = s:codefontsize
+  let s:codefont = "Cascadia Code"
+  let s:cjkfont = "Sarasa Mono SC Nerd"
+endif
 
 " Disable GUI Tabline
 if exists(':GuiTabline')
-    GuiTabline 0
+  GuiTabline 0
 endif
 
 " Disable GUI Popupmenu
 if exists(':GuiPopupmenu')
-    GuiPopupmenu 0
+  GuiPopupmenu 0
 endif
 
 " Enable GUI ScrollBar
 if exists(':GuiScrollBar')
-    GuiScrollBar 1
+  GuiScrollBar 1
 endif
 
 " Right Click Context Menu (Copy-Cut-Paste)

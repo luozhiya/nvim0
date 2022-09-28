@@ -61,6 +61,7 @@ local option = {
 
   -- Font
   -- guifont = "monospace:h17"    -- the font used in graphical neovim application
+  linespace = 3,
 
   -- Timings
   updatetime = 300, -- faster completion (4000ms default)

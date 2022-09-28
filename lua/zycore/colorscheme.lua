@@ -1,12 +1,26 @@
 -- require('vscode').change_style('dark')
-vim.cmd([[
-try
-  colorscheme darkplus
-catch /^Vim\%((\a\+)\)\=:E185/
-  colorscheme default
-  set background=dark
-endtry
-]])
+local hardworking = require('zycore.base.hardworking')
+
+if hardworking.is_windows() then
+  print(123)
+  vim.cmd([[
+  try
+    colorscheme darkpluspro
+  catch /^Vim\%((\a\+)\)\=:E185/
+    colorscheme default
+    set background=dark
+  endtry
+]] )
+else
+  vim.cmd([[
+  try
+    colorscheme darkplus
+  catch /^Vim\%((\a\+)\)\=:E185/
+    colorscheme default
+    set background=dark
+  endtry
+]] )
+end
 
 local hl = vim.api.nvim_set_hl
 local split_bg = "#686868"

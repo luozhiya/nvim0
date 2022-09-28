@@ -9,17 +9,17 @@ local hardworking = {}
 -- Environment
 ----------------------------------------------------------------------------------------------------
 local is_windows = function()
-  return fn.has('win32') or fn.has('win64')
+  return fn.has('win32') == 1 or fn.has('win64') == 1
 end
 hardworking.is_windows = is_windows
 
 local is_linux = function()
-  return fn.has('unix') and not fn.has('macunix') and not fn.has('win32unix')
+  return fn.has('unix') == 1 and not fn.has('macunix') == 1 and not fn.has('win32unix') == 1
 end
 hardworking.is_linux = is_linux
 
 local is_osx = function()
-  return fn.has('macunix')
+  return fn.has('macunix') == 1
 end
 hardworking.is_osx = is_osx
 
