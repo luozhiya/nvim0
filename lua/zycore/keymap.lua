@@ -83,6 +83,7 @@ xnoremap('<A-k>', ":move '<-2<CR>gv-gv")
 nnoremap('<S-l>', ':bnext<CR>')
 nnoremap('<S-h>', ':bprevious<CR>')
 nnoremap('<tab>', ':bnext<CR>')
+nnoremap('<S-tab>', ':bprevious<CR>')
 nnoremap('<C-w>', ':Bdelete<CR>')
 nnoremap('<A-w>', ':Bdelete!<CR>')
 

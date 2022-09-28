@@ -1,3 +1,5 @@
+local hardworking = require('zycore.base.hardworking')
+
 local M = {}
 
 M.setup = function()

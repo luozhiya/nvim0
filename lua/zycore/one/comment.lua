@@ -57,22 +57,14 @@ comment.setup({
     end
 
     local key = nil
-    if ctx.ctype == U.ctype.linewise then
-      key = '__default'
-    else
-      key = '__multiline'
-    end
-
-    -- print(U.ctype.linewise)
-    -- print(U.cytpe.blockwise)
-    -- print(ctx.ctype)
+    key = ctx.ctype == U.ctype.linewise and '__default' or '__multiline'
 
     return require('ts_context_commentstring.internal').calculate_commentstring({
-      -- key = ctx.ctype == U.ctype.linewise and '__default' or '__multiline',
       key = key,
       location = location,
     })
   end,
+
   ---Function to call after (un)comment
   post_hook = nil,
 })
@@ -88,6 +80,7 @@ vim.cmd([[
 " xnoremap <A-\> gcc
 nmap <A-\> gcc
 vmap <A-\> gc
+" imap <A-\> <ESC>:gcc
 ]])
 
 local dash = '--%s'

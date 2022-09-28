@@ -108,10 +108,10 @@ bufferline.setup({
     right_mouse_command = 'Bdelete! %d', -- can be a string | function, see "Mouse actions"
     left_mouse_command = 'buffer %d', -- can be a string | function, see "Mouse actions"
     middle_mouse_command = nil, -- can be a string | function, see "Mouse actions"
-    -- indicator = {
-    --     icon = '▎', -- this should be omitted if indicator style is not 'icon'
-    --     style = 'icon',
-    -- },
+    indicator = {
+        icon = '▎', -- this should be omitted if indicator style is not 'icon'
+        style = 'none',
+    },
     offsets = {
       {
         filetype = 'NvimTree',

@@ -107,9 +107,18 @@ hardworking.empty = function(v)
   return false
 end
 
-hardworking.dump = function(tbl)
+hardworking.dump = function(tbl, depth)
+  if (depth > 100) then
+    print("Too many depth")
+    return
+  end
   for k, v in pairs(tbl) do
-    print(k .. ': ' .. v)
+    if (type(v) == 'table') then
+      print(string.rep('  ', depth) .. k .. ': ')
+      hardworking.dump(v, depth + 1)
+    else
+      print(string.rep('  ', depth) .. k .. ': ' .. v)
+    end
   end
 end
 
@@ -381,7 +390,7 @@ local function truncate(str, max_len)
   assert(str and max_len, 'string and max_len must be provided')
   return api.nvim_strwidth(str) > max_len
       and str:sub(1, max_len) .. style_constexpr.icons.misc.ellipsis
-    or str
+      or str
 end
 
 hardworking.truncate = truncate

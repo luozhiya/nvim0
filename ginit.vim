@@ -2,7 +2,7 @@
 set mouse=a
 
 " choose the primary font, and cjk fallback font
-let s:codefontsize = 11
+let s:codefontsize = 13
 let s:cjkfontsize = s:codefontsize
 let s:codefont = "JetBrainsMono Nerd Font Mono"
 let s:cjkfont = "Sarasa Mono SC Nerd"
