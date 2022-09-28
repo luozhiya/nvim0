@@ -20,14 +20,14 @@ let g:neoformat_basic_format_align = 1
 let g:neoformat_basic_format_retab = 1
 
 " Enable trimmming of trailing whitespace
-let g:neoformat_basic_format_trim = 1
+let g:neoformat_basic_format_trim = 0
 ]])
 end
 
 -- rhysd/vim-clang-format
 if true then
   vim.cmd([[
-let g:clang_format#command = '/home/luozhiya/.cache/yay/llvm-git/src/_build/bin/clang-format'
+let g:clang_format#command = 'clang-format'
 let g:clang_format#detect_style_file = 1
 let g:clang_format#auto_format_on_insert_leave = 0
 let g:clang_format#auto_format = 0

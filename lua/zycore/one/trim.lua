@@ -3,11 +3,10 @@ if not ok then
   return
 end
 
--- cappyzawa/trim.nvim
-trim.setup({
+local opts = {
   -- if you want to ignore markdown file.
   -- you can specify filetypes.
-  disable = { 'markdown' },
+  disable = { 'markdown'},
 
   -- if you want to ignore space of top
   patterns = {
@@ -16,4 +15,8 @@ trim.setup({
     -- [[%s/\%^\n\+//]],          -- trim first line
     -- [[%s/\(\n\n\)\n\+/\1/]],   -- replace multiple blank lines with a single line
   },
-})
+}
+
+-- cappyzawa/trim.nvim
+-- trim.setup()
+
