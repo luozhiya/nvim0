@@ -10,8 +10,13 @@ if has('win32')
 else
   let s:codefontsize= 15
   let s:cjkfontsize = s:codefontsize
-  let s:codefont = "Cascadia Code"
-  let s:cjkfont = "Sarasa Mono SC Nerd"
+  " Caskaydia Cove 
+  " Cascadia Code
+  let s:codefont = "CaskaydiaCove Nerd Font SemiLight"
+  " let s:codefont = "Sarasa Mono SC Nerd"
+  " Neovim-QT cannot input chinese in Arch Linux
+  " let s:cjkfont = "Sarasa Mono SC Nerd"
+  let s:cjkfont = s:codefont
 endif
 
 " Disable GUI Tabline
@@ -64,3 +69,30 @@ noremap <kMinus> :call AdjustFontSize(-1)<CR>
 inoremap <C-kPlus> <Esc>:call AdjustFontSize(1)<CR>a
 inoremap <C-kMinus> <Esc>:call AdjustFontSize(-1)<CR>a
 
+" 自动切换输入法，但是neovim-qt本身不支持输入法？
+if !has('win32') 
+  "##### auto fcitx  ###########
+  let g:input_toggle = 1
+  function! Fcitx2en()
+     let s:input_status = system("fcitx-remote")
+     if s:input_status == 2
+        let g:input_toggle = 1
+        let l:a = system("fcitx-remote -c")
+     endif
+  endfunction
+  
+  function! Fcitx2zh()
+     let s:input_status = system("fcitx-remote")
+     if s:input_status != 2 && g:input_toggle == 1
+        let l:a = system("fcitx-remote -o")
+        let g:input_toggle = 0
+     endif
+  endfunction
+  
+  set ttimeoutlen=150
+  "Exit insert mode
+  autocmd InsertLeave * call Fcitx2en()
+  "Enter insert mode
+  autocmd InsertEnter * call Fcitx2zh()
+  "##### auto fcitx end ######
+endif

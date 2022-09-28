@@ -72,6 +72,9 @@ require('packer').startup(function(use)
   use('jackguo380/vim-lsp-cxx-highlight') -- semantic highlighting using the language server protocol.
   use('p00f/clangd_extensions.nvim') -- Clangd's off-spec features for neovim's LSP client.
 
+  -- Lua
+  use "folke/lua-dev.nvim" -- Dev setup for init.lua and plugin development with full signature help, docs and completion for the nvim lua API.
+
   -- Debug
   use('mfussenegger/nvim-dap')
   use('rcarriga/nvim-dap-ui')

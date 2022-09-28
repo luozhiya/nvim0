@@ -69,10 +69,10 @@ nvim_tree.setup({
       },
     },
   },
-  actions = {  
+  actions = {
     open_file = {
       resize_window = false,
-    },   
+    },
   },
 })
 

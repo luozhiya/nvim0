@@ -7,6 +7,7 @@ local lspconfig = require('lspconfig')
 local hardworking = require('zycore.base.hardworking')
 local cxx_lsp = require('zycore.goforit').cxx_lsp
 
+-- Install jsonls with nvim-lsp-installer
 local servers = { 'jsonls', 'sumneko_lua', 'pyright', 'cmake', 'vimls' }
 servers = hardworking.merge_simple_list(servers, cxx_lsp)
 

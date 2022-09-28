@@ -31,13 +31,13 @@ local style = {
   },
   icons = {
     lsp = {
-      error = '✗', -- 
+      error = '鈴', --   鈴 ✗
       warn = '', -- 
       info = '',
       hint = '',
     },
     git = {
-      add = '', -- '',
+      add = '', -- '', 樂 
       mod = '', -- 
       remove = '', -- 
       ignore = '',

@@ -2,7 +2,6 @@
 local hardworking = require('zycore.base.hardworking')
 
 if hardworking.is_windows() then
-  print(123)
   vim.cmd([[
   try
     colorscheme darkpluspro
