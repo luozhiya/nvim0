@@ -21,10 +21,12 @@ local dap = require('zycore.one.dap_nvim')
 require('zycore.one.dapui')
 require('zycore.one.trim')
 local wrapping = require('zycore.one.wrapping')
-local clangd_extensions = require('zycore.one.clangd_extensions')
 local numbers = require('zycore.one.number')
 local guess_indent = require('zycore.one.guess_indent')
 local title = require('zycore.one.title')
 require('zycore.one.null_ls')
 require('zycore.one.lua_dev')
 require('zycore.one.colorizer')
+
+-- After LSP
+-- local clangd_extensions = require('zycore.one.clangd_extensions')
