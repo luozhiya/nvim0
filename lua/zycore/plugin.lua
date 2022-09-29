@@ -13,7 +13,13 @@ local compile_path = config .. '/plugin/packer_compiled.lua'
 
 -- vim.cmd([[set packpath=/tmp/nvim/site]])
 vim.opt.runtimepath:append(config)
-vim.opt.packpath:append(packpath);
+-- lua-dev diagnostics show vim.opt.packpath is a string, but it is table type actually
+-- ignore diagnostics warning
+vim.opt.packpath:append(packpath)
+-- E5113: Error while calling lua chunk: zycore/plugin.lua:17: attempt to concatenate field 'packpath' (a table value)
+-- print(vim.opt.packpath)
+-- vim.opt.packpath = vim.opt.packpath .. ';' .. packpath
+-- print(vim.opt.packpath)
 
 -- Automatically install packer
 local ensure_packer = function()

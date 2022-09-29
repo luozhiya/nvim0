@@ -27,7 +27,7 @@ else
 end
 
 local MaybeNotifyClientFontChanged = function(fontname)
-  if hardworking.is_gui_running() then
+  if rpc.client ~= nil then
     rpc.notify_font(fontname, true)
   end
 end

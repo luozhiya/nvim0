@@ -72,7 +72,7 @@ local notify_popupmenu = function(enable)
 end
 M.notify_popupmenu = notify_popupmenu
 
-local setup = function() 
+local setup = function()
   M.channel, M.client = fetch_client()
 end
 M.setup = setup
