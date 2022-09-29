@@ -74,6 +74,7 @@ require('packer').startup(function(use)
 
   -- Lua
   use "folke/lua-dev.nvim" -- Dev setup for init.lua and plugin development with full signature help, docs and completion for the nvim lua API.
+  use "jbyuki/one-small-step-for-vimkind" -- Debug adapter for Neovim plugins
 
   -- Debug
   use('mfussenegger/nvim-dap')

@@ -119,6 +119,7 @@ nnoremap('<C-A-v>', ':ToggleTerm size=40 direction=vertical<CR>')
 -- ]])
 
 -- Debug
+nnoremap('<S-F5>', ':lua require"osv".launch({port = 8086})<CR>')
 nnoremap('<F5>', ':lua _CONTINUE()<cr>')
 nnoremap('<F6>', ':DapTeminate<cr>')
 nnoremap('<F9>', ':lua _TOGGLE_BREAKPOINT()<cr>')

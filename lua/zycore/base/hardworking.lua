@@ -114,11 +114,11 @@ hardworking.dump = function(tbl, depth)
     return
   end
   for k, v in pairs(tbl) do
-    if (type(v) == 'table') then
+    if type(v) == 'table' then
       print(string.rep('  ', depth) .. k .. ': ')
       hardworking.dump(v, depth + 1)
     else
-      print(string.rep('  ', depth) .. k .. ': ' .. v)
+      print(string.rep('  ', depth) .. k .. ': ' .. tostring(v))
     end
   end
 end

@@ -9,24 +9,31 @@ local style_constexpr = require('zycore.base.style_constexpr')
 function _REPL_TOGGLE()
   dap.repl.toggle(nil, 'botright split')
 end
+
 function _CONTINUE()
   dap.continue()
 end
+
 function _STEP_OUT()
   dap.step_out()
 end
+
 function _STEP_INTO()
   dap.step_into()
 end
+
 function _STEP_OVER()
   dap.step_over()
 end
+
 function _RUN_LAST()
   dap.run_last()
 end
+
 function _TOGGLE_BREAKPOINT()
   dap.toggle_breakpoint()
 end
+
 function _SET_BREAKPOINT()
   dap.set_breakpoint(fn.input('Breakpoint condition: '))
 end
@@ -112,20 +119,21 @@ function M.config()
       type = 'nlua',
       request = 'attach',
       name = 'Attach to running Neovim instance',
-      host = function()
-        local value = fn.input('Host [default: 127.0.0.1]: ')
-        return value ~= '' and value or '127.0.0.1'
-      end,
-      port = function()
-        local val = tonumber(fn.input('Port: '))
-        assert(val, 'Please provide a port number')
-        return val
-      end,
+      -- host = function()
+      --   local value = fn.input('Host [default: 127.0.0.1]: ')
+      --   return value ~= '' and value or '127.0.0.1'
+      -- end,
+      -- port = function()
+      --   local val = tonumber(fn.input('Port: '))
+      --   assert(val, 'Please provide a port number')
+      --   return val
+      -- end,
     },
   }
 
   dap.adapters.nlua = function(callback, config)
-    callback({ type = 'server', host = config.host, port = config.port })
+    callback({ type = 'server', host = config.host or '127.0.0.1', port = config.port or 8086 })
+    -- callback({ type = 'server', host = config.host, port = config.port })
   end
 end
 
