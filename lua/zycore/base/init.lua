@@ -1,3 +1,5 @@
 require('zycore.base.global')
 require('zycore.base.hardworking')
 require('zycore.base.style_constexpr')
+local rpc = require('zycore.base.rpc_communication')
+rpc.setup()

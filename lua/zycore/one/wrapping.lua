@@ -26,3 +26,4 @@ wrapping.setup(opts)
 -- vim.keymap.set("n", "yw", function()
 --     wrapping.toggle_wrap_mode()
 -- end)
+

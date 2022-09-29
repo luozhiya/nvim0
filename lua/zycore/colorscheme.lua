@@ -22,5 +22,14 @@ else
 end
 
 local hl = vim.api.nvim_set_hl
-local split_bg = "#686868"
-hl(0, "NvimTreeVertSplit", { fg = split_bg, bg = split_bg })
+local split_bg = '#686868'
+hl(0, 'NvimTreeVertSplit', { fg = split_bg, bg = split_bg })
+
+vim.cmd([[
+if has('win32')
+  autocmd GUIEnter * simalt ~x  " always maximize initial GUI window
+  if has("directx")
+    set renderoptions=type:directx
+  endif
+endif
+]])

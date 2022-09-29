@@ -109,16 +109,19 @@ hardworking.empty = function(v)
 end
 
 hardworking.dump = function(tbl, depth)
+  if (depth == nil) then
+    depth = 0
+  end
   if (depth > 100) then
     print("Too many depth")
     return
   end
   for k, v in pairs(tbl) do
     if type(v) == 'table' then
-      print(string.rep('  ', depth) .. k .. ': ')
+      print(string.rep('  ', depth) .. tostring(k) .. ': ')
       hardworking.dump(v, depth + 1)
     else
-      print(string.rep('  ', depth) .. k .. ': ' .. tostring(v))
+      print(string.rep('  ', depth) .. tostring(k) .. ': ' .. tostring(v))
     end
   end
 end

@@ -30,7 +30,7 @@ local opts = {
         -- Full specification of configurations is down below and in Vim help
         -- files
         return {
-          exe = 'stylua1',
+          exe = 'stylua',
           args = {
             '--search-parent-directories',
             '--stdin-filepath',

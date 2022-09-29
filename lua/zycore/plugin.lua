@@ -60,12 +60,12 @@ require('packer').startup(function(use)
   use('andrewferrier/wrapping.nvim') -- Plugin to make it easier to switch between 'soft' and 'hard' line wrapping in NeoVim
 
   -- Format
-  use('jose-elias-alvarez/null-ls.nvim') -- Inject LSP diagnostics, code actions, and more via Lua
-  use('sbdchd/neoformat') -- why not use .clang-format?
-  use('rhysd/vim-clang-format')
-  use('cappyzawa/trim.nvim') --  trims trailing whitespace and lines
-  use('mhartington/formatter.nvim') --  A format runner for Neovim.
-  use('lukas-reineke/lsp-format.nvim') -- A wrapper around Neovims native LSP formatting.
+  -- use('jose-elias-alvarez/null-ls.nvim') -- Inject LSP diagnostics, code actions, and more via Lua
+  -- use('sbdchd/neoformat') -- why not use .clang-format?
+  -- use('rhysd/vim-clang-format')
+  -- use('cappyzawa/trim.nvim') --  trims trailing whitespace and lines
+  -- use('mhartington/formatter.nvim') --  A format runner for Neovim.
+  -- use('lukas-reineke/lsp-format.nvim') -- A wrapper around Neovims native LSP formatting.
 
   -- C++
   use('m-pilia/vim-ccls') -- supports some additional methods provided by ccls, which are not part of the standard Language Server Protocol (LSP)

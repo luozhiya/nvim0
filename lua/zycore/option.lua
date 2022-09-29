@@ -44,6 +44,9 @@ local option = {
   -- cinoptions = vim.opt.cinoptions:append('I')
   cinoptions = vim.opt.cinoptions:append('g0'), -- C++ public等不额外产生indent
 
+  -- don't syntax-highlight long lines
+  synmaxcol = 200,
+
   -- Find
   ignorecase = true, -- 一般情况大小写不敏感搜索
   smartcase = true, -- 如果搜索时使用了大写，则自动对大小写敏感
