@@ -89,7 +89,8 @@ end
 
 lualine.setup({
   options = {
-    color = { fg = style_constexpr.palette.white, bg = style_constexpr.palette.vs_blue },
+    -- color = { fg = style_constexpr.palette.white, bg = style_constexpr.palette.vs_blue },
+    color = { fg = style_constexpr.palette.white, bg = '#131313' },
     icons_enabled = true,
     theme = 'auto',
     component_separators = { left = '', right = '' },

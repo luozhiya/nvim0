@@ -10,6 +10,7 @@ local hardworking = {}
 ----------------------------------------------------------------------------------------------------
 local is_windows = function()
   return fn.has('win32') == 1 or fn.has('win64') == 1
+  -- return vim.loop.os_uname().sysname == 'Windows_NT'
 end
 hardworking.is_windows = is_windows
 

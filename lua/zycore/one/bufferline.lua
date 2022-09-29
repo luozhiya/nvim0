@@ -119,7 +119,7 @@ bufferline.setup({
         highlight = 'Directory',
         separator = false,
         text_align = 'left',
-        padding = 1,
+        padding = 0,
       },
     },
     hover = {
