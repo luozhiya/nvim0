@@ -53,6 +53,14 @@ vnoremap : ;
 nnoremap('<C-j>', '15gj')
 nnoremap('<C-k>', '15gk')
 
+-- Soft wrap 移动列
+-- noremap j gj  
+-- noremap k gk
+vim.cmd([[
+nnoremap <expr> j v:count ? 'j' : 'gj'
+nnoremap <expr> k v:count ? 'k' : 'gk'	
+]])
+
 -- 用 j, k 循环补齐列表，不起作用
 -- vim.cmd([[
 -- inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))

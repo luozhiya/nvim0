@@ -28,4 +28,4 @@ local opts = {
   },
 }
 
--- null_ls.setup(opts)
+null_ls.setup(opts)
