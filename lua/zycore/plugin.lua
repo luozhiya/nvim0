@@ -1,7 +1,23 @@
+local fn = vim.fn
+local hardworking = require('zycore.base.hardworking')
+
+-- local packpath = hardworking.join_paths(fn.stdpath('config'), 'site')
+-- local package_root = hardworking.join_paths(fn.stdpath('config'), 'site', 'pack')
+-- local install_path = hardworking.join_paths(package_root, 'packer', 'start', 'packer.nvim')
+-- local compile_path = hardworking.join_paths(fn.stdpath('config'), 'plugin', 'packer_compiled.lua')
+local config = fn.stdpath('config')
+local packpath = config .. '/site'
+local package_root = config .. '/site/pack'
+local install_path = package_root .. '/packer/start/packer.nvim'
+local compile_path = config .. '/plugin/packer_compiled.lua'
+
+-- vim.cmd([[set packpath=/tmp/nvim/site]])
+vim.opt.runtimepath:append(config)
+vim.opt.packpath:append(packpath);
+
 -- Automatically install packer
 local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+  -- local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
   if fn.empty(fn.glob(install_path)) > 0 then
     fn.system({
       'git',
@@ -11,13 +27,19 @@ local ensure_packer = function()
       'https://github.com/wbthomason/packer.nvim',
       install_path,
     })
-    vim.cmd([[packadd packer.nvim]])
+    vim.cmd([[packloadall! packer.nvim]])
     return true
   end
   return false
 end
 
 local packer_bootstrap = ensure_packer()
+
+-- Inital package root dir and compiled path
+require('packer').init({
+  package_root = package_root,
+  compile_path = compile_path,
+})
 
 require('packer').startup(function(use)
   -- System

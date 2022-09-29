@@ -74,6 +74,14 @@ nvim_tree.setup({
       resize_window = false,
     },
   },
+  filters = {
+    dotfiles = false,
+    custom = {'^\\.git'},
+    exclude = {},    
+  }, 
+  git = {
+    ignore = false,
+  },
 })
 
 vim.cmd([[

@@ -21,7 +21,7 @@ local fetch_client = function()
     local id = chan.id
     local client = chan.client
     -- hardworking.dump(chan)
-    if client ~= nil and client.name == nil and compat_nvim_qt then
+    if client ~= nil and client.name == nil and client['true'] == 6 and compat_nvim_qt then
       -- print(id)
       -- hardworking.dump(client)
       return id, client

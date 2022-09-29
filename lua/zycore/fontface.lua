@@ -26,12 +26,18 @@ else
   cjkfont = 'Sarasa Mono SC Nerd'
 end
 
+local MaybeNotifyClientFontChanged = function(fontname)
+  if hardworking.is_gui_running() then
+    rpc.notify_font(fontname, true)
+  end
+end
+
 local AdjustFontSize = function(amount)
   codefontsize = codefontsize + amount
   cjkfontsize = cjkfontsize + amount
   local codefontname = codefont .. ':h' .. tostring(codefontsize)
   local cjkfontname = cjkfont .. ':h' .. tostring(cjkfontsize)
-  rpc.notify_font(codefontname, true)
+  MaybeNotifyClientFontChanged(codefontname)
   vim.opt.guifont = codefontname
   vim.opt.guifontwide = cjkfontname
 end

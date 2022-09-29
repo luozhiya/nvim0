@@ -34,6 +34,13 @@ local is_gui_running = function()
 end
 hardworking.is_gui_running = is_gui_running
 
+local function join_paths(...)
+  local path_sep = is_windows() and "\\" or "/"
+  local result = table.concat({ ... }, path_sep)
+  return result
+end
+hardworking.join_paths = join_paths
+
 ----------------------------------------------------------------------------------------------------
 -- API
 ----------------------------------------------------------------------------------------------------
