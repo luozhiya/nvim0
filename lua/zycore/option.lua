@@ -123,4 +123,12 @@ for k, v in pairs(option) do
 end
 
 -- vim.cmd "set whichwrap+=<,>,[,],h,l"
-return option
+-- return option
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "lua",
+  callback = function()
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.tabstop = 2
+  end
+})

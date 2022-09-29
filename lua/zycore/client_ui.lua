@@ -11,15 +11,15 @@ end
 
 local function toggle_fullscreen()
   if vim.g.neovide_fullscreen then
-    vim.cmd [[let g:neovide_fullscreen = v:false]]
+    vim.cmd([[let g:neovide_fullscreen = v:false]])
   else
-    vim.cmd [[let g:neovide_fullscreen = v:true]]
+    vim.cmd([[let g:neovide_fullscreen = v:true]])
   end
 end
 
 if is_neovide() then
   vim.g.neovide_fullscreen = true
-  vim.keymap.set("", "<F12>", toggle_fullscreen)
+  vim.keymap.set('', '<F12>', toggle_fullscreen)
   -- vim.keymap.set("n", "<leader>xf", function()
   --     vim.g.neovide_fullscreen = not vim.g.neovide_fullscreen
   -- end, { desc = "Toggle GUI Full Screen" })
