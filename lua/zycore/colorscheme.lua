@@ -9,7 +9,7 @@ if hardworking.is_windows() then
     colorscheme default
     set background=dark
   endtry
-]] )
+]])
 else
   vim.cmd([[
   try
@@ -18,7 +18,7 @@ else
     colorscheme default
     set background=dark
   endtry
-]] )
+]])
 end
 
 local hl = vim.api.nvim_set_hl

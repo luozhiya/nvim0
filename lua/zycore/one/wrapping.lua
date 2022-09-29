@@ -12,7 +12,7 @@ wrapping.setup(opts)
 -- local swap_wrap = function()
 --   if vim.opt.wrap == true then
 --     vim.opt.wrap = false
---     wrapping.hard_wrap_mode()    
+--     wrapping.hard_wrap_mode()
 --   else
 --     wrapping.soft_wrap_mode()
 --     vim.opt.wrap = true
@@ -26,4 +26,3 @@ wrapping.setup(opts)
 -- vim.keymap.set("n", "yw", function()
 --     wrapping.toggle_wrap_mode()
 -- end)
-

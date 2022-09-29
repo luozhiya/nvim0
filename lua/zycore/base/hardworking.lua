@@ -35,7 +35,7 @@ end
 hardworking.is_gui_running = is_gui_running
 
 local function join_paths(...)
-  local path_sep = is_windows() and "\\" or "/"
+  local path_sep = is_windows() and '\\' or '/'
   local result = table.concat({ ... }, path_sep)
   return result
 end
@@ -116,11 +116,11 @@ hardworking.empty = function(v)
 end
 
 hardworking.dump = function(tbl, depth)
-  if (depth == nil) then
+  if depth == nil then
     depth = 0
   end
-  if (depth > 100) then
-    print("Too many depth")
+  if depth > 100 then
+    print('Too many depth')
     return
   end
   for k, v in pairs(tbl) do
@@ -401,7 +401,7 @@ local function truncate(str, max_len)
   assert(str and max_len, 'string and max_len must be provided')
   return api.nvim_strwidth(str) > max_len
       and str:sub(1, max_len) .. style_constexpr.icons.misc.ellipsis
-      or str
+    or str
 end
 
 hardworking.truncate = truncate

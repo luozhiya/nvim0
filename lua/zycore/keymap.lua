@@ -54,7 +54,7 @@ nnoremap('<C-j>', '15gj')
 nnoremap('<C-k>', '15gk')
 
 -- Soft wrap 移动列
--- noremap j gj  
+-- noremap j gj
 -- noremap k gk
 vim.cmd([[
 nnoremap <expr> j v:count ? 'j' : 'gj'

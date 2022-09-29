@@ -75,4 +75,3 @@ vim.cmd([[
 noremap <C-kPlus> :<Esc>:lua __ADJUST_FONTSIZE_ZOOMIN()<CR>a
 noremap <C-Minus> :<Esc>:lua __ADJUST_FONTSIZE_ZOOMOUT()<CR>a
 ]])
-

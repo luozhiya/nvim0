@@ -37,7 +37,7 @@ local style = {
       hint = '',
     },
     git = {
-      add = '', -- '', 樂 
+      add = '', -- '', 樂
       mod = '', -- 
       remove = '', -- 
       ignore = '',

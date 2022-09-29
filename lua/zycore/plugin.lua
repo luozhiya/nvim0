@@ -88,7 +88,6 @@ require('packer').startup(function(use)
   use('andrewferrier/wrapping.nvim') -- Plugin to make it easier to switch between 'soft' and 'hard' line wrapping in NeoVim
   use('norcalli/nvim-colorizer.lua') -- The fastest Neovim colorizer.
 
-
   -- Format
   use('jose-elias-alvarez/null-ls.nvim') -- Inject LSP diagnostics, code actions, and more via Lua
   use('sbdchd/neoformat') -- why not use .clang-format?
@@ -103,8 +102,8 @@ require('packer').startup(function(use)
   use('p00f/clangd_extensions.nvim') -- Clangd's off-spec features for neovim's LSP client.
 
   -- Lua
-  use "folke/lua-dev.nvim" -- Dev setup for init.lua and plugin development with full signature help, docs and completion for the nvim lua API.
-  use "jbyuki/one-small-step-for-vimkind" -- Debug adapter for Neovim plugins
+  use('folke/lua-dev.nvim') -- Dev setup for init.lua and plugin development with full signature help, docs and completion for the nvim lua API.
+  use('jbyuki/one-small-step-for-vimkind') -- Debug adapter for Neovim plugins
 
   -- Debug
   use('mfussenegger/nvim-dap')
