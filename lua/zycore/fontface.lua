@@ -18,12 +18,14 @@ if hardworking.is_windows() then
   codefontsize = 11
   cjkfontsize = codefontsize
   codefont = 'JetBrainsMono Nerd Font Mono'
-  cjkfont = 'Sarasa Mono SC Nerd'
+  -- cjkfont = 'Sarasa Mono SC Nerd'
+  cjkfont = codefont
 else
   codefontsize = 15
   cjkfontsize = codefontsize
   codefont = 'CaskaydiaCove Nerd Font SemiLight'
-  cjkfont = 'Sarasa Mono SC Nerd'
+  -- cjkfont = 'Sarasa Mono SC Nerd'
+  cjkfont = codefont
 end
 
 local MaybeNotifyClientFontChanged = function(fontname)
