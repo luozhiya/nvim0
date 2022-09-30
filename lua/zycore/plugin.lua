@@ -71,7 +71,8 @@ require('packer').startup(function(use)
   use('kyazdani42/nvim-web-devicons')
   use('kyazdani42/nvim-tree.lua')
   use('nvim-lualine/lualine.nvim')
-  use('akinsho/bufferline.nvim')
+  -- use('akinsho/bufferline.nvim')
+  use('luozhiya/bufferline.nvim')
   use('moll/vim-bbye') -- Delete buffers and close files in Vim without closing your windows or messing up your layout.
 
   -- Easy VAX find

@@ -35,3 +35,7 @@ if has('win32')
   endif
 endif
 ]])
+
+vim.cmd([[
+hi default LspCxxHlGroupMemberVariable ctermfg=Yellow guifg=#dcdcaa cterm=none gui=none
+]])
