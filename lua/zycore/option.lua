@@ -13,6 +13,9 @@ local option = {
   ruler = true, -- show row/col in status line
   relativenumber = true, -- set relative numbered lines
   signcolumn = 'auto:2-5', -- always show the sign column, otherwise it would shift the text each time
+  -- Color
+  -- Nvim emits true (24-bit) colours in the terminal, if 'termguicolors' is set.
+  -- Truecolor
   termguicolors = true, -- bufferline: You are *strongly* advised to use `termguicolors` for this plugin
 
   showmatch = true, -- 输入代码时高亮显示匹配的括号
