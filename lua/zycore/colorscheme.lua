@@ -23,7 +23,8 @@ end
 
 local hl = vim.api.nvim_set_hl
 -- local split_bg = '#131313'
-local split_bg = '#686868'
+-- local split_bg = '#686868'
+local split_bg = '#3E3E3E'
 hl(0, 'NvimTreeVertSplit', { fg = split_bg, bg = split_bg })
 
 vim.cmd([[

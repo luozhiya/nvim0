@@ -15,9 +15,10 @@ local cjkfont
 local cjkfontsize
 
 if hardworking.is_windows() then
-  codefontsize = 11
+  codefontsize = 12
   cjkfontsize = codefontsize
-  codefont = 'JetBrainsMono Nerd Font Mono'
+  -- codefont = 'JetBrainsMono Nerd Font Mono'
+  codefont = 'FiraCode Nerd Font Mono'
   -- cjkfont = 'Sarasa Mono SC Nerd'
   cjkfont = codefont
 else
