@@ -17,7 +17,7 @@ local cjkfontsize
 if hardworking.is_windows() then
   codefontsize = 11
   cjkfontsize = codefontsize
-  codefont = 'CaskaydiaCove Nerd Font SemiLight'
+  codefont = 'CaskaydiaCove Nerd Font'
   -- codefont = 'JetBrainsMono Nerd Font Mono'
   -- codefont = 'FiraCode Nerd Font Mono'
   -- cjkfont = 'Sarasa Mono SC Nerd'
@@ -39,7 +39,7 @@ end
 local AdjustFontSize = function(amount)
   codefontsize = codefontsize + amount
   cjkfontsize = cjkfontsize + amount
-  local codefontname = codefont .. ':h' .. tostring(codefontsize)
+  local codefontname = codefont .. ':h' .. tostring(codefontsize) .. ':l'
   local cjkfontname = cjkfont .. ':h' .. tostring(cjkfontsize)
   MaybeNotifyClientFontChanged(codefontname)
   vim.opt.guifont = codefontname
