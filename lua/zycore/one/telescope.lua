@@ -10,7 +10,16 @@ telescope.setup({
 
     prompt_prefix = ' ',
     selection_caret = ' ',
-    path_display = { 'smart' },
+    path_display = { 'truncate = 3' },
+
+    file_ignore_patterns = {
+      "node_modules",
+      ".work/.*",
+      ".cache/.*",
+      ".idea/.*",
+      "dist/.*",
+      ".git/.*"
+    },
 
     mappings = {
       i = {
@@ -85,6 +94,14 @@ telescope.setup({
     -- }
     -- Now the picker_config_key will be applied every time you call this
     -- builtin picker
+
+    find_files = {
+      find_command = { 'fd', "--no-ignore",  '--type=file', '--hidden', '--exclude=.git/' },
+    },      
+    live_grep = {
+      --@usage don't include the filename in the search results
+      only_sort_text = true,
+    },    
   },
   extensions = {
     -- Your extension configuration goes here:
