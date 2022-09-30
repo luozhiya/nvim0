@@ -10,7 +10,7 @@ telescope.setup({
 
     prompt_prefix = ' ',
     -- selection_caret = ' ',
-    path_display = { 'truncate = 3' },
+    path_display = { 'smart', 'truncate = 3' },
 
     file_ignore_patterns = {
       'node_modules',

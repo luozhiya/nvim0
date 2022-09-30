@@ -55,4 +55,3 @@ load_plugins()
 require('packer').sync()
 vim.cmd([[autocmd User PackerComplete ++once echo "Ready!" | lua load_config()]])
 
-vim.opt.termguicolors = true
