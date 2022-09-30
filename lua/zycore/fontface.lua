@@ -9,25 +9,35 @@ local rpc = require('zycore.base.rpc_communication')
 -- print(rpc.client_id)
 -- print(rpc.client_name)
 
+-- l Light
+-- sl SemiLight
+-- r Regular
+
 local codefont
 local codefontsize
+local codefontstyle
 local cjkfont
 local cjkfontsize
+local cjkfontstyle
 
 if hardworking.is_windows() then
   codefontsize = 11
   cjkfontsize = codefontsize
   codefont = 'CaskaydiaCove Nerd Font'
+  codefontstyle = 'l'
   -- codefont = 'JetBrainsMono Nerd Font Mono'
   -- codefont = 'FiraCode Nerd Font Mono'
   -- cjkfont = 'Sarasa Mono SC Nerd'
   cjkfont = codefont
+  cjkfontstyle = codefontstyle
 else
   codefontsize = 15
   cjkfontsize = codefontsize
   codefont = 'CaskaydiaCove Nerd Font SemiLight'
+  codefontstyle = 'sl'
   -- cjkfont = 'Sarasa Mono SC Nerd'
   cjkfont = codefont
+  cjkfontstyle = codefontstyle
 end
 
 local MaybeNotifyClientFontChanged = function(fontname)
@@ -39,8 +49,8 @@ end
 local AdjustFontSize = function(amount)
   codefontsize = codefontsize + amount
   cjkfontsize = cjkfontsize + amount
-  local codefontname = codefont .. ':h' .. tostring(codefontsize) .. ':l'
-  local cjkfontname = cjkfont .. ':h' .. tostring(cjkfontsize)
+  local codefontname = codefont .. ':h' .. tostring(codefontsize) .. ':' .. codefontstyle
+  local cjkfontname = cjkfont .. ':h' .. tostring(cjkfontsize) .. ':' .. cjkfontstyle
   MaybeNotifyClientFontChanged(codefontname)
   vim.opt.guifont = codefontname
   vim.opt.guifontwide = cjkfontname
