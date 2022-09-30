@@ -1,6 +1,6 @@
 local option = {
   -- View
-  laststatus = 2, -- 始终显示状态栏
+  laststatus = 3, -- 始终显示状态栏, Only last window
   cmdheight = 1, -- command-line 的行数
   showmode = true, -- 当前 NVIM 的模式
   showcmd = true, -- 在非 : 模式下输入的 command 会显示在状态栏
@@ -64,6 +64,7 @@ local option = {
 
   -- Font
   -- guifont = "monospace:h17"    -- the font used in graphical neovim application
+  -- 简单的设置行间距会导致|条连不起来，因为nvim是用char来绘制界面的
   linespace = 0,
 
   -- Timings
@@ -87,7 +88,7 @@ local option = {
   -- BACKUP AND SWAPS
   backup = false, -- creates a backup file
   swapfile = false, -- creates a swapfile
-  undofile = false, -- enable persistent undo
+  undofile = true, -- enable persistent undo
 
   -- Advance
   clipboard = 'unnamedplus', -- allows neovim to access the system clipboard
