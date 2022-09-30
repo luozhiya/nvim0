@@ -400,9 +400,7 @@ hardworking.is_vim_list_open = is_vim_list_open
 
 local function truncate(str, max_len)
   assert(str and max_len, 'string and max_len must be provided')
-  return api.nvim_strwidth(str) > max_len
-      and str:sub(1, max_len) .. style_constexpr.icons.misc.ellipsis
-    or str
+  return api.nvim_strwidth(str) > max_len and str:sub(1, max_len) .. style_constexpr.icons.misc.ellipsis or str
 end
 
 hardworking.truncate = truncate
