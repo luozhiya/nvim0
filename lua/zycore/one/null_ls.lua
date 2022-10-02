@@ -19,11 +19,11 @@ local opts = {
     end
   end,
   sources = {
-    -- formatting.prettier.with({
-    --   filetypes = { "html", "json", "yaml", "markdown" },
-    --   extra_args = { '--no-semi', '--single-quote', '--jsx-single-quote' },
-    -- }),
-    -- formatting.black.with({ extra_args = { '--fast' } }),
+    formatting.prettier.with({
+      filetypes = { "html", "json", "yaml", "markdown" },
+      extra_args = { '--no-semi', '--single-quote', '--jsx-single-quote' },
+    }),
+    formatting.black.with({ extra_args = { '--fast' } }),
     formatting.stylua,
   },
 }

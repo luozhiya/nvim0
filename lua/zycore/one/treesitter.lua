@@ -1,10 +1,18 @@
-local ok, configs = pcall(require, 'nvim-treesitter.configs')
-if not ok then
+local treesitter_ok, treesitter = pcall(require, 'nvim-treesitter.configs')
+if not treesitter_ok then
   return
 end
 
-configs.setup({
-  ensure_installed = { 'c', 'cpp', 'cmake', 'lua' }, -- one of "all" or a list of languages
+local hardworking = require('zycore.base.hardworking')
+local ensure_installed
+if hardworking.is_windows() then
+  ensure_installed = { 'c', 'cpp', 'cmake', 'lua', 'markdown' }
+else
+  ensure_installed = 'all'
+end
+
+local opts = {
+  ensure_installed = ensure_installed, -- one of "all" or a list of languages
   ignore_install = { 'phpdoc', 'dart' }, -- List of parsers to ignore installing
   autopairs = {
     enable = true,
@@ -35,14 +43,14 @@ configs.setup({
     -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
     -- the name of the parser)
     -- list of language that will be disabled
-    disable = { 'css' }, -- list of language that will be disabled    
+    -- disable = { 'css' }, -- list of language that will be disabled
     -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
     disable = function(lang, buf)
-        local max_filesize = 100 * 1024 -- 100 KB
-        local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-        if ok and stats and stats.size > max_filesize then
-            return true
-        end
+      local max_filesize = 100 * 1024 -- 100 KB
+      local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+      if ok and stats and stats.size > max_filesize then
+        return true
+      end
     end,
 
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
@@ -50,5 +58,7 @@ configs.setup({
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = false,
-  },  
-})
+  },
+}
+
+treesitter.setup(opts)

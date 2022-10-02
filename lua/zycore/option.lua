@@ -7,8 +7,8 @@ local option = {
 
   title = true,
   cursorline = true,
-  scrolloff = 8, -- cursor 接近 buffer 顶部和底部时会尽量保持 3 行的距离
-  sidescrolloff = 8,
+  scrolloff = 1, -- cursor 接近 buffer 顶部和底部时会尽量保持 3 行的距离
+  sidescrolloff = 1,
   number = true, -- set numberd liens
   ruler = true, -- show row/col in status line
   relativenumber = true, -- set relative numbered lines
