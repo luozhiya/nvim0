@@ -77,6 +77,7 @@ require('packer').startup(function(use)
 
   -- Easy VAX find
   use('nvim-telescope/telescope.nvim') -- Find, Filter, Preview, Pick. All lua, all the time.
+  use('nvim-telescope/telescope-fzy-native.nvim') -- FZY style sorter that is compiled
 
   -- Project
   use('ahmedkhalf/project.nvim')
