@@ -27,6 +27,7 @@ local title = require('zycore.one.title')
 require('zycore.one.null_ls')
 require('zycore.one.lua_dev')
 require('zycore.one.colorizer')
+require('zycore.one.aerial')
 
 -- After LSP
 -- local clangd_extensions = require('zycore.one.clangd_extensions')
