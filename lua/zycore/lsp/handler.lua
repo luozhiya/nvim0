@@ -62,6 +62,15 @@ local function lsp_outline(client)
   aerial.on_attach(client)
 end
 
+local function lsp_signature(buffer)
+  local ok, signature = pcall(require, 'lsp_signature')
+  if not ok then
+    return
+  end
+  local opts = {}
+  signature.on_attach(opts, buffer)
+end
+
 local function lsp_keymaps(buffer)
   local opts = { noremap = true, silent = true }
   local bkeymap = function(buf, lhs, rhs)
@@ -84,6 +93,7 @@ M.on_attach = function(client, buffer)
   lsp_keymaps(buffer)
   lsp_highlight_document(client)
   lsp_outline(client)
+  lsp_signature(buffer)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

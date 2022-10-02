@@ -8,15 +8,25 @@ local hardworking = {}
 ----------------------------------------------------------------------------------------------------
 -- Environment
 ----------------------------------------------------------------------------------------------------
+-- Note os_name
+-- libuv/src/win/util.c
+--   uv__strscpy(buffer->sysname, "Windows_NT", sizeof(buffer->sysname));
+-- libuv/src/unix/core.c
+--   uname(&buf)
+--   uv__strscpy(buffer->sysname, buf.sysname, sizeof(buffer->sysname))
+-- uname
+--   https://man7.org/linux/man-pages/man2/uname.2.html
+--   https://github.com/torvalds/linux/blob/master/include/uapi/linux/utsname.h
+
 local is_windows = function()
-  return fn.has('win32') == 1 or fn.has('win64') == 1
-  -- return vim.loop.os_uname().sysname == 'Windows_NT'
+  -- return fn.has('win32') == 1 or fn.has('win64') == 1
+  return vim.loop.os_uname().sysname == 'Windows_NT'
 end
 hardworking.is_windows = is_windows
 
 local is_linux = function()
-  return fn.has('unix') == 1 and not fn.has('macunix') == 1 and not fn.has('win32unix') == 1
-  -- return vim.loop.os_uname().sysname == 'Linux'
+  -- return fn.has('unix') == 1 and not fn.has('macunix') == 1 and not fn.has('win32unix') == 1
+  return vim.loop.os_uname().sysname == 'Linux'
 end
 hardworking.is_linux = is_linux
 
@@ -35,6 +45,9 @@ local is_gui_running = function()
 end
 hardworking.is_gui_running = is_gui_running
 
+----------------------------------------------------------------------------------------------------
+-- API
+----------------------------------------------------------------------------------------------------
 local function join_paths(...)
   local path_sep = is_windows() and '\\' or '/'
   local result = table.concat({ ... }, path_sep)
@@ -42,9 +55,6 @@ local function join_paths(...)
 end
 hardworking.join_paths = join_paths
 
-----------------------------------------------------------------------------------------------------
--- API
-----------------------------------------------------------------------------------------------------
 ---Create once callback
 ---@param callback function
 ---@return function

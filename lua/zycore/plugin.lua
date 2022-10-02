@@ -1,6 +1,17 @@
 local fn = vim.fn
 local hardworking = require('zycore.base.hardworking')
 
+-- Note stdpath()
+-- more detail on help stdpath()
+-- config User configuration directory. |init.vim| is stored here.
+--        /home/luozhiya/.config/nvim/
+-- cache  Cache directory: arbitrary temporary storage for plugins, etc. maybe log
+--        /home/luozhiya/.cache/nvim/
+-- data   User data directory.
+--        /home/luozhiya/.local/share/nvim/
+-- log    Logs directory (for use by plugins too).
+--        /home/luozhiya/.local/state/nvim/
+
 -- local packpath = hardworking.join_paths(fn.stdpath('config'), 'site')
 -- local package_root = hardworking.join_paths(fn.stdpath('config'), 'site', 'pack')
 -- local install_path = hardworking.join_paths(package_root, 'packer', 'start', 'packer.nvim')
@@ -90,6 +101,7 @@ require('packer').startup(function(use)
   use('NMAC427/guess-indent.nvim') -- Automatic indentation style detection for Neovim
   use('andrewferrier/wrapping.nvim') -- Plugin to make it easier to switch between 'soft' and 'hard' line wrapping in NeoVim
   use('norcalli/nvim-colorizer.lua') -- The fastest Neovim colorizer.
+  use('ray-x/lsp_signature.nvim') -- LSP signature hint as you type
 
   -- Format
   use('jose-elias-alvarez/null-ls.nvim') -- Inject LSP diagnostics, code actions, and more via Lua

@@ -28,6 +28,7 @@ require('zycore.one.null_ls')
 require('zycore.one.lua_dev')
 require('zycore.one.colorizer')
 require('zycore.one.aerial')
+require('zycore.one.lsp_signature_nvim')
 
 -- After LSP
 -- local clangd_extensions = require('zycore.one.clangd_extensions')
