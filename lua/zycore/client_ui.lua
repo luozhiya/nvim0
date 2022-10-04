@@ -21,7 +21,7 @@ if is_neovide() then
   vim.g.neovide_fullscreen = true
   vim.g.neovide_refresh_rate_idle = 60
   vim.g.neovide_no_idle = true
-  vim.api.nvim_feedkeys('^X@sq', 'n', true)
+  -- vim.api.nvim_feedkeys('^X@sq', 'n', true)
   vim.keymap.set('', '<F12>', toggle_fullscreen)
   -- vim.keymap.set("n", "<leader>xf", function()
   --     vim.g.neovide_fullscreen = not vim.g.neovide_fullscreen
