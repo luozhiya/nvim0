@@ -35,10 +35,10 @@ lsp_installer.setup({
 
 for _, server in pairs(needed_setup_servers) do
   local opts = {
-    on_attach = require('zycore.lsp.handler').on_attach,
-    capabilities = require('zycore.lsp.handler').capabilities,
+    on_attach = require('zycore.one.lsp.handler').on_attach,
+    capabilities = require('zycore.one.lsp.handler').capabilities,
   }
-  local has_custom_opts, server_custom_opts = pcall(require, 'zycore.lsp.inject.' .. server)
+  local has_custom_opts, server_custom_opts = pcall(require, 'zycore.one.lsp.inject.' .. server)
   if has_custom_opts then
     opts = vim.tbl_deep_extend('force', opts, server_custom_opts)
   end
