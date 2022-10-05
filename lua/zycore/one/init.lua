@@ -1,3 +1,6 @@
+local option = require('zycore.one.option')
+
+-- Plugin
 require('zycore.one.cmp')
 require('zycore.one.format')
 require('zycore.one.formatter_nvim')
@@ -23,12 +26,19 @@ require('zycore.one.trim')
 local wrapping = require('zycore.one.wrapping')
 local numbers = require('zycore.one.number')
 local guess_indent = require('zycore.one.guess_indent')
-local title = require('zycore.one.title')
 require('zycore.one.null_ls')
 require('zycore.one.lua_dev')
 require('zycore.one.colorizer')
 require('zycore.one.aerial')
 require('zycore.one.lsp_signature_nvim')
+
+-- UI/Misc
+local keymap = require('zycore.one.keymap')
+local vim_command = require('zycore.one.vim_commmand')
+local title = require('zycore.one.title')
+local colorscheme = require('zycore.one.colorscheme')
+local client_ui = require('zycore.one.client_ui')
+local fontface = require('zycore.one.fontface')
 
 -- After LSP
 -- local clangd_extensions = require('zycore.one.clangd_extensions')
