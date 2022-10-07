@@ -126,3 +126,7 @@ nnoremap('<F9>', ':lua _TOGGLE_BREAKPOINT()<cr>')
 nnoremap('<F10>', ':lua _STEP_OVER()<cr>')
 nnoremap('<F11>', ':lua _STEP_INTO()<cr>')
 nnoremap('<F8>', ':lua _STEP_OUT()<cr>')
+
+vim.cmd([[
+command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+]])
