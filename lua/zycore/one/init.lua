@@ -1,4 +1,5 @@
 local option = require('zycore.one.option')
+local keymap = require('zycore.one.keymap')
 
 -- Plugin
 require('zycore.one.cmp')
@@ -31,9 +32,9 @@ require('zycore.one.lua_dev')
 require('zycore.one.colorizer')
 require('zycore.one.aerial')
 require('zycore.one.lsp_signature_nvim')
+require('zycore.one.trouble')
 
 -- UI/Misc
-local keymap = require('zycore.one.keymap')
 local vim_command = require('zycore.one.vim_commmand')
 local title = require('zycore.one.title')
 local colorscheme = require('zycore.one.colorscheme')

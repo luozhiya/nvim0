@@ -102,6 +102,7 @@ require('packer').startup(function(use)
   use('andrewferrier/wrapping.nvim') -- Plugin to make it easier to switch between 'soft' and 'hard' line wrapping in NeoVim
   use('norcalli/nvim-colorizer.lua') -- The fastest Neovim colorizer.
   use('ray-x/lsp_signature.nvim') -- LSP signature hint as you type
+  use('folke/trouble.nvim') -- 🚦 A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
 
   -- Format
   use('jose-elias-alvarez/null-ls.nvim') -- Inject LSP diagnostics, code actions, and more via Lua
