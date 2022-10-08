@@ -58,6 +58,17 @@ if vim.g.current_colorscheme == 'darkplus' then
   vim.cmd([[
     hi default LspCxxHlGroupMemberVariable ctermfg=Yellow guifg=#dcdcaa cterm=none gui=none
   ]])
+else
+  local split_bg = '#3E3E3E'
+  hl(0, 'NvimTreeVertSplit', { fg = split_bg, bg = split_bg })
+  -- NonText listchars eol
+  hl(0, 'NonText', { fg = palette.dark_gray, bg = 'NONE' })
+  -- Whitespace listchars tab
+  hl(0, 'Whitespace', { fg = palette.dark_gray, bg = 'NONE' })
+
+  vim.cmd([[
+    hi default LspCxxHlGroupMemberVariable ctermfg=Yellow guifg=#dcdcaa cterm=none gui=none
+  ]])
 end
 
 -- TODO VimScript, no l10n
