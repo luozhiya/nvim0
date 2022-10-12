@@ -13,8 +13,11 @@ hardworking.set(melantha, { 'zycore', 'one', 'title', 'modified_icon' }, modifie
 
 -- need global function
 -- 🤣
-vim.opt.titlestring = '  %{v:lua.vim.fn.fnamemodify(v:lua.vim.fn.getcwd(), ":t")} %{v:lua.melantha.zycore.one.title.modified_icon()}'
--- vim.opt.titlestring = ''
+if hardworking.is_windows() then
+  vim.opt.titlestring = ''
+else
+  vim.opt.titlestring = '  %{v:lua.vim.fn.fnamemodify(v:lua.vim.fn.getcwd(), ":t")} %{v:lua.melantha.zycore.one.title.modified_icon()}'
+end
 vim.opt.titleold = fn.fnamemodify(vim.loop.os_getenv('SHELL'), ':t')
 vim.opt.title = true
 vim.opt.titlelen = 80
