@@ -9,8 +9,8 @@ if vim.tbl_contains(cxx_lsp, 'clangd') and vim.tbl_count(cxx_lsp) == 1 then
   server_clangd = {
     -- options to pass to nvim-lspconfig
     -- i.e. the arguments to require("lspconfig").clangd.setup({})
-    on_attach = require('zycore.lsp.handler').on_attach,
-    capabilities = require('zycore.lsp.handler').capabilities,
+    on_attach = require('zycore.one.lsp.handler').on_attach,
+    capabilities = require('zycore.one.lsp.handler').capabilities,
   }
 end
 
