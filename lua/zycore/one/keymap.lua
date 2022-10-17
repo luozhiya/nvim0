@@ -130,3 +130,6 @@ nnoremap('<F8>', ':lua _STEP_OUT()<cr>')
 vim.cmd([[
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 ]])
+
+nnoremap('<esc><esc>', ':nohlsearch<CR>')
+
