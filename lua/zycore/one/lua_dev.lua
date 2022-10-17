@@ -1,4 +1,4 @@
-local dev_ok, dev = pcall(require, 'lua-dev')
+local dev_ok, dev = pcall(require, 'neodev')
 if not dev_ok then
   return
 end
