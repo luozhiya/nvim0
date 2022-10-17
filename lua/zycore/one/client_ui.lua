@@ -18,7 +18,7 @@ local function toggle_fullscreen()
 end
 
 if is_neovide() then
-  -- vim.g.neovide_fullscreen = true
+  vim.g.neovide_fullscreen = true
   vim.g.neovide_remember_window_size = true
   vim.g.neovide_refresh_rate_idle = 60
   vim.g.neovide_no_idle = true

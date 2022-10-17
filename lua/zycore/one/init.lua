@@ -41,6 +41,5 @@ local colorscheme = require('zycore.one.colorscheme')
 local client_ui = require('zycore.one.client_ui')
 local fontface = require('zycore.one.fontface')
 
-local lsp = require('zycore.one.lsp')
--- After LSP
 local clangd_extensions = require('zycore.one.clangd_extensions')
+local lsp = require('zycore.one.lsp')

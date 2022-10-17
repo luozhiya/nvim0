@@ -12,4 +12,15 @@ return {
       excludeArgs = { '-frounding-math' },
     },
   },
+  handlers = {
+    -- ['textDocument/publishDiagnostics'] = function(...)
+    --   return nil
+    -- end,
+    ['textDocument/hover'] = function(...)
+      return nil
+    end,
+    ['textDocument/signatureHelp'] = function(...)
+      return nil
+    end,
+  },
 }
