@@ -1,4 +1,5 @@
 local hardworking = require('zycore.base.hardworking')
+local style = require('zycore.base.style_constexpr')
 
 local M = {}
 
@@ -16,7 +17,9 @@ M.setup = function()
 
   local config = {
     -- disable virtual text
-    virtual_text = true,
+    virtual_text = {
+      prefix = style.icons.misc.circle,
+    },
     -- show signs
     signs = true,
     update_in_insert = true,
