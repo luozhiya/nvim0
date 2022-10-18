@@ -35,3 +35,11 @@ local xnoremap = hardworking.xnoremap
 
 -- nnoremap('<a-e>', '<ESC>:lua require("close_buffers").delete({type="other"})<CR> ')
 -- nnoremap('<a-e>', ':lua require("close_buffers").delete({type="other"}) vim.cmd([[redraw]]) <CR> ')
+
+vim.api.nvim_create_user_command('Only', function()
+  vim.cmd([[
+  :lua require("close_buffers").delete({type="other"}) 
+  ]])
+end, {})
+
+vim.keymap.set('', '<a-e>', ':Only<CR>')
