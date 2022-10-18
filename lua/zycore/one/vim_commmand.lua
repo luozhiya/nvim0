@@ -5,3 +5,4 @@ vim.api.nvim_create_user_command('RemoveExclusiveORM', function()
   :%s/\r//g
   ]])
 end, {})
+

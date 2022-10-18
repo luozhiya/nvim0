@@ -3,13 +3,27 @@ if not ok then
   return
 end
 
+local hardworking = require('zycore.base.hardworking')
+
+local nnoremap = hardworking.nnoremap
+local inoremap = hardworking.inoremap
+local vnoremap = hardworking.vnoremap
+local xnoremap = hardworking.xnoremap
+
 local server_clangd = {}
 local cxx_lsp = require('zycore.goforit').cxx_lsp
 -- and vim.tbl_count(cxx_lsp) == 1
 if vim.tbl_contains(cxx_lsp, 'clangd') then
+  -- options to pass to nvim-lspconfig
+  -- i.e. the arguments to require("lspconfig").clangd.setup({})
   server_clangd = {
-    -- options to pass to nvim-lspconfig
-    -- i.e. the arguments to require("lspconfig").clangd.setup({})
+    cmd = {
+      'clangd',
+      -- clang-format warning multiple different client offset_decoding detected for buffer
+      -- https://github.com/LunarVim/LunarVim/issues/2597
+      -- https://www.reddit.com/r/neovim/comments/tul8pb/lsp_clangd_warning_multiple_different_client/
+      '--offset-encoding=utf-32',
+    },
     on_attach = require('zycore.one.lsp.handler').on_attach,
     capabilities = require('zycore.one.lsp.handler').capabilities,
     handlers = {
@@ -110,3 +124,5 @@ local opts = {
 if vim.tbl_contains(cxx_lsp, 'clangd') then
   clangd_extensions.setup(opts)
 end
+
+nnoremap('<F2>', ':ClangdSwitchSourceHeader<cr>')

@@ -85,6 +85,7 @@ require('packer').startup(function(use)
   -- use('akinsho/bufferline.nvim')
   use('luozhiya/bufferline.nvim')
   use('moll/vim-bbye') -- Delete buffers and close files in Vim without closing your windows or messing up your layout.
+  use('kazhala/close-buffers.nvim') -- 📑 Delete multiple vim buffers based on different conditions
 
   -- Easy VAX find
   use('nvim-telescope/telescope.nvim') -- Find, Filter, Preview, Pick. All lua, all the time.
@@ -103,6 +104,11 @@ require('packer').startup(function(use)
   use('norcalli/nvim-colorizer.lua') -- The fastest Neovim colorizer.
   use('ray-x/lsp_signature.nvim') -- LSP signature hint as you type
   use('folke/trouble.nvim') -- 🚦 A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
+  -- use('ericcurtin/CurtineIncSw.vim') -- Switch from *.c* to *.h* and vice versa
+  -- use({
+  --   'jakemason/ouroboros.nvim',
+  --   requires = { { 'nvim-lua/plenary.nvim' } },
+  -- }) -- Allows quickly switching between header and implementation files for C/C++ in Neovim.
 
   -- Format
   use('jose-elias-alvarez/null-ls.nvim') -- Inject LSP diagnostics, code actions, and more via Lua
