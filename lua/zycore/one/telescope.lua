@@ -118,3 +118,4 @@ telescope.setup({
 
 -- This will load fzy_native and have it override the default file sorter
 telescope.load_extension('fzy_native')
+telescope.load_extension('live_grep_args')
