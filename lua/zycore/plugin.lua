@@ -102,6 +102,7 @@ require('packer').startup(function(use)
   use('rcarriga/nvim-notify') -- A fancy, configurable, notification manager for NeoVim
   use('monkoose/matchparen.nvim') -- alternative to default neovim matchparen plugin
   use('Pocco81/true-zen.nvim') -- Clean and elegant distraction-free writing for NeoVim
+  use('kevinhwang91/nvim-bqf') -- Better quickfix window in Neovim, polish old quickfix window.
 
   -- Easy VAX find
   use('nvim-telescope/telescope.nvim') -- Find, Filter, Preview, Pick. All lua, all the time.
