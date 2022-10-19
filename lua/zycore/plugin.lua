@@ -72,7 +72,7 @@ require('packer').startup(function(use)
   -- Fennel
   use('Olical/aniseed') -- Neovim configuration and plugins in Fennel (Lisp compiled to Lua)
   use('Olical/conjure') -- Interactive evaluation for Neovim (Clojure, Fennel, Janet, Racket, Hy, MIT Scheme, Guile)
-  use('rktjmp/hotpot.nvim') -- Carl Weathers #1 Neovim Plugin.
+  -- use('rktjmp/hotpot.nvim') -- Carl Weathers #1 Neovim Plugin.
 
   -- LSP
   use('neovim/nvim-lspconfig') -- Configurations for Nvim LSP
