@@ -2,7 +2,7 @@ require("hotpot").setup({
   -- allows you to call `(require :fennel)`.
   -- recommended you enable this unless you have another fennel in your path.
   -- you can always call `(require :hotpot.fennel)`.
-  provide_require_fennel = false,
+  provide_require_fennel = true,
   -- show fennel compiler results in when editing fennel files
   enable_hotpot_diagnostics = true,
   -- compiler options are passed directly to the fennel compiler, see

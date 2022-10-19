@@ -94,6 +94,7 @@ require('packer').startup(function(use)
   use('luozhiya/bufferline.nvim')
   use('moll/vim-bbye') -- Delete buffers and close files in Vim without closing your windows or messing up your layout.
   use('kazhala/close-buffers.nvim') -- 📑 Delete multiple vim buffers based on different conditions
+  use('j-hui/fidget.nvim') -- Standalone UI for nvim-lsp progress
 
   -- Easy VAX find
   use('nvim-telescope/telescope.nvim') -- Find, Filter, Preview, Pick. All lua, all the time.
