@@ -1,2 +1,3 @@
 site
+lua/zylisp
 plugin/packer_compiled.lua

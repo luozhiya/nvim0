@@ -1,3 +1,5 @@
+local M = {}
+
 local fn = vim.fn
 local hardworking = require('zycore.base.hardworking')
 
@@ -18,8 +20,10 @@ local hardworking = require('zycore.base.hardworking')
 -- local compile_path = hardworking.join_paths(fn.stdpath('config'), 'plugin', 'packer_compiled.lua')
 local config = fn.stdpath('config')
 local packpath = config .. '/site'
-local package_root = config .. '/site/pack'
-local install_path = package_root .. '/packer/start/packer.nvim'
+local package_root = packpath .. '/pack'
+local packer_dir = package_root .. '/packer'
+M.packer_dir = packer_dir
+local install_path = packer_dir .. '/start/packer.nvim'
 local compile_path = config .. '/plugin/packer_compiled.lua'
 
 -- vim.cmd([[set packpath=/tmp/nvim/site]])
@@ -166,3 +170,5 @@ require('packer').startup(function(use)
 end)
 
 require('zycore.one')
+
+return M
