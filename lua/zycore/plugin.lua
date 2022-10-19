@@ -169,6 +169,7 @@ require('packer').startup(function(use)
 
   -- Git
   use('lewis6991/gitsigns.nvim') -- Git integration for buffers
+  use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' } -- A work-in-progress Magit clone for Neovim that is geared toward the Vim philosophy.
 
   -- Terminal
   use('akinsho/toggleterm.nvim')
