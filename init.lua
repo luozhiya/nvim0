@@ -14,11 +14,11 @@ local ensure_installed = function(user, repo)
   end
 end
 
-ensure_installed("Olical", "aniseed")
+ensure_installed('Olical', 'aniseed')
 
-vim.g["aniseed#env"] = {
-  module = "zylisp.init",
-  compile = true
+vim.g['aniseed#env'] = {
+  module = 'zylisp.init',
+  compile = true,
 }
 
 -- local zylisp = require('zylisp')

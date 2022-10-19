@@ -67,23 +67,23 @@ local opts = {
     -- colors = {}, -- table of hex strings
     -- termcolors = {} -- table of colour name strings
     colors = {
-        "#ce804e",
-        "#a89984",
-        "#b16286",
-        "#d79921",
-        "#689d6a",
-        "#d65d0e",
-        "#458588",
+      '#ce804e',
+      '#a89984',
+      '#b16286',
+      '#d79921',
+      '#689d6a',
+      '#d65d0e',
+      '#458588',
     },
     termcolors = {
-        "Red",
-        "Green",
-        "Yellow",
-        "Blue",
-        "Magenta",
-        "Cyan",
-        "White",
-    },    
+      'Red',
+      'Green',
+      'Yellow',
+      'Blue',
+      'Magenta',
+      'Cyan',
+      'White',
+    },
   },
   textobjects = {
     select = {
@@ -94,12 +94,12 @@ local opts = {
 
       keymaps = {
         -- You can use the capture groups defined in textobjects.scm
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
+        ['af'] = '@function.outer',
+        ['if'] = '@function.inner',
+        ['ac'] = '@class.outer',
         -- You can optionally set descriptions to the mappings (used in the desc parameter of
         -- nvim_buf_set_keymap) which plugins like which-key display
-        ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+        ['ic'] = { query = '@class.inner', desc = 'Select inner part of a class region' },
       },
       -- You can choose the select mode (default is charwise 'v')
       --
@@ -124,7 +124,7 @@ local opts = {
       -- and should return true of false
       include_surrounding_whitespace = true,
     },
-  },    
+  },
 }
 
 treesitter.setup(opts)

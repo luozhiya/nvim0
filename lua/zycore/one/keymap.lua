@@ -132,4 +132,3 @@ command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 ]])
 
 nnoremap('<esc><esc>', ':nohlsearch<CR>')
-

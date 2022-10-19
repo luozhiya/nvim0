@@ -20,7 +20,7 @@ local opts = {
   end,
   sources = {
     formatting.prettier.with({
-      filetypes = { "html", "json", "yaml", "markdown" },
+      filetypes = { 'html', 'json', 'yaml', 'markdown' },
       extra_args = { '--no-semi', '--single-quote', '--jsx-single-quote' },
     }),
     formatting.black.with({ extra_args = { '--fast' } }),

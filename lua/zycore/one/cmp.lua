@@ -125,7 +125,7 @@ cmp.setup({
     { name = 'luasnip' },
     { name = 'buffer' },
     { name = 'path' },
-    { name = 'nvim_lua' },    
+    { name = 'nvim_lua' },
     { name = 'calc' },
     { name = 'vsnip' },
   },

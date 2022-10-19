@@ -12,7 +12,7 @@ local opts = {
 wrapping.setup(opts)
 
 if hardworking.is_linux() then
-  wrapping.hard_wrap_mode();
+  wrapping.hard_wrap_mode()
 end
 
 -- local swap_wrap = function()
