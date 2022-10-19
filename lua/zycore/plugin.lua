@@ -77,7 +77,7 @@ require('packer').startup(function(use)
   -- LSP
   use('neovim/nvim-lspconfig') -- Configurations for Nvim LSP
   use('williamboman/nvim-lsp-installer') -- Simple to install LSP servers
-  use({'https://git.sr.ht/~whynothugo/lsp_lines.nvim', as = 'lsp_lines.nvim'}) -- Show nvim diagnostics using virtual lines
+  use({ 'https://git.sr.ht/~whynothugo/lsp_lines.nvim', as = 'lsp_lines.nvim' }) -- Show nvim diagnostics using virtual lines
   use('j-hui/fidget.nvim') -- Standalone UI for nvim-lsp progress
 
   -- treesitter
