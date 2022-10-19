@@ -69,13 +69,16 @@ require('packer').startup(function(use)
   use('nvim-lua/plenary.nvim') -- Note that this library is useless outside of Neovim since it requires Neovim functions.
   use('lewis6991/impatient.nvim') -- Improve startup time for Neovim
 
-  -- Lisp
+  -- Fennel
   use('Olical/aniseed') -- Neovim configuration and plugins in Fennel (Lisp compiled to Lua)
   use('Olical/conjure') -- Interactive evaluation for Neovim (Clojure, Fennel, Janet, Racket, Hy, MIT Scheme, Guile)
+  use('rktjmp/hotpot.nvim') -- Carl Weathers #1 Neovim Plugin.
 
   -- LSP
   use('neovim/nvim-lspconfig') -- Configurations for Nvim LSP
   use('williamboman/nvim-lsp-installer') -- Simple to install LSP servers
+  use('https://git.sr.ht/~whynothugo/lsp_lines.nvim') -- Show nvim diagnostics using virtual lines
+  use('j-hui/fidget.nvim') -- Standalone UI for nvim-lsp progress
 
   -- treesitter
   use('nvim-treesitter/nvim-treesitter') -- Nvim Treesitter configurations and abstraction layer
@@ -96,7 +99,7 @@ require('packer').startup(function(use)
   use('luozhiya/bufferline.nvim')
   use('moll/vim-bbye') -- Delete buffers and close files in Vim without closing your windows or messing up your layout.
   use('kazhala/close-buffers.nvim') -- 📑 Delete multiple vim buffers based on different conditions
-  use('j-hui/fidget.nvim') -- Standalone UI for nvim-lsp progress
+  use('rcarriga/nvim-notify') -- A fancy, configurable, notification manager for NeoVim
 
   -- Easy VAX find
   use('nvim-telescope/telescope.nvim') -- Find, Filter, Preview, Pick. All lua, all the time.
@@ -158,7 +161,6 @@ require('packer').startup(function(use)
   use('hrsh7th/cmp-nvim-lsp') -- LSP source for nvim-cmp
   use('hrsh7th/cmp-nvim-lua')
   use('onsails/lspkind.nvim') -- vscode-like pictograms for neovim lsp completion items
-  use('rktjmp/hotpot.nvim') -- Carl Weathers #1 Neovim Plugin.
   use('PaterJason/cmp-conjure') -- nvim-cmp source for conjure.
   use('hrsh7th/cmp-calc') -- nvim-cmp source for math calculation
   use('hrsh7th/cmp-vsnip') -- nvim-cmp source for vim-vsnip
@@ -169,7 +171,7 @@ require('packer').startup(function(use)
 
   -- Git
   use('lewis6991/gitsigns.nvim') -- Git integration for buffers
-  use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' } -- A work-in-progress Magit clone for Neovim that is geared toward the Vim philosophy.
+  use({ 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }) -- A work-in-progress Magit clone for Neovim that is geared toward the Vim philosophy.
 
   -- Terminal
   use('akinsho/toggleterm.nvim')

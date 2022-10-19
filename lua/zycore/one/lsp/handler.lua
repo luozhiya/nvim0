@@ -19,6 +19,7 @@ M.setup = function()
     -- disable virtual text
     virtual_text = {
       prefix = style.icons.misc.circle,
+      only_current_line = true,
     },
     -- show signs
     signs = true,
