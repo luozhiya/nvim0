@@ -32,7 +32,7 @@ if hardworking.is_windows() then
   cjkfont = codefont
   cjkfontstyle = codefontstyle
 else
-  codefontsize = 16
+  codefontsize = 15
   cjkfontsize = codefontsize
   -- codefont = 'CaskaydiaCove Nerd Font SemiLight'
   -- codefont = 'FiraCode Nerd Font Mono'
