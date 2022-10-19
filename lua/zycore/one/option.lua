@@ -26,7 +26,7 @@ local option = {
 
   -- Indent
   -- length of an actual \t character
-  tabstop = 4, -- 一个 tab 等于多少 space
+  tabstop = 2, -- 一个 tab 等于多少 space
   -- if set, only insert spaces; otherwise insert \t and complete with spaces
   expandtab = true, -- tab 转换成 space, 不出现制表字符
   -- smarttab = true, -- 根据文件整体情况来决定 tab 是几个 space

@@ -21,4 +21,6 @@ vim.g["aniseed#env"] = {
   compile = true
 }
 
+local zylisp = require('zylisp')
+
 return M

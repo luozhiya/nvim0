@@ -69,6 +69,10 @@ require('packer').startup(function(use)
   use('nvim-lua/plenary.nvim') -- Note that this library is useless outside of Neovim since it requires Neovim functions.
   use('lewis6991/impatient.nvim') -- Improve startup time for Neovim
 
+  -- Lisp
+  use('Olical/aniseed') -- Neovim configuration and plugins in Fennel (Lisp compiled to Lua)
+  use('Olical/conjure') -- Interactive evaluation for Neovim (Clojure, Fennel, Janet, Racket, Hy, MIT Scheme, Guile)
+
   -- LSP
   use('neovim/nvim-lspconfig') -- Configurations for Nvim LSP
   use('williamboman/nvim-lsp-installer') -- Simple to install LSP servers

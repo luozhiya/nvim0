@@ -6,7 +6,7 @@ end
 local hardworking = require('zycore.base.hardworking')
 local ensure_installed
 if hardworking.is_windows() then
-  ensure_installed = { 'c', 'cpp', 'cmake', 'lua', 'markdown' }
+  ensure_installed = { 'c', 'cpp', 'cmake', 'lua', 'markdown', 'fennel' }
 else
   ensure_installed = 'all'
 end

@@ -1,3 +1,4 @@
 (module zylisp.init
-  {require {_ zylisp.dump}})
+  {require {_ zylisp.dump
+            _ zylisp.one}})
 
