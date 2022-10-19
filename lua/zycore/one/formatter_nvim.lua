@@ -15,6 +15,17 @@ local opts = {
   filetype = {
     -- Formatter configurations for filetype "lua" go here
     -- and will be executed in order
+    fennel = {
+      function()
+        return {
+          exe = 'fnlfmt',
+          args = {
+            util.escape_path(util.get_current_buffer_file_path()),
+          },
+          stdin = true,
+        }
+      end,
+    },
     lua = {
       -- "formatter.filetypes.lua" defines default configurations for the
       -- "lua" filetype

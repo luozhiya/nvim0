@@ -24,6 +24,9 @@ if vim.tbl_contains(cxx_lsp, 'clangd') then
       -- https://www.reddit.com/r/neovim/comments/tul8pb/lsp_clangd_warning_multiple_different_client/
       '--offset-encoding=utf-32',
     },
+    init_options = {
+      clangdFileStatus = true,
+    },
     on_attach = require('zycore.one.lsp.handler').on_attach,
     capabilities = require('zycore.one.lsp.handler').capabilities,
     handlers = {

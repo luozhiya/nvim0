@@ -77,7 +77,7 @@ require('packer').startup(function(use)
   -- LSP
   use('neovim/nvim-lspconfig') -- Configurations for Nvim LSP
   use('williamboman/nvim-lsp-installer') -- Simple to install LSP servers
-  use('https://git.sr.ht/~whynothugo/lsp_lines.nvim') -- Show nvim diagnostics using virtual lines
+  use({'https://git.sr.ht/~whynothugo/lsp_lines.nvim', as = 'lsp_lines.nvim'}) -- Show nvim diagnostics using virtual lines
   use('j-hui/fidget.nvim') -- Standalone UI for nvim-lsp progress
 
   -- treesitter
@@ -100,6 +100,8 @@ require('packer').startup(function(use)
   use('moll/vim-bbye') -- Delete buffers and close files in Vim without closing your windows or messing up your layout.
   use('kazhala/close-buffers.nvim') -- 📑 Delete multiple vim buffers based on different conditions
   use('rcarriga/nvim-notify') -- A fancy, configurable, notification manager for NeoVim
+  use('monkoose/matchparen.nvim') -- alternative to default neovim matchparen plugin
+  use('Pocco81/true-zen.nvim') -- Clean and elegant distraction-free writing for NeoVim
 
   -- Easy VAX find
   use('nvim-telescope/telescope.nvim') -- Find, Filter, Preview, Pick. All lua, all the time.
