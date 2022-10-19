@@ -80,6 +80,8 @@ require('packer').startup(function(use)
   -- treesitter
   use('nvim-treesitter/nvim-treesitter') -- Nvim Treesitter configurations and abstraction layer
   use('JoosepAlviste/nvim-ts-context-commentstring') -- Neovim treesitter plugin for setting the commentstring based on the cursor location in a file.
+  use('p00f/nvim-ts-rainbow') -- Rainbow parentheses for neovim using tree-sitter.
+  use('nvim-treesitter/nvim-treesitter-textobjects') -- Syntax aware text-objects, select, move, swap, and peek support.
 
   -- Keyboard
   use('folke/which-key.nvim')
