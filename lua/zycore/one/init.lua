@@ -42,6 +42,7 @@ require('zycore.one.lsp_lines_nvim')
 require('zycore.one.notify_nvim')
 require('zycore.one.true_zen')
 require('zycore.one.matchparen_nvim')
+require('zycore.one.nvim_spectre')
 
 -- UI/Misc
 local vim_command = require('zycore.one.vim_commmand')

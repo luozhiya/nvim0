@@ -107,6 +107,7 @@ require('packer').startup(function(use)
   use('nvim-telescope/telescope.nvim') -- Find, Filter, Preview, Pick. All lua, all the time.
   use('nvim-telescope/telescope-fzy-native.nvim') -- FZY style sorter that is compiled
   use('nvim-telescope/telescope-live-grep-args.nvim') -- Live grep with args
+  use('nvim-pack/nvim-spectre') -- Find the enemy and replace them with dark power.
 
   -- Project
   use('ahmedkhalf/project.nvim')
