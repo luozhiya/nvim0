@@ -1,4 +1,5 @@
-(module zylisp.dump)
+(module zylisp.dump
+  {autoload {nvim aniseed.nvim}})
 
 (defn dump [...]
   (print

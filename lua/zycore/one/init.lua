@@ -35,6 +35,7 @@ require('zycore.one.lsp_signature_nvim')
 require('zycore.one.trouble')
 require('zycore.one.close_buffer_nvim')
 require('zycore.one.ouroboros')
+require('zycore.one.hotpot_nvim')
 
 -- UI/Misc
 local vim_command = require('zycore.one.vim_commmand')

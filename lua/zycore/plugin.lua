@@ -155,6 +155,10 @@ require('packer').startup(function(use)
   use('hrsh7th/cmp-nvim-lsp') -- LSP source for nvim-cmp
   use('hrsh7th/cmp-nvim-lua')
   use('onsails/lspkind.nvim') -- vscode-like pictograms for neovim lsp completion items
+  use('rktjmp/hotpot.nvim') -- Carl Weathers #1 Neovim Plugin.
+  use('PaterJason/cmp-conjure') -- nvim-cmp source for conjure.
+  use('hrsh7th/cmp-calc') -- nvim-cmp source for math calculation
+  use('hrsh7th/cmp-vsnip') -- nvim-cmp source for vim-vsnip
 
   -- Snippets
   use('L3MON4D3/LuaSnip')

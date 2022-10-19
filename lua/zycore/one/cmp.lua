@@ -39,9 +39,12 @@ local Native = {
     vim_item.kind = string.format('%s', kind_icons[vim_item.kind])
     vim_item.menu = ({
       nvim_lsp = '[LSP]',
+      conjure = '[Conjure]',
       luasnip = '[Snippet]',
       buffer = '[Buffer]',
       path = '[Path]',
+      calc = '[Calc]',
+      vsnip = '[Vsnip]',
     })[entry.source.name]
     local content = vim_item.abbr
     if #content > MAX_LABEL_WIDTH then
@@ -118,9 +121,13 @@ cmp.setup({
   formatting = VS,
   sources = {
     { name = 'nvim_lsp' },
+    { name = 'conjure' },
     { name = 'luasnip' },
     { name = 'buffer' },
     { name = 'path' },
+    { name = 'nvim_lua' },    
+    { name = 'calc' },
+    { name = 'vsnip' },
   },
   sorting = {
     comparators = {

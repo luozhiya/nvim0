@@ -8,7 +8,7 @@ local hardworking = require('zycore.base.hardworking')
 local cxx_lsp = require('zycore.goforit').cxx_lsp
 
 -- Install jsonls with nvim-lsp-installer
-local servers = { 'jsonls', 'sumneko_lua', 'pyright', 'cmake', 'vimls' }
+local servers = { 'jsonls', 'sumneko_lua', 'pyright', 'cmake', 'vimls', 'clojure_lsp' }
 servers = hardworking.merge_simple_list(servers, cxx_lsp)
 
 local ignore_setup_servers = {}
@@ -44,3 +44,28 @@ for _, server in pairs(needed_setup_servers) do
   end
   lspconfig[server].setup(opts)
 end
+
+-- require 'lspconfig.configs'.fennel_language_server = {
+--   default_config = {
+--     -- replace it with true path
+--     cmd = {'fennel-language-server'},
+--     filetypes = {'fennel'},
+--     single_file_support = true,
+--     -- source code resides in directory `fnl/`
+--     root_dir = lspconfig.util.root_pattern("fnl"),
+--     settings = {
+--       fennel = {
+--         workspace = {
+--           -- If you are using hotpot.nvim or aniseed,
+--           -- make the server aware of neovim runtime files.
+--           library = vim.api.nvim_list_runtime_paths(),
+--         },
+--         diagnostics = {
+--           globals = {'vim'},
+--         },
+--       },
+--     },
+--   },
+-- }
+--
+-- lspconfig.fennel_language_server.setup{}
