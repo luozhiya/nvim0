@@ -31,7 +31,7 @@ local style = {
   },
   icons = {
     lsp = {
-      error = '', --   鈴 ✗
+      error = '', --   鈴 ✗
       warn = '', -- 
       info = '',
       hint = '',
