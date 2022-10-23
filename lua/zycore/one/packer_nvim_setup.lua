@@ -1,3 +1,8 @@
+local g = vim.g
+local cmd = vim.cmd
+local opt = vim.opt
+local api = vim.api
+
 local M = {}
 
 local plugins = require('zycore.one.packer_nvim')

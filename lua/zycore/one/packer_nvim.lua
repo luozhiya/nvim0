@@ -39,7 +39,9 @@ local function init()
 
   local use = packer.use
   packer.reset()
+
   -- System
+  -- Packer
   use('wbthomason/packer.nvim')
   use('nvim-lua/plenary.nvim') -- Note that this library is useless outside of Neovim since it requires Neovim functions.
   use('lewis6991/impatient.nvim') -- Improve startup time for Neovim
@@ -77,7 +79,11 @@ local function init()
   use('rcarriga/nvim-notify') -- A fancy, configurable, notification manager for NeoVim
   use('monkoose/matchparen.nvim') -- alternative to default neovim matchparen plugin
   use('Pocco81/true-zen.nvim') -- Clean and elegant distraction-free writing for NeoVim
+
+  -- Quickfix
+  use({ 'Olical/vim-enmasse', cmd = 'EnMasse' })
   use('kevinhwang91/nvim-bqf') -- Better quickfix window in Neovim, polish old quickfix window.
+  use({ 'https://gitlab.com/yorickpeterse/nvim-pqf' })
 
   -- Easy VAX find
   use('nvim-telescope/telescope.nvim') -- Find, Filter, Preview, Pick. All lua, all the time.
@@ -103,6 +109,7 @@ local function init()
   --   'jakemason/ouroboros.nvim',
   --   requires = { { 'nvim-lua/plenary.nvim' } },
   -- }) -- Allows quickly switching between header and implementation files for C/C++ in Neovim.
+  use('junegunn/vim-easy-align') -- A Vim alignment plugin
 
   -- Format
   use('jose-elias-alvarez/null-ls.nvim') -- Inject LSP diagnostics, code actions, and more via Lua

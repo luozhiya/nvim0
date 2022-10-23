@@ -55,6 +55,8 @@ local features_list = {
   'matchparen_nvim',
   'nvim_spectre',
   'nvim_bqf',
+  'nvim_pqf',
+  'easy_align',
 
   -- LSP
   'clangd_extensions',
