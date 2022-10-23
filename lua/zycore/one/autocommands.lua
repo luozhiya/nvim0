@@ -1,3 +1,7 @@
+-- Autocommands
+local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
+
 vim.cmd([[
   augroup _general_settings
     autocmd!
@@ -35,3 +39,12 @@ vim.cmd([[
 --   autocmd!
 --   autocmd BufWritePre * lua vim.lsp.buf.formatting()
 -- augroup end
+
+local misc_aucmds = augroup('misc_aucmds', { clear = true })
+autocmd('BufWinEnter', { group = misc_aucmds, command = 'checktime' })
+autocmd('TextYankPost', {
+  group = misc_aucmds,
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})

@@ -21,6 +21,30 @@ local hardworking = require('zycore.base.hardworking')
 -- -- vim.opt.packpath = vim.opt.packpath .. ';' .. packpath
 -- -- print(vim.opt.packpath)
 
+-- Skip some remote provider loading
+g.loaded_python3_provider = 0
+g.loaded_node_provider = 0
+g.loaded_perl_provider = 0
+g.loaded_ruby_provider = 0
+
+-- Disable some built-in plugins we don't want
+local disabled_built_ins = {
+  'gzip',
+  'man',
+  'matchit',
+  'matchparen',
+  'shada_plugin',
+  'tarPlugin',
+  'tar',
+  'zipPlugin',
+  'zip',
+  'netrwPlugin',
+}
+
+for i = 1, 10 do
+  g['loaded_' .. disabled_built_ins[i]] = 1
+end
+
 local option = {
   -- Path
   runtimepath = opt.runtimepath:append(hardworking.config_path),
@@ -31,9 +55,12 @@ local option = {
   cmdheight = 1, -- command-line 的行数
   showmode = true, -- 当前 NVIM 的模式
   showcmd = true, -- 在非 : 模式下输入的 command 会显示在状态栏
+  lazyredraw = true,
+  display = 'msgsep',
 
   title = true,
   cursorline = true,
+  guicursor = [[n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50]],
   -- 1 9
   scrolloff = 9, -- cursor 接近 buffer 顶部和底部时会尽量保持 n 行的距离
   sidescrolloff = 9,
@@ -45,6 +72,7 @@ local option = {
   -- Nvim emits true (24-bit) colours in the terminal, if 'termguicolors' is set.
   -- Truecolor
   termguicolors = true, -- bufferline: You are *strongly* advised to use `termguicolors` for this plugin
+  background = 'light',
 
   showmatch = true, -- 输入代码时高亮显示匹配的括号
   matchtime = 5, -- 匹配括号时高亮的时间。500ms
@@ -107,9 +135,10 @@ local option = {
   -- Completion
   pumheight = 10, -- pop up menu height
   -- wildmenu = true,               -- 开启 command 补齐
-  -- wildmode = {"list:longest", "full"},         -- 列出所有最长子串的补齐，和其他完整的匹配
+  wildmode = { 'list:longest', 'full' }, -- 列出所有最长子串的补齐，和其他完整的匹配
   -- completeopt = {"menu", "menuone", "longest"},   --关闭 preview 窗口
   completeopt = { 'menu', 'menuone', 'noselect' },
+  wildignore = { '*.o', '*~', '*.pyc' },
 
   -- Mouse
   mouse = 'a', -- allows the mouse to be used in neovim

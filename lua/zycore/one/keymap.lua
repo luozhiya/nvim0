@@ -87,14 +87,6 @@ xnoremap('K', ":move '<-2<CR>gv-gv")
 xnoremap('<A-j>', ":move '>+1<CR>gv-gv")
 xnoremap('<A-k>', ":move '<-2<CR>gv-gv")
 
--- Navigate buffers
-nnoremap('<S-l>', ':bnext<CR>')
-nnoremap('<S-h>', ':bprevious<CR>')
-nnoremap('<tab>', ':bnext<CR>')
-nnoremap('<S-tab>', ':bprevious<CR>')
-nnoremap('<C-w>', ':Bdelete<CR>')
-nnoremap('<A-w>', ':Bdelete!<CR>')
-
 -- To use `ALT+{h,j,k,l}` to navigate windows from any mode:
 vim.cmd([[
 tnoremap <A-h> <C-\><C-N><C-w>h
@@ -110,22 +102,6 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 ]])
-
--- CTRL + ALT + x open terminal
-nnoremap('<C-A-x>', ':ToggleTerm size=10 direction=horizontal<CR>')
-nnoremap('<C-A-v>', ':ToggleTerm size=40 direction=vertical<CR>')
--- vim.cmd([[
--- noremap <C-A-t> :ToggleTerm size=12 direction=horizontal<CR>
--- ]])
-
--- Debug
-nnoremap('<S-F5>', ':lua require"osv".launch({port = 8086})<CR>')
-nnoremap('<F5>', ':lua _CONTINUE()<cr>')
-nnoremap('<F6>', ':DapTeminate<cr>')
-nnoremap('<F9>', ':lua _TOGGLE_BREAKPOINT()<cr>')
-nnoremap('<F10>', ':lua _STEP_OVER()<cr>')
-nnoremap('<F11>', ':lua _STEP_INTO()<cr>')
-nnoremap('<F8>', ':lua _STEP_OUT()<cr>')
 
 vim.cmd([[
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!

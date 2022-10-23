@@ -14,6 +14,7 @@ local features_list = {
   'keymap',
 
   -- Plugin
+  'vim_bbye',
   'cmp',
   'format',
   'formatter_nvim',

@@ -5,6 +5,8 @@ end
 
 local fn = vim.fn
 local style_constexpr = require('zycore.base.style_constexpr')
+local hardworking = require('zycore.base.hardworking')
+local nnoremap = hardworking.nnoremap
 
 function _REPL_TOGGLE()
   dap.repl.toggle(nil, 'botright split')
@@ -56,7 +58,6 @@ dap.configurations.cpp = {
     stopOnEntry = false,
     args = {},
 
-    -- 💀
     -- if you change `runInTerminal` to true, you might need to change the yama/ptrace_scope setting:
     --
     --    echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
@@ -139,3 +140,12 @@ end
 
 dap.config = M.config
 dap.config()
+
+-- Debug
+nnoremap('<S-F5>', ':lua require"osv".launch({port = 8086})<CR>')
+nnoremap('<F5>', ':lua _CONTINUE()<cr>')
+nnoremap('<F6>', ':DapTeminate<cr>')
+nnoremap('<F9>', ':lua _TOGGLE_BREAKPOINT()<cr>')
+nnoremap('<F10>', ':lua _STEP_OVER()<cr>')
+nnoremap('<F11>', ':lua _STEP_INTO()<cr>')
+nnoremap('<F8>', ':lua _STEP_OUT()<cr>')

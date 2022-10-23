@@ -3,6 +3,9 @@ if not toggleterm_ok then
   return
 end
 
+local hardworking = require('zycore.base.hardworking')
+local nnoremap = hardworking.nnoremap
+
 toggleterm.setup({
   size = 20,
   open_mapping = [[<c-\>]],
@@ -68,3 +71,10 @@ local python = Terminal:new({ cmd = 'python', hidden = true })
 function _PYTHON_TOGGLE()
   python:toggle()
 end
+
+-- CTRL + ALT + x open terminal
+nnoremap('<C-A-x>', ':ToggleTerm size=10 direction=horizontal<CR>')
+nnoremap('<C-A-v>', ':ToggleTerm size=40 direction=vertical<CR>')
+-- vim.cmd([[
+-- noremap <C-A-t> :ToggleTerm size=12 direction=horizontal<CR>
+-- ]])
