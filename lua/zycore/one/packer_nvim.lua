@@ -81,24 +81,48 @@ local function init()
   use('Pocco81/true-zen.nvim') -- Clean and elegant distraction-free writing for NeoVim
 
   -- Quickfix
-  use({ 'Olical/vim-enmasse', cmd = 'EnMasse' })
+  use({ 'Olical/vim-enmasse', cmd = 'EnMasse' }) -- Edit every line in a quickfix list at the same time
   use('kevinhwang91/nvim-bqf') -- Better quickfix window in Neovim, polish old quickfix window.
-  use({ 'https://gitlab.com/yorickpeterse/nvim-pqf' })
+  use('https://gitlab.com/yorickpeterse/nvim-pqf') -- Prettier quickfix/location list windows for NeoVim
 
-  -- Easy VAX find
-  use('nvim-telescope/telescope.nvim') -- Find, Filter, Preview, Pick. All lua, all the time.
-  use('nvim-telescope/telescope-fzy-native.nvim') -- FZY style sorter that is compiled
-  use('nvim-telescope/telescope-live-grep-args.nvim') -- Live grep with args
-  use('nvim-pack/nvim-spectre') -- Find the enemy and replace them with dark power.
+  -- Search / Easy VAX-like find
+  use({
+    {
+      'nvim-telescope/telescope.nvim', -- Find, Filter, Preview, Pick. All lua, all the time.
+      requires = {
+        'nvim-lua/popup.nvim',
+        'nvim-lua/plenary.nvim',
+        'telescope-frecency.nvim',
+        'telescope-fzf-native.nvim',
+        'nvim-telescope/telescope-ui-select.nvim', -- It sets vim.ui.select to telescope.
+      },
+      cmd = 'Telescope', -- Specifies commands which load this plugin. Can be an autocmd pattern.
+    },
+    {
+      'nvim-telescope/telescope-frecency.nvim',
+      after = 'telescope.nvim',
+      requires = 'tami5/sqlite.lua',
+    },
+    {
+      'nvim-telescope/telescope-fzf-native.nvim',
+      run = 'make',
+    },
+    'crispgm/telescope-heading.nvim',
+    'nvim-telescope/telescope-file-browser.nvim',
+    'nvim-telescope/telescope-live-grep-args.nvim', -- Live grep with args
+    'nvim-pack/nvim-spectre', -- Find the enemy and replace them with dark power.            
+  })
 
   -- Project
   use('ahmedkhalf/project.nvim')
+
+  -- Indentation tracking
+  use('lukas-reineke/indent-blankline.nvim') -- Indent guides for Neovim
 
   -- Code
   use('RRethy/vim-illuminate') -- automatically highlighting other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.
   use('numToStr/Comment.nvim') -- Smart and powerful comment plugin for neovim
   use('windwp/nvim-autopairs') -- autopairs for neovim written by lua
-  use('lukas-reineke/indent-blankline.nvim') -- Indent guides for Neovim
   use('NMAC427/guess-indent.nvim') -- Automatic indentation style detection for Neovim
   use('andrewferrier/wrapping.nvim') -- Plugin to make it easier to switch between 'soft' and 'hard' line wrapping in NeoVim
   use('norcalli/nvim-colorizer.lua') -- The fastest Neovim colorizer.
@@ -109,6 +133,8 @@ local function init()
   --   'jakemason/ouroboros.nvim',
   --   requires = { { 'nvim-lua/plenary.nvim' } },
   -- }) -- Allows quickly switching between header and implementation files for C/C++ in Neovim.
+  
+  -- Prettification  
   use('junegunn/vim-easy-align') -- A Vim alignment plugin
 
   -- Format
