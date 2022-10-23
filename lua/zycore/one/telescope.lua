@@ -111,7 +111,7 @@ telescope.setup({
       -- sort_mru = true,
       sort_lastused = true,
       previewer = false,
-    },    
+    },
   },
   extensions = {
     -- Your extension configuration goes here:
@@ -119,6 +119,19 @@ telescope.setup({
     --   extension_config_key = value,
     -- }
     -- please take a look at the readme of the extension you want to configure
+    frecency = {
+      -- db_root = 'home/luozhiya/Shared/db_root',
+      show_scores = false,
+      show_unindexed = true,
+      ignore_patterns = { '*.git/*', '*/tmp/*' },
+      disable_devicons = false,
+      workspaces = {
+        ['conf'] = '/home/luozhiya/.config',
+        ['data'] = '/home/luozhiya/.local/share',
+        ['project'] = '/home/luozhiya/Code',
+        ['documentation'] = '/home/luozhiya/Code/onWorking/22-09-26-documentation',
+      },
+    },
     fzy_native = {
       fuzzy = true,
       override_generic_sorter = false,
@@ -126,7 +139,7 @@ telescope.setup({
       case_mode = 'smart_case',
     },
     ['ui-select'] = {
-      require('telescope.themes').get_dropdown { layout_config = { prompt_position = 'top' } },
+      require('telescope.themes').get_dropdown({ layout_config = { prompt_position = 'top' } }),
     },
     heading = { treesitter = true },
     file_browser = {
@@ -143,12 +156,15 @@ telescope.setup({
           ['<c-a>'] = fb_actions.select_all,
         },
       },
-    },    
+    },
   },
 })
 
 -- This will load fzy_native and have it override the default file sorter
-telescope.load_extension('fzy_native')
+-- workaround to load frecency manual
+vim.cmd([[packadd telescope-frecency.nvim]])
+telescope.load_extension('frecency')
+telescope.load_extension('fzf')
 telescope.load_extension('live_grep_args')
 telescope.load_extension('ui-select')
 telescope.load_extension('notify')
@@ -161,4 +177,5 @@ nnoremap('<c-a>', [[<cmd>Telescope buffers show_all_buffers=true theme=get_dropd
 nnoremap('<c-e>', [[<cmd>Telescope frecency theme=get_dropdown<cr>]])
 nnoremap('<c-s>', [[<cmd>Telescope git_files theme=get_dropdown<cr>]])
 nnoremap('<c-d>', [[<cmd>Telescope find_files theme=get_dropdown<cr>]])
-nnoremap('<c-g>', [[<cmd>Telescope live_grep theme=get_dropdown<cr>]])
+-- nnoremap('<c-g>', [[<cmd>Telescope live_grep theme=get_dropdown<cr>]])
+nnoremap('<c-g>', [[<cmd>lua require("telescope").extensions.live_grep_args.live_grep_args() theme=get_dropdown<cr>]])

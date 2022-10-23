@@ -21,7 +21,7 @@ local ensure_packer = function()
       'https://github.com/wbthomason/packer.nvim',
       install_path,
     })
-    vim.cmd([[packloadall! packer.nvim]])
+    vim.cmd([[packadd packer.nvim]])
     return true
   end
   return false
@@ -81,7 +81,10 @@ local function init()
   use('Pocco81/true-zen.nvim') -- Clean and elegant distraction-free writing for NeoVim
 
   -- Quickfix
-  use({ 'Olical/vim-enmasse', cmd = 'EnMasse' }) -- Edit every line in a quickfix list at the same time
+  use({
+    'Olical/vim-enmasse',
+    cmd = 'EnMasse',
+  }) -- Edit every line in a quickfix list at the same time
   use('kevinhwang91/nvim-bqf') -- Better quickfix window in Neovim, polish old quickfix window.
   use('https://gitlab.com/yorickpeterse/nvim-pqf') -- Prettier quickfix/location list windows for NeoVim
 
@@ -92,8 +95,8 @@ local function init()
       requires = {
         'nvim-lua/popup.nvim',
         'nvim-lua/plenary.nvim',
-        'telescope-frecency.nvim',
-        'telescope-fzf-native.nvim',
+        'nvim-telescope/telescope-frecency.nvim',
+        'nvim-telescope/telescope-fzf-native.nvim',
         'nvim-telescope/telescope-ui-select.nvim', -- It sets vim.ui.select to telescope.
       },
       cmd = 'Telescope', -- Specifies commands which load this plugin. Can be an autocmd pattern.
@@ -101,7 +104,7 @@ local function init()
     {
       'nvim-telescope/telescope-frecency.nvim',
       after = 'telescope.nvim',
-      requires = 'tami5/sqlite.lua',
+      requires = 'kkharji/sqlite.lua',
     },
     {
       'nvim-telescope/telescope-fzf-native.nvim',
@@ -110,7 +113,7 @@ local function init()
     'crispgm/telescope-heading.nvim',
     'nvim-telescope/telescope-file-browser.nvim',
     'nvim-telescope/telescope-live-grep-args.nvim', -- Live grep with args
-    'nvim-pack/nvim-spectre', -- Find the enemy and replace them with dark power.            
+    'nvim-pack/nvim-spectre', -- Find the enemy and replace them with dark power.
   })
 
   -- Project
@@ -133,8 +136,8 @@ local function init()
   --   'jakemason/ouroboros.nvim',
   --   requires = { { 'nvim-lua/plenary.nvim' } },
   -- }) -- Allows quickly switching between header and implementation files for C/C++ in Neovim.
-  
-  -- Prettification  
+
+  -- Prettification
   use('junegunn/vim-easy-align') -- A Vim alignment plugin
 
   -- Format
