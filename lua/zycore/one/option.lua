@@ -1,4 +1,31 @@
+local g = vim.g
+local cmd = vim.cmd
+local opt = vim.opt
+local api = vim.api
+
+local hardworking = require('zycore.base.hardworking')
+
+-- Pack path
+-- https://neovim.io/doc/user/repeat.html#packages
+-- local config = hardworking.config_path
+-- local packpath = hardworking.packpath
+
+-- -- vim.cmd([[set packpath=/tmp/nvim/site]])
+-- opt.runtimepath:append(config)
+-- -- lua-dev diagnostics show vim.opt.packpath is a string, but it is table type actually
+-- -- ignore diagnostics warning
+-- -- 这个是关键，只有设置了这个 packloadall 才会执行成功，require('packer') 才正常
+-- opt.packpath:append(packpath)
+-- -- E5113: Error while calling lua chunk: zycore/plugin.lua:17: attempt to concatenate field 'packpath' (a table value)
+-- -- print(vim.opt.packpath)
+-- -- vim.opt.packpath = vim.opt.packpath .. ';' .. packpath
+-- -- print(vim.opt.packpath)
+
 local option = {
+  -- Path
+  runtimepath = opt.runtimepath:append(hardworking.config_path),
+  packpath = opt.packpath:append(hardworking.packpath),
+
   -- View
   laststatus = 3, -- 始终显示状态栏, Only last window
   cmdheight = 1, -- command-line 的行数
@@ -46,7 +73,7 @@ local option = {
 
   -- keep indentation produced by 'autoindent' if leaving the line blank:
   -- cinoptions = vim.opt.cinoptions:append('I')
-  cinoptions = vim.opt.cinoptions:append('g0'), -- C++ public等不额外产生indent
+  cinoptions = opt.cinoptions:append('g0'), -- C++ public等不额外产生indent
 
   -- don't syntax-highlight long lines
   synmaxcol = 200,
@@ -100,7 +127,7 @@ local option = {
   history = 100, -- 搜索和 command 的历史
   hidden = true, -- 即使 buffer 被改变还没保存，也允许其隐藏
   autoread = true, -- 自动加载在外部被改变的文件
-  whichwrap = vim.opt.whichwrap:append('<,>,[,],h,l'), -- 让 backspace， cursor 移动时可以跨行
+  whichwrap = opt.whichwrap:append('<,>,[,],h,l'), -- 让 backspace， cursor 移动时可以跨行
   -- shortmess = 'actI', -- 减少启动时画面显示的东西
   -- Message output on vim actions
   shortmess = {
@@ -124,20 +151,20 @@ local option = {
 }
 
 for k, v in pairs(option) do
-  vim.opt[k] = v
+  opt[k] = v
 end
 
 -- vim.cmd "set whichwrap+=<,>,[,],h,l"
 -- return option
 
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'lua',
-  callback = function()
-    vim.opt_local.shiftwidth = 2
-    vim.opt_local.tabstop = 2
-  end,
-})
+-- api.nvim_create_autocmd('FileType', {
+--   pattern = 'lua',
+--   callback = function()
+--     vim.opt_local.shiftwidth = 2
+--     vim.opt_local.tabstop = 2
+--   end,
+-- })
 
-vim.cmd([[
+cmd([[
 autocmd Filetype log if getfsize(@%) > 1000000 | setlocal syntax=OFF | endif  
 ]])
