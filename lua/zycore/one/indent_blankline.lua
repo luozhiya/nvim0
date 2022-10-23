@@ -1,10 +1,19 @@
-local indent_blankline_ok, indent_blankline = pcall(require, 'indent_blankline')
-if not indent_blankline_ok then
+local ok, indent_blankline = pcall(require, 'indent_blankline')
+if not ok then
   return
 end
 
-vim.g.indent_blankline_buftype_exclude = { 'terminal', 'nofile' }
-vim.g.indent_blankline_filetype_exclude = {
+local g = vim.g
+
+g.indentLine_enabled = 1
+g.indent_blankline_use_treesitter = true
+g.indentLine_faster = 1
+g.indentLine_fileTypeExclude = {'tex', 'markdown', 'txt', 'startify', 'packer'}
+g.indent_blankline_show_trailing_blankline_indent = false
+g.indent_blankline_show_first_indent_level = true
+g.indent_blankline_show_current_context = true
+g.indent_blankline_buftype_exclude = { 'terminal', 'nofile' }
+g.indent_blankline_filetype_exclude = {
   'help',
   'startify',
   'dashboard',
@@ -13,15 +22,10 @@ vim.g.indent_blankline_filetype_exclude = {
   'NvimTree',
   'Trouble',
 }
-vim.g.indentLine_enabled = 1
-vim.g.indent_blankline_char = '│'
--- vim.g.indent_blankline_char = '' -- ⏽ ▏ 
--- vim.g.indent_blankline_char = "▎"
-vim.g.indent_blankline_show_trailing_blankline_indent = false
-vim.g.indent_blankline_show_first_indent_level = true
-vim.g.indent_blankline_use_treesitter = true
-vim.g.indent_blankline_show_current_context = true
-vim.g.indent_blankline_context_patterns = {
+g.indent_blankline_char = '│'
+-- g.indent_blankline_char = '' -- ⏽ ▏ 
+-- g.indent_blankline_char = "▎"
+g.indent_blankline_context_patterns = {
   'class',
   'return',
   'function',
