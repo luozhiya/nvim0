@@ -103,8 +103,4 @@ nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 ]])
 
-vim.cmd([[
-command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
-]])
-
 nnoremap('<esc><esc>', ':nohlsearch<CR>')
