@@ -20,6 +20,10 @@ opt.packpath:append(packpath)
 -- vim.opt.packpath = vim.opt.packpath .. ';' .. packpath
 -- print(vim.opt.packpath)
 
+-- Basic
+local option = require('zycore.one.option')
+local colorscheme = require('zycore.one.colorscheme')
+
 -- First needed
 local impatient = require('zycore.one.impatient')
 local notify_nvim = require('zycore.one.notify_nvim')
@@ -52,7 +56,6 @@ create_cmd('PackerCompile', function()
 end, {})
 
 -- Basic
-local option = require('zycore.one.option')
 local keymap = require('zycore.one.keymap')
 
 -- Plugin
@@ -100,7 +103,7 @@ require('zycore.one.nvim_bqf')
 -- UI/Misc
 local vim_command = require('zycore.one.vim_commmand')
 local title = require('zycore.one.title')
-local colorscheme = require('zycore.one.colorscheme')
+
 local client_ui = require('zycore.one.client_ui')
 local fontface = require('zycore.one.fontface')
 

@@ -1,4 +1,3 @@
-local M = {}
 local zycore = require('zycore')
 -- local packer_dir = require('zycore').packer_dir
 
@@ -22,5 +21,3 @@ vim.g['aniseed#env'] = {
 }
 
 local zylisp = require('zylisp')
-
-return M
