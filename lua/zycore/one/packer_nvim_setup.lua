@@ -6,23 +6,23 @@ local packer_bootstrap = plugins.ensure_packer()
 -- Packer commands
 local create_cmd = vim.api.nvim_create_user_command
 create_cmd('PackerInstall', function()
-  cmd [[packadd packer.nvim]]
+  cmd([[packadd packer.nvim]])
   plugins.install()
 end, {})
 create_cmd('PackerUpdate', function()
-  cmd [[packadd packer.nvim]]
+  cmd([[packadd packer.nvim]])
   plugins.update()
 end, {})
 create_cmd('PackerSync', function()
-  cmd [[packadd packer.nvim]]
+  cmd([[packadd packer.nvim]])
   plugins.sync()
 end, {})
 create_cmd('PackerClean', function()
-  cmd [[packadd packer.nvim]]
+  cmd([[packadd packer.nvim]])
   plugins.clean()
 end, {})
 create_cmd('PackerCompile', function()
-  cmd [[packadd packer.nvim]]
+  cmd([[packadd packer.nvim]])
   plugins.compile()
 end, {})
 

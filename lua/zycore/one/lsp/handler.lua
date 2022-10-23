@@ -89,7 +89,11 @@ local function lsp_keymaps(buffer)
   bkeymap(buffer, 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
   bkeymap(buffer, '[d', '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>')
   -- vim.diagnostic.open_float(0, { scope="cursor", source="always", border = "rounded" })
-  bkeymap(buffer, 'gl', '<cmd>lua vim.diagnostic.open_float(0, {scope="cursor",source="always", border = "rounded", format=function(diag) return string.format("%s (%s)", diag.message, diag.code or (diag.user_data and diag.  user_data.lsp and diag.user_data.lsp.code)) end})<CR>')
+  bkeymap(
+    buffer,
+    'gl',
+    '<cmd>lua vim.diagnostic.open_float(0, {scope="cursor",source="always", border = "rounded", format=function(diag) return string.format("%s (%s)", diag.message, diag.code or (diag.user_data and diag.  user_data.lsp and diag.user_data.lsp.code)) end})<CR>'
+  )
   bkeymap(buffer, ']d', '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>')
   -- bkeymap(buffer, "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>")
   vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format{async=true}' ]])

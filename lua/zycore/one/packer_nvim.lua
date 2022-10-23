@@ -165,8 +165,8 @@ end
 
 local plugins = setmetatable({}, {
   __index = function(_, key)
-  init()
-  return packer[key]
+    init()
+    return packer[key]
   end,
 })
 

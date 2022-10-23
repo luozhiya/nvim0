@@ -55,15 +55,15 @@ local features_list = {
   'nvim_spectre',
   'nvim_bqf',
 
+  -- LSP
+  'clangd_extensions',
+  'lsp',
+
   -- UI/Misc
   'vim_commmand',
   'title',
   'client_ui',
   'fontface',
-
-  -- LSP
-  'clangd_extensions',
-  'lsp',
 }
 
 for k, v in pairs(features_list) do
