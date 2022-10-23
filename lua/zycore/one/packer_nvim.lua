@@ -1,41 +1,13 @@
-local M = {}
-
 local fn = vim.fn
+
 local hardworking = require('zycore.base.hardworking')
+local config = hardworking.config_path
+local packpath = hardworking.packpath
+local package_root = hardworking.package_root
 
--- Note stdpath()
--- more detail on help stdpath()
--- config User configuration directory. |init.vim| is stored here.
---        /home/luozhiya/.config/nvim/
--- cache  Cache directory: arbitrary temporary storage for plugins, etc. maybe log
---        /home/luozhiya/.cache/nvim/
--- data   User data directory.
---        /home/luozhiya/.local/share/nvim/
--- log    Logs directory (for use by plugins too).
---        /home/luozhiya/.local/state/nvim/
-
--- local packpath = hardworking.join_paths(fn.stdpath('config'), 'site')
--- local package_root = hardworking.join_paths(fn.stdpath('config'), 'site', 'pack')
--- local install_path = hardworking.join_paths(package_root, 'packer', 'start', 'packer.nvim')
--- local compile_path = hardworking.join_paths(fn.stdpath('config'), 'plugin', 'packer_compiled.lua')
-local config = fn.stdpath('config')
-local packpath = config .. '/site'
-local package_root = packpath .. '/pack'
 local packer_dir = package_root .. '/packer'
-M.packer_dir = packer_dir
 local install_path = packer_dir .. '/start/packer.nvim'
 local compile_path = config .. '/plugin/packer_compiled.lua'
-
--- vim.cmd([[set packpath=/tmp/nvim/site]])
-vim.opt.runtimepath:append(config)
--- lua-dev diagnostics show vim.opt.packpath is a string, but it is table type actually
--- ignore diagnostics warning
--- 这个是关键，只有设置了这个 packloadall 才会执行成功，require('packer') 才正常
-vim.opt.packpath:append(packpath)
--- E5113: Error while calling lua chunk: zycore/plugin.lua:17: attempt to concatenate field 'packpath' (a table value)
--- print(vim.opt.packpath)
--- vim.opt.packpath = vim.opt.packpath .. ';' .. packpath
--- print(vim.opt.packpath)
 
 -- Automatically install packer
 local ensure_packer = function()
@@ -55,15 +27,18 @@ local ensure_packer = function()
   return false
 end
 
-local packer_bootstrap = ensure_packer()
+local packer = nil
+local function init()
+  if packer == nil then
+    packer = require('packer')
+    packer.init({
+      package_root = package_root,
+      compile_path = compile_path,
+    })
+  end
 
--- Inital package root dir and compiled path
-require('packer').init({
-  package_root = package_root,
-  compile_path = compile_path,
-})
-
-require('packer').startup(function(use)
+  local use = packer.use
+  packer.reset()
   -- System
   use('wbthomason/packer.nvim')
   use('nvim-lua/plenary.nvim') -- Note that this library is useless outside of Neovim since it requires Neovim functions.
@@ -186,8 +161,16 @@ require('packer').startup(function(use)
   if packer_bootstrap then
     require('packer').sync()
   end
-end)
+end
 
-require('zycore.one')
+local plugins = setmetatable({}, {
+  __index = function(_, key)
+  init()
+  return packer[key]
+  end,
+})
 
-return M
+plugins.packer_dir = packer_dir
+plugins.ensure_packer = ensure_packer
+
+return plugins

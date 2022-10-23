@@ -45,6 +45,25 @@ local is_gui_running = function()
 end
 hardworking.is_gui_running = is_gui_running
 
+-- Note stdpath()
+-- more detail on help stdpath()
+-- config User configuration directory. |init.vim| is stored here.
+--        /home/luozhiya/.config/nvim/
+-- cache  Cache directory: arbitrary temporary storage for plugins, etc. maybe log
+--        /home/luozhiya/.cache/nvim/
+-- data   User data directory.
+--        /home/luozhiya/.local/share/nvim/
+-- log    Logs directory (for use by plugins too).
+--        /home/luozhiya/.local/state/nvim/
+
+-- local packpath = hardworking.join_paths(fn.stdpath('config'), 'site')
+-- local package_root = hardworking.join_paths(fn.stdpath('config'), 'site', 'pack')
+-- local install_path = hardworking.join_paths(package_root, 'packer', 'start', 'packer.nvim')
+-- local compile_path = hardworking.join_paths(fn.stdpath('config'), 'plugin', 'packer_compiled.lua')
+hardworking.config_path = fn.stdpath('config')
+hardworking.packpath = hardworking.config_path .. '/site'
+hardworking.package_root = hardworking.packpath .. '/pack'
+
 ----------------------------------------------------------------------------------------------------
 -- API
 ----------------------------------------------------------------------------------------------------
