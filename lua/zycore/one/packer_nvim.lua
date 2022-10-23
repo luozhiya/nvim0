@@ -34,6 +34,25 @@ local function init()
     packer.init({
       package_root = package_root,
       compile_path = compile_path,
+      disable_commands = true,
+      display = {
+        open_fn = function()
+          local result, win, buf = require('packer.util').float {
+            border = {
+              { '╭', 'FloatBorder' },
+              { '─', 'FloatBorder' },
+              { '╮', 'FloatBorder' },
+              { '│', 'FloatBorder' },
+              { '╯', 'FloatBorder' },
+              { '─', 'FloatBorder' },
+              { '╰', 'FloatBorder' },
+              { '│', 'FloatBorder' },
+            },
+          }
+          vim.api.nvim_win_set_option(win, 'winhighlight', 'NormalFloat:Normal')
+          return result, win, buf
+        end,
+      },      
     })
   end
 
@@ -83,7 +102,7 @@ local function init()
   -- Quickfix
   use({
     'Olical/vim-enmasse',
-    cmd = 'EnMasse',
+    -- cmd = 'EnMasse',
   }) -- Edit every line in a quickfix list at the same time
   use('kevinhwang91/nvim-bqf') -- Better quickfix window in Neovim, polish old quickfix window.
   use('https://gitlab.com/yorickpeterse/nvim-pqf') -- Prettier quickfix/location list windows for NeoVim
@@ -99,19 +118,19 @@ local function init()
         'nvim-telescope/telescope-fzf-native.nvim',
         'nvim-telescope/telescope-ui-select.nvim', -- It sets vim.ui.select to telescope.
       },
-      cmd = 'Telescope', -- Specifies commands which load this plugin. Can be an autocmd pattern.
+      -- cmd = 'Telescope', -- Specifies commands which load this plugin. Can be an autocmd pattern.
     },
     {
-      'nvim-telescope/telescope-frecency.nvim',
-      after = 'telescope.nvim',
-      requires = 'kkharji/sqlite.lua',
+      'nvim-telescope/telescope-frecency.nvim', -- A telescope.nvim extension that offers intelligent prioritization when selecting files from your editing history.
+      -- after = 'telescope.nvim',
+      requires = 'kkharji/sqlite.lua', -- SQLite LuaJIT binding with a very simple api.
     },
     {
-      'nvim-telescope/telescope-fzf-native.nvim',
+      'nvim-telescope/telescope-fzf-native.nvim', -- FZF sorter for telescope written in c
       run = 'make',
     },
-    'crispgm/telescope-heading.nvim',
-    'nvim-telescope/telescope-file-browser.nvim',
+    'crispgm/telescope-heading.nvim', -- An extension for telescope.nvim that allows you to switch between headings
+    'nvim-telescope/telescope-file-browser.nvim', -- File Browser extension for telescope.nvim
     'nvim-telescope/telescope-live-grep-args.nvim', -- Live grep with args
     'nvim-pack/nvim-spectre', -- Find the enemy and replace them with dark power.
   })
