@@ -19,7 +19,7 @@ local features_list = {
   -- 'cmp', -- managed by packer
   'format',
   'formatter_nvim',
-  -- 'comment', -- managed by packer
+  'comment', -- managed by packer
   'treesitter',
   'autocommands',
   'nvim_tree',

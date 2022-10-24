@@ -227,10 +227,10 @@ local function init()
 
   -- Commenting
   use({
-    'numToStr/Comment.nvim',
-    setup = [[require('zycore.one.comment')]],
-    event = 'User ActuallyEditing',
-  }) -- Smart and powerful comment plugin for neovim
+    'numToStr/Comment.nvim', -- Smart and powerful comment plugin for neovim
+    -- config = [[require('zycore.one.comment')]],
+    -- event = 'User ActuallyEditing',
+  })
 
   -- Snippets
   use({
@@ -246,7 +246,7 @@ local function init()
     },
     {
       'andymass/vim-matchup',
-      setup = [[require('zycore.one.matchup')]],
+      config = [[require('zycore.one.matchup')]],
       event = 'User ActuallyEditing',
     },
     'monkoose/matchparen.nvim', -- alternative to default neovim matchparen plugin
@@ -342,11 +342,6 @@ local function init()
   -- Terminal
   use('akinsho/toggleterm.nvim')
 
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if packer_bootstrap then
-    require('packer').sync()
-  end
 end
 
 -- Automatically compile after packer_nvim.lua modified.
