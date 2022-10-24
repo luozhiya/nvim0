@@ -262,10 +262,12 @@ local function init()
   use('theHamsta/nvim-dap-virtual-text')
 
   -- Colorscheme
-  -- use 'Mofiqul/vscode.nvim' -- VSCode dark theme
-  -- use('lunarvim/darkplus.nvim')
-  use('luozhiya/darkplus.nvim')
-  use('luozhiya/omegadark.nvim')
+  use({
+    -- 'Mofiqul/vscode.nvim', -- VSCode dark theme
+    -- 'lunarvim/darkplus.nvim',
+    'luozhiya/darkplus.nvim',
+    'luozhiya/omegadark.nvim',
+  })
 
   -- Completion
   use({
