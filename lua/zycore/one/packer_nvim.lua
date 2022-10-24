@@ -293,8 +293,10 @@ local function init()
   })
 
   -- Snippets
-  use('L3MON4D3/LuaSnip')
-  use('rafamadriz/friendly-snippets')
+  use({
+    'L3MON4D3/LuaSnip',
+    'rafamadriz/friendly-snippets',
+  })
 
   -- Git
   use({
