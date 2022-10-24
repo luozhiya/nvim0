@@ -244,9 +244,11 @@ local function init()
   use('lukas-reineke/lsp-format.nvim') -- A wrapper around Neovims native LSP formatting.
 
   -- C++
-  use('m-pilia/vim-ccls') -- supports some additional methods provided by ccls, which are not part of the standard Language Server Protocol (LSP)
-  use('jackguo380/vim-lsp-cxx-highlight') -- semantic highlighting using the language server protocol.
-  use('p00f/clangd_extensions.nvim') -- Clangd's off-spec features for neovim's LSP client.
+  use({
+    'm-pilia/vim-ccls', -- supports some additional methods provided by ccls, which are not part of the standard Language Server Protocol (LSP)
+    'jackguo380/vim-lsp-cxx-highlight' -- semantic highlighting using the language server protocol.
+    'p00f/clangd_extensions.nvim', -- Clangd's off-spec features for neovim's LSP client.
+  })
 
   -- Lua
   use('folke/lua-dev.nvim') -- Dev setup for init.lua and plugin development with full signature help, docs and completion for the nvim lua API.
