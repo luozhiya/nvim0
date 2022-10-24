@@ -59,11 +59,12 @@ local features_list = {
   'nvim_spectre',
   'nvim_bqf',
   'nvim_pqf',
-  'easy_align',
+  'easy_align',  
 
   -- LSP
   'clangd_extensions',
   'lsp',
+  'nvim_lightbulb',  
 
   -- UI/Misc
   'vim_commmand',

@@ -75,10 +75,17 @@ local function init()
   -- use('rktjmp/hotpot.nvim') -- Carl Weathers #1 Neovim Plugin.
 
   -- LSP
-  use('neovim/nvim-lspconfig') -- Configurations for Nvim LSP
-  use('williamboman/nvim-lsp-installer') -- Simple to install LSP servers
-  use({ 'https://git.sr.ht/~whynothugo/lsp_lines.nvim', as = 'lsp_lines.nvim' }) -- Show nvim diagnostics using virtual lines
-  use('j-hui/fidget.nvim') -- Standalone UI for nvim-lsp progress
+  use({
+    'neovim/nvim-lspconfig', -- Configurations for Nvim LSP    
+    'williamboman/nvim-lsp-installer', -- Simple to install LSP servers
+    {
+      'https://git.sr.ht/~whynothugo/lsp_lines.nvim', -- Show nvim diagnostics using virtual lines
+      as = 'lsp_lines.nvim',
+    },
+    'nvim-lua/lsp-status.nvim', -- Utility functions for getting diagnostic status and progress messages from LSP servers, for use in the Neovim statusline
+    'j-hui/fidget.nvim', -- Standalone UI for nvim-lsp progress
+    'kosayoda/nvim-lightbulb', -- VSCode 💡 for neovim's built-in LSP.
+  })
 
   -- treesitter
   use('nvim-treesitter/nvim-treesitter') -- Nvim Treesitter configurations and abstraction layer
@@ -89,10 +96,12 @@ local function init()
   -- Keyboard
   use('folke/which-key.nvim')
 
+  -- Pretty symbols
+  use('kyazdani42/nvim-web-devicons')
+
   -- UI/File tree/Status/Tab/Buffer
   use('delphinus/dwm.nvim') -- Tiled Window Management
   use('goolord/alpha-nvim')
-  use('kyazdani42/nvim-web-devicons')
   use('kyazdani42/nvim-tree.lua')
   use('nvim-lualine/lualine.nvim')
   -- use('akinsho/bufferline.nvim')
