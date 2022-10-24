@@ -266,6 +266,7 @@ local function init()
       'hrsh7th/cmp-nvim-lsp-signature-help',
       'hrsh7th/cmp-nvim-lsp-document-symbol',
       'hrsh7th/cmp-cmdline',
+      'lukas-reineke/cmp-under-comparator',
       'saadparwaiz1/cmp_luasnip',
       'onsails/lspkind.nvim', -- vscode-like pictograms for neovim lsp completion items
       'PaterJason/cmp-conjure', -- nvim-cmp source for conjure.

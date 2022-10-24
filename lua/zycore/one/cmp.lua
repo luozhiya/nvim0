@@ -15,11 +15,17 @@ end
 
 local style_constexpr = require('zycore.base.style_constexpr')
 
+luasnip.setup { region_check_events = 'InsertEnter', delete_check_events = 'InsertEnter' }
 require('luasnip/loaders/from_vscode').lazy_load()
 
 local check_backspace = function()
   local col = vim.fn.col('.') - 1
   return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s')
+end
+
+local has_words_before = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match '%s' == nil
 end
 
 local kind_icons = style_constexpr.lsp.kinds
@@ -69,7 +75,19 @@ local VS = {
   }),
 }
 
-cmp.setup({
+local wbthomason = {
+  fields = { 'kind', 'abbr', 'menu' },
+  format = function(entry, vim_item)
+    local kind = require('lspkind').cmp_format { mode = 'symbol_text', maxwidth = 50 }(entry, vim_item)
+    local strings = vim.split(kind.kind, '%s', { trimempty = true })
+    kind.kind = ' ' .. strings[1] .. ' '
+    kind.menu = '    (' .. strings[2] .. ')'
+    return kind
+  end,  
+}
+
+local opts = {
+  completion = { completeopt = 'menu,menuone,noinsert' },
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
@@ -118,8 +136,9 @@ cmp.setup({
       's',
     }),
   },
-  formatting = VS,
+  formatting = wbthomason,
   sources = {
+    { name = 'nvim_lsp_signature_help' },
     { name = 'nvim_lsp' },
     { name = 'conjure' },
     { name = 'luasnip' },
@@ -131,10 +150,21 @@ cmp.setup({
   },
   sorting = {
     comparators = {
+      -- function(entry1, entry2)
+      --   local score1 = entry1.completion_item.score
+      --   local score2 = entry2.completion_item.score
+      --   if score1 and score2 then
+      --     return (score1 - score2) < 0
+      --   end
+      -- end,
+
+      -- The built-in comparators:
       cmp.config.compare.offset,
       cmp.config.compare.exact,
       cmp.config.compare.recently_used,
+      cmp.config.compare.score,
       require('clangd_extensions.cmp_scores'),
+      require('cmp-under-comparator').under,
       cmp.config.compare.kind,
       cmp.config.compare.sort_text,
       cmp.config.compare.length,
@@ -151,9 +181,24 @@ cmp.setup({
     documentation = {
       border = style_constexpr.border.round,
     },
+    completion = {
+      winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,Search:None',
+      col_offset = -3,
+      side_padding = 0,
+    },    
   },
   experimental = {
     ghost_text = true,
     native_menu = false,
   },
+}
+
+cmp.setup(opts)
+
+cmp.setup.cmdline('/', {
+  sources = { { name = 'buffer' } },
+})
+
+cmp.setup.cmdline(':', {
+  sources = cmp.config.sources({ { name = 'path' } }, { { name = 'cmdline' } }),
 })
