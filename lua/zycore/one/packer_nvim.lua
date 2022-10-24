@@ -107,6 +107,19 @@ local function init()
   use('kevinhwang91/nvim-bqf') -- Better quickfix window in Neovim, polish old quickfix window.
   use({ 'https://gitlab.com/yorickpeterse/nvim-pqf', as = 'nvim-pqf' }) -- Prettier quickfix/location list windows for NeoVim
 
+  -- Registers
+  use('tversteeg/registers.nvim') -- Neovim plugin to preview the contents of the registers
+
+  -- Movement
+  use({
+    {
+      'ggandor/leap.nvim', -- Neovim's answer to the mouse: a "clairvoyant" interface that makes on-screen jumps quicker and more natural than ever
+      requires = 'tpope/vim-repeat', -- enable repeating supported plugin maps with "."
+    },
+    'ggandor/flit.nvim', -- Enhanced f/t motions for Leap
+    'ggandor/leap-ast.nvim' -- Jump to, select and operate on AST nodes via the Leap interface with Treesitter (WIP)
+  })
+
   -- Search / Easy VAX-like find
   use({
     {
@@ -142,12 +155,20 @@ local function init()
   -- Indentation tracking
   use('lukas-reineke/indent-blankline.nvim') -- Indent guides for Neovim
 
+  -- Commenting
+  use('numToStr/Comment.nvim') -- Smart and powerful comment plugin for neovim
+
+  -- Wrapping/delimiters
+  use({
+    {'machakann/vim-sandwich'}, -- Set of operators and textobjects to search/select/edit sandwiched texts.
+    {'andymass/vim-matchup'},
+    'andrewferrier/wrapping.nvim', -- Plugin to make it easier to switch between 'soft' and 'hard' line wrapping in NeoVim
+  })
+
   -- Code
   use('RRethy/vim-illuminate') -- automatically highlighting other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.
-  use('numToStr/Comment.nvim') -- Smart and powerful comment plugin for neovim
   use('windwp/nvim-autopairs') -- autopairs for neovim written by lua
   use('NMAC427/guess-indent.nvim') -- Automatic indentation style detection for Neovim
-  use('andrewferrier/wrapping.nvim') -- Plugin to make it easier to switch between 'soft' and 'hard' line wrapping in NeoVim
   use('norcalli/nvim-colorizer.lua') -- The fastest Neovim colorizer.
   use('ray-x/lsp_signature.nvim') -- LSP signature hint as you type
   use('folke/trouble.nvim') -- 🚦 A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
