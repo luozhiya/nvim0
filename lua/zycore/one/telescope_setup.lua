@@ -11,8 +11,12 @@ local xnoremap = hardworking.xnoremap
 -- map('n', '<c-P>', [[<cmd>Telescope commands theme=get_dropdown<cr>]], silent)
 
 -- ctrl-shfit-p/ctrl-p doesn't work in Windows
-nnoremap('<c-p>', [[<cmd>Telescope buffers show_all_buffers=true theme=get_dropdown<cr>]])
-nnoremap('<c-s-p>', [[<cmd>Telescope commands theme=get_dropdown<cr>]])
+if not hardworking.is_windows() then
+  nnoremap('<c-p>', [[<cmd>Telescope buffers show_all_buffers=true theme=get_dropdown<cr>]])
+  nnoremap('<c-s-p>', [[<cmd>Telescope commands theme=get_dropdown<cr>]])  
+else
+  nnoremap('<c-p>', [[<cmd>Telescope commands theme=get_dropdown<cr>]])
+end
 nnoremap('<c-a>', [[<cmd>Telescope buffers show_all_buffers=true theme=get_dropdown<cr>]])
 nnoremap('<c-e>', [[<cmd>Telescope frecency theme=get_dropdown<cr>]])
 nnoremap('<c-s>', [[<cmd>Telescope git_files theme=get_dropdown<cr>]])
