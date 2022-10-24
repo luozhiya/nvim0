@@ -66,11 +66,11 @@ local function init()
   -- System
   use({
     'nvim-lua/plenary.nvim', -- Note that this library is useless outside of Neovim since it requires Neovim functions.
-    'lewis6991/impatient.nvim', -- Improve startup time for Neovim 
+    'lewis6991/impatient.nvim', -- Improve startup time for Neovim
   })
 
   -- Packer
-  use('wbthomason/packer.nvim')  
+  use('wbthomason/packer.nvim')
 
   -- Fennel
   use({
@@ -108,7 +108,7 @@ local function init()
     'JoosepAlviste/nvim-ts-context-commentstring', -- Neovim treesitter plugin for setting the commentstring based on the cursor location in a file.
     'p00f/nvim-ts-rainbow', -- Rainbow parentheses for neovim using tree-sitter.
     'nvim-treesitter/nvim-treesitter-textobjects', -- Syntax aware text-objects, select, move, swap, and peek support.
-    'RRethy/nvim-treesitter-endwise', -- Wisely add "end" in Ruby, Vimscript, Lua, etc. Tree-sitter aware alternative to tpope's vim-endwise 
+    'RRethy/nvim-treesitter-endwise', -- Wisely add "end" in Ruby, Vimscript, Lua, etc. Tree-sitter aware alternative to tpope's vim-endwise
   })
 
   -- Keyboard

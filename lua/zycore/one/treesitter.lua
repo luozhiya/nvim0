@@ -32,7 +32,7 @@ local opts = {
   refactor = {
     smart_rename = { enable = true, keymaps = { smart_rename = 'grr' } },
     highlight_definitions = { enable = true },
-  },    
+  },
   context_commentstring = {
     enable = true,
     enable_autocmd = false,
@@ -110,7 +110,7 @@ local opts = {
       keymaps = {
         ['.'] = 'textsubjects-smart',
         [';'] = 'textsubjects-container-outer',
-        ['i;'] = 'textsubjects-container-inner',        
+        ['i;'] = 'textsubjects-container-inner',
         -- You can use the capture groups defined in textobjects.scm
         ['af'] = '@function.outer',
         ['if'] = '@function.inner',
@@ -123,7 +123,7 @@ local opts = {
         ['ib'] = '@block.inner',
         ['ab'] = '@block.outer',
         ['ir'] = '@parameter.inner',
-        ['ar'] = '@parameter.outer',        
+        ['ar'] = '@parameter.outer',
       },
       -- You can choose the select mode (default is charwise 'v')
       --

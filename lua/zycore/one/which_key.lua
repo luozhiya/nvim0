@@ -81,8 +81,8 @@ local opts = {
 -- vim.cmd([[
 -- function PackerInstallWithCompile()
 --      :PackerCompile
---      :PackerInstall 
--- endfunction  
+--      :PackerInstall
+-- endfunction
 -- ]])
 
 vim.api.nvim_create_user_command('PackerInstallWithCompile', function()
