@@ -30,7 +30,7 @@ local features_list = {
   'illuminate',
   'lualine',
   'bufferline',
-  -- 'nvim_autopairs',
+  -- 'nvim_autopairs', -- managed by packer
   'toggleterm',
   'project',
   'indent_blankline',
