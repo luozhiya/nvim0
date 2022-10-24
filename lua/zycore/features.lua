@@ -16,7 +16,7 @@ local features_list = {
   -- Plugin
   'sneak',
   'vim_bbye',
-  'cmp',
+  -- 'cmp', -- managed by packer
   'format',
   'formatter_nvim',
   -- 'comment', -- managed by packer

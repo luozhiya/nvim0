@@ -100,6 +100,7 @@ local function init()
     'JoosepAlviste/nvim-ts-context-commentstring', -- Neovim treesitter plugin for setting the commentstring based on the cursor location in a file.
     'p00f/nvim-ts-rainbow', -- Rainbow parentheses for neovim using tree-sitter.
     'nvim-treesitter/nvim-treesitter-textobjects', -- Syntax aware text-objects, select, move, swap, and peek support.
+    'RRethy/nvim-treesitter-endwise', -- Wisely add "end" in Ruby, Vimscript, Lua, etc. Tree-sitter aware alternative to tpope's vim-endwise 
   })
 
   -- Keyboard
@@ -210,7 +211,6 @@ local function init()
 
   -- Code
   use('RRethy/vim-illuminate') -- automatically highlighting other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.
-  use('windwp/nvim-autopairs') -- autopairs for neovim written by lua
   use('NMAC427/guess-indent.nvim') -- Automatic indentation style detection for Neovim
   use('norcalli/nvim-colorizer.lua') -- The fastest Neovim colorizer.
   use('ray-x/lsp_signature.nvim') -- LSP signature hint as you type
@@ -254,16 +254,26 @@ local function init()
   use('luozhiya/omegadark.nvim')
 
   -- Completion
-  use('hrsh7th/nvim-cmp') -- Autocompletion plugin
-  use('hrsh7th/cmp-buffer')
-  use('hrsh7th/cmp-path')
-  use('saadparwaiz1/cmp_luasnip')
-  use('hrsh7th/cmp-nvim-lsp') -- LSP source for nvim-cmp
-  use('hrsh7th/cmp-nvim-lua')
-  use('onsails/lspkind.nvim') -- vscode-like pictograms for neovim lsp completion items
-  use('PaterJason/cmp-conjure') -- nvim-cmp source for conjure.
-  use('hrsh7th/cmp-calc') -- nvim-cmp source for math calculation
-  use('hrsh7th/cmp-vsnip') -- nvim-cmp source for vim-vsnip
+  use({
+    'hrsh7th/nvim-cmp', -- Autocompletion plugin
+    requires = {
+      'hrsh7th/cmp-nvim-lsp', -- LSP source for nvim-cmp
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-nvim-lua',
+      'hrsh7th/cmp-calc',
+      'hrsh7th/cmp-vsnip', -- nvim-cmp source for vim-vsnip
+      'hrsh7th/cmp-nvim-lsp-signature-help',
+      'hrsh7th/cmp-nvim-lsp-document-symbol',
+      'hrsh7th/cmp-cmdline',
+      'saadparwaiz1/cmp_luasnip',
+      'onsails/lspkind.nvim', -- vscode-like pictograms for neovim lsp completion items
+      'PaterJason/cmp-conjure', -- nvim-cmp source for conjure.
+      'windwp/nvim-autopairs', -- autopairs for neovim written by lua
+    },
+    config = [[require('zycore.one.cmp')]],
+    event = 'InsertEnter',
+  })
 
   -- Snippets
   use('L3MON4D3/LuaSnip')
