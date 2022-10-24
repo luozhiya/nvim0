@@ -76,7 +76,7 @@ local function init()
 
   -- LSP
   use({
-    'neovim/nvim-lspconfig', -- Configurations for Nvim LSP    
+    'neovim/nvim-lspconfig', -- Configurations for Nvim LSP
     'williamboman/nvim-lsp-installer', -- Simple to install LSP servers
     {
       'https://git.sr.ht/~whynothugo/lsp_lines.nvim', -- Show nvim diagnostics using virtual lines
@@ -145,7 +145,7 @@ local function init()
         'nvim-telescope/telescope-ui-select.nvim', -- It sets vim.ui.select to telescope.
       },
       setup = [[require('zycore.one.telescope_setup')]], -- Specifies code to run before this plugin is loaded.
-      config = [[require('zycore.one.telescope')]], -- Specifies code to run after this plugin is loaded.     
+      config = [[require('zycore.one.telescope')]], -- Specifies code to run after this plugin is loaded.
       cmd = 'Telescope', -- Specifies commands which load this plugin. Can be an autocmd pattern.
       module = 'telescope', -- Specifies Lua module names for require.
     },
@@ -171,7 +171,7 @@ local function init()
   -- Commenting
   use({
     'numToStr/Comment.nvim',
-    setup = [[require('zycore.one.comment')]],    
+    setup = [[require('zycore.one.comment')]],
     event = 'User ActuallyEditing',
   }) -- Smart and powerful comment plugin for neovim
 
@@ -180,10 +180,10 @@ local function init()
     {
       'machakann/vim-sandwich', -- Set of operators and textobjects to search/select/edit sandwiched texts.
       event = 'User ActuallyEditing',
-    }, 
+    },
     {
-      'andymass/vim-matchup', 
-      setup = [[require('zycore.one.matchup')]], 
+      'andymass/vim-matchup',
+      setup = [[require('zycore.one.matchup')]],
       event = 'User ActuallyEditing',
     },
     'andrewferrier/wrapping.nvim', -- Plugin to make it easier to switch between 'soft' and 'hard' line wrapping in NeoVim
@@ -271,14 +271,14 @@ local function init()
     {
       'TimUntersberger/neogit', -- A work-in-progress Magit clone for Neovim that is geared toward the Vim philosophy.
       requires = 'nvim-lua/plenary.nvim',
-      cmd = 'Neogit', 
-      config = [[require('zycore.one.neogit_nvim')]] 
+      cmd = 'Neogit',
+      config = [[require('zycore.one.neogit_nvim')]],
     },
     {
       'akinsho/git-conflict.nvim', -- A plugin to visualise and resolve merge conflicts in neovim
       tag = '*',
-      config = [[require('zycore.one.git_conflict')]] 
-    },    
+      config = [[require('zycore.one.git_conflict')]],
+    },
   })
 
   -- Terminal

@@ -13,7 +13,7 @@ local xnoremap = hardworking.xnoremap
 -- ctrl-shfit-p/ctrl-p doesn't work in Windows
 if not hardworking.is_windows() then
   nnoremap('<c-p>', [[<cmd>Telescope buffers show_all_buffers=true theme=get_dropdown<cr>]])
-  nnoremap('<c-s-p>', [[<cmd>Telescope commands theme=get_dropdown<cr>]])  
+  nnoremap('<c-s-p>', [[<cmd>Telescope commands theme=get_dropdown<cr>]])
 else
   nnoremap('<c-p>', [[<cmd>Telescope commands theme=get_dropdown<cr>]])
 end
