@@ -156,9 +156,6 @@ local function init()
     'nvim-pack/nvim-spectre', -- Find the enemy and replace them with dark power.
   })
 
-  -- Project
-  use('ahmedkhalf/project.nvim')
-
   -- Indentation tracking
   use('lukas-reineke/indent-blankline.nvim') -- Indent guides for Neovim
 
@@ -171,9 +168,26 @@ local function init()
 
   -- Wrapping/delimiters
   use({
-    {'machakann/vim-sandwich', event = 'User ActuallyEditing'}, -- Set of operators and textobjects to search/select/edit sandwiched texts.
-    {'andymass/vim-matchup', setup = [[require('zycore.one.matchup')]], event = 'User ActuallyEditing'},
+    {
+      'machakann/vim-sandwich', -- Set of operators and textobjects to search/select/edit sandwiched texts.
+      event = 'User ActuallyEditing',
+    }, 
+    {
+      'andymass/vim-matchup', 
+      setup = [[require('zycore.one.matchup')]], 
+      event = 'User ActuallyEditing',
+    },
     'andrewferrier/wrapping.nvim', -- Plugin to make it easier to switch between 'soft' and 'hard' line wrapping in NeoVim
+  })
+
+  -- Project Management/Sessions
+  use('ahmedkhalf/project.nvim')
+
+  -- Undo tree
+  use({
+    'mbbill/undotree',
+    cmd = 'UndotreeToggle',
+    config = [[vim.g.undotree_SetFocusWhenToggle = 1]],
   })
 
   -- Code
