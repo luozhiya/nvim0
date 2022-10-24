@@ -265,6 +265,14 @@ local function init()
   end
 end
 
+-- Automatically compile after packer_nvim.lua modified.
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost packer_nvim.lua source <afile> | PackerCompile
+  augroup end
+]])
+
 local plugins = setmetatable({}, {
   __index = function(_, key)
     init()
