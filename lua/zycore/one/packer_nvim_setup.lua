@@ -30,5 +30,9 @@ create_cmd('PackerCompile', function()
   cmd([[packadd packer.nvim]])
   plugins.compile()
 end, {})
+create_cmd('PackerStatus', function()
+  cmd([[packadd packer.nvim]])
+  plugins.status()
+end, {})
 
 return M

@@ -1,5 +1,5 @@
-local treesitter_ok, treesitter = pcall(require, 'nvim-treesitter.configs')
-if not treesitter_ok then
+local ok, treesitter = pcall(require, 'nvim-treesitter.configs')
+if not ok then
   return
 end
 
@@ -12,12 +12,27 @@ else
 end
 
 local opts = {
+  auto_install = true,
   ensure_installed = ensure_installed, -- one of "all" or a list of languages
   ignore_install = { 'phpdoc', 'dart' }, -- List of parsers to ignore installing
   autopairs = {
     enable = true,
   },
   indent = { enable = true, disable = { 'python', 'css' } },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = '<cr>',
+      node_incremental = '<tab>',
+      scope_incremental = '<cr>',
+      scope_decremental = '<s-cr>',
+      node_decremental = '<s-tab>',
+    },
+  },
+  refactor = {
+    smart_rename = { enable = true, keymaps = { smart_rename = 'grr' } },
+    highlight_definitions = { enable = true },
+  },    
   context_commentstring = {
     enable = true,
     enable_autocmd = false,
@@ -93,6 +108,9 @@ local opts = {
       lookahead = true,
 
       keymaps = {
+        ['.'] = 'textsubjects-smart',
+        [';'] = 'textsubjects-container-outer',
+        ['i;'] = 'textsubjects-container-inner',        
         -- You can use the capture groups defined in textobjects.scm
         ['af'] = '@function.outer',
         ['if'] = '@function.inner',
@@ -100,6 +118,12 @@ local opts = {
         -- You can optionally set descriptions to the mappings (used in the desc parameter of
         -- nvim_buf_set_keymap) which plugins like which-key display
         ['ic'] = { query = '@class.inner', desc = 'Select inner part of a class region' },
+        ['al'] = '@loop.outer',
+        ['il'] = '@loop.inner',
+        ['ib'] = '@block.inner',
+        ['ab'] = '@block.outer',
+        ['ir'] = '@parameter.inner',
+        ['ar'] = '@parameter.outer',        
       },
       -- You can choose the select mode (default is charwise 'v')
       --
@@ -125,6 +149,7 @@ local opts = {
       include_surrounding_whitespace = true,
     },
   },
+  endwise = { enable = true },
 }
 
 treesitter.setup(opts)

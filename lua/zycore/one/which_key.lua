@@ -78,6 +78,20 @@ local opts = {
   nowait = true, -- use `nowait` when creating keymaps
 }
 
+-- vim.cmd([[
+-- function PackerInstallWithCompile()
+--      :PackerCompile
+--      :PackerInstall 
+-- endfunction  
+-- ]])
+
+vim.api.nvim_create_user_command('PackerInstallWithCompile', function()
+  vim.cmd([[
+  :PackerCompile
+  :PackerInstall
+  ]])
+end, {})
+
 local mappings = {
   ['a'] = { '<cmd>Alpha<cr>', 'Alpha' },
   ['b'] = {
@@ -102,7 +116,7 @@ local mappings = {
   p = {
     name = 'Packer',
     c = { '<cmd>PackerCompile<cr>', 'Compile' },
-    i = { '<cmd>PackerInstall<cr>', 'Install' },
+    i = { '<cmd>PackerInstallWithCompile<cr>', 'Install' },
     s = { '<cmd>PackerSync<cr>', 'Sync' },
     S = { '<cmd>PackerStatus<cr>', 'Status' },
     u = { '<cmd>PackerUpdate<cr>', 'Update' },

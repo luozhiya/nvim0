@@ -87,11 +87,20 @@ local function init()
     'kosayoda/nvim-lightbulb', -- VSCode 💡 for neovim's built-in LSP.
   })
 
-  -- treesitter
-  use('nvim-treesitter/nvim-treesitter') -- Nvim Treesitter configurations and abstraction layer
-  use('JoosepAlviste/nvim-ts-context-commentstring') -- Neovim treesitter plugin for setting the commentstring based on the cursor location in a file.
-  use('p00f/nvim-ts-rainbow') -- Rainbow parentheses for neovim using tree-sitter.
-  use('nvim-treesitter/nvim-treesitter-textobjects') -- Syntax aware text-objects, select, move, swap, and peek support.
+  -- Highlights/treesitter
+  use({
+    {
+      'nvim-treesitter/nvim-treesitter', -- Nvim Treesitter configurations and abstraction layer
+      requires = {
+        'nvim-treesitter/nvim-treesitter-refactor',
+        'RRethy/nvim-treesitter-textsubjects',
+      },
+      run = ':TSUpdate',
+    },
+    'JoosepAlviste/nvim-ts-context-commentstring', -- Neovim treesitter plugin for setting the commentstring based on the cursor location in a file.
+    'p00f/nvim-ts-rainbow', -- Rainbow parentheses for neovim using tree-sitter.
+    'nvim-treesitter/nvim-treesitter-textobjects', -- Syntax aware text-objects, select, move, swap, and peek support.
+  })
 
   -- Keyboard
   use('folke/which-key.nvim')
