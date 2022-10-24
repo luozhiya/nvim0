@@ -131,11 +131,16 @@ local function init()
 
   -- Quickfix
   use({
-    'Olical/vim-enmasse',
-    -- cmd = 'EnMasse',
-  }) -- Edit every line in a quickfix list at the same time
-  use('kevinhwang91/nvim-bqf') -- Better quickfix window in Neovim, polish old quickfix window.
-  use({ 'https://gitlab.com/yorickpeterse/nvim-pqf', as = 'nvim-pqf' }) -- Prettier quickfix/location list windows for NeoVim
+    {
+      'Olical/vim-enmasse', -- Edit every line in a quickfix list at the same time
+      cmd = 'EnMasse',
+    },
+    'kevinhwang91/nvim-bqf', -- Better quickfix window in Neovim, polish old quickfix window.
+    {
+      'https://gitlab.com/yorickpeterse/nvim-pqf', -- Prettier quickfix/location list windows for NeoVim
+      as = 'nvim-pqf',
+    },
+  })
 
   -- Registers
   use('tversteeg/registers.nvim') -- Neovim plugin to preview the contents of the registers
