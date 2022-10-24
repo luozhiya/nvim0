@@ -64,10 +64,13 @@ local function init()
   packer.reset()
 
   -- System
+  use({
+    'nvim-lua/plenary.nvim', -- Note that this library is useless outside of Neovim since it requires Neovim functions.
+    'lewis6991/impatient.nvim', -- Improve startup time for Neovim 
+  })
+
   -- Packer
-  use('wbthomason/packer.nvim')
-  use('nvim-lua/plenary.nvim') -- Note that this library is useless outside of Neovim since it requires Neovim functions.
-  use('lewis6991/impatient.nvim') -- Improve startup time for Neovim
+  use('wbthomason/packer.nvim')  
 
   -- Fennel
   use('Olical/aniseed') -- Neovim configuration and plugins in Fennel (Lisp compiled to Lua)
@@ -85,6 +88,8 @@ local function init()
     'nvim-lua/lsp-status.nvim', -- Utility functions for getting diagnostic status and progress messages from LSP servers, for use in the Neovim statusline
     'j-hui/fidget.nvim', -- Standalone UI for nvim-lsp progress
     'kosayoda/nvim-lightbulb', -- VSCode 💡 for neovim's built-in LSP.
+    'ray-x/lsp_signature.nvim', -- LSP signature hint as you type
+    'stevearc/aerial.nvim', -- Neovim plugin for a code outline window
   })
 
   -- Highlights/treesitter
@@ -213,7 +218,6 @@ local function init()
   use('RRethy/vim-illuminate') -- automatically highlighting other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.
   use('NMAC427/guess-indent.nvim') -- Automatic indentation style detection for Neovim
   use('norcalli/nvim-colorizer.lua') -- The fastest Neovim colorizer.
-  use('ray-x/lsp_signature.nvim') -- LSP signature hint as you type
   use('folke/trouble.nvim') -- 🚦 A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
   -- use('ericcurtin/CurtineIncSw.vim') -- Switch from *.c* to *.h* and vice versa
   -- use({
@@ -236,7 +240,6 @@ local function init()
   use('m-pilia/vim-ccls') -- supports some additional methods provided by ccls, which are not part of the standard Language Server Protocol (LSP)
   use('jackguo380/vim-lsp-cxx-highlight') -- semantic highlighting using the language server protocol.
   use('p00f/clangd_extensions.nvim') -- Clangd's off-spec features for neovim's LSP client.
-  use('stevearc/aerial.nvim') -- Neovim plugin for a code outline window
 
   -- Lua
   use('folke/lua-dev.nvim') -- Dev setup for init.lua and plugin development with full signature help, docs and completion for the nvim lua API.
