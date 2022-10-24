@@ -117,18 +117,23 @@ local function init()
   -- Pretty symbols
   use('kyazdani42/nvim-web-devicons')
 
-  -- UI/File tree/Status/Tab/Buffer
-  use('delphinus/dwm.nvim') -- Tiled Window Management
-  use('goolord/alpha-nvim')
-  use('kyazdani42/nvim-tree.lua')
-  use('nvim-lualine/lualine.nvim')
-  -- use('akinsho/bufferline.nvim')
-  use('luozhiya/bufferline.nvim')
-  use('moll/vim-bbye') -- Delete buffers and close files in Vim without closing your windows or messing up your layout.
-  use('kazhala/close-buffers.nvim') -- 📑 Delete multiple vim buffers based on different conditions
-  use('rcarriga/nvim-notify') -- A fancy, configurable, notification manager for NeoVim
-  use('monkoose/matchparen.nvim') -- alternative to default neovim matchparen plugin
-  use('Pocco81/true-zen.nvim') -- Clean and elegant distraction-free writing for NeoVim
+  -- Buffer
+  use({
+    'moll/vim-bbye', -- Delete buffers and close files in Vim without closing your windows or messing up your layout.
+    'kazhala/close-buffers.nvim', -- 📑 Delete multiple vim buffers based on different conditions
+  })
+
+  -- UI/File tree/Status/Tab
+  use({
+    'delphinus/dwm.nvim', -- Tiled Window Management
+    'goolord/alpha-nvim', -- a lua powered greeter like vim-startify / dashboard-nvim
+    'kyazdani42/nvim-tree.lua', -- A file explorer tree for neovim written in lua
+    'nvim-lualine/lualine.nvim', -- A blazing fast and easy to configure neovim statusline plugin written in pure lua.
+    -- 'akinsho/bufferline.nvim', -- A snazzy bufferline for Neovim
+    'luozhiya/bufferline.nvim',
+    'rcarriga/nvim-notify', -- A fancy, configurable, notification manager for NeoVim
+    'Pocco81/true-zen.nvim', -- Clean and elegant distraction-free writing for NeoVim
+  })
 
   -- Quickfix
   use({
@@ -209,6 +214,7 @@ local function init()
       setup = [[require('zycore.one.matchup')]],
       event = 'User ActuallyEditing',
     },
+    'monkoose/matchparen.nvim', -- alternative to default neovim matchparen plugin    
     'andrewferrier/wrapping.nvim', -- Plugin to make it easier to switch between 'soft' and 'hard' line wrapping in NeoVim
   })
 
@@ -222,16 +228,12 @@ local function init()
     config = [[vim.g.undotree_SetFocusWhenToggle = 1]],
   })
 
-  -- Code
-  use('RRethy/vim-illuminate') -- automatically highlighting other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.
-  use('NMAC427/guess-indent.nvim') -- Automatic indentation style detection for Neovim
-  use('norcalli/nvim-colorizer.lua') -- The fastest Neovim colorizer.
-  use('folke/trouble.nvim') -- 🚦 A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
-  -- use('ericcurtin/CurtineIncSw.vim') -- Switch from *.c* to *.h* and vice versa
-  -- use({
-  --   'jakemason/ouroboros.nvim',
-  --   requires = { { 'nvim-lua/plenary.nvim' } },
-  -- }) -- Allows quickly switching between header and implementation files for C/C++ in Neovim.
+  -- Visual Improved
+  use({
+    'RRethy/vim-illuminate', -- automatically highlighting other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.
+    'NMAC427/guess-indent.nvim', -- Automatic indentation style detection for Neovim
+    'norcalli/nvim-colorizer.lua', -- The fastest Neovim colorizer.
+  })
 
   -- Prettification
   use('junegunn/vim-easy-align') -- A Vim alignment plugin
@@ -251,6 +253,11 @@ local function init()
     'jackguo380/vim-lsp-cxx-highlight', -- semantic highlighting using the language server protocol.
     'p00f/clangd_extensions.nvim', -- Clangd's off-spec features for neovim's LSP client.
   })
+  -- use('ericcurtin/CurtineIncSw.vim') -- Switch from *.c* to *.h* and vice versa
+  -- use({
+  --   'jakemason/ouroboros.nvim',
+  --   requires = { { 'nvim-lua/plenary.nvim' } },
+  -- }) -- Allows quickly switching between header and implementation files for C/C++ in Neovim.  
 
   -- Lua
   use({
@@ -258,10 +265,13 @@ local function init()
     'jbyuki/one-small-step-for-vimkind', -- Debug adapter for Neovim plugins
   })
 
-  -- Debug
-  use('mfussenegger/nvim-dap')
-  use('rcarriga/nvim-dap-ui')
-  use('theHamsta/nvim-dap-virtual-text')
+  -- Debugging
+  use({
+    'mfussenegger/nvim-dap',
+    'rcarriga/nvim-dap-ui',
+    'theHamsta/nvim-dap-virtual-text',
+    'folke/trouble.nvim', -- 🚦 A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
+  })
 
   -- Colorscheme
   use({
