@@ -23,6 +23,7 @@ local features_list = {
   'autocommands',
   'nvim_tree',
   'which_key',
+  'sqlite',
   'telescope',
   'illuminate',
   'lualine',

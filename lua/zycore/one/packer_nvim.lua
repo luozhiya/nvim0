@@ -37,7 +37,7 @@ local function init()
       disable_commands = true,
       display = {
         open_fn = function()
-          local result, win, buf = require('packer.util').float {
+          local result, win, buf = require('packer.util').float({
             border = {
               { '╭', 'FloatBorder' },
               { '─', 'FloatBorder' },
@@ -48,11 +48,11 @@ local function init()
               { '╰', 'FloatBorder' },
               { '│', 'FloatBorder' },
             },
-          }
+          })
           vim.api.nvim_win_set_option(win, 'winhighlight', 'NormalFloat:Normal')
           return result, win, buf
         end,
-      },      
+      },
     })
   end
 
@@ -105,7 +105,7 @@ local function init()
     -- cmd = 'EnMasse',
   }) -- Edit every line in a quickfix list at the same time
   use('kevinhwang91/nvim-bqf') -- Better quickfix window in Neovim, polish old quickfix window.
-  use('https://gitlab.com/yorickpeterse/nvim-pqf') -- Prettier quickfix/location list windows for NeoVim
+  use({ 'https://gitlab.com/yorickpeterse/nvim-pqf', as = 'nvim-pqf' }) -- Prettier quickfix/location list windows for NeoVim
 
   -- Search / Easy VAX-like find
   use({
@@ -127,7 +127,8 @@ local function init()
     },
     {
       'nvim-telescope/telescope-fzf-native.nvim', -- FZF sorter for telescope written in c
-      run = 'make',
+      run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
+      -- run = 'make',
     },
     'crispgm/telescope-heading.nvim', -- An extension for telescope.nvim that allows you to switch between headings
     'nvim-telescope/telescope-file-browser.nvim', -- File Browser extension for telescope.nvim
