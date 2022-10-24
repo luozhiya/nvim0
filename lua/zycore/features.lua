@@ -25,6 +25,7 @@ local features_list = {
   'nvim_tree',
   'which_key',
   'sqlite',
+  -- 'telescope_setup', -- managed by packer
   -- 'telescope', -- managed by packer
   'illuminate',
   'lualine',
