@@ -118,10 +118,9 @@ local function init()
       'saadparwaiz1/cmp_luasnip',
       'onsails/lspkind.nvim', -- vscode-like pictograms for neovim lsp completion items
       'PaterJason/cmp-conjure', -- nvim-cmp source for conjure.
-      'windwp/nvim-autopairs', -- autopairs for neovim written by lua
     },
     config = [[require('zycore.one.cmp')]],
-    event = 'InsertEnter',
+    -- event = 'InsertEnter',
   })
 
   -- C++
@@ -251,6 +250,11 @@ local function init()
     },
     'monkoose/matchparen.nvim', -- alternative to default neovim matchparen plugin
     'andrewferrier/wrapping.nvim', -- Plugin to make it easier to switch between 'soft' and 'hard' line wrapping in NeoVim
+  })
+
+  -- Pair
+  use({
+    'windwp/nvim-autopairs', -- autopairs for neovim written by lua
   })
 
   -- Code Visual Improved
