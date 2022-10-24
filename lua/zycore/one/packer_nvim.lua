@@ -73,9 +73,11 @@ local function init()
   use('wbthomason/packer.nvim')  
 
   -- Fennel
-  use('Olical/aniseed') -- Neovim configuration and plugins in Fennel (Lisp compiled to Lua)
-  use('Olical/conjure') -- Interactive evaluation for Neovim (Clojure, Fennel, Janet, Racket, Hy, MIT Scheme, Guile)
-  -- use('rktjmp/hotpot.nvim') -- Carl Weathers #1 Neovim Plugin.
+  use({
+    'Olical/aniseed', -- Neovim configuration and plugins in Fennel (Lisp compiled to Lua)
+    'Olical/conjure', -- Interactive evaluation for Neovim (Clojure, Fennel, Janet, Racket, Hy, MIT Scheme, Guile)
+    -- 'rktjmp/hotpot.nvim', -- Carl Weathers #1 Neovim Plugin.
+  })
 
   -- LSP
   use({
