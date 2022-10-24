@@ -142,7 +142,7 @@ local function init()
     },
     {
       'nvim-telescope/telescope-frecency.nvim', -- A telescope.nvim extension that offers intelligent prioritization when selecting files from your editing history.
-      after = 'nvim-telescope/telescope.nvim',
+      -- after = 'nvim-telescope/telescope.nvim', -- cannot packadd
       requires = 'kkharji/sqlite.lua', -- SQLite LuaJIT binding with a very simple api.
     },
     {
