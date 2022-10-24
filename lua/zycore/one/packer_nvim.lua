@@ -92,6 +92,7 @@ local function init()
     'kosayoda/nvim-lightbulb', -- VSCode 💡 for neovim's built-in LSP.
     'ray-x/lsp_signature.nvim', -- LSP signature hint as you type
     'stevearc/aerial.nvim', -- Neovim plugin for a code outline window
+    'jose-elias-alvarez/null-ls.nvim', -- Inject LSP diagnostics, code actions, and more via Lua
   })
 
   -- Highlights/treesitter
@@ -236,12 +237,13 @@ local function init()
   use('junegunn/vim-easy-align') -- A Vim alignment plugin
 
   -- Format
-  use('jose-elias-alvarez/null-ls.nvim') -- Inject LSP diagnostics, code actions, and more via Lua
-  use('sbdchd/neoformat') -- why not use .clang-format?
-  use('rhysd/vim-clang-format')
-  use('cappyzawa/trim.nvim') --  trims trailing whitespace and lines
-  use('mhartington/formatter.nvim') --  A format runner for Neovim.
-  use('lukas-reineke/lsp-format.nvim') -- A wrapper around Neovims native LSP formatting.
+  use({
+    'sbdchd/neoformat', -- why not use .clang-format?
+    'rhysd/vim-clang-format',
+    'cappyzawa/trim.nvim', -- trims trailing whitespace and lines
+    'mhartington/formatter.nvim', -- A format runner for Neovim.
+    'lukas-reineke/lsp-format.nvim', -- A wrapper around Neovims native LSP formatting.
+  })
 
   -- C++
   use({
