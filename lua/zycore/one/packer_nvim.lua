@@ -105,22 +105,22 @@ local function init()
   use({
     'hrsh7th/nvim-cmp', -- Autocompletion plugin
     requires = {
-      'hrsh7th/cmp-nvim-lsp', -- LSP source for nvim-cmp
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-nvim-lua',
-      'hrsh7th/cmp-calc',
-      'hrsh7th/cmp-vsnip', -- nvim-cmp source for vim-vsnip
-      'hrsh7th/cmp-nvim-lsp-signature-help',
-      'hrsh7th/cmp-nvim-lsp-document-symbol',
-      'hrsh7th/cmp-cmdline',
-      'lukas-reineke/cmp-under-comparator',
-      'saadparwaiz1/cmp_luasnip',
-      'onsails/lspkind.nvim', -- vscode-like pictograms for neovim lsp completion items
-      'PaterJason/cmp-conjure', -- nvim-cmp source for conjure.
+      { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' }, -- LSP source for nvim-cmp
+      { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
+      { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
+      { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' },
+      { 'hrsh7th/cmp-calc', after = 'nvim-cmp' },
+      { 'hrsh7th/cmp-vsnip', after = 'nvim-cmp' }, -- nvim-cmp source for vim-vsnip
+      { 'hrsh7th/cmp-nvim-lsp-signature-help', after = 'nvim-cmp' },
+      { 'hrsh7th/cmp-nvim-lsp-document-symbol', after = 'nvim-cmp' },
+      { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
+      { 'lukas-reineke/cmp-under-comparator', after = 'nvim-cmp' },
+      { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
+      { 'onsails/lspkind.nvim', after = 'nvim-cmp' }, -- vscode-like pictograms for neovim lsp completion items
+      { 'PaterJason/cmp-conjure', after = 'nvim-cmp' }, -- nvim-cmp source for conjure.
     },
     config = [[require('zycore.one.cmp')]],
-    -- event = 'InsertEnter',
+    event = 'InsertEnter',
   })
 
   -- C++
@@ -255,6 +255,8 @@ local function init()
   -- Pair
   use({
     'windwp/nvim-autopairs', -- autopairs for neovim written by lua
+    after = 'nvim-cmp',
+    config = [[requires('zycore.one.nvim_autopairs')]],
   })
 
   -- Code Visual Improved
@@ -345,7 +347,6 @@ local function init()
 
   -- Terminal
   use('akinsho/toggleterm.nvim')
-
 end
 
 -- Automatically compile after packer_nvim.lua modified.
