@@ -252,8 +252,25 @@ local function init()
   use('rafamadriz/friendly-snippets')
 
   -- Git
-  use('lewis6991/gitsigns.nvim') -- Git integration for buffers
-  use({ 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }) -- A work-in-progress Magit clone for Neovim that is geared toward the Vim philosophy.
+  use({
+    {
+      'lewis6991/gitsigns.nvim', -- Git integration for buffers
+      requires = 'nvim-lua/plenary.nvim',
+      config = [[require('zycore.one.gitsigns')]],
+      event = 'User ActuallyEditing',
+    },
+    {
+      'TimUntersberger/neogit', -- A work-in-progress Magit clone for Neovim that is geared toward the Vim philosophy.
+      requires = 'nvim-lua/plenary.nvim',
+      cmd = 'Neogit', 
+      config = [[require('zycore.one.neogit_nvim')]] 
+    },
+    {
+      'akinsho/git-conflict.nvim', -- A plugin to visualise and resolve merge conflicts in neovim
+      tag = '*',
+      config = [[require('zycore.one.git_conflict')]] 
+    },    
+  })
 
   -- Terminal
   use('akinsho/toggleterm.nvim')

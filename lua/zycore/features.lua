@@ -35,7 +35,7 @@ local features_list = {
   'project',
   'indent_blankline',
   'alpha',
-  'gitsigns',
+  -- 'gitsigns', -- managed by packer
   'dap_nvim',
   'dapui',
   'trim',
@@ -52,7 +52,7 @@ local features_list = {
   'ouroboros',
   -- 'hotpot_nvim',
   'fidget_nvim',
-  'neogit_nvim',
+  -- 'neogit_nvim', -- managed by packer
   'lsp_lines_nvim',
   'true_zen',
   'matchparen_nvim',
