@@ -27,6 +27,10 @@ local ensure_packer = function()
   return false
 end
 
+-- Manager
+-- Setup
+-- Load
+-- Config
 local packer = nil
 local function init()
   if packer == nil then
@@ -117,7 +121,7 @@ local function init()
       requires = 'tpope/vim-repeat', -- enable repeating supported plugin maps with "."
     },
     'ggandor/flit.nvim', -- Enhanced f/t motions for Leap
-    'ggandor/leap-ast.nvim' -- Jump to, select and operate on AST nodes via the Leap interface with Treesitter (WIP)
+    'ggandor/leap-ast.nvim', -- Jump to, select and operate on AST nodes via the Leap interface with Treesitter (WIP)
   })
 
   -- Search / Easy VAX-like find
@@ -131,11 +135,14 @@ local function init()
         'nvim-telescope/telescope-fzf-native.nvim',
         'nvim-telescope/telescope-ui-select.nvim', -- It sets vim.ui.select to telescope.
       },
-      -- cmd = 'Telescope', -- Specifies commands which load this plugin. Can be an autocmd pattern.
+      setup = [[require('zycore.one.telescope_setup')]], -- Specifies code to run before this plugin is loaded.
+      config = [[require('zycore.one.telescope')]], -- Specifies code to run after this plugin is loaded.     
+      cmd = 'Telescope', -- Specifies commands which load this plugin. Can be an autocmd pattern.
+      module = 'telescope', -- Specifies Lua module names for require.
     },
     {
       'nvim-telescope/telescope-frecency.nvim', -- A telescope.nvim extension that offers intelligent prioritization when selecting files from your editing history.
-      -- after = 'telescope.nvim',
+      after = 'nvim-telescope/telescope.nvim',
       requires = 'kkharji/sqlite.lua', -- SQLite LuaJIT binding with a very simple api.
     },
     {
@@ -156,12 +163,16 @@ local function init()
   use('lukas-reineke/indent-blankline.nvim') -- Indent guides for Neovim
 
   -- Commenting
-  use('numToStr/Comment.nvim') -- Smart and powerful comment plugin for neovim
+  use({
+    'numToStr/Comment.nvim',
+    setup = [[require('zycore.one.comment')]],    
+    event = 'User ActuallyEditing',
+  }) -- Smart and powerful comment plugin for neovim
 
   -- Wrapping/delimiters
   use({
-    {'machakann/vim-sandwich'}, -- Set of operators and textobjects to search/select/edit sandwiched texts.
-    {'andymass/vim-matchup'},
+    {'machakann/vim-sandwich', event = 'User ActuallyEditing'}, -- Set of operators and textobjects to search/select/edit sandwiched texts.
+    {'andymass/vim-matchup', setup = [[require('zycore.one.matchup')]], event = 'User ActuallyEditing'},
     'andrewferrier/wrapping.nvim', -- Plugin to make it easier to switch between 'soft' and 'hard' line wrapping in NeoVim
   })
 

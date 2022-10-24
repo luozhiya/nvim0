@@ -19,13 +19,13 @@ local features_list = {
   'cmp',
   'format',
   'formatter_nvim',
-  'comment',
+  -- 'comment', -- managed by packer
   'treesitter',
   'autocommands',
   'nvim_tree',
   'which_key',
   'sqlite',
-  'telescope',
+  -- 'telescope', -- managed by packer
   'illuminate',
   'lualine',
   'bufferline',
