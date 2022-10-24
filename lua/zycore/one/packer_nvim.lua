@@ -63,6 +63,12 @@ local function init()
   local use = packer.use
   packer.reset()
 
+  -- Core
+  -- Coding
+  -- Move
+  -- UI
+  -- Extern
+
   -- System
   use({
     'nvim-lua/plenary.nvim', -- Note that this library is useless outside of Neovim since it requires Neovim functions.
@@ -95,6 +101,55 @@ local function init()
     'jose-elias-alvarez/null-ls.nvim', -- Inject LSP diagnostics, code actions, and more via Lua
   })
 
+  -- Completion
+  use({
+    'hrsh7th/nvim-cmp', -- Autocompletion plugin
+    requires = {
+      'hrsh7th/cmp-nvim-lsp', -- LSP source for nvim-cmp
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-nvim-lua',
+      'hrsh7th/cmp-calc',
+      'hrsh7th/cmp-vsnip', -- nvim-cmp source for vim-vsnip
+      'hrsh7th/cmp-nvim-lsp-signature-help',
+      'hrsh7th/cmp-nvim-lsp-document-symbol',
+      'hrsh7th/cmp-cmdline',
+      'lukas-reineke/cmp-under-comparator',
+      'saadparwaiz1/cmp_luasnip',
+      'onsails/lspkind.nvim', -- vscode-like pictograms for neovim lsp completion items
+      'PaterJason/cmp-conjure', -- nvim-cmp source for conjure.
+      'windwp/nvim-autopairs', -- autopairs for neovim written by lua
+    },
+    config = [[require('zycore.one.cmp')]],
+    event = 'InsertEnter',
+  })
+
+  -- C++
+  use({
+    'm-pilia/vim-ccls', -- supports some additional methods provided by ccls, which are not part of the standard Language Server Protocol (LSP)
+    'jackguo380/vim-lsp-cxx-highlight', -- semantic highlighting using the language server protocol.
+    'p00f/clangd_extensions.nvim', -- Clangd's off-spec features for neovim's LSP client.
+  })
+  -- use('ericcurtin/CurtineIncSw.vim') -- Switch from *.c* to *.h* and vice versa
+  -- use({
+  --   'jakemason/ouroboros.nvim',
+  --   requires = { { 'nvim-lua/plenary.nvim' } },
+  -- }) -- Allows quickly switching between header and implementation files for C/C++ in Neovim.
+
+  -- Lua
+  use({
+    'folke/lua-dev.nvim', -- Dev setup for init.lua and plugin development with full signature help, docs and completion for the nvim lua API.
+    'jbyuki/one-small-step-for-vimkind', -- Debug adapter for Neovim plugins
+  })
+
+  -- Debugging
+  use({
+    'mfussenegger/nvim-dap',
+    'rcarriga/nvim-dap-ui',
+    'theHamsta/nvim-dap-virtual-text',
+    'folke/trouble.nvim', -- 🚦 A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
+  })
+
   -- Highlights/treesitter
   use({
     {
@@ -109,56 +164,6 @@ local function init()
     'p00f/nvim-ts-rainbow', -- Rainbow parentheses for neovim using tree-sitter.
     'nvim-treesitter/nvim-treesitter-textobjects', -- Syntax aware text-objects, select, move, swap, and peek support.
     'RRethy/nvim-treesitter-endwise', -- Wisely add "end" in Ruby, Vimscript, Lua, etc. Tree-sitter aware alternative to tpope's vim-endwise
-  })
-
-  -- Keyboard
-  use('folke/which-key.nvim')
-
-  -- Pretty symbols
-  use('kyazdani42/nvim-web-devicons')
-
-  -- Buffer
-  use({
-    'moll/vim-bbye', -- Delete buffers and close files in Vim without closing your windows or messing up your layout.
-    'kazhala/close-buffers.nvim', -- 📑 Delete multiple vim buffers based on different conditions
-  })
-
-  -- UI/File tree/Status/Tab
-  use({
-    'delphinus/dwm.nvim', -- Tiled Window Management
-    'goolord/alpha-nvim', -- a lua powered greeter like vim-startify / dashboard-nvim
-    'kyazdani42/nvim-tree.lua', -- A file explorer tree for neovim written in lua
-    'nvim-lualine/lualine.nvim', -- A blazing fast and easy to configure neovim statusline plugin written in pure lua.
-    -- 'akinsho/bufferline.nvim', -- A snazzy bufferline for Neovim
-    'luozhiya/bufferline.nvim',
-    'rcarriga/nvim-notify', -- A fancy, configurable, notification manager for NeoVim
-    'Pocco81/true-zen.nvim', -- Clean and elegant distraction-free writing for NeoVim
-  })
-
-  -- Quickfix
-  use({
-    {
-      'Olical/vim-enmasse', -- Edit every line in a quickfix list at the same time
-      cmd = 'EnMasse',
-    },
-    'kevinhwang91/nvim-bqf', -- Better quickfix window in Neovim, polish old quickfix window.
-    {
-      'https://gitlab.com/yorickpeterse/nvim-pqf', -- Prettier quickfix/location list windows for NeoVim
-      as = 'nvim-pqf',
-    },
-  })
-
-  -- Registers
-  use('tversteeg/registers.nvim') -- Neovim plugin to preview the contents of the registers
-
-  -- Movement
-  use({
-    {
-      'ggandor/leap.nvim', -- Neovim's answer to the mouse: a "clairvoyant" interface that makes on-screen jumps quicker and more natural than ever
-      requires = 'tpope/vim-repeat', -- enable repeating supported plugin maps with "."
-    },
-    'ggandor/flit.nvim', -- Enhanced f/t motions for Leap
-    'ggandor/leap-ast.nvim', -- Jump to, select and operate on AST nodes via the Leap interface with Treesitter (WIP)
   })
 
   -- Search / Easy VAX-like find
@@ -193,8 +198,32 @@ local function init()
     'nvim-pack/nvim-spectre', -- Find the enemy and replace them with dark power.
   })
 
+  -- Buffer
+  use({
+    'moll/vim-bbye', -- Delete buffers and close files in Vim without closing your windows or messing up your layout.
+    'kazhala/close-buffers.nvim', -- 📑 Delete multiple vim buffers based on different conditions
+  })
+
+  -- Registers
+  use('tversteeg/registers.nvim') -- Neovim plugin to preview the contents of the registers
+
   -- Indentation tracking
-  use('lukas-reineke/indent-blankline.nvim') -- Indent guides for Neovim
+  use({
+    'lukas-reineke/indent-blankline.nvim', -- Indent guides for Neovim
+    'NMAC427/guess-indent.nvim', -- Automatic indentation style detection for Neovim
+  })
+
+  -- Format
+  use({
+    'sbdchd/neoformat', -- why not use .clang-format?
+    'rhysd/vim-clang-format',
+    'cappyzawa/trim.nvim', -- trims trailing whitespace and lines
+    'mhartington/formatter.nvim', -- A format runner for Neovim.
+    'lukas-reineke/lsp-format.nvim', -- A wrapper around Neovims native LSP formatting.
+  })
+
+  -- Prettification
+  use('junegunn/vim-easy-align') -- A Vim alignment plugin
 
   -- Commenting
   use({
@@ -202,6 +231,12 @@ local function init()
     setup = [[require('zycore.one.comment')]],
     event = 'User ActuallyEditing',
   }) -- Smart and powerful comment plugin for neovim
+
+  -- Snippets
+  use({
+    'L3MON4D3/LuaSnip',
+    'rafamadriz/friendly-snippets',
+  })
 
   -- Wrapping/delimiters
   use({
@@ -214,12 +249,41 @@ local function init()
       setup = [[require('zycore.one.matchup')]],
       event = 'User ActuallyEditing',
     },
-    'monkoose/matchparen.nvim', -- alternative to default neovim matchparen plugin    
+    'monkoose/matchparen.nvim', -- alternative to default neovim matchparen plugin
     'andrewferrier/wrapping.nvim', -- Plugin to make it easier to switch between 'soft' and 'hard' line wrapping in NeoVim
   })
 
-  -- Project Management/Sessions
-  use('ahmedkhalf/project.nvim')
+  -- Code Visual Improved
+  use({
+    'RRethy/vim-illuminate', -- automatically highlighting other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.
+    'norcalli/nvim-colorizer.lua', -- The fastest Neovim colorizer.
+  })
+
+  -- Keyboard
+  use('folke/which-key.nvim')
+
+  -- Movement
+  use({
+    {
+      'ggandor/leap.nvim', -- Neovim's answer to the mouse: a "clairvoyant" interface that makes on-screen jumps quicker and more natural than ever
+      requires = 'tpope/vim-repeat', -- enable repeating supported plugin maps with "."
+    },
+    'ggandor/flit.nvim', -- Enhanced f/t motions for Leap
+    'ggandor/leap-ast.nvim', -- Jump to, select and operate on AST nodes via the Leap interface with Treesitter (WIP)
+  })
+
+  -- Quickfix
+  use({
+    {
+      'Olical/vim-enmasse', -- Edit every line in a quickfix list at the same time
+      cmd = 'EnMasse',
+    },
+    'kevinhwang91/nvim-bqf', -- Better quickfix window in Neovim, polish old quickfix window.
+    {
+      'https://gitlab.com/yorickpeterse/nvim-pqf', -- Prettier quickfix/location list windows for NeoVim
+      as = 'nvim-pqf',
+    },
+  })
 
   -- Undo tree
   use({
@@ -228,49 +292,22 @@ local function init()
     config = [[vim.g.undotree_SetFocusWhenToggle = 1]],
   })
 
-  -- Visual Improved
-  use({
-    'RRethy/vim-illuminate', -- automatically highlighting other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.
-    'NMAC427/guess-indent.nvim', -- Automatic indentation style detection for Neovim
-    'norcalli/nvim-colorizer.lua', -- The fastest Neovim colorizer.
-  })
+  -- Project Management/Sessions
+  use('ahmedkhalf/project.nvim')
 
-  -- Prettification
-  use('junegunn/vim-easy-align') -- A Vim alignment plugin
+  -- Pretty symbols
+  use('kyazdani42/nvim-web-devicons')
 
-  -- Format
+  -- UI/File tree/Status/Tab
   use({
-    'sbdchd/neoformat', -- why not use .clang-format?
-    'rhysd/vim-clang-format',
-    'cappyzawa/trim.nvim', -- trims trailing whitespace and lines
-    'mhartington/formatter.nvim', -- A format runner for Neovim.
-    'lukas-reineke/lsp-format.nvim', -- A wrapper around Neovims native LSP formatting.
-  })
-
-  -- C++
-  use({
-    'm-pilia/vim-ccls', -- supports some additional methods provided by ccls, which are not part of the standard Language Server Protocol (LSP)
-    'jackguo380/vim-lsp-cxx-highlight', -- semantic highlighting using the language server protocol.
-    'p00f/clangd_extensions.nvim', -- Clangd's off-spec features for neovim's LSP client.
-  })
-  -- use('ericcurtin/CurtineIncSw.vim') -- Switch from *.c* to *.h* and vice versa
-  -- use({
-  --   'jakemason/ouroboros.nvim',
-  --   requires = { { 'nvim-lua/plenary.nvim' } },
-  -- }) -- Allows quickly switching between header and implementation files for C/C++ in Neovim.  
-
-  -- Lua
-  use({
-    'folke/lua-dev.nvim', -- Dev setup for init.lua and plugin development with full signature help, docs and completion for the nvim lua API.
-    'jbyuki/one-small-step-for-vimkind', -- Debug adapter for Neovim plugins
-  })
-
-  -- Debugging
-  use({
-    'mfussenegger/nvim-dap',
-    'rcarriga/nvim-dap-ui',
-    'theHamsta/nvim-dap-virtual-text',
-    'folke/trouble.nvim', -- 🚦 A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
+    'delphinus/dwm.nvim', -- Tiled Window Management
+    'goolord/alpha-nvim', -- a lua powered greeter like vim-startify / dashboard-nvim
+    'kyazdani42/nvim-tree.lua', -- A file explorer tree for neovim written in lua
+    'nvim-lualine/lualine.nvim', -- A blazing fast and easy to configure neovim statusline plugin written in pure lua.
+    -- 'akinsho/bufferline.nvim', -- A snazzy bufferline for Neovim
+    'luozhiya/bufferline.nvim',
+    'rcarriga/nvim-notify', -- A fancy, configurable, notification manager for NeoVim
+    'Pocco81/true-zen.nvim', -- Clean and elegant distraction-free writing for NeoVim
   })
 
   -- Colorscheme
@@ -279,35 +316,6 @@ local function init()
     -- 'lunarvim/darkplus.nvim',
     'luozhiya/darkplus.nvim',
     'luozhiya/omegadark.nvim',
-  })
-
-  -- Completion
-  use({
-    'hrsh7th/nvim-cmp', -- Autocompletion plugin
-    requires = {
-      'hrsh7th/cmp-nvim-lsp', -- LSP source for nvim-cmp
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-nvim-lua',
-      'hrsh7th/cmp-calc',
-      'hrsh7th/cmp-vsnip', -- nvim-cmp source for vim-vsnip
-      'hrsh7th/cmp-nvim-lsp-signature-help',
-      'hrsh7th/cmp-nvim-lsp-document-symbol',
-      'hrsh7th/cmp-cmdline',
-      'lukas-reineke/cmp-under-comparator',
-      'saadparwaiz1/cmp_luasnip',
-      'onsails/lspkind.nvim', -- vscode-like pictograms for neovim lsp completion items
-      'PaterJason/cmp-conjure', -- nvim-cmp source for conjure.
-      'windwp/nvim-autopairs', -- autopairs for neovim written by lua
-    },
-    config = [[require('zycore.one.cmp')]],
-    event = 'InsertEnter',
-  })
-
-  -- Snippets
-  use({
-    'L3MON4D3/LuaSnip',
-    'rafamadriz/friendly-snippets',
   })
 
   -- Git
