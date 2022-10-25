@@ -268,8 +268,10 @@ local function init()
   -- Commenting
   use({
     'numToStr/Comment.nvim', -- Smart and powerful comment plugin for neovim
-    -- config = [[require('zycore.one.comment')]],
-    -- event = 'User ActuallyEditing',
+    setup = [[require('zycore.one.comment_setup')]],
+    config = [[require('zycore.one.comment')]],
+    event = 'BufReadPost',
+    -- event = 'User ActuallyEditing', -- doesn't work
   })
 
   -- Snippets
@@ -282,12 +284,12 @@ local function init()
   use({
     {
       'machakann/vim-sandwich', -- Set of operators and textobjects to search/select/edit sandwiched texts.
-      event = 'User ActuallyEditing',
+      event = 'BufReadPost',
     },
     {
       'andymass/vim-matchup',
       config = [[require('zycore.one.matchup')]],
-      event = 'User ActuallyEditing',
+      event = 'BufReadPost',
     },
     'monkoose/matchparen.nvim', -- alternative to default neovim matchparen plugin
     'andrewferrier/wrapping.nvim', -- Plugin to make it easier to switch between 'soft' and 'hard' line wrapping in NeoVim
@@ -371,7 +373,7 @@ local function init()
       'lewis6991/gitsigns.nvim', -- Git integration for buffers
       requires = 'nvim-lua/plenary.nvim',
       config = [[require('zycore.one.gitsigns')]],
-      event = 'User ActuallyEditing',
+      event = 'BufReadPost',
     },
     {
       'TimUntersberger/neogit', -- A work-in-progress Magit clone for Neovim that is geared toward the Vim philosophy.

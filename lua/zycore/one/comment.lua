@@ -1,9 +1,6 @@
-local ok, comment = pcall(require, 'Comment')
-if not ok then
-  return
-end
+local comment = require('Comment')
 
-comment.setup({
+local opts = {
   ---Add a space b/w comment and the line
   padding = true,
   ---Whether the cursor should stay at its position
@@ -67,7 +64,9 @@ comment.setup({
 
   ---Function to call after (un)comment
   post_hook = nil,
-})
+}
+
+comment.setup(opts)
 
 -- local opts = { noremap = true, silent = true }
 -- local keymap = vim.api.nvim_set_keymap
@@ -75,13 +74,6 @@ comment.setup({
 --     vim.api.nvim_set_keymap('n', lhs, rhs, opts)
 -- end
 -- nnoremap("<C-\\>", "gcc")
-
-vim.cmd([[
-" xnoremap <A-\> gcc
-nmap <A-\> gcc
-vmap <A-\> gc
-" imap <A-\> <ESC>:gcc
-]])
 
 local dash = '--%s'
 local dash_bracket = '--[[%s]]'
