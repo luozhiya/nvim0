@@ -43,7 +43,7 @@ local features_list = {
   'number',
   'guess_indent',
   'null_ls',
-  'lua_dev',
+  -- 'lua_dev', -- managed by packer
   'colorizer',
   'aerial',
   'lsp_signature_nvim',
@@ -62,8 +62,8 @@ local features_list = {
   'easy_align',
 
   -- LSP
-  'clangd_extensions',
-  'lsp',
+  -- 'clangd_extensions', -- managed by packer
+  -- 'lsp', -- managed by packer
   'nvim_lightbulb',
 
   -- UI/Misc

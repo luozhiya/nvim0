@@ -87,7 +87,14 @@ local function init()
 
   -- LSP
   use({
-    'neovim/nvim-lspconfig', -- Configurations for Nvim LSP
+    { 
+      'neovim/nvim-lspconfig', -- Configurations for Nvim LSP
+      -- after = {
+      --   'cmp-nvim-lsp',
+      --   'nvim-lsp-installer',
+      -- },
+      config = [[require('zycore.one.lsp')]],
+    },
     'williamboman/nvim-lsp-installer', -- Simple to install LSP servers
     {
       'https://git.sr.ht/~whynothugo/lsp_lines.nvim', -- Show nvim diagnostics using virtual lines
@@ -114,9 +121,9 @@ local function init()
       { 'hrsh7th/cmp-nvim-lsp-signature-help', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-nvim-lsp-document-symbol', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
-      { 'lukas-reineke/cmp-under-comparator', after = 'nvim-cmp' },
-      { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
-      { 'onsails/lspkind.nvim', after = 'nvim-cmp' }, -- vscode-like pictograms for neovim lsp completion items
+      { 'lukas-reineke/cmp-under-comparator' },
+      { 'saadparwaiz1/cmp_luasnip' },
+      { 'onsails/lspkind.nvim' }, -- vscode-like pictograms for neovim lsp completion items
       { 'PaterJason/cmp-conjure', after = 'nvim-cmp' }, -- nvim-cmp source for conjure.
     },
     config = [[require('zycore.one.cmp')]],
@@ -127,7 +134,11 @@ local function init()
   use({
     'm-pilia/vim-ccls', -- supports some additional methods provided by ccls, which are not part of the standard Language Server Protocol (LSP)
     'jackguo380/vim-lsp-cxx-highlight', -- semantic highlighting using the language server protocol.
-    'p00f/clangd_extensions.nvim', -- Clangd's off-spec features for neovim's LSP client.
+    { 
+      'p00f/clangd_extensions.nvim', -- Clangd's off-spec features for neovim's LSP client.
+      after = 'cmp-nvim-lsp',
+      config = [[require('zycore.one.clangd_extensions')]],
+    },
   })
   -- use('ericcurtin/CurtineIncSw.vim') -- Switch from *.c* to *.h* and vice versa
   -- use({
@@ -137,7 +148,7 @@ local function init()
 
   -- Lua
   use({
-    'folke/lua-dev.nvim', -- Dev setup for init.lua and plugin development with full signature help, docs and completion for the nvim lua API.
+    { 'folke/lua-dev.nvim', after = 'nvim-lspconfig', }, -- Dev setup for init.lua and plugin development with full signature help, docs and completion for the nvim lua API.
     'jbyuki/one-small-step-for-vimkind', -- Debug adapter for Neovim plugins
   })
 
@@ -256,7 +267,7 @@ local function init()
   use({
     'windwp/nvim-autopairs', -- autopairs for neovim written by lua
     after = 'nvim-cmp',
-    config = [[requires('zycore.one.nvim_autopairs')]],
+    config = [[require('zycore.one.nvim_autopairs')]],
   })
 
   -- Code Visual Improved
