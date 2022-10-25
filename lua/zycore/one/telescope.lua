@@ -1,12 +1,9 @@
-local ok, telescope = pcall(require, 'telescope')
-if not ok then
-  return
-end
-
+local telescope = require('telescope')
 local actions = require('telescope.actions')
+
 local fb_actions = telescope.extensions.file_browser.actions
 
-telescope.setup({
+local opts = {
   defaults = {
     prompt_prefix = ' ',
     -- selection_caret = ' ',
@@ -151,26 +148,7 @@ telescope.setup({
       },
     },
   },
-})
+}
 
--- This will load fzy_native and have it override the default file sorter
--- workaround to load frecency manual
-vim.cmd([[packadd telescope-frecency.nvim]])
-telescope.load_extension('frecency')
-
-vim.cmd([[packadd telescope-fzf-native.nvim]])
-telescope.load_extension('fzf')
-
-vim.cmd([[packadd telescope-live-grep-args.nvim]])
-telescope.load_extension('live_grep_args')
-
-vim.cmd([[packadd telescope-ui-select.nvim]])
-telescope.load_extension('ui-select')
-
-vim.cmd([[packadd telescope-heading.nvim]])
-telescope.load_extension('heading')
-
--- vim.cmd([[packadd telescope-file-browser.nvim]])
-telescope.load_extension('file_browser')
-
+telescope.setup(opts)
 telescope.load_extension('notify')

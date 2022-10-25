@@ -206,28 +206,34 @@ local function init()
       'nvim-telescope/telescope-frecency.nvim', -- A telescope.nvim extension that offers intelligent prioritization when selecting files from your editing history.
       after = 'telescope.nvim', -- module name, not github short path
       requires = 'kkharji/sqlite.lua', -- SQLite LuaJIT binding with a very simple api.
+      config = [[require('telescope').load_extension('frecency')]],
     },
     {
       'nvim-telescope/telescope-fzf-native.nvim', -- FZF sorter for telescope written in c
       after = 'telescope.nvim',
       run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
+      config = [[require('telescope').load_extension('fzf')]],
       -- run = 'make',
     },
     {
       'crispgm/telescope-heading.nvim', -- An extension for telescope.nvim that allows you to switch between headings
       after = 'telescope.nvim',
+      config = [[require('telescope').load_extension('heading')]],
     },
     {
       'nvim-telescope/telescope-file-browser.nvim', -- File Browser extension for telescope.nvim
-      -- after = 'telescope.nvim', -- ??
+      after = 'telescope.nvim', -- ??
+      config = [[require('telescope').load_extension('file_browser')]],
     },
     {
       'nvim-telescope/telescope-live-grep-args.nvim', -- Live grep with args
       after = 'telescope.nvim',
+      config = [[require('telescope').load_extension('live_grep_args')]],
     },
     {
       'nvim-telescope/telescope-ui-select.nvim', -- It sets vim.ui.select to telescope.
       after = 'telescope.nvim',
+      config = [[require('telescope').load_extension('ui-select')]],
     },
     { 'nvim-pack/nvim-spectre' }, -- Find the enemy and replace them with dark power.
   })
