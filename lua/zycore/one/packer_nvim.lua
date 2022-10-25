@@ -137,6 +137,7 @@ local function init()
     'm-pilia/vim-ccls', -- supports some additional methods provided by ccls, which are not part of the standard Language Server Protocol (LSP)
     'jackguo380/vim-lsp-cxx-highlight', -- semantic highlighting using the language server protocol.
     {
+      -- cycle references
       'p00f/clangd_extensions.nvim', -- Clangd's off-spec features for neovim's LSP client.
       after = {
         'cmp-nvim-lsp',
@@ -190,9 +191,13 @@ local function init()
         'nvim-lua/plenary.nvim',
         'nvim-telescope/telescope-frecency.nvim',
         'nvim-telescope/telescope-fzf-native.nvim',
-        'nvim-telescope/telescope-ui-select.nvim', -- It sets vim.ui.select to telescope.
+        'nvim-telescope/telescope-ui-select.nvim',
+        'crispgm/telescope-heading.nvim',
+        'nvim-telescope/telescope-file-browser.nvim',
+        'nvim-telescope/telescope-live-grep-args.nvim',
       },
       setup = [[require('zycore.one.telescope_setup')]], -- Specifies code to run before this plugin is loaded.
+      -- timeline: setup -> config -> after
       config = [[require('zycore.one.telescope')]], -- Specifies code to run after this plugin is loaded.
       cmd = 'Telescope', -- Specifies commands which load this plugin. Can be an autocmd pattern.
       module = 'telescope', -- Specifies Lua module names for require.
@@ -204,13 +209,27 @@ local function init()
     },
     {
       'nvim-telescope/telescope-fzf-native.nvim', -- FZF sorter for telescope written in c
+      after = 'telescope.nvim',
       run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
       -- run = 'make',
     },
-    'crispgm/telescope-heading.nvim', -- An extension for telescope.nvim that allows you to switch between headings
-    'nvim-telescope/telescope-file-browser.nvim', -- File Browser extension for telescope.nvim
-    'nvim-telescope/telescope-live-grep-args.nvim', -- Live grep with args
-    'nvim-pack/nvim-spectre', -- Find the enemy and replace them with dark power.
+    {
+      'crispgm/telescope-heading.nvim', -- An extension for telescope.nvim that allows you to switch between headings
+      after = 'telescope.nvim',
+    },
+    {
+      'nvim-telescope/telescope-file-browser.nvim', -- File Browser extension for telescope.nvim
+      -- after = 'telescope.nvim', -- ??
+    },
+    {
+      'nvim-telescope/telescope-live-grep-args.nvim', -- Live grep with args
+      after = 'telescope.nvim',
+    },
+    {
+      'nvim-telescope/telescope-ui-select.nvim', -- It sets vim.ui.select to telescope.
+      after = 'telescope.nvim',
+    },
+    { 'nvim-pack/nvim-spectre' }, -- Find the enemy and replace them with dark power.
   })
 
   -- Buffer

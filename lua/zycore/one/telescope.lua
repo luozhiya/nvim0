@@ -155,11 +155,22 @@ telescope.setup({
 
 -- This will load fzy_native and have it override the default file sorter
 -- workaround to load frecency manual
--- vim.cmd([[packadd telescope-frecency.nvim]])
+vim.cmd([[packadd telescope-frecency.nvim]])
 telescope.load_extension('frecency')
+
+vim.cmd([[packadd telescope-fzf-native.nvim]])
 telescope.load_extension('fzf')
+
+vim.cmd([[packadd telescope-live-grep-args.nvim]])
 telescope.load_extension('live_grep_args')
+
+vim.cmd([[packadd telescope-ui-select.nvim]])
 telescope.load_extension('ui-select')
-telescope.load_extension('notify')
+
+vim.cmd([[packadd telescope-heading.nvim]])
 telescope.load_extension('heading')
+
+-- vim.cmd([[packadd telescope-file-browser.nvim]])
 telescope.load_extension('file_browser')
+
+telescope.load_extension('notify')
