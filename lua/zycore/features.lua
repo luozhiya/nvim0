@@ -53,7 +53,7 @@ local features_list = {
   -- 'hotpot_nvim',
   -- 'fidget_nvim', -- managed by packer
   -- 'neogit_nvim', -- managed by packer
-  -- 'lsp_lines_nvim',
+  -- 'lsp_lines_nvim', -- managed by packer
   'true_zen',
   'matchparen_nvim',
   'nvim_spectre',
