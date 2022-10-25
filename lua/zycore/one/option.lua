@@ -22,6 +22,7 @@ local hardworking = require('zycore.base.hardworking')
 -- -- print(vim.opt.packpath)
 
 -- Skip some remote provider loading
+g.loaded = 1
 g.loaded_python3_provider = 0
 g.loaded_node_provider = 0
 g.loaded_perl_provider = 0
