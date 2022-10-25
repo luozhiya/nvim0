@@ -42,18 +42,18 @@ local features_list = {
   'wrapping',
   'number',
   'guess_indent',
-  'null_ls',
+  -- 'null_ls', -- managed by packer
   -- 'lua_dev', -- managed by packer
   'colorizer',
-  'aerial',
-  'lsp_signature_nvim',
+  -- 'aerial', -- managed by packer
+  -- 'lsp_signature_nvim', -- managed by packer
   'trouble',
   'close_buffer_nvim',
   'ouroboros',
   -- 'hotpot_nvim',
-  'fidget_nvim',
+  -- 'fidget_nvim', -- managed by packer
   -- 'neogit_nvim', -- managed by packer
-  'lsp_lines_nvim',
+  -- 'lsp_lines_nvim',
   'true_zen',
   'matchparen_nvim',
   'nvim_spectre',
@@ -64,7 +64,7 @@ local features_list = {
   -- LSP
   -- 'clangd_extensions', -- managed by packer
   -- 'lsp', -- managed by packer
-  'nvim_lightbulb',
+  -- 'nvim_lightbulb', -- managed by packer
 
   -- UI/Misc
   'vim_commmand',

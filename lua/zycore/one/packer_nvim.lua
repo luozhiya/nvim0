@@ -87,25 +87,27 @@ local function init()
 
   -- LSP
   use({
-    { 
+    {
       'neovim/nvim-lspconfig', -- Configurations for Nvim LSP
-      -- after = {
-      --   'cmp-nvim-lsp',
-      --   'nvim-lsp-installer',
-      -- },
-      config = [[require('zycore.one.lsp')]],
+      after = {
+        'cmp-nvim-lsp',
+      },
+      config = [[require('zycore.one.lsp.handler').setup()]],
+      event = 'InsertEnter',
     },
-    'williamboman/nvim-lsp-installer', -- Simple to install LSP servers
+    { 'williamboman/nvim-lsp-installer', after = 'nvim-lspconfig', config = [[require('zycore.one.lsp.config_servers')]] }, -- Simple to install LSP servers
     {
       'https://git.sr.ht/~whynothugo/lsp_lines.nvim', -- Show nvim diagnostics using virtual lines
       as = 'lsp_lines.nvim',
+      after = 'nvim-lspconfig',
+      config = [[require('zycore.one.lsp_lines_nvim')]],
     },
-    'nvim-lua/lsp-status.nvim', -- Utility functions for getting diagnostic status and progress messages from LSP servers, for use in the Neovim statusline
-    'j-hui/fidget.nvim', -- Standalone UI for nvim-lsp progress
-    'kosayoda/nvim-lightbulb', -- VSCode 💡 for neovim's built-in LSP.
-    'ray-x/lsp_signature.nvim', -- LSP signature hint as you type
-    'stevearc/aerial.nvim', -- Neovim plugin for a code outline window
-    'jose-elias-alvarez/null-ls.nvim', -- Inject LSP diagnostics, code actions, and more via Lua
+    { 'nvim-lua/lsp-status.nvim', after = 'nvim-lspconfig' }, -- Utility functions for getting diagnostic status and progress messages from LSP servers, for use in the Neovim statusline
+    { 'j-hui/fidget.nvim', after = 'nvim-lspconfig', config = [[require('zycore.one.fidget_nvim')]] }, -- Standalone UI for nvim-lsp progress
+    { 'kosayoda/nvim-lightbulb', after = 'nvim-lspconfig', config = [[require('zycore.one.nvim_lightbulb')]] }, -- VSCode 💡 for neovim's built-in LSP.
+    { 'ray-x/lsp_signature.nvim', after = 'nvim-lspconfig', config = [[require('zycore.one.lsp_signature_nvim')]] }, -- LSP signature hint as you type
+    { 'stevearc/aerial.nvim', after = 'nvim-lspconfig', config = [[require('zycore.one.aerial')]] }, -- Neovim plugin for a code outline window
+    { 'jose-elias-alvarez/null-ls.nvim', after = 'nvim-lspconfig', config = [[require('zycore.one.null_ls')]] }, -- Inject LSP diagnostics, code actions, and more via Lua
   })
 
   -- Completion
@@ -134,9 +136,12 @@ local function init()
   use({
     'm-pilia/vim-ccls', -- supports some additional methods provided by ccls, which are not part of the standard Language Server Protocol (LSP)
     'jackguo380/vim-lsp-cxx-highlight', -- semantic highlighting using the language server protocol.
-    { 
+    {
       'p00f/clangd_extensions.nvim', -- Clangd's off-spec features for neovim's LSP client.
-      after = 'cmp-nvim-lsp',
+      after = {
+        'cmp-nvim-lsp',
+        'nvim-lspconfig',
+      },
       config = [[require('zycore.one.clangd_extensions')]],
     },
   })
@@ -148,7 +153,7 @@ local function init()
 
   -- Lua
   use({
-    { 'folke/lua-dev.nvim', after = 'nvim-lspconfig', }, -- Dev setup for init.lua and plugin development with full signature help, docs and completion for the nvim lua API.
+    { 'folke/lua-dev.nvim', after = 'nvim-lspconfig' }, -- Dev setup for init.lua and plugin development with full signature help, docs and completion for the nvim lua API.
     'jbyuki/one-small-step-for-vimkind', -- Debug adapter for Neovim plugins
   })
 
