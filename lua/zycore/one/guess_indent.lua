@@ -1,10 +1,7 @@
-local guess_indent_ok, guess_indent = pcall(require, 'guess-indent')
-if not guess_indent_ok then
-  return
-end
+local guess_indent = require('guess-indent')
 
 -- This is the default configuration
-guess_indent.setup({
+local opts = {
   auto_cmd = true, -- Set to false to disable automatic execution
   filetype_exclude = { -- A list of filetypes for which the auto command gets disabled
     'netrw',
@@ -16,4 +13,6 @@ guess_indent.setup({
     'terminal',
     'prompt',
   },
-})
+}
+
+guess_indent.setup(opts)

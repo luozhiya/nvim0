@@ -1,8 +1,4 @@
-local ok, indent_blankline = pcall(require, 'indent_blankline')
-if not ok then
-  return
-end
-
+local indent_blankline = require('indent_blankline')
 local g = vim.g
 
 g.indentLine_enabled = 1
@@ -70,7 +66,7 @@ vim.wo.colorcolumn = '99999'
 -- vim.opt.listchars:append('space:')
 -- vim.opt.listchars:append('eol:↴')
 
-indent_blankline.setup({
+local opts = {
   show_end_of_line = true,
   space_char_blankline = ' ',
   show_current_context = true,
@@ -92,4 +88,6 @@ indent_blankline.setup({
   --   'IndentSpaceIndent6',
   -- },
   show_trailing_blankline_indent = false,
-})
+}
+
+indent_blankline.setup(opts)

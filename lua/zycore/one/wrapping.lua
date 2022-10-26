@@ -1,8 +1,4 @@
-local ok, wrapping = pcall(require, 'wrapping')
-if not ok then
-  return
-end
-
+local wrapping = require('wrapping')
 local hardworking = require('zycore.base.hardworking')
 
 local opts = {

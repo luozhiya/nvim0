@@ -134,8 +134,8 @@ local function init()
 
   -- C++
   use({
-    'm-pilia/vim-ccls', -- supports some additional methods provided by ccls, which are not part of the standard Language Server Protocol (LSP)
-    'jackguo380/vim-lsp-cxx-highlight', -- semantic highlighting using the language server protocol.
+    { 'm-pilia/vim-ccls', after = 'nvim-lspconfig' }, -- supports some additional methods provided by ccls, which are not part of the standard Language Server Protocol (LSP)
+    { 'jackguo380/vim-lsp-cxx-highlight', after = 'nvim-lspconfig' }, -- semantic highlighting using the language server protocol.
     {
       -- cycle references
       'p00f/clangd_extensions.nvim', -- Clangd's off-spec features for neovim's LSP client.
@@ -167,22 +167,27 @@ local function init()
   })
 
   -- Highlights/treesitter
+  -- Why buggy?
+  -- use({
+  --   {
+  --     'nvim-treesitter/nvim-treesitter',
+  --     run = ':TSUpdate',
+  --   },
+  -- })
   use({
-    {
-      'nvim-treesitter/nvim-treesitter', -- Nvim Treesitter configurations and abstraction layer
-      requires = {
-        { 'nvim-treesitter/nvim-treesitter-refactor', after = 'nvim-treesitter' },
-        { 'RRethy/nvim-treesitter-textsubjects', after = 'nvim-treesitter' },
-        { 'JoosepAlviste/nvim-ts-context-commentstring', after = 'nvim-treesitter' }, -- Neovim treesitter plugin for setting the commentstring based on the cursor location in a file.
-        { 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' }, -- Rainbow parentheses for neovim using tree-sitter.
-        { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' }, -- Syntax aware text-objects, select, move, swap, and peek support.
-        { 'RRethy/nvim-treesitter-endwise', after = 'nvim-treesitter' }, -- Wisely add "end" in Ruby, Vimscript, Lua, etc. Tree-sitter aware alternative to tpope's vim-endwise
-      },
-      config = [[require('zycore.one.treesitter')]],
-      run = ':TSUpdate',
-      event = 'BufReadPost',
+    'nvim-treesitter/nvim-treesitter', -- Nvim Treesitter configurations and abstraction layer
+    requires = {
+      { 'nvim-treesitter/nvim-treesitter-refactor', after = 'nvim-treesitter' },
+      { 'RRethy/nvim-treesitter-textsubjects', after = 'nvim-treesitter' },
+      { 'JoosepAlviste/nvim-ts-context-commentstring', after = 'nvim-treesitter' }, -- Neovim treesitter plugin for setting the commentstring based on the cursor location in a file.
+      { 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' }, -- Rainbow parentheses for neovim using tree-sitter.
+      { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' }, -- Syntax aware text-objects, select, move, swap, and peek support.
+      { 'RRethy/nvim-treesitter-endwise', after = 'nvim-treesitter' }, -- Wisely add "end" in Ruby, Vimscript, Lua, etc. Tree-sitter aware alternative to tpope's vim-endwise
     },
- })
+    config = [[require('zycore.one.treesitter')]],
+    run = ':TSUpdate',
+    event = 'BufReadPost',
+  })
 
   -- Search / Easy VAX-like find
   use({
@@ -207,7 +212,7 @@ local function init()
     {
       'nvim-telescope/telescope-frecency.nvim', -- A telescope.nvim extension that offers intelligent prioritization when selecting files from your editing history.
       after = 'telescope.nvim', -- module name, not github short path
-      requires = 'kkharji/sqlite.lua', -- SQLite LuaJIT binding with a very simple api.
+      requires = { 'kkharji/sqlite.lua', after = 'telescope.nvim' }, -- SQLite LuaJIT binding with a very simple api.
       config = [[require('telescope').load_extension('frecency')]],
     },
     {
@@ -237,7 +242,11 @@ local function init()
       after = 'telescope.nvim',
       config = [[require('telescope').load_extension('ui-select')]],
     },
-    { 'nvim-pack/nvim-spectre' }, -- Find the enemy and replace them with dark power.
+    {
+      'nvim-pack/nvim-spectre', -- Find the enemy and replace them with dark power.
+      event = 'BufReadPost',
+      config = [[require('zycore.one.nvim_spectre')]],
+    },
   })
 
   -- Buffer
@@ -251,8 +260,16 @@ local function init()
 
   -- Indentation tracking
   use({
-    'lukas-reineke/indent-blankline.nvim', -- Indent guides for Neovim
-    'NMAC427/guess-indent.nvim', -- Automatic indentation style detection for Neovim
+    {
+      'lukas-reineke/indent-blankline.nvim', -- Indent guides for Neovim
+      after = 'nvim-treesitter',
+      config = [[require('zycore.one.indent_blankline')]],
+    },
+    {
+      'NMAC427/guess-indent.nvim', -- Automatic indentation style detection for Neovim
+      after = 'nvim-treesitter',
+      config = [[require('zycore.one.guess_indent')]],
+    },
   })
 
   -- Format
@@ -265,7 +282,10 @@ local function init()
   })
 
   -- Prettification
-  use('junegunn/vim-easy-align') -- A Vim alignment plugin
+  use({
+    'junegunn/vim-easy-align', -- A Vim alignment plugin
+    event = 'BufReadPost',
+  })
 
   -- Commenting
   use({
@@ -278,8 +298,8 @@ local function init()
 
   -- Snippets
   use({
-    'L3MON4D3/LuaSnip',
-    'rafamadriz/friendly-snippets',
+    { 'L3MON4D3/LuaSnip', after = 'nvim-cmp' },
+    { 'rafamadriz/friendly-snippets', after = 'nvim-cmp' },
   })
 
   -- Wrapping/delimiters
@@ -293,8 +313,16 @@ local function init()
       config = [[require('zycore.one.matchup')]],
       event = 'BufReadPost',
     },
-    'monkoose/matchparen.nvim', -- alternative to default neovim matchparen plugin
-    'andrewferrier/wrapping.nvim', -- Plugin to make it easier to switch between 'soft' and 'hard' line wrapping in NeoVim
+    {
+      'monkoose/matchparen.nvim', -- alternative to default neovim matchparen plugin
+      config = [[require('zycore.one.matchparen_nvim')]],
+      event = 'BufReadPost',
+    },
+    {
+      'andrewferrier/wrapping.nvim', -- Plugin to make it easier to switch between 'soft' and 'hard' line wrapping in NeoVim
+      config = [[require('zycore.one.wrapping')]],
+      event = 'BufReadPost',
+    },
   })
 
   -- Pair
@@ -386,6 +414,7 @@ local function init()
     {
       'akinsho/git-conflict.nvim', -- A plugin to visualise and resolve merge conflicts in neovim
       tag = '*',
+      event = 'BufReadPost',
       config = [[require('zycore.one.git_conflict')]],
     },
   })

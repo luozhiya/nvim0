@@ -33,15 +33,15 @@ local features_list = {
   -- 'nvim_autopairs', -- managed by packer
   'toggleterm',
   'project',
-  'indent_blankline',
+  -- 'indent_blankline', -- managed by packer
   'alpha',
   -- 'gitsigns', -- managed by packer
   'dap_nvim',
   'dapui',
   'trim',
-  'wrapping',
+  -- 'wrapping', -- managed by packer
   'number',
-  'guess_indent',
+  -- 'guess_indent', -- managed by packer
   -- 'null_ls', -- managed by packer
   -- 'lua_dev', -- managed by packer
   'colorizer',
@@ -55,8 +55,8 @@ local features_list = {
   -- 'neogit_nvim', -- managed by packer
   -- 'lsp_lines_nvim', -- managed by packer
   'true_zen',
-  'matchparen_nvim',
-  'nvim_spectre',
+  -- 'matchparen_nvim', -- managed by packer
+  -- 'nvim_spectre', -- managed by packer
   'nvim_bqf',
   'nvim_pqf',
   'easy_align',
