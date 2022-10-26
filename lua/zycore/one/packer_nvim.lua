@@ -154,16 +154,32 @@ local function init()
 
   -- Lua
   use({
-    { 'folke/lua-dev.nvim', after = 'nvim-lspconfig' }, -- Dev setup for init.lua and plugin development with full signature help, docs and completion for the nvim lua API.
-    'jbyuki/one-small-step-for-vimkind', -- Debug adapter for Neovim plugins
+    'folke/lua-dev.nvim',
+    after = 'nvim-lspconfig', -- Dev setup for init.lua and plugin development with full signature help, docs and completion for the nvim lua API.
   })
 
   -- Debugging
   use({
-    'mfussenegger/nvim-dap',
-    'rcarriga/nvim-dap-ui',
-    'theHamsta/nvim-dap-virtual-text',
-    'folke/trouble.nvim', -- 🚦 A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
+    {
+      'mfussenegger/nvim-dap',
+      requires = {
+        { 'jbyuki/one-small-step-for-vimkind', after = 'nvim-dap' }, -- Debug adapter for Neovim plugins
+        { 'theHamsta/nvim-dap-virtual-text', after = 'nvim-dap' },
+      },
+      config = [[require('zycore.one.dap')]],
+      cmd = { 'BreakpointToggle', 'Debug', 'DapREPL' },
+    },
+    {
+      'rcarriga/nvim-dap-ui',
+      after = 'nvim-dap',
+      config = [[require('zycore.one.dapui')]],
+    },
+    {
+      'folke/trouble.nvim',
+      setup = [[require('zycore.one.trouble_setup')]],
+      config = [[require('zycore.one.trouble')]],
+      cmd = 'TroubleToggle',
+    }, -- 🚦 A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
   })
 
   -- Highlights/treesitter
@@ -212,7 +228,11 @@ local function init()
     {
       'nvim-telescope/telescope-frecency.nvim', -- A telescope.nvim extension that offers intelligent prioritization when selecting files from your editing history.
       after = 'telescope.nvim', -- module name, not github short path
-      requires = { 'kkharji/sqlite.lua', after = 'telescope.nvim' }, -- SQLite LuaJIT binding with a very simple api.
+      requires = {
+        'kkharji/sqlite.lua', -- SQLite LuaJIT binding with a very simple api.
+        after = 'telescope.nvim',
+        config = [[require('zycore.one.sqlite')]],
+      },
       config = [[require('telescope').load_extension('frecency')]],
     },
     {
@@ -251,8 +271,16 @@ local function init()
 
   -- Buffer
   use({
-    'moll/vim-bbye', -- Delete buffers and close files in Vim without closing your windows or messing up your layout.
-    'kazhala/close-buffers.nvim', -- 📑 Delete multiple vim buffers based on different conditions
+    {
+      'moll/vim-bbye', -- Delete buffers and close files in Vim without closing your windows or messing up your layout.
+      config = [[require('zycore.one.vim_bbye')]],
+      event = 'BufAdd',
+    },
+    {
+      'kazhala/close-buffers.nvim', -- 📑 Delete multiple vim buffers based on different conditions
+      config = [[require('zycore.one.close_buffer')]],
+      event = 'BufAdd',
+    },
   })
 
   -- Registers
@@ -274,16 +302,33 @@ local function init()
 
   -- Format
   use({
-    'sbdchd/neoformat', -- why not use .clang-format?
-    'rhysd/vim-clang-format',
-    'cappyzawa/trim.nvim', -- trims trailing whitespace and lines
-    'mhartington/formatter.nvim', -- A format runner for Neovim.
-    'lukas-reineke/lsp-format.nvim', -- A wrapper around Neovims native LSP formatting.
+    {
+      'sbdchd/neoformat', -- why not use .clang-format?
+      event = 'BufReadPost',
+      config = [[require('zycore.one.format').neoformat_setup()]],
+    },
+    {
+      'rhysd/vim-clang-format',
+      event = 'BufReadPost',
+      config = [[require('zycore.one.format').vim_clang_format_setup()]],
+    },
+    {
+      'cappyzawa/trim.nvim',
+      event = 'BufReadPost',
+      config = [[require('zycore.one.trim')]],
+    }, -- trims trailing whitespace and lines
+    {
+      'mhartington/formatter.nvim',
+      event = 'BufReadPost',
+      config = [[require('zycore.one.formatter')]],
+    }, -- A format runner for Neovim.
+    { 'lukas-reineke/lsp-format.nvim', event = 'BufReadPost' }, -- A wrapper around Neovims native LSP formatting.
   })
 
   -- Prettification
   use({
     'junegunn/vim-easy-align', -- A Vim alignment plugin
+    config = [[require('zycore.one.easy_align')]],
     event = 'BufReadPost',
   })
 
@@ -298,7 +343,7 @@ local function init()
 
   -- Snippets
   use({
-    { 'L3MON4D3/LuaSnip', after = 'nvim-cmp' },
+    { 'L3MON4D3/LuaSnip', event = 'BufReadPost' },
     { 'rafamadriz/friendly-snippets', after = 'nvim-cmp' },
   })
 
@@ -334,8 +379,16 @@ local function init()
 
   -- Code Visual Improved
   use({
-    'RRethy/vim-illuminate', -- automatically highlighting other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.
-    'norcalli/nvim-colorizer.lua', -- The fastest Neovim colorizer.
+    {
+      'RRethy/vim-illuminate', -- automatically highlighting other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.
+      config = [[require('zycore.one.illuminate')]],
+      event = 'BufReadPost',
+    },
+    {
+      'norcalli/nvim-colorizer.lua', -- The fastest Neovim colorizer.
+      config = [[require('zycore.one.colorizer')]],
+      event = 'BufReadPost',
+    },
   })
 
   -- Keyboard
@@ -357,10 +410,16 @@ local function init()
       'Olical/vim-enmasse', -- Edit every line in a quickfix list at the same time
       cmd = 'EnMasse',
     },
-    'kevinhwang91/nvim-bqf', -- Better quickfix window in Neovim, polish old quickfix window.
+    {
+      'kevinhwang91/nvim-bqf', -- Better quickfix window in Neovim, polish old quickfix window.
+      config = [[require('zycore.one.nvim_bqf')]],
+      event = 'BufReadPost',
+    },
     {
       'https://gitlab.com/yorickpeterse/nvim-pqf', -- Prettier quickfix/location list windows for NeoVim
       as = 'nvim-pqf',
+      config = [[require('zycore.one.nvim_pqf')]],
+      event = 'BufReadPost',
     },
   })
 
@@ -386,7 +445,11 @@ local function init()
     -- 'akinsho/bufferline.nvim', -- A snazzy bufferline for Neovim
     'luozhiya/bufferline.nvim',
     'rcarriga/nvim-notify', -- A fancy, configurable, notification manager for NeoVim
-    'Pocco81/true-zen.nvim', -- Clean and elegant distraction-free writing for NeoVim
+    {
+      'Pocco81/true-zen.nvim',
+      config = [[require('zycore.one.true_zen')]],
+      event = 'BufReadPost',
+    }, -- Clean and elegant distraction-free writing for NeoVim
   })
 
   -- Colorscheme

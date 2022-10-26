@@ -15,19 +15,19 @@ local features_list = {
 
   -- Plugin
   'sneak',
-  'vim_bbye',
+  -- 'vim_bbye', -- managed by packer
   -- 'cmp', -- managed by packer
-  'format',
-  'formatter_nvim',
+  -- 'format', -- managed by packer
+  -- 'formatter', -- managed by packer
   -- 'comment', -- managed by packer
   -- 'treesitter', -- managed by packer
   'autocommands',
   'nvim_tree',
   'which_key',
-  'sqlite',
+  -- 'sqlite', -- managed by packer
   -- 'telescope_setup', -- managed by packer
   -- 'telescope', -- managed by packer
-  'illuminate',
+  -- 'illuminate',
   'lualine',
   'bufferline',
   -- 'nvim_autopairs', -- managed by packer
@@ -36,30 +36,30 @@ local features_list = {
   -- 'indent_blankline', -- managed by packer
   'alpha',
   -- 'gitsigns', -- managed by packer
-  'dap_nvim',
-  'dapui',
-  'trim',
+  -- 'dap_nvim', -- managed by packer
+  -- 'dapui', -- managed by packer
+  -- 'trim', -- managed by packer
   -- 'wrapping', -- managed by packer
   'number',
   -- 'guess_indent', -- managed by packer
   -- 'null_ls', -- managed by packer
   -- 'lua_dev', -- managed by packer
-  'colorizer',
+  -- 'colorizer', -- managed by packer
   -- 'aerial', -- managed by packer
   -- 'lsp_signature_nvim', -- managed by packer
-  'trouble',
-  'close_buffer_nvim',
-  'ouroboros',
+  -- 'trouble', -- managed by packer
+  -- 'close_buffer', -- managed by packer
+  -- 'ouroboros',
   -- 'hotpot_nvim',
   -- 'fidget_nvim', -- managed by packer
   -- 'neogit_nvim', -- managed by packer
   -- 'lsp_lines_nvim', -- managed by packer
-  'true_zen',
+  -- 'true_zen', -- managed by packer
   -- 'matchparen_nvim', -- managed by packer
   -- 'nvim_spectre', -- managed by packer
-  'nvim_bqf',
-  'nvim_pqf',
-  'easy_align',
+  -- 'nvim_bqf', -- managed by packer
+  -- 'nvim_pqf', -- managed by packer
+  -- 'easy_align', -- managed by packer
 
   -- LSP
   -- 'clangd_extensions', -- managed by packer

@@ -1,3 +1,5 @@
+local M = {}
+
 -- sbdchd/neoformat
 -- vim.cmd([[
 -- let g:neoformat_cpp_clangformat = {
@@ -11,7 +13,7 @@
 --   autocmd BufWritePre * undojoin | Neoformat
 -- augroup END
 -- ]])
-if true then
+M.neoformat_setup = function()
   vim.cmd([[
 " Enable alignment
 let g:neoformat_basic_format_align = 1
@@ -21,11 +23,11 @@ let g:neoformat_basic_format_retab = 1
 
 " Enable trimmming of trailing whitespace
 let g:neoformat_basic_format_trim = 0
-]])
+  ]])
 end
 
 -- rhysd/vim-clang-format
-if true then
+M.vim_clang_format_setup = function()
   vim.cmd([[
 let g:clang_format#command = 'clang-format'
 let g:clang_format#detect_style_file = 1
@@ -52,3 +54,5 @@ end
 -- " Autoformatting with clang-format
 -- au FileType c,cpp nnoremap <buffer><leader>lf :<C-u>JbzClangFormat<CR>
 -- au FileType c,cpp vnoremap <buffer><leader>lf :JbzClangFormat<CR>
+
+return M

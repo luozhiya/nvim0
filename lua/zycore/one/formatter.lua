@@ -1,11 +1,10 @@
 -- mhartington/formatter.nvim
 
 -- Utilities for creating configurations
-local util_ok, util = pcall(require, 'formatter.util')
-if not util_ok then
-  return
-end
+local util = require('formatter.util')
+local fmt = require('formatter')
 
+-- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
 local opts = {
   -- Enable or disable logging
   logging = true,
@@ -64,10 +63,7 @@ local opts = {
   },
 }
 
--- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
-local fmt = require('formatter')
-
-require('formatter').setup(opts)
+fmt.setup(opts)
 
 vim.cmd([[
 " nnoremap <silent> <leader>X :Format<CR>

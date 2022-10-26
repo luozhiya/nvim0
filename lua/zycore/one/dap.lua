@@ -1,7 +1,4 @@
-local dap_ok, dap = pcall(require, 'dap')
-if not dap_ok then
-  return
-end
+local dap = require('dap')
 
 local fn = vim.fn
 local style_constexpr = require('zycore.base.style_constexpr')

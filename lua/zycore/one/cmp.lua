@@ -1,17 +1,6 @@
-local cmp_ok, cmp = pcall(require, 'cmp')
-if not cmp_ok then
-  return
-end
-
-local lua_ok, luasnip = pcall(require, 'luasnip')
-if not lua_ok then
-  return
-end
-
-local lspkind_ok, lspkind = pcall(require, 'lspkind')
-if not lspkind_ok then
-  return
-end
+local cmp = require('cmp')
+local luasnip = require('luasnip')
+local lspkind = require('lspkind')
 
 local style_constexpr = require('zycore.base.style_constexpr')
 
