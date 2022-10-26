@@ -1,6 +1,7 @@
-local ok, colorizer = pcall(require, 'colorizer')
-if not ok then
-  return
-end
+local colorizer = require('colorizer')
 
-colorizer.setup()
+local opts = {
+  'css', 'javascript', 'vim', 'html', 'lua'
+}
+
+colorizer.setup(opts)

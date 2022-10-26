@@ -386,6 +386,7 @@ local function init()
     },
     {
       'norcalli/nvim-colorizer.lua', -- The fastest Neovim colorizer.
+      ft = { 'css', 'javascript', 'vim', 'html', 'lua' },
       config = [[require('zycore.one.colorizer')]],
       event = 'BufReadPost',
     },
