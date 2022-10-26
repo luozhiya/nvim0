@@ -81,7 +81,7 @@ local function init()
   -- Fennel
   use({
     'Olical/aniseed', -- Neovim configuration and plugins in Fennel (Lisp compiled to Lua)
-    { 'Olical/conjure', event = 'InsertEnter', }, -- Interactive evaluation for Neovim (Clojure, Fennel, Janet, Racket, Hy, MIT Scheme, Guile)
+    { 'Olical/conjure', event = 'InsertEnter' }, -- Interactive evaluation for Neovim (Clojure, Fennel, Janet, Racket, Hy, MIT Scheme, Guile)
     -- 'rktjmp/hotpot.nvim', -- Carl Weathers #1 Neovim Plugin.
   })
 
@@ -123,9 +123,9 @@ local function init()
       { 'hrsh7th/cmp-nvim-lsp-signature-help', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-nvim-lsp-document-symbol', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
-      { 'lukas-reineke/cmp-under-comparator' },
-      { 'saadparwaiz1/cmp_luasnip' },
-      { 'onsails/lspkind.nvim' }, -- vscode-like pictograms for neovim lsp completion items
+      { 'lukas-reineke/cmp-under-comparator', after = 'nvim-cmp' },
+      { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
+      { 'onsails/lspkind.nvim', after = 'nvim-cmp' }, -- vscode-like pictograms for neovim lsp completion items
       { 'PaterJason/cmp-conjure', after = 'nvim-cmp' }, -- nvim-cmp source for conjure.
     },
     config = [[require('zycore.one.cmp')]],
@@ -343,7 +343,7 @@ local function init()
 
   -- Snippets
   use({
-    { 'L3MON4D3/LuaSnip', event = 'BufReadPost' },
+    { 'L3MON4D3/LuaSnip', after = 'nvim-cmp', event = 'BufReadPost' },
     { 'rafamadriz/friendly-snippets', after = 'nvim-cmp' },
   })
 
