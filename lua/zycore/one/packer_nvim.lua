@@ -451,10 +451,10 @@ local function init()
     'luozhiya/bufferline.nvim',
     'rcarriga/nvim-notify', -- A fancy, configurable, notification manager for NeoVim
     {
-      'Pocco81/true-zen.nvim',
+      'Pocco81/true-zen.nvim', -- Clean and elegant distraction-free writing for NeoVim
       config = [[require('zycore.one.true_zen')]],
       event = 'BufReadPost',
-    }, -- Clean and elegant distraction-free writing for NeoVim
+    },
   })
 
   -- Colorscheme
