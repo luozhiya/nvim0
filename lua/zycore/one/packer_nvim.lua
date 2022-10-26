@@ -171,16 +171,18 @@ local function init()
     {
       'nvim-treesitter/nvim-treesitter', -- Nvim Treesitter configurations and abstraction layer
       requires = {
-        'nvim-treesitter/nvim-treesitter-refactor',
-        'RRethy/nvim-treesitter-textsubjects',
+        { 'nvim-treesitter/nvim-treesitter-refactor', after = 'nvim-treesitter' },
+        { 'RRethy/nvim-treesitter-textsubjects', after = 'nvim-treesitter' },
+        { 'JoosepAlviste/nvim-ts-context-commentstring', after = 'nvim-treesitter' }, -- Neovim treesitter plugin for setting the commentstring based on the cursor location in a file.
+        { 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' }, -- Rainbow parentheses for neovim using tree-sitter.
+        { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' }, -- Syntax aware text-objects, select, move, swap, and peek support.
+        { 'RRethy/nvim-treesitter-endwise', after = 'nvim-treesitter' }, -- Wisely add "end" in Ruby, Vimscript, Lua, etc. Tree-sitter aware alternative to tpope's vim-endwise
       },
+      config = [[require('zycore.one.treesitter')]],
       run = ':TSUpdate',
+      event = 'BufReadPost',
     },
-    'JoosepAlviste/nvim-ts-context-commentstring', -- Neovim treesitter plugin for setting the commentstring based on the cursor location in a file.
-    'p00f/nvim-ts-rainbow', -- Rainbow parentheses for neovim using tree-sitter.
-    'nvim-treesitter/nvim-treesitter-textobjects', -- Syntax aware text-objects, select, move, swap, and peek support.
-    'RRethy/nvim-treesitter-endwise', -- Wisely add "end" in Ruby, Vimscript, Lua, etc. Tree-sitter aware alternative to tpope's vim-endwise
-  })
+ })
 
   -- Search / Easy VAX-like find
   use({

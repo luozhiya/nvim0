@@ -1,9 +1,6 @@
-local ok, treesitter = pcall(require, 'nvim-treesitter.configs')
-if not ok then
-  return
-end
-
+local treesitter = require('nvim-treesitter.configs')
 local hardworking = require('zycore.base.hardworking')
+
 local ensure_installed
 if hardworking.is_windows() then
   ensure_installed = { 'c', 'cpp', 'cmake', 'lua', 'markdown', 'fennel', 'clojure' }

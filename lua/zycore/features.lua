@@ -20,7 +20,7 @@ local features_list = {
   'format',
   'formatter_nvim',
   -- 'comment', -- managed by packer
-  'treesitter',
+  -- 'treesitter', -- managed by packer
   'autocommands',
   'nvim_tree',
   'which_key',
