@@ -1,11 +1,9 @@
-local dapui_ok, dapui = pcall(require, 'dapui')
-if not dapui_ok then
-  return
-end
-
+local dapui = require('dapui')
 local dap = require('dap')
+local hardworking = require('zycore.base.hardworking')
+local nnoremap = hardworking.nnoremap
 
-dapui.setup({
+local opts = {
   icons = { expanded = '▾', collapsed = '▸', current_frame = '▸' },
   mappings = {
     -- Use a table to apply multiple mappings
@@ -60,16 +58,12 @@ dapui.setup({
     max_type_length = nil, -- Can be integer or nil.
     max_value_lines = 100, -- Can be integer or nil.
   },
-})
+}
+
+dapui.setup(opts)
 
 local M = {}
 function M.config()
-  local opts = { noremap = true, silent = true }
-  local keymap = vim.api.nvim_set_keymap
-  local nnoremap = function(lhs, rhs)
-    vim.api.nvim_set_keymap('n', lhs, rhs, opts)
-  end
-
   nnoremap('<leader>duc', 'dap-ui: close')
   nnoremap('<leader>dut', 'dap-ui: toggle')
 

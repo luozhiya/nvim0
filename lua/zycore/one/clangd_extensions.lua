@@ -1,8 +1,4 @@
-local ok, clangd_extensions = pcall(require, 'clangd_extensions')
-if not ok then
-  return
-end
-
+local clangd_extensions = require('clangd_extensions')
 local hardworking = require('zycore.base.hardworking')
 
 local nnoremap = hardworking.nnoremap

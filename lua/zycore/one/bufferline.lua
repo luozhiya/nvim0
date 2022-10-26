@@ -1,15 +1,10 @@
-local bufferline_ok, bufferline = pcall(require, 'bufferline')
-if not bufferline_ok then
-  return
-end
-
+local bufferline = require('bufferline')
+local lazy = require('bufferline.lazy')
+local colors = lazy.require('bufferline.colors')
 local style_constexpr = require('zycore.base.style_constexpr')
 
 local vs_selected_fg = style_constexpr.palette.white
 local vs_selected_bg = style_constexpr.palette.vs_blue
-
-local lazy = require('bufferline.lazy')
-local colors = lazy.require('bufferline.colors')
 local hex = colors.get_color
 local shade = colors.shade_color
 

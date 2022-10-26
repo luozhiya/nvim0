@@ -1,9 +1,6 @@
-local alpha_ok, alpha = pcall(require, 'alpha')
-if not alpha_ok then
-  return
-end
-
+local alpha = require('alpha')
 local dashboard = require('alpha.themes.dashboard')
+
 dashboard.section.header.val = {
   [[ ________     _______ ____  _____  ______ ]],
   [[|___  /\ \   / / ____/ __ \|  __ \|  ____|]],
