@@ -441,7 +441,11 @@ local function init()
   use({
     'delphinus/dwm.nvim', -- Tiled Window Management
     'goolord/alpha-nvim', -- a lua powered greeter like vim-startify / dashboard-nvim
-    'kyazdani42/nvim-tree.lua', -- A file explorer tree for neovim written in lua
+    {
+      'kyazdani42/nvim-tree.lua', -- A file explorer tree for neovim written in lua
+      config = [[require('zycore.one.nvim_tree')]],
+      cmd = 'NvimTreeToggle',
+    },
     'nvim-lualine/lualine.nvim', -- A blazing fast and easy to configure neovim statusline plugin written in pure lua.
     -- 'akinsho/bufferline.nvim', -- A snazzy bufferline for Neovim
     'luozhiya/bufferline.nvim',

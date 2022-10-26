@@ -22,7 +22,7 @@ local features_list = {
   -- 'comment', -- managed by packer
   -- 'treesitter', -- managed by packer
   'autocommands',
-  'nvim_tree',
+  -- 'nvim_tree', -- managed by packer
   'which_key',
   -- 'sqlite', -- managed by packer
   -- 'telescope_setup', -- managed by packer

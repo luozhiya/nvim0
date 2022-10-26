@@ -78,8 +78,8 @@ local ratio_progress = function()
   local current_line = vim.fn.line('.')
   local total_lines = vim.fn.line('$')
   local line_ratio = current_line / total_lines * 100
-  -- return tostring(line_ratio) ☯️
-  return string.format('%02d☯️', line_ratio)
+  -- return tostring(line_ratio) ☯️
+  return string.format('%02d ', line_ratio)
 end
 
 local spaces = function()
