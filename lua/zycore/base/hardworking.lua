@@ -163,6 +163,13 @@ hardworking.dump = function(tbl, depth)
   end
 end
 
+hardworking.extend = function(tab1, tab2)
+  for _, value in ipairs(tab2 or {}) do
+    table.insert(tab1, value)
+  end
+  return tab1
+end
+
 hardworking.merge_simple_list = function(v1, v2)
   local ret = {}
   for k, v in pairs(v1) do
@@ -610,10 +617,20 @@ local function make_mapper(mode, o)
   end
 end
 
+local function make_buffer_mapper(mode, o)
+  local parent_opts = vim.deepcopy(o)
+  return function(buf, lhs, rhs, opts)
+    opts = type(opts) == 'string' and { desc = opts } or opts and vim.deepcopy(opts) or {}
+    vim.api.nvim_buf_set_keymap(buf, mode, lhs, rhs, vim.tbl_extend('keep', opts, parent_opts))
+  end
+end
+
 hardworking.make_mapper = make_mapper
+hardworking.make_buffer_mapper = make_buffer_mapper
 
 local map_opts = { remap = true, silent = true }
 local noremap_opts = { silent = true }
+local buf_opts = { noremap = true, silent = true }
 
 -- A recursive commandline mapping
 local nmap = make_mapper('n', map_opts)
@@ -678,5 +695,7 @@ hardworking.snoremap = snoremap
 -- A non recursive commandline mapping
 local cnoremap = make_mapper('c', { silent = false })
 hardworking.cnoremap = cnoremap
+
+hardworking.bnnoremap = hardworking.make_buffer_mapper('n', buf_opts)
 
 return hardworking

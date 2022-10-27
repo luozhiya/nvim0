@@ -1,5 +1,6 @@
-local hardworking = require('zycore.base.hardworking')
+local cmp_nvim_lsp = require('cmp_nvim_lsp')
 local style = require('zycore.base.style_constexpr')
+local bnnoremap = require('zycore.base.hardworking').bnnoremap
 
 local M = {}
 
@@ -52,50 +53,37 @@ end
 
 local function lsp_highlight_document(client)
   -- Set autocommands conditional on server_capabilities
-  local ok, illuminate = pcall(require, 'illuminate')
-  if not ok then
-    return
-  end
+  local illuminate = require('illuminate')
   illuminate.on_attach(client)
 end
 
 local function lsp_outline(client)
-  local ok, aerial = pcall(require, 'aerial')
-  if not ok then
-    return
-  end
-  aerial.on_attach(client)
+  -- local aerial = require('aerial')
+  -- aerial.on_attach(client)
 end
 
 local function lsp_signature(buffer)
-  local ok, signature = pcall(require, 'lsp_signature')
-  if not ok then
-    return
-  end
+  local signature = require('lsp_signature')
   local opts = {}
   signature.on_attach(opts, buffer)
 end
 
 local function lsp_keymaps(buffer)
-  local opts = { noremap = true, silent = true }
-  local bkeymap = function(buf, lhs, rhs)
-    vim.api.nvim_buf_set_keymap(buf, 'n', lhs, rhs, opts)
-  end
-  bkeymap(buffer, 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
-  bkeymap(buffer, 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
-  bkeymap(buffer, 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
-  bkeymap(buffer, 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
-  bkeymap(buffer, 'ge', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
-  bkeymap(buffer, 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
-  bkeymap(buffer, '[d', '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>')
+  bnnoremap(buffer, 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
+  bnnoremap(buffer, 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
+  bnnoremap(buffer, 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
+  bnnoremap(buffer, 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
+  bnnoremap(buffer, 'ge', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+  bnnoremap(buffer, 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
+  bnnoremap(buffer, '[d', '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>')
   -- vim.diagnostic.open_float(0, { scope="cursor", source="always", border = "rounded" })
-  bkeymap(
+  bnnoremap(
     buffer,
     'gl',
     '<cmd>lua vim.diagnostic.open_float(0, {scope="cursor",source="always", border = "rounded", format=function(diag) return string.format("%s (%s)", diag.message, diag.code or (diag.user_data and diag.  user_data.lsp and diag.user_data.lsp.code)) end})<CR>'
   )
-  bkeymap(buffer, ']d', '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>')
-  -- bkeymap(buffer, "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>")
+  bnnoremap(buffer, ']d', '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>')
+  -- bnnoremap(buffer, "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>")
   vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format{async=true}' ]])
 end
 
@@ -107,12 +95,6 @@ M.on_attach = function(client, buffer)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-local cmp_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
-if not cmp_ok then
-  return
-end
-
 M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
 return M

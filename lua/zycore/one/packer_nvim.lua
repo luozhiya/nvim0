@@ -123,13 +123,14 @@ local function init()
       { 'hrsh7th/cmp-nvim-lsp-signature-help', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-nvim-lsp-document-symbol', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
-      { 'lukas-reineke/cmp-under-comparator', after = 'nvim-cmp' },
+      { 'lukas-reineke/cmp-under-comparator', event = 'InsertEnter' },
       { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
       { 'onsails/lspkind.nvim', after = 'nvim-cmp' }, -- vscode-like pictograms for neovim lsp completion items
       { 'PaterJason/cmp-conjure', after = 'nvim-cmp' }, -- nvim-cmp source for conjure.
     },
     config = [[require('zycore.one.cmp')]],
     event = 'InsertEnter',
+    after = 'cmp-under-comparator',
   })
 
   -- C++
@@ -227,7 +228,7 @@ local function init()
     },
     {
       'nvim-telescope/telescope-frecency.nvim', -- A telescope.nvim extension that offers intelligent prioritization when selecting files from your editing history.
-      after = 'telescope.nvim', -- module name, not github short path
+      after = { 'telescope.nvim', 'sqlite.lua' }, -- module name, not github short path
       requires = {
         'kkharji/sqlite.lua', -- SQLite LuaJIT binding with a very simple api.
         after = 'telescope.nvim',

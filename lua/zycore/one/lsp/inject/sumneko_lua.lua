@@ -1,4 +1,4 @@
-return {
+local opts = {
   settings = {
     Lua = {
       format = {
@@ -23,3 +23,5 @@ return {
     },
   },
 }
+
+return opts

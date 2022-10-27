@@ -1,6 +1,6 @@
 local util = require('lspconfig.util')
 
-return {
+local opts = {
   default_config = {
     cmd = { 'ccls' },
     filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
@@ -34,3 +34,5 @@ return {
     end,
   },
 }
+
+return opts
