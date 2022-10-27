@@ -114,7 +114,7 @@ local function init()
   use({
     'hrsh7th/nvim-cmp', -- Autocompletion plugin
     requires = {
-      { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' }, -- LSP source for nvim-cmp
+      { 'hrsh7th/cmp-nvim-lsp', event = 'InsertEnter' }, -- LSP source for nvim-cmp
       { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' },
@@ -130,7 +130,7 @@ local function init()
     },
     config = [[require('zycore.one.cmp')]],
     event = 'InsertEnter',
-    after = 'cmp-under-comparator',
+    after = { 'cmp-under-comparator', 'clangd_extensions.nvim' },
   })
 
   -- C++
@@ -139,11 +139,13 @@ local function init()
     { 'jackguo380/vim-lsp-cxx-highlight', after = 'nvim-lspconfig' }, -- semantic highlighting using the language server protocol.
     {
       -- cycle references
+      -- clangd -> lsp -> cmp-nvim
       'p00f/clangd_extensions.nvim', -- Clangd's off-spec features for neovim's LSP client.
       after = {
-        'cmp-nvim-lsp',
+        'cmp-nvim-lsp',        
         'nvim-lspconfig',
       },
+      event = 'InsertEnter',
       config = [[require('zycore.one.clangd_extensions')]],
     },
   })
