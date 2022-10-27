@@ -1,12 +1,8 @@
-local toggleterm_ok, toggleterm = pcall(require, 'toggleterm')
-if not toggleterm_ok then
-  return
-end
+local api = vim.api
+local toggleterm = require('toggleterm')
+local nnoremap = require('zycore.base.hardworking').nnoremap
 
-local hardworking = require('zycore.base.hardworking')
-local nnoremap = hardworking.nnoremap
-
-toggleterm.setup({
+local opts = {
   size = 20,
   open_mapping = [[<c-\>]],
   hide_numbers = true,
@@ -27,16 +23,18 @@ toggleterm.setup({
       background = 'Normal',
     },
   },
-})
+}
+
+toggleterm.setup(opts)
 
 function _G.set_terminal_keymaps()
   local opts = { noremap = true }
-  vim.api.nvim_buf_set_keymap(0, 't', '<esc>', [[<C-\><C-n>]], opts)
-  vim.api.nvim_buf_set_keymap(0, 't', 'jk', [[<C-\><C-n>]], opts)
-  vim.api.nvim_buf_set_keymap(0, 't', '<C-h>', [[<C-\><C-n><C-W>h]], opts)
-  vim.api.nvim_buf_set_keymap(0, 't', '<C-j>', [[<C-\><C-n><C-W>j]], opts)
-  vim.api.nvim_buf_set_keymap(0, 't', '<C-k>', [[<C-\><C-n><C-W>k]], opts)
-  vim.api.nvim_buf_set_keymap(0, 't', '<C-l>', [[<C-\><C-n><C-W>l]], opts)
+  api.nvim_buf_set_keymap(0, 't', '<esc>', [[<C-\><C-n>]], opts)
+  api.nvim_buf_set_keymap(0, 't', 'jk', [[<C-\><C-n>]], opts)
+  api.nvim_buf_set_keymap(0, 't', '<C-h>', [[<C-\><C-n><C-W>h]], opts)
+  api.nvim_buf_set_keymap(0, 't', '<C-j>', [[<C-\><C-n><C-W>j]], opts)
+  api.nvim_buf_set_keymap(0, 't', '<C-k>', [[<C-\><C-n><C-W>k]], opts)
+  api.nvim_buf_set_keymap(0, 't', '<C-l>', [[<C-\><C-n><C-W>l]], opts)
 end
 
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')

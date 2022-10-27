@@ -1,9 +1,4 @@
-local hardworking = require('zycore.base.hardworking')
-
-local nnoremap = hardworking.nnoremap
-local inoremap = hardworking.inoremap
-local vnoremap = hardworking.vnoremap
-local xnoremap = hardworking.xnoremap
+local nnoremap = require('zycore.base.hardworking').nnoremap
 
 -- local map = vim.api.nvim_set_keymap
 -- local silent = { silent = true, noremap = true }

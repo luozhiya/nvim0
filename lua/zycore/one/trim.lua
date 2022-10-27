@@ -1,8 +1,4 @@
-local ok, trim = pcall(require, 'trim')
-if not ok then
-  return
-end
-
+local trim = require('trim')
 local opts = {
   -- if you want to ignore markdown file.
   -- you can specify filetypes.

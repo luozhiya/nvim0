@@ -1,5 +1,4 @@
-local hardworking = require('zycore.base.hardworking')
-local nnoremap = hardworking.nnoremap
+local nnoremap = require('zycore.base.hardworking').nnoremap
 
 -- Navigate buffers
 nnoremap('<S-l>', ':bnext<CR>')

@@ -1,4 +1,5 @@
 local fn = vim.fn
+local opt = vim.opt
 local style_constexpr = require('zycore.base.style_constexpr')
 local hardworking = require('zycore.base.hardworking')
 
@@ -14,12 +15,12 @@ hardworking.set(melantha, { 'zycore', 'one', 'title', 'modified_icon' }, modifie
 -- need global function
 -- 🤣
 if hardworking.is_windows() then
-  vim.opt.titlestring = ''
+  opt.titlestring = ''
 else
-  vim.opt.titlestring = '  %{v:lua.vim.fn.fnamemodify(v:lua.vim.fn.getcwd(), ":t")} %{v:lua.melantha.zycore.one.title.modified_icon()}'
+  opt.titlestring = '  %{v:lua.vim.fn.fnamemodify(v:lua.vim.fn.getcwd(), ":t")} %{v:lua.melantha.zycore.one.title.modified_icon()}'
 end
-vim.opt.titleold = fn.fnamemodify(vim.loop.os_getenv('SHELL'), ':t')
-vim.opt.title = true
-vim.opt.titlelen = 80
+opt.titleold = fn.fnamemodify(vim.loop.os_getenv('SHELL'), ':t')
+opt.title = true
+opt.titlelen = 80
 
 return title

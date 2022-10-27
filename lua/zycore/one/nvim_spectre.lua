@@ -1,12 +1,8 @@
-local hardworking = require('zycore.base.hardworking')
+local spectre = require('spectre')
+local nnoremap = require('zycore.base.hardworking').nnoremap
+nnoremap('<c-f>', '<cmd>lua require("spectre").open()<CR>')
 
-local nnoremap = hardworking.nnoremap
-local inoremap = hardworking.inoremap
-local vnoremap = hardworking.vnoremap
-local xnoremap = hardworking.xnoremap
-
-require('spectre').setup({
-
+local opts = {
   color_devicons = true,
   open_cmd = 'vnew',
   live_update = false, -- auto excute search again when you write any file in vim
@@ -177,6 +173,6 @@ require('spectre').setup({
   replace_vim_cmd = 'cdo',
   is_open_target_win = true, --open file on opener window
   is_insert_mode = false, -- start open panel on is_insert_mode
-})
+}
 
-nnoremap('<c-f>', '<cmd>lua require("spectre").open()<CR>')
+spectre.setup(opts)

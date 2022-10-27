@@ -1,16 +1,13 @@
-local nvim_tree_ok, nvim_tree = pcall(require, 'nvim-tree')
-if not nvim_tree_ok then
-  return
-end
+local nvim_tree = require('nvim-tree')
+local tree_cb = require('nvim-tree.config').nvim_tree_callback
 
-local config_nvim_tree_ok, nvim_tree_config = pcall(require, 'nvim-tree.config')
-if not config_nvim_tree_ok then
-  return
-end
+vim.cmd([[
+" hi NvimTreeWinSeparator guifg=black guibg=black
+" hi NvimTreeStatusLineNC ctermbg=black ctermfg=black
+" hi NvimTreeStatusLine ctermbg=black ctermfg=black
+]])
 
-local tree_cb = nvim_tree_config.nvim_tree_callback
-
-nvim_tree.setup({
+local opts = {
   update_focused_file = {
     enable = true,
     update_cwd = true,
@@ -78,10 +75,6 @@ nvim_tree.setup({
   git = {
     ignore = false,
   },
-})
+}
 
-vim.cmd([[
-" hi NvimTreeWinSeparator guifg=black guibg=black
-" hi NvimTreeStatusLineNC ctermbg=black ctermfg=black
-" hi NvimTreeStatusLine ctermbg=black ctermfg=black
-]])
+nvim_tree.setup(opts)

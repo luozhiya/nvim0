@@ -1,7 +1,4 @@
-local ok, registers = pcall(require, 'registers')
-if not ok then
-  return
-end
+local registers = require('registers')
 
 local opts = {
   -- Show these registers in the order of the string

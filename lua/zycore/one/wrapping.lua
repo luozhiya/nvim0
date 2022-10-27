@@ -1,15 +1,11 @@
 local wrapping = require('wrapping')
-local hardworking = require('zycore.base.hardworking')
+local nnoremap = require('zycore.base.hardworking').nnoremap
 
 local opts = {
   auto_set_mode_heuristically = true,
 }
 
 wrapping.setup(opts)
-
--- if hardworking.is_linux() then
---   wrapping.hard_wrap_mode()
--- end
 
 local swap_wrap = function()
   if vim.opt.wrap._value == true then
@@ -25,7 +21,7 @@ vim.api.nvim_create_user_command('SwapWrap', function()
   swap_wrap()
 end, {})
 
-vim.keymap.set('', '<a-q>', ':SwapWrap<CR>')
+nnoremap('<a-q>', ':SwapWrap<CR>')
 
 -- vim.keymap.set("n", "yw", function()
 --     wrapping.toggle_wrap_mode()

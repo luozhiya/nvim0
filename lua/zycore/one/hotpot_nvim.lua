@@ -1,4 +1,6 @@
-require('hotpot').setup({
+local hotpot = require('hotpot')
+
+local opts = {
   -- allows you to call `(require :fennel)`.
   -- recommended you enable this unless you have another fennel in your path.
   -- you can always call `(require :hotpot.fennel)`.
@@ -24,4 +26,6 @@ require('hotpot').setup({
       -- allowGlobals = false,
     },
   },
-})
+}
+
+hotpot.setup(opts)

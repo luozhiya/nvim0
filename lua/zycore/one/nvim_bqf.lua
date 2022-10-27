@@ -3,7 +3,9 @@ vim.cmd([[
     hi link BqfPreviewRange Search
 ]])
 
-require('bqf').setup({
+local bqf = require('bqf')
+
+local opts = {
   auto_enable = true,
   auto_resize_height = true, -- highly recommended enable
   preview = {
@@ -41,4 +43,6 @@ require('bqf').setup({
       extra_opts = { '--bind', 'ctrl-o:toggle-all', '--prompt', '> ' },
     },
   },
-})
+}
+
+bqf.setup(opts)

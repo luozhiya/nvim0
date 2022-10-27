@@ -1,5 +1,7 @@
 -- Showing defaults
-require('nvim-lightbulb').setup({
+local lightbulb = require('nvim-lightbulb')
+
+local opts = {
   -- LSP client names to ignore
   -- Example: {"sumneko_lua", "null-ls"}
   ignore = {},
@@ -49,4 +51,6 @@ require('nvim-lightbulb').setup({
     -- see :help autocmd-events
     events = { 'CursorHold', 'CursorHoldI' },
   },
-})
+}
+
+lightbulb.setup(opts)

@@ -1,10 +1,7 @@
-local ok, illuminate = pcall(require, 'illuminate')
-if not ok then
-  return
-end
+local illuminate = require('illuminate')
 
 -- default configuration
-illuminate.configure({
+local opts = {
   -- providers: provider used to get references in the buffer, ordered by priority
   providers = {
     'lsp',
@@ -38,4 +35,6 @@ illuminate.configure({
   providers_regex_syntax_allowlist = {},
   -- under_cursor: whether or not to illuminate under the cursor
   under_cursor = true,
-})
+}
+
+illuminate.configure(opts)

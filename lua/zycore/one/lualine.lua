@@ -1,8 +1,4 @@
-local lualine_ok, lualine = pcall(require, 'lualine')
-if not lualine_ok then
-  return
-end
-
+local lualine = require('lualine')
 local style_constexpr = require('zycore.base.style_constexpr')
 
 local hide_in_width = function()
@@ -86,7 +82,7 @@ local spaces = function()
   return 'spaces: ' .. vim.api.nvim_buf_get_option(0, 'shiftwidth')
 end
 
-lualine.setup({
+local opts = {
   options = {
     color = { fg = style_constexpr.palette.white, bg = style_constexpr.palette.vs_blue },
     -- color = { fg = style_constexpr.palette.white, bg = '#131313' },
@@ -140,4 +136,6 @@ lualine.setup({
   },
   tabline = {},
   extensions = {},
-})
+}
+
+lualine.setup(opts)
