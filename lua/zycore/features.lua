@@ -32,7 +32,7 @@ local features_list = {
   'bufferline',
   -- 'nvim_autopairs', -- managed by packer
   'toggleterm',
-  'project',
+  -- 'project',
   -- 'indent_blankline', -- managed by packer
   'alpha',
   -- 'gitsigns', -- managed by packer

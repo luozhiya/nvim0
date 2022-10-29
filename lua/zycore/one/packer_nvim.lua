@@ -366,11 +366,13 @@ local function init()
     {
       'machakann/vim-sandwich', -- Set of operators and textobjects to search/select/edit sandwiched texts.
       event = 'BufReadPost',
+      disable = true,
     },
     {
       'andymass/vim-matchup',
       config = [[require('zycore.one.matchup')]],
       event = 'BufReadPost',
+      disable = true,
     },
     {
       'monkoose/matchparen.nvim', -- alternative to default neovim matchparen plugin
@@ -390,6 +392,7 @@ local function init()
     'windwp/nvim-autopairs', -- autopairs for neovim written by lua
     after = 'nvim-cmp',
     config = [[require('zycore.one.nvim_autopairs')]],
+    disable = true,
   })
 
   -- Code Visual Improved
@@ -416,8 +419,8 @@ local function init()
       'ggandor/leap.nvim', -- Neovim's answer to the mouse: a "clairvoyant" interface that makes on-screen jumps quicker and more natural than ever
       requires = 'tpope/vim-repeat', -- enable repeating supported plugin maps with "."
     },
-    'ggandor/flit.nvim', -- Enhanced f/t motions for Leap
-    'ggandor/leap-ast.nvim', -- Jump to, select and operate on AST nodes via the Leap interface with Treesitter (WIP)
+    { 'ggandor/flit.nvim', disable = true, }, -- Enhanced f/t motions for Leap
+    { 'ggandor/leap-ast.nvim', disable = true, }, -- Jump to, select and operate on AST nodes via the Leap interface with Treesitter (WIP)
   })
 
   -- Quickfix
@@ -444,6 +447,7 @@ local function init()
     'mbbill/undotree',
     cmd = 'UndotreeToggle',
     config = [[vim.g.undotree_SetFocusWhenToggle = 1]],
+    disable = true,
   })
 
   -- Project Management/Sessions
