@@ -125,12 +125,12 @@ local function init()
       { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
       { 'lukas-reineke/cmp-under-comparator', event = 'InsertEnter' },
       { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
-      { 'onsails/lspkind.nvim', after = 'nvim-cmp' }, -- vscode-like pictograms for neovim lsp completion items
+      { 'onsails/lspkind.nvim', event = 'InsertEnter' }, -- vscode-like pictograms for neovim lsp completion items
       { 'PaterJason/cmp-conjure', after = 'nvim-cmp' }, -- nvim-cmp source for conjure.
     },
     config = [[require('zycore.one.cmp')]],
     event = 'InsertEnter',
-    after = { 'cmp-under-comparator', 'clangd_extensions.nvim' },
+    after = { 'cmp-under-comparator', 'clangd_extensions.nvim', 'lspkind.nvim' },
   })
 
   -- C++
@@ -142,8 +142,9 @@ local function init()
       -- clangd -> lsp -> cmp-nvim
       'p00f/clangd_extensions.nvim', -- Clangd's off-spec features for neovim's LSP client.
       after = {
-        'cmp-nvim-lsp',        
+        'cmp-nvim-lsp',
         'nvim-lspconfig',
+        'nvim-lsp-installer',
       },
       event = 'InsertEnter',
       config = [[require('zycore.one.clangd_extensions')]],
@@ -157,8 +158,8 @@ local function init()
 
   -- Lua
   use({
-    'folke/lua-dev.nvim',
-    after = 'nvim-lspconfig', -- Dev setup for init.lua and plugin development with full signature help, docs and completion for the nvim lua API.
+    'folke/lua-dev.nvim', -- Dev setup for init.lua and plugin development with full signature help, docs and completion for the nvim lua API.
+    after = 'nvim-lspconfig',
   })
 
   -- Debugging
@@ -178,11 +179,11 @@ local function init()
       config = [[require('zycore.one.dapui')]],
     },
     {
-      'folke/trouble.nvim',
+      'folke/trouble.nvim', -- 🚦 A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
       setup = [[require('zycore.one.trouble_setup')]],
       config = [[require('zycore.one.trouble')]],
       cmd = 'TroubleToggle',
-    }, -- 🚦 A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
+    },
   })
 
   -- Highlights/treesitter
@@ -309,23 +310,33 @@ local function init()
       'sbdchd/neoformat', -- why not use .clang-format?
       event = 'BufReadPost',
       config = [[require('zycore.one.format').neoformat_setup()]],
+      disable = true,
     },
     {
       'rhysd/vim-clang-format',
       event = 'BufReadPost',
       config = [[require('zycore.one.format').vim_clang_format_setup()]],
+      disable = true,
     },
     {
-      'cappyzawa/trim.nvim',
+      'cappyzawa/trim.nvim', -- trims trailing whitespace and lines
       event = 'BufReadPost',
       config = [[require('zycore.one.trim')]],
-    }, -- trims trailing whitespace and lines
+      disable = true,
+    },
     {
-      'mhartington/formatter.nvim',
+      'mhartington/formatter.nvim', -- A format runner for Neovim.
       event = 'BufReadPost',
       config = [[require('zycore.one.formatter')]],
-    }, -- A format runner for Neovim.
-    { 'lukas-reineke/lsp-format.nvim', event = 'BufReadPost' }, -- A wrapper around Neovims native LSP formatting.
+      disable = true,
+    },
+    {
+      'lukas-reineke/lsp-format.nvim', -- A wrapper around Neovims native LSP formatting.
+      after = 'nvim-lspconfig',
+      event = 'BufReadPost',
+      config = [[require('zycore.one.lsp_format')]],
+      disable = true,
+    },
   })
 
   -- Prettification
@@ -365,6 +376,7 @@ local function init()
       'monkoose/matchparen.nvim', -- alternative to default neovim matchparen plugin
       config = [[require('zycore.one.matchparen_nvim')]],
       event = 'BufReadPost',
+      disable = true,
     },
     {
       'andrewferrier/wrapping.nvim', -- Plugin to make it easier to switch between 'soft' and 'hard' line wrapping in NeoVim
@@ -435,14 +447,20 @@ local function init()
   })
 
   -- Project Management/Sessions
-  use('ahmedkhalf/project.nvim')
+  use({
+    'ahmedkhalf/project.nvim',
+    disable = true,
+  })
 
   -- Pretty symbols
   use('kyazdani42/nvim-web-devicons')
 
   -- UI/File tree/Status/Tab
   use({
-    'delphinus/dwm.nvim', -- Tiled Window Management
+    {
+      'delphinus/dwm.nvim', -- Tiled Window Management
+      disable = true,
+    },
     'goolord/alpha-nvim', -- a lua powered greeter like vim-startify / dashboard-nvim
     {
       'kyazdani42/nvim-tree.lua', -- A file explorer tree for neovim written in lua
@@ -457,6 +475,7 @@ local function init()
       'Pocco81/true-zen.nvim', -- Clean and elegant distraction-free writing for NeoVim
       config = [[require('zycore.one.true_zen')]],
       event = 'BufReadPost',
+      disable = true,
     },
   })
 

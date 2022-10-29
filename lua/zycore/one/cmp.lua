@@ -1,7 +1,5 @@
 local cmp = require('cmp')
 local luasnip = require('luasnip')
-
-vim.cmd([[packadd lspkind.nvim]])
 local lspkind = require('lspkind')
 
 local style_constexpr = require('zycore.base.style_constexpr')
