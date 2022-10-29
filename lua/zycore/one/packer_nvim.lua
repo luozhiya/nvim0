@@ -417,10 +417,11 @@ local function init()
   use({
     {
       'ggandor/leap.nvim', -- Neovim's answer to the mouse: a "clairvoyant" interface that makes on-screen jumps quicker and more natural than ever
+      config = [[require('zycore.one.leap')]],
       requires = 'tpope/vim-repeat', -- enable repeating supported plugin maps with "."
     },
-    { 'ggandor/flit.nvim', disable = true, }, -- Enhanced f/t motions for Leap
-    { 'ggandor/leap-ast.nvim', disable = true, }, -- Jump to, select and operate on AST nodes via the Leap interface with Treesitter (WIP)
+    { 'ggandor/flit.nvim', disable = true }, -- Enhanced f/t motions for Leap
+    { 'ggandor/leap-ast.nvim', disable = true }, -- Jump to, select and operate on AST nodes via the Leap interface with Treesitter (WIP)
   })
 
   -- Quickfix

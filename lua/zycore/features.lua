@@ -14,7 +14,7 @@ local features_list = {
   'keymap',
 
   -- Plugin
-  'sneak',
+  -- 'sneak', -- managed by packer
   -- 'vim_bbye', -- managed by packer
   -- 'cmp', -- managed by packer
   -- 'format', -- managed by packer
