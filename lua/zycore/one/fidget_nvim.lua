@@ -1,6 +1,6 @@
 local opts = {
   text = {
-    spinner = 'moon',
+    spinner = 'pipe',
     done = '', --  v
     commenced = 'Started',
     completed = 'Completed',

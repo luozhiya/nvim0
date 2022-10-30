@@ -77,5 +77,4 @@ local opts = {
   },
 }
 
--- vim.cmd([[packadd nvim-tree.lua]])
 nvim_tree.setup(opts)

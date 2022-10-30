@@ -24,9 +24,9 @@ M.setup = function()
     --   only_current_line = true,
     -- },
     -- show signs
-    signs = true,
-    update_in_insert = true,
-    underline = true,
+    signs = false,
+    update_in_insert = false,
+    underline = false,
     severity_sort = true,
     float = {
       focusable = false,
@@ -76,12 +76,8 @@ local function lsp_keymaps(buffer)
   bnnoremap(buffer, 'ge', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
   bnnoremap(buffer, 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
   bnnoremap(buffer, '[d', '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>')
-  -- vim.diagnostic.open_float(0, { scope="cursor", source="always", border = "rounded" })
-  bnnoremap(
-    buffer,
-    'gl',
-    '<cmd>lua vim.diagnostic.open_float(0, {scope="cursor",source="always", border = "rounded", format=function(diag) return string.format("%s (%s)", diag.message, diag.code or (diag.user_data and diag.  user_data.lsp and diag.user_data.lsp.code)) end})<CR>'
-  )
+  -- bnnoremap(buffer, 'gl', '<cmd>lua vim.diagnostic.open_float(0, { scope="line", source="always", border = "rounded" })<CR>')
+  -- bnnoremap(buffer, 'gl', '<cmd>lua vim.diagnostic.open_float(0, {scope="cursor",source="always", border = "rounded", format=function(diag) return string.format("%s (%s)", diag.message, diag.code or (diag.user_data and diag.  user_data.lsp and diag.user_data.lsp.code)) end})<CR>')
   bnnoremap(buffer, ']d', '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>')
   -- bnnoremap(buffer, "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>")
   vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format{async=true}' ]])

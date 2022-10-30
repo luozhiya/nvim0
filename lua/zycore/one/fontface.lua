@@ -37,7 +37,7 @@ else
   -- codefont = 'CaskaydiaCove Nerd Font SemiLight'
   -- codefont = 'FiraCode Nerd Font Mono'
   -- codefont = 'JetBrainsMono Nerd Font Mono'
-  codefont = 'Inconsolata Regular Nerd Font'
+  codefont = 'Inconsolata Nerd Font Mono'
   codefontstyle = 'sl'
   -- cjkfont = 'Sarasa Mono SC Nerd'
   cjkfont = codefont

@@ -104,6 +104,7 @@ local function init()
       as = 'lsp_lines.nvim',
       after = 'nvim-lspconfig',
       config = [[require('zycore.one.lsp_lines_nvim')]],
+      disable = true,
     },
     { 'nvim-lua/lsp-status.nvim', after = 'nvim-lspconfig' }, -- Utility functions for getting diagnostic status and progress messages from LSP servers, for use in the Neovim statusline
     { 'j-hui/fidget.nvim', after = 'nvim-lspconfig', config = [[require('zycore.one.fidget_nvim')]] }, -- Standalone UI for nvim-lsp progress
@@ -457,10 +458,13 @@ local function init()
   -- Project Management/Sessions
   use({
     'ahmedkhalf/project.nvim',
-    -- after = { 'telescope.nvim' },
-    -- after = { 'telescope.nvim', 'nvim-tree.lua' },
+    -- and | or ?
+    after = { 'telescope.nvim' },
+    -- module_pattern = { 'nvim-tree' },
     config = [[require('zycore.one.project')]],
+    -- cmd = { 'NvimTreeToggle', 'Telescope' }, -- dependency
     -- disable = true,
+    event = 'BufReadPost', -- workaround for open-file > nvim-tree
   })
 
   -- Pretty symbols
