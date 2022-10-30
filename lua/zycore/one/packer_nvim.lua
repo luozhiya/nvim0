@@ -75,6 +75,9 @@ local function init()
     'lewis6991/impatient.nvim', -- Improve startup time for Neovim
   })
 
+  -- Profiling
+  use({ 'dstein64/vim-startuptime', cmd = 'StartupTime', config = [[vim.g.startuptime_tries = 10]] })
+
   -- Packer
   use('wbthomason/packer.nvim')
 
