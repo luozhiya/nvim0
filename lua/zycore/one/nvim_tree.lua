@@ -41,7 +41,7 @@ local opts = {
     },
   },
   diagnostics = {
-    enable = true,
+    enable = false,
     show_on_dirs = true,
     icons = {
       hint = '',
