@@ -1,4 +1,5 @@
 local trouble = require('trouble')
+local style_constexpr = require('zycore.base.style_constexpr')
 
 local opts = {
   position = 'bottom', -- position of the list can be: bottom, top, left, right
@@ -39,6 +40,7 @@ local opts = {
   auto_jump = { 'lsp_definitions' }, -- for the given modes, automatically jump if there is only a single result
   signs = {
     -- icons / text used for a diagnostic
+    -- style_constexpr.icons.lsp.error
     error = '',
     warning = '',
     hint = '',
