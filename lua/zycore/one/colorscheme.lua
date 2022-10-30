@@ -45,7 +45,7 @@ end
 --   -- ]] )
 -- end
 
-if vim.g.current_colorscheme == 'darkplus' then
+if vim.g.colors_name == 'darkplus' then
   -- local split_bg = '#131313'
   -- local split_bg = '#686868'
   local split_bg = '#3E3E3E'

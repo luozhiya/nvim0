@@ -492,6 +492,11 @@ local function init()
       event = 'BufReadPost',
       disable = true,
     },
+    {
+      'b0o/incline.nvim', -- Floating statuslines for Neovim
+      config = [[require('zycore.one.incline')]],
+      event = 'BufReadPost',
+    },
   })
 
   -- Colorscheme

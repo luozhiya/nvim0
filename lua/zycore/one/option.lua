@@ -53,7 +53,7 @@ local option = {
 
   -- View
   laststatus = 3, -- 始终显示状态栏, Only last window
-  cmdheight = 1, -- command-line 的行数
+  cmdheight = 0, -- command-line 的行数
   showmode = true, -- 当前 NVIM 的模式
   showcmd = true, -- 在非 : 模式下输入的 command 会显示在状态栏
   lazyredraw = true,
@@ -68,7 +68,8 @@ local option = {
   number = true, -- set numberd liens
   ruler = true, -- show row/col in status line
   relativenumber = true, -- set relative numbered lines
-  signcolumn = 'auto:2-5', -- always show the sign column, otherwise it would shift the text each time
+  -- signcolumn = 'auto:2-5', -- always show the sign column, otherwise it would shift the text each time
+  signcolumn = 'yes:1',
   -- Color
   -- Nvim emits true (24-bit) colours in the terminal, if 'termguicolors' is set.
   -- Truecolor
@@ -128,9 +129,9 @@ local option = {
   linespace = 0,
 
   -- Timings
-  updatetime = 300, -- faster completion (4000ms default)
+  updatetime = 200, -- faster completion (4000ms default)
   timeout = true,
-  timeoutlen = 500,
+  timeoutlen = 200,
   ttimeoutlen = 10,
 
   -- Completion

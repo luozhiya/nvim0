@@ -110,7 +110,7 @@ bufferline.setup({
     offsets = {
       {
         filetype = 'NvimTree',
-        text = 'File Explorer',
+        text = 'Hard working', -- 'File Explorer',
         highlight = 'Directory',
         separator = false,
         text_align = 'left',
