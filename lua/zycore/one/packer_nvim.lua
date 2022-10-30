@@ -457,7 +457,8 @@ local function init()
   -- Project Management/Sessions
   use({
     'ahmedkhalf/project.nvim',
-    after = 'telescope.nvim',
+    -- after = { 'telescope.nvim' },
+    -- after = { 'telescope.nvim', 'nvim-tree.lua' },
     config = [[require('zycore.one.project')]],
     -- disable = true,
   })
