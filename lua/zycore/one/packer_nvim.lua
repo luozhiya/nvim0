@@ -122,7 +122,7 @@ local function init()
       { 'hrsh7th/cmp-vsnip', after = 'nvim-cmp' }, -- nvim-cmp source for vim-vsnip
       { 'hrsh7th/cmp-nvim-lsp-signature-help', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-nvim-lsp-document-symbol', after = 'nvim-cmp' },
-      { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
+      { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp', disable = true },
       { 'lukas-reineke/cmp-under-comparator', event = 'InsertEnter' },
       { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
       { 'onsails/lspkind.nvim', event = 'InsertEnter' }, -- vscode-like pictograms for neovim lsp completion items
@@ -454,7 +454,9 @@ local function init()
   -- Project Management/Sessions
   use({
     'ahmedkhalf/project.nvim',
-    disable = true,
+    after = 'telescope.nvim',
+    config = [[require('zycore.one.project')]],
+    -- disable = true,
   })
 
   -- Pretty symbols

@@ -1,10 +1,23 @@
+-- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/server_configurations/clangd.lua
+-- https://github.com/p00f/clangd_extensions.nvim
+
 local clangd_extensions = require('clangd_extensions')
 local hardworking = require('zycore.base.hardworking')
+local util = require('lspconfig.util')
 
 local nnoremap = hardworking.nnoremap
 local inoremap = hardworking.inoremap
 local vnoremap = hardworking.vnoremap
 local xnoremap = hardworking.xnoremap
+
+local root_files = {
+  '.clangd',
+  -- '.clang-tidy',
+  -- '.clang-format',
+  'compile_commands.json',
+  'compile_flags.txt',
+  -- 'configure.ac', -- AutoTools
+}
 
 local server_clangd = {}
 local cxx_lsp = require('zycore.goforit').cxx_lsp
@@ -20,16 +33,21 @@ if vim.tbl_contains(cxx_lsp, 'clangd') then
       -- https://www.reddit.com/r/neovim/comments/tul8pb/lsp_clangd_warning_multiple_different_client/
       '--offset-encoding=utf-32',
     },
+    filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
+    root_dir = function(fname)
+      return util.root_pattern(unpack(root_files))(fname) or util.find_git_ancestor(fname)
+    end,
     init_options = {
       clangdFileStatus = true,
     },
+    single_file_support = false,
     on_attach = require('zycore.one.lsp.handler').on_attach,
     capabilities = require('zycore.one.lsp.handler').capabilities,
-    handlers = {
-      ['textDocument/publishDiagnostics'] = function(...)
-        return nil
-      end,
-    },
+    -- handlers = {
+    --   ['textDocument/publishDiagnostics'] = function(...)
+    --     return nil
+    --   end,
+    -- },
   }
 end
 

@@ -23,9 +23,9 @@ local opts = {
     },
   },
   handlers = {
-    -- ['textDocument/publishDiagnostics'] = function(...)
-    --   return nil
-    -- end,
+    ['textDocument/publishDiagnostics'] = function(...)
+      return nil
+    end,
     ['textDocument/hover'] = function(...)
       return nil
     end,

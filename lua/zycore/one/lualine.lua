@@ -1,5 +1,37 @@
 local lualine = require('lualine')
 local style_constexpr = require('zycore.base.style_constexpr')
+local get_mode = vim.api.nvim_get_mode
+
+vim.cmd([[
+" Setup the colors
+function! s:setup_colors() abort
+  if g:colors_name ==# 'nazgul'
+    let s:bg_color = '#222222'
+    let s:fg_color = '#e9e9e9'
+  else
+    let s:bg_color = synIDattr(synIDtrans(hlID('Statusline')), 'bg#', 'gui')
+    let s:fg_color = synIDattr(synIDtrans(hlID('Statusline')), 'fg#', 'gui')
+  endif
+
+  exec 'hi Statusline guifg=' . s:fg_color . ' guibg=' . s:bg_color . ' gui=none'
+  exec 'hi StatuslineSeparator guifg=' . s:bg_color . ' gui=none guibg=none'
+  exec 'hi StatuslineNormal guibg=' . s:bg_color . ' gui=none guifg=' . s:fg_color
+  exec 'hi StatuslineVC guibg=' . s:bg_color . ' gui=none guifg=#a9a9a9'
+  exec 'hi StatuslineNormalAccent guibg=#403834 gui=bold guifg=' . s:fg_color
+  exec 'hi StatuslineInsertAccent guifg=' . s:fg_color . ' gui=bold guibg=#726b67'
+  exec 'hi StatuslineReplaceAccent guifg=' . s:fg_color . ' gui=bold guibg=#afaf00'
+  exec 'hi StatuslineConfirmAccent guifg=' . s:fg_color . ' gui=bold guibg=#83adad'
+  exec 'hi StatuslineTerminalAccent guifg=' . s:fg_color . ' gui=bold guibg=#6f6f6f'
+  exec 'hi StatuslineMiscAccent guifg=' . s:fg_color . ' gui=bold guibg=#948d89'
+endfunction
+
+augroup statusline_colors
+  au!
+  au ColorScheme * call s:setup_colors()
+augroup END
+
+call s:setup_colors()
+]])
 
 local hide_in_width = function()
   return vim.fn.winwidth(0) > 80
@@ -30,12 +62,65 @@ local diff = {
   cond = hide_in_width,
 }
 
-local mode = {
-  'mode',
-  fmt = function(str)
-    return '-- ' .. str .. ' --'
-  end,
+-- local mode = {
+--   'mode',
+--   fmt = function(str)
+--     return '-- ' .. str .. ' --'
+--   end,
+-- }
+
+local mode_table = {
+  n = 'Normal',
+  no = 'N·Operator Pending',
+  v = 'Visual',
+  V = 'V·Line',
+  ['^V'] = 'V·Block',
+  s = 'Select',
+  S = 'S·Line',
+  ['^S'] = 'S·Block',
+  i = 'Insert',
+  ic = 'Insert',
+  R = 'Replace',
+  Rv = 'V·Replace',
+  c = 'Command',
+  cv = 'Vim Ex',
+  ce = 'Ex',
+  r = 'Prompt',
+  rm = 'More',
+  ['r?'] = 'Confirm',
+  ['!'] = 'Shell',
+  t = 'Terminal',
 }
+
+local function mode_name(mode)
+  return string.upper(mode_table[mode] or 'V-Block')
+end
+
+local function update_colors(mode)
+  local mode_color = 'StatuslineMiscAccent'
+  if mode == 'n' then
+    mode_color = 'StatuslineNormalAccent'
+  elseif mode == 'i' or mode == 'ic' then
+    mode_color = 'StatuslineInsertAccent'
+  elseif mode == 'R' then
+    mode_color = 'StatuslineReplaceAccent'
+  elseif mode == 'c' then
+    mode_color = 'StatuslineConfirmAccent'
+  elseif mode == 't' then
+    mode_color = 'StatuslineTerminalAccent'
+  else
+    mode_color = 'StatuslineMiscAccent'
+  end
+  return mode_color
+end
+
+local mode = function()
+  local mode = get_mode().mode
+  local mode_color = update_colors(mode)
+  -- local mode_format = '#%s# %s'
+  -- return mode_format.format(mode_color, mode_name(mode))
+  return mode_name(mode)
+end
 
 local filetype = {
   'filetype',
@@ -74,12 +159,21 @@ local ratio_progress = function()
   local current_line = vim.fn.line('.')
   local total_lines = vim.fn.line('$')
   local line_ratio = current_line / total_lines * 100
-  -- return tostring(line_ratio) ☯️
-  return string.format('%02d ', line_ratio)
+  -- return tostring(line_ratio) ☯️   
+  return string.format('%02d ', line_ratio)
 end
 
 local spaces = function()
   return 'spaces: ' .. vim.api.nvim_buf_get_option(0, 'shiftwidth')
+end
+
+local lsp_active = function()
+  local clients = vim.lsp.get_active_clients()
+  local names = {}
+  for _, client in pairs(clients) do
+    table.insert(names, client.name)
+  end
+  return 'Lsp<' .. table.concat(names, ', ') .. '>'
 end
 
 local opts = {
@@ -122,7 +216,8 @@ local opts = {
       },
     },
     -- lualine_x = { "encoding", "fileformat", "filetype" },
-    lualine_x = { diff, spaces, 'encoding', fileformat, filetype },
+    -- lualine_x = { diff, spaces, 'encoding', fileformat, filetype },
+    lualine_x = { lsp_active, 'encoding', fileformat, filetype },
     lualine_y = { location },
     lualine_z = { ratio_progress },
   },
