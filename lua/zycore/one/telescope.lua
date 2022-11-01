@@ -6,6 +6,7 @@ local fb_actions = telescope.extensions.file_browser.actions
 local opts = {
   defaults = {
     prompt_prefix = ' ',
+    -- Buggy
     -- selection_caret = ' ',
     path_display = { 'smart', 'truncate = 3' },
     file_ignore_patterns = {

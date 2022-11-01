@@ -16,7 +16,7 @@ dashboard.section.buttons.val = {
   dashboard.button('r', '  Recently used files', ':Telescope oldfiles <CR>'),
   dashboard.button('s', '  Find text', ':Telescope live_grep <CR>'),
   dashboard.button('u', '  Update plugins', ':PackerSync <CR>'),
-  dashboard.button('t', '⏱  Time startup', ':StartupTime <CR> <ESC>:only <CR>'),
+  dashboard.button('t', '  Time startup', ':StartupTime <CR> <ESC>:only <CR>'), -- 羽 ⏱ 靖    福
   dashboard.button('c', '  Configuration', ':e! $MYVIMRC <CR>'),
   dashboard.button('q', '  Quit Neovim', ':qa<CR>'),
 }
