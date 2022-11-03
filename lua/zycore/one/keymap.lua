@@ -104,3 +104,6 @@ nnoremap <A-l> <C-w>l
 ]])
 
 nnoremap('<esc><esc>', ':nohlsearch<CR>')
+
+-- New Buffer/Tab
+nnoremap('<C-n>', ':ene <CR>')
