@@ -6,6 +6,10 @@ local xnoremap = hardworking.xnoremap
 
 local rpc = require('zycore.base.rpc_communication')
 
+local is_neovide = function()
+  return vim.fn.exists('neovide') == 1
+end
+
 -- print(rpc.client_id)
 -- print(rpc.client_name)
 
@@ -39,6 +43,10 @@ else
   -- codefont = 'FiraCode Nerd Font Mono'
   -- codefont = 'JetBrainsMono Nerd Font Mono'
   codefont = 'Inconsolata Nerd Font Mono'
+  if is_neovide() then
+    codefontsize = 15
+    codefont = 'JetBrainsMono Nerd Font Mono'
+  end
   codefontstyle = 'sl'
   -- cjkfont = 'Sarasa Mono SC Nerd'
   cjkfont = codefont

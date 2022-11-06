@@ -94,6 +94,7 @@ local function init()
       'neovim/nvim-lspconfig', -- Configurations for Nvim LSP
       after = {
         'cmp-nvim-lsp',
+        -- 'lua-dev',
       },
       config = [[require('zycore.one.lsp.handler').setup()]],
       event = 'InsertEnter',
@@ -126,7 +127,7 @@ local function init()
       { 'hrsh7th/cmp-vsnip', after = 'nvim-cmp' }, -- nvim-cmp source for vim-vsnip
       { 'hrsh7th/cmp-nvim-lsp-signature-help', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-nvim-lsp-document-symbol', after = 'nvim-cmp' },
-      { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp', disable = true },
+      { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp', disable = false },
       { 'lukas-reineke/cmp-under-comparator', event = 'InsertEnter' },
       { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
       { 'onsails/lspkind.nvim', event = 'InsertEnter' }, -- vscode-like pictograms for neovim lsp completion items
@@ -163,7 +164,8 @@ local function init()
   -- Lua
   use({
     'folke/lua-dev.nvim', -- Dev setup for init.lua and plugin development with full signature help, docs and completion for the nvim lua API.
-    after = 'nvim-lspconfig',
+    config = [[require('zycore.one.lua_dev')]],
+    -- event = 'InsertEnter',
   })
 
   -- Debugging

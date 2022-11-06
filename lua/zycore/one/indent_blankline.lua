@@ -19,6 +19,7 @@ g.indent_blankline_filetype_exclude = {
   'Trouble',
 }
 g.indent_blankline_char = '│'
+-- g.indent_blankline_char = '▏'
 -- g.indent_blankline_char = '' -- ⏽ ▏ 
 -- g.indent_blankline_char = "▎"
 g.indent_blankline_context_patterns = {
