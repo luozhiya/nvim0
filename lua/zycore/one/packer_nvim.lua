@@ -135,7 +135,7 @@ local function init()
     },
     config = [[require('zycore.one.cmp')]],
     event = 'InsertEnter',
-    after = { 'cmp-under-comparator', 'clangd_extensions.nvim', 'lspkind.nvim' },
+    after = { 'cmp-under-comparator', 'clangd_extensions.nvim', 'lspkind.nvim', 'conjure' },
   })
 
   -- C++
