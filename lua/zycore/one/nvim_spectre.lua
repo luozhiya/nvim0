@@ -1,5 +1,6 @@
 local spectre = require('spectre')
 local nnoremap = require('zycore.base.hardworking').nnoremap
+
 nnoremap('<c-f>', '<cmd>lua require("spectre").open()<CR>')
 
 local opts = {
