@@ -4,3 +4,5 @@ local dev = require('neodev')
 dev.setup({
   -- add any options here, or leave empty to use the default settings
 })
+
+require('zycore.one.lsp.handler').setup()

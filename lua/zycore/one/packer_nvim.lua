@@ -96,8 +96,8 @@ local function init()
         'cmp-nvim-lsp',
         -- 'lua-dev',
       },
-      config = [[require('zycore.one.lsp.handler').setup()]],
-      event = 'InsertEnter',
+      -- config = [[require('zycore.one.lsp.handler').setup()]],
+      -- event = 'InsertEnter',
     },
     { 'williamboman/nvim-lsp-installer', after = 'nvim-lspconfig', config = [[require('zycore.one.lsp.config_servers')]] }, -- Simple to install LSP servers
     {
@@ -165,7 +165,7 @@ local function init()
   use({
     'folke/lua-dev.nvim', -- Dev setup for init.lua and plugin development with full signature help, docs and completion for the nvim lua API.
     config = [[require('zycore.one.lua_dev')]],
-    -- event = 'InsertEnter',
+    event = 'InsertEnter',
   })
 
   -- Debugging
