@@ -131,7 +131,7 @@ local function init()
       { 'lukas-reineke/cmp-under-comparator', event = 'InsertEnter' },
       { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
       { 'onsails/lspkind.nvim', event = 'InsertEnter' }, -- vscode-like pictograms for neovim lsp completion items
-      { 'PaterJason/cmp-conjure', after = 'nvim-cmp', event = 'InsertEnter' }, -- nvim-cmp source for conjure.
+      { 'PaterJason/cmp-conjure', after = { 'nvim-cmp' , 'conjure' }, event = 'InsertEnter' }, -- nvim-cmp source for conjure.
     },
     config = [[require('zycore.one.cmp')]],
     event = 'InsertEnter',
