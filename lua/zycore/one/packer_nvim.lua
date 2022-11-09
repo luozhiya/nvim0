@@ -84,7 +84,9 @@ local function init()
   -- Fennel
   use({
     'Olical/aniseed', -- Neovim configuration and plugins in Fennel (Lisp compiled to Lua)
-    { 'Olical/conjure', event = 'InsertEnter' }, -- Interactive evaluation for Neovim (Clojure, Fennel, Janet, Racket, Hy, MIT Scheme, Guile)
+    requires = {
+      'Olical/conjure', -- Interactive evaluation for Neovim (Clojure, Fennel, Janet, Racket, Hy, MIT Scheme, Guile)
+    },
     -- 'rktjmp/hotpot.nvim', -- Carl Weathers #1 Neovim Plugin.
   })
 
