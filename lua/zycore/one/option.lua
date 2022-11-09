@@ -53,7 +53,7 @@ local option = {
 
   -- View
   laststatus = 3, -- 始终显示状态栏, Only last window
-  cmdheight = 0, -- command-line 的行数
+  cmdheight = 1, -- command-line 的行数 -- flash??
   showmode = true, -- 当前 NVIM 的模式
   showcmd = true, -- 在非 : 模式下输入的 command 会显示在状态栏
   lazyredraw = true,
