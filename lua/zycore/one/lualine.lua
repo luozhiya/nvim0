@@ -174,7 +174,9 @@ local spaces = function()
 end
 
 local lsp_active = function()
-  local clients = vim.lsp.get_active_clients()
+  -- buf_get_clients
+  -- get_active_clients
+  local clients = vim.lsp.buf_get_clients()
   local names = {}
   for _, client in pairs(clients) do
     table.insert(names, client.name)
