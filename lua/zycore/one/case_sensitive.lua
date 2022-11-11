@@ -3,8 +3,10 @@ local nnoremap = require('zycore.base.hardworking').nnoremap
 local case_sensitive = function()
   if vim.opt.ignorecase._value == true then
     vim.opt.ignorecase = false
+    vim.notify("ignore case", "info")
   else
     vim.opt.ignorecase = true
+    vim.notify("case sensitive", "info")
   end
 end
 
