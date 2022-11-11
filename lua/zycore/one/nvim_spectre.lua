@@ -1,7 +1,8 @@
 local spectre = require('spectre')
 local nnoremap = require('zycore.base.hardworking').nnoremap
 
-nnoremap('<c-f>', '<cmd>lua require("spectre").open()<CR>')
+nnoremap('<c-f>', '<cmd>lua require("spectre").open_file_search()<CR>')
+nnoremap('<c-s-f>', '<cmd>lua require("spectre").open()<CR>')
 
 local opts = {
   color_devicons = true,
@@ -86,6 +87,11 @@ local opts = {
       cmd = "<cmd>lua require('spectre').resume_last_search()<CR>",
       desc = 'resume last search before close',
     },
+    ['close_search'] = {
+      map = '<c-f>',
+      cmd = "<cmd>close<CR>",
+      desc = 'close',
+    },    
     -- you can put your mapping here it only use normal mode
   },
   find_engine = {

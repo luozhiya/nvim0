@@ -14,11 +14,11 @@ local BUILTIN_STAGES = {
 
 local opts = {
   level = vim.log.levels.INFO,
-  timeout = 1500,
+  timeout = 800,
   max_width = nil,
   max_height = nil,
   stages = BUILTIN_STAGES.FADE_IN_SLIDE_OUT,
-  render = BUILTIN_RENDERERS.DEFAULT,
+  render = BUILTIN_RENDERERS.MINIMAL,
   background_colour = 'Normal',
   on_open = nil,
   on_close = nil,

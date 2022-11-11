@@ -12,6 +12,7 @@ local features_list = {
 
   -- Basic
   'keymap',
+  'case_sensitive',
 
   -- Plugin
   -- 'sneak', -- managed by packer

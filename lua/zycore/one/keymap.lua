@@ -104,6 +104,7 @@ nnoremap <A-l> <C-w>l
 ]])
 
 -- Clear search highlight
+-- <cmd>nohlsearch<CR>
 nnoremap('<esc><esc>', ':nohlsearch<CR>')
 
 -- New Buffer/Tab
