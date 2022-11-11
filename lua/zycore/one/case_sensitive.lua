@@ -3,10 +3,10 @@ local nnoremap = require('zycore.base.hardworking').nnoremap
 local case_sensitive = function()
   if vim.opt.ignorecase._value == true then
     vim.opt.ignorecase = false
-    vim.notify("ignore case", "info")
+    vim.notify('ignore case', 'info')
   else
     vim.opt.ignorecase = true
-    vim.notify("case sensitive", "info")
+    vim.notify('case sensitive', 'info')
   end
 end
 
@@ -17,5 +17,5 @@ end, {})
 nnoremap('<a-c>', ':CaseSensitive<CR>')
 
 -- vim.cmd([[
--- nnoremap<leader>/ /\<\><left><left>  
+-- nnoremap<leader>/ /\<\><left><left>
 -- ]])

@@ -89,9 +89,9 @@ local opts = {
     },
     ['close_search'] = {
       map = '<c-f>',
-      cmd = "<cmd>close<CR>",
+      cmd = '<cmd>close<CR>',
       desc = 'close',
-    },    
+    },
     -- you can put your mapping here it only use normal mode
   },
   find_engine = {

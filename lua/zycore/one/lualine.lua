@@ -56,10 +56,10 @@ local diff = {
   colored = false,
   diff_color = {
     -- Same color values as the general color option can be used here.
-    added    = 'DiffAdd',    -- Changes the diff's added color
+    added = 'DiffAdd', -- Changes the diff's added color
     modified = 'DiffChange', -- Changes the diff's modified color
-    removed  = 'DiffDelete', -- Changes the diff's removed color you
-  },  
+    removed = 'DiffDelete', -- Changes the diff's removed color you
+  },
   symbols = {
     added = style_constexpr.icons.git.add,
     modified = style_constexpr.icons.git.mod,

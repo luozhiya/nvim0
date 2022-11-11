@@ -8,7 +8,7 @@ local nnoremap = hardworking.nnoremap
 
 -- ctrl-shfit-p/ctrl-p doesn't work in Windows
 -- work in neovide
-nnoremap('<c-p>', [[<cmd>Telescope buffers show_all_buffers=true theme=get_dropdown<cr>]])  
+nnoremap('<c-p>', [[<cmd>Telescope buffers show_all_buffers=true theme=get_dropdown<cr>]])
 nnoremap('<c-s-p>', [[<cmd>Telescope commands theme=get_dropdown<cr>]])
 
 nnoremap('<c-a>', [[<cmd>Telescope buffers show_all_buffers=true theme=get_dropdown<cr>]])
