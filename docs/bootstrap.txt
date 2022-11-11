@@ -1,7 +1,12 @@
 Windows
 =======
-
-
+xieguole
+sqlite.dll
+fzf
+fd
+grep
+make
+neovide
 
 Ubuntu
 ======
