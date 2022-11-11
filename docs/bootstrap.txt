@@ -1,11 +1,40 @@
 Windows
-
+=======
 
 
 
 Ubuntu
+======
+export http_proxy=http://127.0.0.1:38457
+export https_proxy=http://127.0.0.1:38457
+sudo apt install build-essential clang ccache cmake ninja-build fd-find sqlite fzf sqlite3 libsqlite3-dev
 
+sudo add-apt-repository ppa:neovim-ppa/unstable
+sudo apt-get update
+sudo apt install neovim
 
+sudo apt install ttf-wqy-microhei
+sudo cp -r  ~/Shared/JetBrainsMono/ /usr/share/fonts/JetBrainsMono
+sudo mkfontscale
+sudo mkfontdir
+sudo fc-cache -fv
 
+# fzf telescope
+cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build
+
+# lua lsp
+git clone  --depth=1 https://github.com/sumneko/lua-language-server
+cd lua-language-server/
+git submodule update --depth 1 --init --recursive
+cd 3rd/luamake
+./compile/install.sh
+cd ../..
+./3rd/luamake/luamake rebuild
+sudo apt install  fonts-noto-color-emoji
+
+# bash path
+export PATH="/home/luozhiya/.local/bin/:$PATH"
+export PATH="/home/luozhiya/App/lua-language-server/bin:$PATH"
 
 Archlinux
+=========
