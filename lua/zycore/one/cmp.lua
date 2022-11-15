@@ -7,6 +7,8 @@ local style_constexpr = require('zycore.base.style_constexpr')
 luasnip.setup({ region_check_events = 'InsertEnter', delete_check_events = 'InsertEnter' })
 require('luasnip/loaders/from_vscode').lazy_load()
 
+vim.cmd([[packadd cmp-under-comparator]])
+
 local check_backspace = function()
   local col = vim.fn.col('.') - 1
   return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s')

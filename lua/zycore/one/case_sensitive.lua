@@ -6,7 +6,7 @@ local case_sensitive = function()
     vim.notify('case sensitive', 'info')
   else
     vim.opt.ignorecase = true
-    vim.notify('ignore case', 'info')    
+    vim.notify('ignore case', 'info')
   end
 end
 

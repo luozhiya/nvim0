@@ -90,16 +90,26 @@ local function init()
     -- 'rktjmp/hotpot.nvim', -- Carl Weathers #1 Neovim Plugin.
   })
 
+  -- Lua
+  use({
+    'folke/neodev.nvim', -- Dev setup for init.lua and plugin development with full signature help, docs and completion for the nvim lua API.
+    config = [[require('zycore.one.neodev')]],
+    -- event = 'InsertEnter', -- always enable neodev.nvim
+  })
+
   -- LSP
   use({
     {
       'neovim/nvim-lspconfig', -- Configurations for Nvim LSP
+      -- requires = {
+      --   { 'folke/neodev.nvim' },
+      -- },
       after = {
         'cmp-nvim-lsp',
-        -- 'lua-dev',
+        'neodev.nvim',
       },
-      -- config = [[require('zycore.one.lsp.handler').setup()]],
-      -- event = 'InsertEnter',
+      config = [[require('zycore.one.lsp.handler').setup()]],
+      event = 'InsertEnter',
     },
     { 'williamboman/nvim-lsp-installer', after = 'nvim-lspconfig', config = [[require('zycore.one.lsp.config_servers')]] }, -- Simple to install LSP servers
     {
@@ -162,13 +172,6 @@ local function init()
   --   'jakemason/ouroboros.nvim',
   --   requires = { { 'nvim-lua/plenary.nvim' } },
   -- }) -- Allows quickly switching between header and implementation files for C/C++ in Neovim.
-
-  -- Lua
-  use({
-    'folke/lua-dev.nvim', -- Dev setup for init.lua and plugin development with full signature help, docs and completion for the nvim lua API.
-    config = [[require('zycore.one.lua_dev')]],
-    event = 'InsertEnter',
-  })
 
   -- Debugging
   use({
