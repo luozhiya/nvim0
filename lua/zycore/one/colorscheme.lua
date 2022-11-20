@@ -93,6 +93,7 @@ if has('win32')
     set renderoptions=type:directx
   endif
 endif
+" highlight Normal guibg=NONE ctermbg=None
 ]])
 
 vim.opt.list = true
