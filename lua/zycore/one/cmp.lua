@@ -8,6 +8,7 @@ luasnip.setup({ region_check_events = 'InsertEnter', delete_check_events = 'Inse
 require('luasnip/loaders/from_vscode').lazy_load()
 
 vim.cmd([[packadd cmp-under-comparator]])
+vim.cmd([[packadd conjure]])
 
 local check_backspace = function()
   local col = vim.fn.col('.') - 1

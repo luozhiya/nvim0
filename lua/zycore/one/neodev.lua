@@ -22,4 +22,5 @@ dev.setup({
   lspconfig = true,
 })
 
--- require('zycore.one.lsp.handler').setup()
+-- Force resetup
+require('zycore.one.lsp.handler').setup()
