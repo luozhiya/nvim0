@@ -47,6 +47,7 @@ function _LAZYGIT_TOGGLE()
   lazygit:toggle()
 end
 
+-- https://github.com/extrawurst/gitui
 function _GITUI_TOGGLE()
   gitui:toggle()
 end
