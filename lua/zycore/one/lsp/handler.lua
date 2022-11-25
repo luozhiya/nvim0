@@ -49,6 +49,8 @@ M.setup = function()
     border = 'rounded',
     width = 60,
   })
+
+  -- vim.lsp.handlers['workspace/symbol'] = nil
 end
 
 local function lsp_highlight_document(client)
@@ -92,5 +94,8 @@ end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
+-- print(vim.inspect(capabilities))
+-- print('-------------------------')
+-- print(vim.inspect(M.capabilities))
 
 return M

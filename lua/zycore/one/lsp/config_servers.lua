@@ -29,11 +29,35 @@ lsp_installer.setup({
   ensure_installed = needed_setup_servers,
 })
 
+-- local ccls_workspace = {
+--   workspace = {
+--     applyEdit = true,
+--     configuration = true,
+--     -- symbolSupport = false,
+--     symbol = {
+--       -- support = false,
+--     },
+--     workspaceEdit = {
+--       resourceOperations = { "rename", "create", "delete" }
+--     },
+--     workspaceFolders = true
+--   },
+--   -- workspaceSymbolProvider = nil,
+-- }
+
 for _, server in pairs(needed_setup_servers) do
   local opts = {
     on_attach = require('zycore.one.lsp.handler').on_attach,
     capabilities = require('zycore.one.lsp.handler').capabilities,
   }
+  if server == 'ccls' then
+    -- opts.on_attach = {}
+    -- opts.on_attach = require('zycore.one.lsp.handler').ccls_on_attach
+    -- opts.capabilities.workspaceSymbolProvider = false
+    -- opts.capabilities = vim.tbl_deep_extend('force', opts.capabilities, ccls_workspace)
+    -- print(vim.inspect(opts.capabilities))
+    -- opts[capabilities][workspace][symbol] = false
+  end
   local has_custom_opts, server_custom_opts = pcall(require, 'zycore.one.lsp.inject.' .. server)
   if has_custom_opts then
     opts = vim.tbl_deep_extend('force', opts, server_custom_opts)

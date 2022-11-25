@@ -71,7 +71,7 @@ local function init()
 
   -- System
   use({
-    'nvim-lua/plenary.nvim', -- Note that this library is useless outside of Neovim since it requires Neovim functions.
+    'luozhiya/plenary.nvim', -- Note that this library is useless outside of Neovim since it requires Neovim functions.
     'lewis6991/impatient.nvim', -- Improve startup time for Neovim
   })
 

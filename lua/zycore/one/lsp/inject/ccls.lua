@@ -1,5 +1,14 @@
 local util = require('lspconfig.util')
 
+local function lsp_ccls_capablities(client)
+  client.server_capabilities.workspaceSymbolProvider = false
+end
+
+local ccls_on_attach = function(client, buffer)
+  require('zycore.one.lsp.handler').on_attach(client, buffer)
+  lsp_ccls_capablities(client)
+end
+
 local opts = {
   default_config = {
     cmd = { 'ccls' },
@@ -32,7 +41,9 @@ local opts = {
     ['textDocument/signatureHelp'] = function(...)
       return nil
     end,
+    ['workspace/symbol'] = nil,
   },
+  on_attach = ccls_on_attach,
 }
 
 return opts
