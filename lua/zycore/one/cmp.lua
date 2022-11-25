@@ -72,8 +72,11 @@ local wbthomason = {
   format = function(entry, vim_item)
     local kind = require('lspkind').cmp_format({ mode = 'symbol_text', maxwidth = 50 })(entry, vim_item)
     local strings = vim.split(kind.kind, '%s', { trimempty = true })
+    -- print(vim.inspect(strings))
     kind.kind = ' ' .. strings[1] .. ' '
-    kind.menu = '    (' .. strings[2] .. ')'
+    if vim.tbl_count(strings) == 2 then
+      kind.menu = '    (' .. strings[2] .. ')'
+    end
     return kind
   end,
 }
