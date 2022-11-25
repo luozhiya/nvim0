@@ -105,7 +105,7 @@ function M.config()
     },
     {
       name = 'DapStopped',
-      text = icons.misc.bookmark,
+      text = icons.misc.debug_right,
       texthl = 'DapStopped',
       linehl = '',
       numhl = '',
@@ -139,10 +139,48 @@ dap.config = M.config
 dap.config()
 
 -- Debug
-nnoremap('<S-F5>', ':lua require"osv".launch({port = 8086})<CR>')
-nnoremap('<F5>', ':lua _CONTINUE()<cr>')
-nnoremap('<F6>', ':DapTeminate<cr>')
-nnoremap('<F9>', ':lua _TOGGLE_BREAKPOINT()<cr>')
-nnoremap('<F10>', ':lua _STEP_OVER()<cr>')
-nnoremap('<F11>', ':lua _STEP_INTO()<cr>')
-nnoremap('<F8>', ':lua _STEP_OUT()<cr>')
+-- nnoremap('<S-F5>', ':lua require"osv".launch({port = 8086})<CR>')
+-- nnoremap('<F5>', ':lua _CONTINUE()<cr>')
+-- nnoremap('<F6>', ':DapTeminate<cr>')
+-- nnoremap('<F9>', ':lua _TOGGLE_BREAKPOINT()<cr>')
+-- nnoremap('<F10>', ':lua _STEP_OVER()<cr>')
+-- nnoremap('<F11>', ':lua _STEP_INTO()<cr>')
+-- nnoremap('<F8>', ':lua _STEP_OUT()<cr>')
+
+local map = vim.api.nvim_set_keymap
+local create_cmd = vim.api.nvim_create_user_command
+
+create_cmd('BreakpointToggle', function()
+  require('dap').toggle_breakpoint()
+end, {})
+create_cmd('Debug', function()
+  require('dap').continue()
+end, {})
+create_cmd('DapREPL', function()
+  require('dap').repl.open()
+end, {})
+
+map('n', '<F5>', '', {
+  callback = function()
+    require('dap').continue()
+  end,
+  noremap = true,
+})
+map('n', '<F10>', '', {
+  callback = function()
+    require('dap').step_over()
+  end,
+  noremap = true,
+})
+map('n', '<F11>', '', {
+  callback = function()
+    require('dap').step_into()
+  end,
+  noremap = true,
+})
+map('n', '<F12>', '', {
+  callback = function()
+    require('dap').step_out()
+  end,
+  noremap = true,
+})

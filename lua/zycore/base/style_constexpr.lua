@@ -88,6 +88,7 @@ local style = {
       pencil = '',
       tools = '',
       chevron_right = '',
+      debug_right = '', -- 
       double_chevron_right = '»',
       table = '',
       calendar = '',

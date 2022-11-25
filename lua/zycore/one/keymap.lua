@@ -109,3 +109,6 @@ nnoremap('<esc>', '<esc>:nohlsearch<CR>')
 
 -- New Buffer/Tab
 nnoremap('<C-n>', ':ene <CR>')
+
+-- Enter debug model
+nnoremap('<F9>', ':BreakpointToggle<CR>')
