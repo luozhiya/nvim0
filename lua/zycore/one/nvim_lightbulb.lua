@@ -6,7 +6,7 @@ local opts = {
   -- Example: {"sumneko_lua", "null-ls"}
   ignore = {},
   sign = {
-    enabled = true,
+    enabled = false,
     -- Priority of the gutter sign
     priority = 10,
   },

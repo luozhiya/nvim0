@@ -125,6 +125,7 @@ local function init()
     { 'ray-x/lsp_signature.nvim', after = 'nvim-lspconfig', config = [[require('zycore.one.lsp_signature_nvim')]] }, -- LSP signature hint as you type
     { 'stevearc/aerial.nvim', after = 'nvim-lspconfig', config = [[require('zycore.one.aerial')]] }, -- Neovim plugin for a code outline window
     { 'jose-elias-alvarez/null-ls.nvim', after = 'nvim-lspconfig', config = [[require('zycore.one.null_ls')]] }, -- Inject LSP diagnostics, code actions, and more via Lua
+    { 'glepnir/lspsaga.nvim', after = 'nvim-lspconfig', config = [[require('zycore.one.lspsaga')]] }, -- A light-weight lsp plugin based on neovim's built-in lsp with a highly performant UI.
   })
 
   -- Completion
@@ -339,7 +340,7 @@ local function init()
       'mhartington/formatter.nvim', -- A format runner for Neovim.
       event = 'BufReadPost',
       config = [[require('zycore.one.formatter')]],
-      disable = true,
+      disable = false,
     },
     {
       'lukas-reineke/lsp-format.nvim', -- A wrapper around Neovims native LSP formatting.

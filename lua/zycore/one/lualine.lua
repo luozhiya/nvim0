@@ -166,7 +166,7 @@ local ratio_progress = function()
   local total_lines = vim.fn.line('$')
   local line_ratio = current_line / total_lines * 100
   -- https://github.com/nvim-lualine/lualine.nvim/issues/895#issuecomment-1323644475
-  -- in string.format you need to esape the parcents too. 
+  -- in string.format you need to esape the parcents too.
   -- So in this case you need 4 %. first escape gets interpreted and removed by string.format 2nd one gets removed by status line interpreter.
   -- return tostring(line_ratio) ☯️   
   return string.format('%02d%%%% ', line_ratio)
