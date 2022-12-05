@@ -7,12 +7,12 @@ vim.api.nvim_create_user_command('RemoveExclusiveORM', function()
 end, {})
 
 -- automatic remove ^M
-vim.cmd([[
-augroup fixorm
-  autocmd!
-  autocmd BufWritePre * undojoin | RemoveExclusiveORM
-augroup END
-]])
+-- vim.cmd([[
+-- augroup fixorm
+--   autocmd!
+--   autocmd BufWritePre * undojoin | RemoveExclusiveORM
+-- augroup END
+-- ]])
 
 vim.api.nvim_create_user_command('FixLf', function()
   vim.cmd([[
