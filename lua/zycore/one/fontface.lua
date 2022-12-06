@@ -47,10 +47,10 @@ else
   -- codefont = 'FiraCode Nerd Font Mono'
   -- codefont = 'JetBrainsMono Nerd Font Mono'
   codefont = 'Inconsolata Nerd Font Mono'
-  if is_neovide() then
-    codefontsize = 15
-    codefont = 'JetBrainsMono Nerd Font Mono'
-  end
+  -- if is_neovide() then
+  -- codefontsize = 15
+  -- codefont = 'JetBrainsMono Nerd Font Mono'
+  -- end
   codefontstyle = 'sl'
   -- cjkfont = 'Sarasa Mono SC Nerd'
   cjkfont = codefont

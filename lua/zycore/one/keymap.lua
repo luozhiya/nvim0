@@ -18,6 +18,7 @@ local nnoremap = hardworking.nnoremap
 local inoremap = hardworking.inoremap
 local vnoremap = hardworking.vnoremap
 local xnoremap = hardworking.xnoremap
+local cnoremap = hardworking.cnoremap
 
 -- Remap ',' as leader key
 -- set_keymap("", ",", "<Nop>", opts)
@@ -112,3 +113,5 @@ nnoremap('<C-n>', ':ene <CR>')
 
 -- Enter debug model
 nnoremap('<F9>', ':BreakpointToggle<CR>')
+
+-- cnoremap('<tab>', '<C-r><C-w>')

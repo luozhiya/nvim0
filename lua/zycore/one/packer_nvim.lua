@@ -130,25 +130,26 @@ local function init()
 
   -- Completion
   use({
-    'hrsh7th/nvim-cmp', -- Autocompletion plugin
-    requires = {
-      { 'hrsh7th/cmp-nvim-lsp', event = 'InsertEnter' }, -- LSP source for nvim-cmp
-      { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
-      { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
-      { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' },
-      { 'hrsh7th/cmp-calc', after = 'nvim-cmp' },
-      { 'hrsh7th/cmp-vsnip', after = 'nvim-cmp' }, -- nvim-cmp source for vim-vsnip
-      { 'hrsh7th/cmp-nvim-lsp-signature-help', after = 'nvim-cmp' },
-      { 'hrsh7th/cmp-nvim-lsp-document-symbol', after = 'nvim-cmp' },
-      { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp', disable = false },
-      { 'lukas-reineke/cmp-under-comparator', event = 'InsertEnter' },
-      { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
-      { 'onsails/lspkind.nvim', event = 'InsertEnter' }, -- vscode-like pictograms for neovim lsp completion items
-      { 'PaterJason/cmp-conjure', after = { 'nvim-cmp', 'conjure' }, event = 'InsertEnter' }, -- nvim-cmp source for conjure.
+    {
+      'hrsh7th/nvim-cmp', -- Autocompletion plugin
+      config = [[require('zycore.one.cmp')]],
+      -- module = 'cmp',
+      -- event = 'InsertEnter',
+      -- after = { 'cmp-under-comparator', 'clangd_extensions.nvim', 'lspkind.nvim', 'conjure' },
     },
-    config = [[require('zycore.one.cmp')]],
-    event = 'InsertEnter',
-    after = { 'cmp-under-comparator', 'clangd_extensions.nvim', 'lspkind.nvim', 'conjure' },
+    { 'hrsh7th/cmp-nvim-lsp', event = 'InsertEnter' }, -- LSP source for nvim-cmp
+    { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
+    { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
+    { 'hrsh7th/cmp-nvim-lua', event = 'InsertEnter', after = 'nvim-cmp' },
+    { 'hrsh7th/cmp-calc', after = 'nvim-cmp' },
+    { 'hrsh7th/cmp-vsnip', event = 'InsertEnter', after = 'nvim-cmp' }, -- nvim-cmp source for vim-vsnip
+    { 'hrsh7th/cmp-nvim-lsp-signature-help', event = 'InsertEnter', after = 'nvim-cmp' },
+    { 'hrsh7th/cmp-nvim-lsp-document-symbol', event = 'InsertEnter', after = 'nvim-cmp' },
+    { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp', disable = false },
+    { 'lukas-reineke/cmp-under-comparator', event = 'InsertEnter', event = 'InsertEnter' },
+    { 'saadparwaiz1/cmp_luasnip', event = 'InsertEnter', after = 'nvim-cmp' },
+    { 'onsails/lspkind.nvim', event = 'InsertEnter', event = 'InsertEnter' }, -- vscode-like pictograms for neovim lsp completion items
+    { 'PaterJason/cmp-conjure', event = 'InsertEnter', after = { 'nvim-cmp', 'conjure' }, event = 'InsertEnter' }, -- nvim-cmp source for conjure.
   })
 
   -- C++
