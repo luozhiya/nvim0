@@ -1,5 +1,3 @@
-vim.cmd([[packadd nvim-cmp]])
-
 local cmp = require('cmp')
 local luasnip = require('luasnip')
 local lspkind = require('lspkind')
@@ -201,3 +199,5 @@ cmp.setup.cmdline(':', {
   sources = cmp.config.sources({ { name = 'path' } }, { { name = 'cmdline' } }),
   mapping = cmp.mapping.preset.cmdline({}),
 })
+
+print('123')

@@ -132,7 +132,7 @@ local function init()
   use({
     {
       'hrsh7th/nvim-cmp', -- Autocompletion plugin
-      config = [[require('zycore.one.cmp')]],
+      config = [[require('zycore.one.cmp_lite')]],
       -- module = 'cmp',
       -- event = 'InsertEnter',
       -- after = { 'cmp-under-comparator', 'clangd_extensions.nvim', 'lspkind.nvim', 'conjure' },
