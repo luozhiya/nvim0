@@ -433,8 +433,8 @@ local function init()
       config = [[require('zycore.one.leap')]],
       requires = 'tpope/vim-repeat', -- enable repeating supported plugin maps with "."
     },
-    { 'ggandor/flit.nvim', disable = true }, -- Enhanced f/t motions for Leap
-    { 'ggandor/leap-ast.nvim', disable = true }, -- Jump to, select and operate on AST nodes via the Leap interface with Treesitter (WIP)
+    { 'ggandor/flit.nvim', disable = false }, -- Enhanced f/t motions for Leap
+    { 'ggandor/leap-ast.nvim', disable = false }, -- Jump to, select and operate on AST nodes via the Leap interface with Treesitter (WIP)
   })
 
   -- Quickfix
