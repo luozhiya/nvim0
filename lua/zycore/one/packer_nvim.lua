@@ -148,7 +148,7 @@ local function init()
     { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp', disable = false },
     { 'lukas-reineke/cmp-under-comparator', event = 'InsertEnter', event = 'InsertEnter' },
     { 'saadparwaiz1/cmp_luasnip', event = 'InsertEnter', after = 'nvim-cmp' },
-    { 'onsails/lspkind.nvim', event = 'InsertEnter', event = 'InsertEnter' }, -- vscode-like pictograms for neovim lsp completion items
+    { 'onsails/lspkind.nvim' }, -- vscode-like pictograms for neovim lsp completion items
     { 'PaterJason/cmp-conjure', event = 'InsertEnter', after = { 'nvim-cmp', 'conjure' }, event = 'InsertEnter' }, -- nvim-cmp source for conjure.
   })
 

@@ -1,6 +1,11 @@
 local cmp = require('cmp')
 
-cmp.setup({})
+local opts = {
+  completion = { completeopt = 'menu,menuone,noinsert' },
+  formatting = require('zycore.one.cmp_base').wbthomason,
+}
+
+cmp.setup(opts)
 
 cmp.setup.cmdline('/', {
   sources = { { name = 'buffer' } },
