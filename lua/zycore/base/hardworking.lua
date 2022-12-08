@@ -699,14 +699,13 @@ hardworking.cnoremap = cnoremap
 
 hardworking.bnnoremap = hardworking.make_buffer_mapper('n', buf_opts)
 
-
 ----------------------------------------------------------------------------------------------------
 -- Path
 ----------------------------------------------------------------------------------------------------
 
 -- Some path utilities
 hardworking.path = (function()
-  local is_windows = uv.os_uname().version:match 'Windows'
+  local is_windows = uv.os_uname().version:match('Windows')
 
   local function escape_wildcards(path)
     return path:gsub('([%[%]%?%*])', '\\%1')
@@ -735,7 +734,7 @@ hardworking.path = (function()
 
   local function is_fs_root(path)
     if is_windows then
-      return path:match '^%a:$'
+      return path:match('^%a:$')
     else
       return path == '/'
     end
@@ -743,9 +742,9 @@ hardworking.path = (function()
 
   local function is_absolute(filename)
     if is_windows then
-      return filename:match '^%a:' or filename:match '^\\\\'
+      return filename:match('^%a:') or filename:match('^\\\\')
     else
-      return filename:match '^/'
+      return filename:match('^/')
     end
   end
 
@@ -767,7 +766,7 @@ hardworking.path = (function()
   end
 
   local function path_join(...)
-    return table.concat(vim.tbl_flatten { ... }, '/')
+    return table.concat(vim.tbl_flatten({ ... }), '/')
   end
 
   -- Traverse the path calling cb along the way.
@@ -849,7 +848,7 @@ function hardworking.strip_archive_subpath(path)
 end
 
 function hardworking.search_ancestors(startpath, func)
-  validate { func = { func, 'f' } }
+  validate({ func = { func, 'f' } })
   if func(startpath) then
     return startpath
   end
@@ -868,7 +867,7 @@ function hardworking.search_ancestors(startpath, func)
 end
 
 function hardworking.root_pattern(...)
-  local patterns = vim.tbl_flatten { ... }
+  local patterns = vim.tbl_flatten({ ... })
   local function matcher(path)
     for _, pattern in ipairs(patterns) do
       for _, p in ipairs(vim.fn.glob(hardworking.path.join(hardworking.path.escape_wildcards(path), pattern), true, true)) do
