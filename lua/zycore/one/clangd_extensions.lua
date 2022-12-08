@@ -9,7 +9,7 @@ end
 
 local clangd_extensions = require('clangd_extensions')
 local hardworking = require('zycore.base.hardworking')
-local util = require('lspconfig.util')
+-- local util = require('lspconfig.util')
 
 local nnoremap = hardworking.nnoremap
 local inoremap = hardworking.inoremap
@@ -39,7 +39,7 @@ local server_clangd = {
   },
   filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
   root_dir = function(fname)
-    return util.root_pattern(unpack(root_files))(fname) or util.find_git_ancestor(fname)
+    return hardworking.root_pattern(unpack(root_files))(fname) or hardworking.find_git_ancestor(fname)
   end,
   init_options = {
     clangdFileStatus = true,
