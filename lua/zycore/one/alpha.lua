@@ -59,7 +59,6 @@ local function disable_alpha_cr()
 end
 
 local group_id = vim.api.nvim_create_augroup('disable_alpha_cr', { clear = true })
-print(group_id)
 vim.api.nvim_create_autocmd('User AlphaReady', {
   group = group_id,
   pattern = '*',
