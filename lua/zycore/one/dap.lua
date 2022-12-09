@@ -151,8 +151,11 @@ local map = vim.api.nvim_set_keymap
 local create_cmd = vim.api.nvim_create_user_command
 
 create_cmd('BreakpointToggle', function()
-  require('dap').toggle_breakpoint()
+  require('persistent-breakpoints.api').toggle_breakpoint()
 end, {})
+-- create_cmd('BreakpointToggle', function()
+--   require('dap').toggle_breakpoint()
+-- end, {})
 create_cmd('Debug', function()
   require('dap').continue()
 end, {})
@@ -166,6 +169,10 @@ map('n', '<F5>', '', {
   end,
   noremap = true,
 })
+-- shift
+-- working in neovide
+nnoremap('<S-F5>', ':DapTerminate<cr>')
+--
 map('n', '<F10>', '', {
   callback = function()
     require('dap').step_over()

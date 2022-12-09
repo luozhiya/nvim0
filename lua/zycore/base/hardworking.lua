@@ -1,6 +1,7 @@
 local fn = vim.fn
 local api = vim.api
 local uv = vim.loop
+local validate = vim.validate
 local fmt = string.format
 local style_constexpr = require('zycore.base.style_constexpr')
 
@@ -704,16 +705,16 @@ hardworking.bnnoremap = hardworking.make_buffer_mapper('n', buf_opts)
 ----------------------------------------------------------------------------------------------------
 
 function hardworking.bufname_valid(bufname)
-  if bufname:match '^/' or bufname:match '^[a-zA-Z]:' or bufname:match '^zipfile://' or bufname:match '^tarfile:' then
+  if bufname:match('^/') or bufname:match('^[a-zA-Z]:') or bufname:match('^zipfile://') or bufname:match('^tarfile:') then
     return true
   end
   return false
 end
 
 function hardworking.validate_bufnr(bufnr)
-  validate {
+  validate({
     bufnr = { bufnr, 'n' },
-  }
+  })
   return bufnr == 0 and api.nvim_get_current_buf() or bufnr
 end
 
