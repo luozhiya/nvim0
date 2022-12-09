@@ -1,5 +1,7 @@
 -- print (vim.fn.stdpath('data') .. '/nvim_checkpoints')
+-- /home/luozhiya/.local/share/nvim/nvim_checkpoints/
 
+-- https://github.com/mfussenegger/nvim-dap/issues/198
 require('persistent-breakpoints').setup({
   save_dir = vim.fn.stdpath('data') .. '/nvim_checkpoints',
   -- when to load the breakpoints? "BufReadPost" is recommanded.
