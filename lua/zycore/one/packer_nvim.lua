@@ -181,7 +181,7 @@ local function init()
       'mfussenegger/nvim-dap',
       requires = {
         { 'jbyuki/one-small-step-for-vimkind', after = 'nvim-dap' }, -- Debug adapter for Neovim plugins
-        { 'theHamsta/nvim-dap-virtual-text', after = 'nvim-dap' },
+        { 'theHamsta/nvim-dap-virtual-text', after = 'nvim-dap', config = [[require("nvim-dap-virtual-text").setup()]] },
       },
       config = [[require('zycore.one.dap')]],
       cmd = { 'BreakpointToggle', 'Debug', 'DapREPL' },
