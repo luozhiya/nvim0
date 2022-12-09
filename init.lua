@@ -6,6 +6,7 @@
 -- nvim\site\pack\packer\opt\nvim-cmp\lua\cmp\utils\misc.lua
 -- https://github.com/wbthomason/packer
 -- https://github.com/j-hui/fidget.nvim
+-- site\pack\packer\opt\nvim-lspconfig\lua\lspconfig\util.lua
 
 local zycore = require('zycore')
 -- local packer_dir = require('zycore').packer_dir

@@ -704,6 +704,44 @@ hardworking.bnnoremap = hardworking.make_buffer_mapper('n', buf_opts)
 -- Path
 ----------------------------------------------------------------------------------------------------
 
+function hardworking.bufname_valid(bufname)
+  if bufname:match '^/' or bufname:match '^[a-zA-Z]:' or bufname:match '^zipfile://' or bufname:match '^tarfile:' then
+    return true
+  end
+  return false
+end
+
+function hardworking.validate_bufnr(bufnr)
+  validate {
+    bufnr = { bufnr, 'n' },
+  }
+  return bufnr == 0 and api.nvim_get_current_buf() or bufnr
+end
+
+function hardworking.add_hook_before(func, new_fn)
+  if func then
+    return function(...)
+      -- TODO which result?
+      new_fn(...)
+      return func(...)
+    end
+  else
+    return new_fn
+  end
+end
+
+function hardworking.add_hook_after(func, new_fn)
+  if func then
+    return function(...)
+      -- TODO which result?
+      func(...)
+      return new_fn(...)
+    end
+  else
+    return new_fn
+  end
+end
+
 -- Some path utilities
 hardworking.path = (function()
   local is_windows = uv.os_uname().version:match 'Windows'
