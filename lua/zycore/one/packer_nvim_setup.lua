@@ -6,7 +6,6 @@ local api = vim.api
 local M = {}
 
 local plugins = require('zycore.one.packer_nvim')
-local packer_bootstrap = plugins.ensure_packer()
 
 -- Packer commands
 local create_cmd = vim.api.nvim_create_user_command

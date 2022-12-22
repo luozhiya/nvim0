@@ -25,7 +25,7 @@ local cjkfontsize
 local cjkfontstyle
 
 if hardworking.is_windows() then
-  codefontsize = 13
+  codefontsize = 15
   cjkfontsize = codefontsize
   -- codefont = 'CaskaydiaCove Nerd Font'
   -- codefont = 'Consolas'

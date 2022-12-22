@@ -23,4 +23,4 @@ dev.setup({
 })
 
 -- Force resetup
-require('zycore.one.lsp.handler').setup()
+-- require('zycore.one.lsp.handler').setup()

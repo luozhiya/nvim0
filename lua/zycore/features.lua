@@ -1,14 +1,19 @@
 local features_list = {
   -- Basic
   'option',
+
+  -- Bootstrap
+  'packer_bootstrap',
+
+  -- Packer
+  'packer_nvim_setup',  
+
+  -- Color  
   'colorscheme',
 
   -- First needed
   'impatient',
   'notify_nvim',
-
-  -- Packer
-  'packer_nvim_setup',
 
   -- Basic
   'keymap',

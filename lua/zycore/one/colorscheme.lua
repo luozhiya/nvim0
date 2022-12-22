@@ -3,18 +3,24 @@ local hl = vim.api.nvim_set_hl
 local opt = vim.opt
 local palette
 
-if hardworking.is_windows() then
-  -- opt.colorscheme = 'omegadark'
-  vim.g.current_colorscheme = 'omegadark'
-  vim.cmd([[colorscheme omegadark]])
-  palette = require('omegadark.palette')
-else
-  -- opt.colorscheme = 'darkplus'
-  vim.g.current_colorscheme = 'darkplus'
-  vim.cmd([[colorscheme darkplus]])
-  -- vim.api.nvim_set_var('current_colorscheme', 'darkplus')
-  palette = require('darkplus.palette')
-end
+-- opt.colorscheme = 'darkplus'
+vim.g.current_colorscheme = 'darkplus'
+vim.cmd([[colorscheme darkplus]])
+-- vim.api.nvim_set_var('current_colorscheme', 'darkplus')
+palette = require('darkplus.palette')
+  
+-- if hardworking.is_windows() then
+--   -- opt.colorscheme = 'omegadark'
+--   vim.g.current_colorscheme = 'omegadark'
+--   vim.cmd([[colorscheme omegadark]])
+--   palette = require('omegadark.palette')
+-- else
+--   -- opt.colorscheme = 'darkplus'
+--   vim.g.current_colorscheme = 'darkplus'
+--   vim.cmd([[colorscheme darkplus]])
+--   -- vim.api.nvim_set_var('current_colorscheme', 'darkplus')
+--   palette = require('darkplus.palette')
+-- end
 
 -- vim.cmd([[
 --     let ccs = g:current_colorscheme
