@@ -115,3 +115,5 @@ nnoremap('<C-n>', ':ene <CR>')
 nnoremap('<F9>', ':BreakpointToggle<CR>')
 
 -- cnoremap('<tab>', '<C-r><C-w>')
+
+-- nnoremap('', ':Lspsaga hover_doc<cr>')
