@@ -8,6 +8,10 @@
 -- https://github.com/j-hui/fidget.nvim
 -- site\pack\packer\opt\nvim-lspconfig\lua\lspconfig\util.lua
 
+-- Keymap
+-- Ctrl+F         Find...
+-- Ctrl+Shift+F   Find in Files
+
 local zycore = require('zycore')
 -- local packer_dir = require('zycore').packer_dir
 

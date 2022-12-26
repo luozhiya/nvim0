@@ -39,7 +39,8 @@ local xnoremap = hardworking.xnoremap
 -- need wrap in command
 vim.api.nvim_create_user_command('Only', function()
   vim.cmd([[
-  :lua require("close_buffers").delete({type="other"}) 
+  :lua require("close_buffers").delete({type="other"})
+  :<ESC>
   ]])
 end, {})
 
