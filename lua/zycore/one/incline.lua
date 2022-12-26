@@ -91,6 +91,7 @@ local function render_label(props)
   }
 end
 
+-- Floating windows show current path
 require('incline').setup({
   render = render_label,
   window = { zindex = 60, width = 'fit', winhighlight = { Normal = 'Normal' } },

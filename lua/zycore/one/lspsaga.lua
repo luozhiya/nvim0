@@ -4,7 +4,7 @@ local saga = require('lspsaga')
 local opts = {
   -- Options with default value
   -- "single" | "double" | "rounded" | "bold" | "plus"
-  border_style = 'single',
+  border_style = 'plus',
   --the range of 0 for fully opaque window (disabled) to 100 for fully
   --transparent background. Values between 0-30 are typically most useful.
   saga_winblend = 0,
@@ -81,7 +81,28 @@ local opts = {
     -- more information see `vim.fn.expand` or `expand`
     -- ## only valid after set `show_file = true`
     file_formatter = '',
-    click_support = false,
+    click_support = function(node, clicks, button, modifiers)
+      -- To see all available details: vim.pretty_print(node)
+      local st = node.range.start
+      local en = node.range['end']
+      if button == "l" then
+          if clicks == 2 then
+              -- double left click to do nothing
+          else -- jump to node's starting line+char
+              vim.fn.cursor(st.line + 1, st.character + 1)
+          end
+      elseif button == "r" then
+          if modifiers == "s" then
+              print "lspsaga" -- shift right click to print "lspsaga"
+          end -- jump to node's ending line+char
+          vim.fn.cursor(en.line + 1, en.character + 1)
+      elseif button == "m" then
+          -- middle click to visual select node
+          vim.fn.cursor(st.line + 1, st.character + 1)
+          vim.cmd "normal v"
+          vim.fn.cursor(en.line + 1, en.character + 1)
+      end
+    end
   },
   -- show outline
   show_outline = {

@@ -9,7 +9,7 @@ vim.cmd([[
 
 local opts = {
   update_focused_file = {
-    enable = true,
+    enable = false,
     update_cwd = true,
   },
   renderer = {
@@ -78,3 +78,8 @@ local opts = {
 }
 
 nvim_tree.setup(opts)
+
+local hardworking = require('zycore.base.hardworking')
+local nnoremap = hardworking.nnoremap
+
+nnoremap('<F3>', ':NvimTreeFindFile<cr>')
