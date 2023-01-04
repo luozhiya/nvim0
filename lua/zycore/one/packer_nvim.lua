@@ -510,6 +510,7 @@ local function init()
       'b0o/incline.nvim', -- Floating statuslines for Neovim
       config = [[require('zycore.one.incline')]],
       event = 'BufReadPost',
+      disable = true,
     },
   })
 

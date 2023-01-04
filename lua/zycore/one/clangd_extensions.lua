@@ -44,7 +44,7 @@ local server_clangd = {
   init_options = {
     clangdFileStatus = true,
   },
-  single_file_support = false,
+  single_file_support = true,
   on_attach = require('zycore.one.lsp.handler').on_attach,
   capabilities = require('zycore.one.lsp.handler').capabilities,
   -- handlers = {

@@ -25,7 +25,7 @@ local opts = {
     root_dir = util.root_pattern('compile_commands.json', '.ccls', '.git'),
     offset_encoding = 'utf-32',
     -- ccls does not support sending a null root directory
-    single_file_support = false,
+    single_file_support = true,
   },
   init_options = {
     highlight = { lsRanges = true },
