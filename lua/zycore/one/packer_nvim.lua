@@ -104,12 +104,12 @@ local function init()
       -- requires = {
       --   { 'folke/neodev.nvim' },
       -- },
-      after = {
-        'cmp-nvim-lsp',
-        'neodev.nvim',
-      },
+      -- after = {
+      --   'cmp-nvim-lsp',
+      --   'neodev.nvim',
+      -- },
       config = [[require('zycore.one.lsp.handler').setup()]],
-      event = 'InsertEnter',
+      -- event = 'InsertEnter',
     },
     { 'williamboman/nvim-lsp-installer', after = 'nvim-lspconfig', config = [[require('zycore.one.lsp.config_servers')]] }, -- Simple to install LSP servers
     {
@@ -137,7 +137,7 @@ local function init()
       -- event = 'InsertEnter',
       -- after = { 'cmp-under-comparator', 'clangd_extensions.nvim', 'lspkind.nvim', 'conjure' },
     },
-    { 'hrsh7th/cmp-nvim-lsp', event = 'InsertEnter' }, -- LSP source for nvim-cmp
+    { 'hrsh7th/cmp-nvim-lsp' }, -- LSP source for nvim-cmp
     { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
     { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
     { 'hrsh7th/cmp-nvim-lua', event = 'InsertEnter', after = 'nvim-cmp' },
@@ -314,6 +314,7 @@ local function init()
       'lukas-reineke/indent-blankline.nvim', -- Indent guides for Neovim
       after = 'nvim-treesitter',
       config = [[require('zycore.one.indent_blankline')]],
+      -- disable = true,
     },
     {
       'NMAC427/guess-indent.nvim', -- Automatic indentation style detection for Neovim

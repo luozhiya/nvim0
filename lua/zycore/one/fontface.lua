@@ -41,12 +41,12 @@ if hardworking.is_windows() then
   cjkfont = codefont
   cjkfontstyle = codefontstyle
 else
-  codefontsize = 17
+  codefontsize = 19
   cjkfontsize = codefontsize
   -- codefont = 'CaskaydiaCove Nerd Font SemiLight'
   -- codefont = 'FiraCode Nerd Font Mono'
-  -- codefont = 'JetBrainsMono Nerd Font Mono'
-  codefont = 'Inconsolata Nerd Font Mono'
+  codefont = 'JetBrainsMono Nerd Font Mono'
+  -- codefont = 'Inconsolata Nerd Font Mono'
   -- if is_neovide() then
   -- codefontsize = 15
   -- codefont = 'JetBrainsMono Nerd Font Mono'

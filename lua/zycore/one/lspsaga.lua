@@ -128,7 +128,7 @@ local opts = {
   server_filetype_map = {},
 }
 
-saga.init_lsp_saga(opts)
+saga.setup(opts)
 
 -- -- Lsp finder find the symbol definition implement reference
 -- -- if there is no implement it will hide

@@ -1,7 +1,7 @@
 local indent_blankline = require('indent_blankline')
 local g = vim.g
 
-g.indentLine_enabled = 1
+g.indentLine_enabled = true
 g.indent_blankline_use_treesitter = true
 g.indentLine_faster = 1
 g.indentLine_fileTypeExclude = { 'tex', 'markdown', 'txt', 'startify', 'packer' }
