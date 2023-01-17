@@ -32,7 +32,7 @@ local features_list = {
   'which_key',
   -- 'sqlite', -- managed by packer
   -- 'telescope_setup', -- managed by packer
-  -- 'telescope', -- managed by packer
+  'telescope', -- managed by packer
   -- 'illuminate',
   'lualine',
   'bufferline',

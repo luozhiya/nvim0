@@ -80,3 +80,10 @@ local dash_bracket = '--[[%s]]'
 local ft = require('Comment.ft')
 -- Set only line comment
 ft.lua = dash
+
+vim.cmd([[
+" xnoremap <A-\> gcc
+nmap <A-\> gcc
+vmap <A-\> gc
+" imap <A-\> <ESC>:gcc
+]])

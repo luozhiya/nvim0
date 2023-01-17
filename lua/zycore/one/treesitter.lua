@@ -152,4 +152,4 @@ local opts = {
 treesitter.setup(opts)
 
 -- x2
-require('zycore.one.cmp')
+-- require('zycore.one.cmp')

@@ -1,3 +1,8 @@
+-- vim.cmd([[packadd cmp-under-comparator]])
+-- vim.cmd([[packadd conjure]])
+-- vim.cmd([[packadd clangd_extensions]])
+-- vim.cmd([[packadd luasnip]])
+
 local cmp = require('cmp')
 local luasnip = require('luasnip')
 local lspkind = require('lspkind')
@@ -6,9 +11,6 @@ local style_constexpr = require('zycore.base.style_constexpr')
 
 luasnip.setup({ region_check_events = 'InsertEnter', delete_check_events = 'InsertEnter' })
 -- require('luasnip/loaders/from_vscode').lazy_load()
-
-vim.cmd([[packadd cmp-under-comparator]])
-vim.cmd([[packadd conjure]])
 
 local check_backspace = function()
   local col = vim.fn.col('.') - 1
