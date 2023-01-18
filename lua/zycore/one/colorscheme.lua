@@ -8,7 +8,7 @@ vim.g.current_colorscheme = 'darkplus'
 vim.cmd([[colorscheme darkplus]])
 -- vim.api.nvim_set_var('current_colorscheme', 'darkplus')
 palette = require('darkplus.palette')
-  
+
 -- if hardworking.is_windows() then
 --   -- opt.colorscheme = 'omegadark'
 --   vim.g.current_colorscheme = 'omegadark'

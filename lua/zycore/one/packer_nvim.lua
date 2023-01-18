@@ -79,7 +79,7 @@ local function init()
 
   -- Profiling
   -- use({ 'dstein64/vim-startuptime', cmd = 'StartupTime', config = [[vim.g.startuptime_tries = 10]] })
-  use({'dstein64/vim-startuptime', config = [[vim.g.startuptime_tries = 10]]})
+  use({ 'dstein64/vim-startuptime', config = [[vim.g.startuptime_tries = 10]] })
 
   -- Packer
   use('wbthomason/packer.nvim')
@@ -101,7 +101,7 @@ local function init()
   --   config = [[require('zycore.one.neodev')]],
   --   -- event = 'InsertEnter', -- always enable neodev.nvim
   -- })
-  use({'folke/neodev.nvim', config = [[require('zycore.one.neodev')]]})
+  use({ 'folke/neodev.nvim', config = [[require('zycore.one.neodev')]] })
 
   -- LSP
   -- use({
@@ -133,15 +133,15 @@ local function init()
   --   { 'jose-elias-alvarez/null-ls.nvim', after = 'nvim-lspconfig', config = [[require('zycore.one.null_ls')]] }, -- Inject LSP diagnostics, code actions, and more via Lua
   --   { 'glepnir/lspsaga.nvim', after = 'nvim-lspconfig', config = [[require('zycore.one.lspsaga')]] }, -- A light-weight lsp plugin based on neovim's built-in lsp with a highly performant UI.
   -- })
-  use({'neovim/nvim-lspconfig', config = [[require('zycore.one.lsp.handler')]]})
-  use({'williamboman/nvim-lsp-installer', config = [[require('zycore.one.lsp.config_servers')]]})
+  use({ 'neovim/nvim-lspconfig', config = [[require('zycore.one.lsp.handler')]] })
+  use({ 'williamboman/nvim-lsp-installer', config = [[require('zycore.one.lsp.config_servers')]] })
   use('nvim-lua/lsp-status.nvim')
-  use({'j-hui/fidget.nvim', config = [[require('zycore.one.fidget_nvim')]]})
-  use({'kosayoda/nvim-lightbulb', config = [[require('zycore.one.nvim_lightbulb')]]})
-  use({'ray-x/lsp_signature.nvim', config = [[require('zycore.one.lsp_signature_nvim')]]})
-  use({'stevearc/aerial.nvim', config = [[require('zycore.one.aerial')]]})
-  use({'jose-elias-alvarez/null-ls.nvim', config = [[require('zycore.one.null_ls')]]})
-  use({'glepnir/lspsaga.nvim', config = [[require('zycore.one.lspsaga')]]})
+  use({ 'j-hui/fidget.nvim', config = [[require('zycore.one.fidget_nvim')]] })
+  use({ 'kosayoda/nvim-lightbulb', config = [[require('zycore.one.nvim_lightbulb')]] })
+  use({ 'ray-x/lsp_signature.nvim', config = [[require('zycore.one.lsp_signature_nvim')]] })
+  use({ 'stevearc/aerial.nvim', config = [[require('zycore.one.aerial')]] })
+  use({ 'jose-elias-alvarez/null-ls.nvim', config = [[require('zycore.one.null_ls')]] })
+  use({ 'glepnir/lspsaga.nvim', config = [[require('zycore.one.lspsaga')]] })
 
   -- Completion
   -- use({
@@ -166,7 +166,7 @@ local function init()
   --   { 'onsails/lspkind.nvim' }, -- vscode-like pictograms for neovim lsp completion items
   --   { 'PaterJason/cmp-conjure', event = 'InsertEnter', after = { 'nvim-cmp', 'conjure' }, event = 'InsertEnter' }, -- nvim-cmp source for conjure.
   -- })
-  use({'hrsh7th/nvim-cmp', config = [[require('zycore.one.cmp')]]})
+  use({ 'hrsh7th/nvim-cmp', config = [[require('zycore.one.cmp')]] })
   use('hrsh7th/cmp-nvim-lsp')
   use('hrsh7th/cmp-buffer')
   use('hrsh7th/cmp-path')
@@ -205,7 +205,7 @@ local function init()
   -- }) -- Allows quickly switching between header and implementation files for C/C++ in Neovim.
   use('m-pilia/vim-ccls')
   use('jackguo380/vim-lsp-cxx-highlight')
-  use({'p00f/clangd_extensions.nvim', config = [[require('zycore.one.clangd_extensions')]]})
+  use({ 'p00f/clangd_extensions.nvim', config = [[require('zycore.one.clangd_extensions')]] })
 
   -- Debugging
   -- use({
@@ -235,12 +235,12 @@ local function init()
   --     cmd = 'TroubleToggle',
   --   },
   -- })
-  use({'mfussenegger/nvim-dap', config = [[require('zycore.one.dap')]]})
-  use({'theHamsta/nvim-dap-virtual-text', config = [[require('zycore.one.dap-virtual-text')]]})
+  use({ 'mfussenegger/nvim-dap', config = [[require('zycore.one.dap')]] })
+  use({ 'theHamsta/nvim-dap-virtual-text', config = [[require('zycore.one.dap-virtual-text')]] })
   use('jbyuki/one-small-step-for-vimkind')
-  use({'Weissle/persistent-breakpoints.nvim', config = [[require('zycore.one.dap-persistent-breakpoints')]]})
-  use({'rcarriga/nvim-dap-ui', config = [[require('zycore.one.dapui')]]})
-  use({'folke/trouble.nvim', config = [[require('zycore.one.trouble')]]})
+  use({ 'Weissle/persistent-breakpoints.nvim', config = [[require('zycore.one.dap-persistent-breakpoints')]] })
+  use({ 'rcarriga/nvim-dap-ui', config = [[require('zycore.one.dapui')]] })
+  use({ 'folke/trouble.nvim', config = [[require('zycore.one.trouble')]] })
 
   -- Highlights/treesitter
   -- Why buggy?
@@ -264,7 +264,7 @@ local function init()
   --   run = ':TSUpdate',
   --   event = 'BufReadPost',
   -- })
-  use({'nvim-treesitter/nvim-treesitter', config = [[require('zycore.one.treesitter')]]})
+  use({ 'nvim-treesitter/nvim-treesitter', config = [[require('zycore.one.treesitter')]] })
   use('nvim-treesitter/nvim-treesitter-refactor')
   use('RRethy/nvim-treesitter-textsubjects')
   use('JoosepAlviste/nvim-ts-context-commentstring')
@@ -340,15 +340,15 @@ local function init()
   use('kkharji/sqlite.lua')
   use('nvim-telescope/telescope-frecency.nvim')
   use({
-      'nvim-telescope/telescope-fzf-native.nvim', -- FZF sorter for telescope written in c
-      run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
-      -- run = 'make',
-    })
+    'nvim-telescope/telescope-fzf-native.nvim', -- FZF sorter for telescope written in c
+    run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
+    -- run = 'make',
+  })
   use('crispgm/telescope-heading.nvim')
   use('nvim-telescope/telescope-ui-select.nvim')
-  use('nvim-telescope/telescope-live-grep-args.nvim')  
-  use('nvim-telescope/telescope-file-browser.nvim')  
-  use({'nvim-pack/nvim-spectre', config = [[require('zycore.one.nvim_spectre')]]})
+  use('nvim-telescope/telescope-live-grep-args.nvim')
+  use('nvim-telescope/telescope-file-browser.nvim')
+  use({ 'nvim-pack/nvim-spectre', config = [[require('zycore.one.nvim_spectre')]] })
 
   -- Buffer
   -- use({
@@ -363,8 +363,8 @@ local function init()
   --     event = 'BufAdd',
   --   },
   -- })
-  use({'moll/vim-bbye', config = [[require('zycore.one.vim_bbye')]]})
-  use({'kazhala/close-buffers.nvim', config = [[require('zycore.one.close_buffer')]]})
+  use({ 'moll/vim-bbye', config = [[require('zycore.one.vim_bbye')]] })
+  use({ 'kazhala/close-buffers.nvim', config = [[require('zycore.one.close_buffer')]] })
 
   -- Registers
   use('tversteeg/registers.nvim') -- Neovim plugin to preview the contents of the registers
@@ -383,7 +383,7 @@ local function init()
   --     config = [[require('zycore.one.guess_indent')]],
   --   },
   -- })
-  use({'NMAC427/guess-indent.nvim', config = [[require('zycore.one.guess_indent')]]})
+  use({ 'NMAC427/guess-indent.nvim', config = [[require('zycore.one.guess_indent')]] })
 
   -- Format
   -- use({
@@ -426,7 +426,7 @@ local function init()
   --   config = [[require('zycore.one.easy_align')]],
   --   event = 'BufReadPost',
   -- })
-  use({'junegunn/vim-easy-align', config = [[require('zycore.one.easy_align')]]})
+  use({ 'junegunn/vim-easy-align', config = [[require('zycore.one.easy_align')]] })
 
   -- Commenting
   -- use({
@@ -436,7 +436,7 @@ local function init()
   --   event = 'BufReadPost',
   --   -- event = 'User ActuallyEditing', -- doesn't work
   -- })
-  use({'numToStr/Comment.nvim', config = [[require('zycore.one.comment')]]})
+  use({ 'numToStr/Comment.nvim', config = [[require('zycore.one.comment')]] })
 
   -- Snippets
   -- use({
@@ -471,7 +471,7 @@ local function init()
   --     event = 'BufReadPost',
   --   },
   -- })
-  use({'andrewferrier/wrapping.nvim', config = [[require('zycore.one.wrapping')]]})
+  use({ 'andrewferrier/wrapping.nvim', config = [[require('zycore.one.wrapping')]] })
 
   -- Pair
   -- use({
@@ -495,8 +495,8 @@ local function init()
   --     event = 'BufReadPost',
   --   },
   -- })
-  use({'RRethy/vim-illuminate', config = [[require('zycore.one.illuminate')]]})
-  use({'norcalli/nvim-colorizer.lua', config = [[require('zycore.one.colorizer')]]})
+  use({ 'RRethy/vim-illuminate', config = [[require('zycore.one.illuminate')]] })
+  use({ 'norcalli/nvim-colorizer.lua', config = [[require('zycore.one.colorizer')]] })
 
   -- Keyboard
   use('folke/which-key.nvim')
@@ -511,7 +511,7 @@ local function init()
   --   { 'ggandor/flit.nvim', disable = false }, -- Enhanced f/t motions for Leap
   --   { 'ggandor/leap-ast.nvim', disable = false }, -- Jump to, select and operate on AST nodes via the Leap interface with Treesitter (WIP)
   -- })
-  use({'ggandor/leap.nvim', config = [[require('zycore.one.leap')]]})
+  use({ 'ggandor/leap.nvim', config = [[require('zycore.one.leap')]] })
   use('tpope/vim-repeat')
   use('ggandor/flit.nvim')
   use('ggandor/leap-ast.nvim')
@@ -535,12 +535,12 @@ local function init()
   --   },
   -- })
   use('Olical/vim-enmasse')
-  use({'kevinhwang91/nvim-bqf', config = [[require('zycore.one.nvim_bqf')]]})
+  use({ 'kevinhwang91/nvim-bqf', config = [[require('zycore.one.nvim_bqf')]] })
   use({
-      'https://gitlab.com/yorickpeterse/nvim-pqf', -- Prettier quickfix/location list windows for NeoVim
-      as = 'nvim-pqf',
-      config = [[require('zycore.one.nvim_pqf')]],
-    })
+    'https://gitlab.com/yorickpeterse/nvim-pqf', -- Prettier quickfix/location list windows for NeoVim
+    as = 'nvim-pqf',
+    config = [[require('zycore.one.nvim_pqf')]],
+  })
 
   -- Undo tree
   -- use({
@@ -549,7 +549,7 @@ local function init()
   --   config = [[vim.g.undotree_SetFocusWhenToggle = 1]],
   --   disable = true,
   -- })
-  use({'mbbill/undotree', config = [[vim.g.undotree_SetFocusWhenToggle = 1]]})
+  use({ 'mbbill/undotree', config = [[vim.g.undotree_SetFocusWhenToggle = 1]] })
 
   -- Project Management/Sessions
   -- use({
@@ -562,7 +562,7 @@ local function init()
   --   -- disable = true,
   --   event = 'BufReadPost', -- workaround for open-file > nvim-tree
   -- })
-  use({'ahmedkhalf/project.nvim', config = [[require('zycore.one.project')]]})
+  use({ 'ahmedkhalf/project.nvim', config = [[require('zycore.one.project')]] })
 
   -- Pretty symbols
   use('kyazdani42/nvim-web-devicons')
@@ -597,7 +597,7 @@ local function init()
   --   },
   -- })
   use('goolord/alpha-nvim')
-  use({'kyazdani42/nvim-tree.lua', config = [[require('zycore.one.nvim_tree')]]})
+  use({ 'kyazdani42/nvim-tree.lua', config = [[require('zycore.one.nvim_tree')]] })
   use('nvim-lualine/lualine.nvim')
   use('luozhiya/bufferline.nvim')
   use('rcarriga/nvim-notify')
@@ -632,9 +632,9 @@ local function init()
   --     config = [[require('zycore.one.git_conflict')]],
   --   },
   -- })
-  use({'lewis6991/gitsigns.nvim', config = [[require('zycore.one.gitsigns')]]})
-  use({'TimUntersberger/neogit', config = [[require('zycore.one.neogit_nvim')]]})
-  use({'akinsho/git-conflict.nvim', config = [[require('zycore.one.git_conflict')]]})
+  use({ 'lewis6991/gitsigns.nvim', config = [[require('zycore.one.gitsigns')]] })
+  use({ 'TimUntersberger/neogit', config = [[require('zycore.one.neogit_nvim')]] })
+  use({ 'akinsho/git-conflict.nvim', config = [[require('zycore.one.git_conflict')]] })
 
   -- Terminal
   use('akinsho/toggleterm.nvim')

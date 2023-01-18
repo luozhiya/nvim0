@@ -6,9 +6,9 @@ local features_list = {
   'packer_bootstrap',
 
   -- Packer
-  'packer_nvim_setup',  
+  'packer_nvim_setup',
 
-  -- Color  
+  -- Color
   'colorscheme',
 
   -- First needed

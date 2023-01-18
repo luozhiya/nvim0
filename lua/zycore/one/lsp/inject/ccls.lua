@@ -4,9 +4,9 @@ local function lsp_ccls_capablities(client)
   -- Lsp workspace symbol, <,lS>
   client.server_capabilities.workspaceSymbolProvider = false
   -- Lsp finder
-  client.server_capabilities.definitionProvider = false  
+  client.server_capabilities.definitionProvider = false
   client.server_capabilities.referencesProvider = false
-  -- 
+  --
   client.server_capabilities.implementationProvider = false
   client.server_capabilities.codeActionProvider = false
   client.server_capabilities.resolveProvider = false
