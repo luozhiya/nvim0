@@ -336,9 +336,9 @@ local function init()
   --   },
   -- })
   use('nvim-lua/popup.nvim')
-  use({'nvim-telescope/telescope.nvim'})
-  use({'kkharji/sqlite.lua', config = [[require('zycore.one.sqlite')]]})
-  use({'nvim-telescope/telescope-frecency.nvim'})
+  use('nvim-telescope/telescope.nvim')
+  use('kkharji/sqlite.lua')
+  use('nvim-telescope/telescope-frecency.nvim')
   use({
       'nvim-telescope/telescope-fzf-native.nvim', -- FZF sorter for telescope written in c
       run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',

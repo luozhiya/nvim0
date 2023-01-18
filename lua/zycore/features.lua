@@ -30,7 +30,7 @@ local features_list = {
   'autocommands',
   -- 'nvim_tree', -- managed by packer
   'which_key',
-  -- 'sqlite', -- managed by packer
+  'sqlite', -- managed by packer
   -- 'telescope_setup', -- managed by packer
   'telescope', -- managed by packer
   -- 'illuminate',
