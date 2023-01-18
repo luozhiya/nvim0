@@ -30,8 +30,8 @@ if hardworking.is_windows() then
   -- codefont = 'CaskaydiaCove Nerd Font'
   -- codefont = 'Consolas'
   codefontstyle = 'l'
-  codefont = 'Inconsolata Nerd Font Mono'
-  -- codefont = 'JetBrainsMono Nerd Font Mono'
+  -- codefont = 'Inconsolata Nerd Font Mono'
+  codefont = 'JetBrainsMono Nerd Font Mono'
   -- codefont = 'FiraCode Nerd Font Mono'
   -- cjkfont = 'Sarasa Mono SC Nerd'
   if is_neovide() then

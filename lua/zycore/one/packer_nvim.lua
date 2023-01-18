@@ -133,8 +133,8 @@ local function init()
   --   { 'jose-elias-alvarez/null-ls.nvim', after = 'nvim-lspconfig', config = [[require('zycore.one.null_ls')]] }, -- Inject LSP diagnostics, code actions, and more via Lua
   --   { 'glepnir/lspsaga.nvim', after = 'nvim-lspconfig', config = [[require('zycore.one.lspsaga')]] }, -- A light-weight lsp plugin based on neovim's built-in lsp with a highly performant UI.
   -- })
-  use({ 'neovim/nvim-lspconfig', config = [[require('zycore.one.lsp.handler')]] })
-  use({ 'williamboman/nvim-lsp-installer', config = [[require('zycore.one.lsp.config_servers')]] })
+  use({ 'neovim/nvim-lspconfig', config = [[require('zycore.one.lsp.config_servers')]] })
+  use({ 'williamboman/nvim-lsp-installer' })
   use('nvim-lua/lsp-status.nvim')
   use({ 'j-hui/fidget.nvim', config = [[require('zycore.one.fidget_nvim')]] })
   use({ 'kosayoda/nvim-lightbulb', config = [[require('zycore.one.nvim_lightbulb')]] })
