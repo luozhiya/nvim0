@@ -2,6 +2,15 @@ local keymap = vim.keymap.set
 local saga = require('lspsaga')
 
 local opts = {
+  symbol_in_winbar = {
+    enable = false,
+    separator = ' ',
+    hide_keyword = true,
+    show_file = true,
+    folder_level = 2,
+    respect_root = false,
+    color_mode = true,
+  },  
   ui = {
     -- currently only round theme
     theme = 'round',
