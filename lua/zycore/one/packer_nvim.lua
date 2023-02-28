@@ -384,41 +384,43 @@ local function init()
   --   },
   -- })
   use({ 'NMAC427/guess-indent.nvim', config = [[require('zycore.one.guess_indent')]] })
+  use({ 'yioneko/nvim-yati', config = [[require('zycore.one.nvim_yati')]] }) -- Yet another tree-sitter powered indent plugin for Neovim.
+  use({ 'lukas-reineke/indent-blankline.nvim', config = [[require('zycore.one.indent_blankline')]] })
 
   -- Format
-  -- use({
-  --   {
-  --     'sbdchd/neoformat', -- why not use .clang-format?
-  --     event = 'BufReadPost',
-  --     config = [[require('zycore.one.format').neoformat_setup()]],
-  --     disable = true,
-  --   },
-  --   {
-  --     'rhysd/vim-clang-format',
-  --     event = 'BufReadPost',
-  --     config = [[require('zycore.one.format').vim_clang_format_setup()]],
-  --     disable = true,
-  --   },
-  --   {
-  --     'cappyzawa/trim.nvim', -- trims trailing whitespace and lines
-  --     event = 'BufReadPost',
-  --     config = [[require('zycore.one.trim')]],
-  --     disable = true,
-  --   },
-  --   {
-  --     'mhartington/formatter.nvim', -- A format runner for Neovim.
-  --     event = 'BufReadPost',
-  --     config = [[require('zycore.one.formatter')]],
-  --     disable = false,
-  --   },
-  --   {
-  --     'lukas-reineke/lsp-format.nvim', -- A wrapper around Neovims native LSP formatting.
-  --     after = 'nvim-lspconfig',
-  --     event = 'BufReadPost',
-  --     config = [[require('zycore.one.lsp_format')]],
-  --     disable = true,
-  --   },
-  -- })
+  use({
+    {
+      'sbdchd/neoformat', -- why not use .clang-format?
+      event = 'BufReadPost',
+      config = [[require('zycore.one.format').neoformat_setup()]],
+      disable = true,
+    },
+    {
+      'rhysd/vim-clang-format',
+      event = 'BufReadPost',
+      config = [[require('zycore.one.format').vim_clang_format_setup()]],
+      disable = false,
+    },
+    --   {
+    --     'cappyzawa/trim.nvim', -- trims trailing whitespace and lines
+    --     event = 'BufReadPost',
+    --     config = [[require('zycore.one.trim')]],
+    --     disable = true,
+    --   },
+    --   {
+    --     'mhartington/formatter.nvim', -- A format runner for Neovim.
+    --     event = 'BufReadPost',
+    --     config = [[require('zycore.one.formatter')]],
+    --     disable = false,
+    --   },
+    --   {
+    --     'lukas-reineke/lsp-format.nvim', -- A wrapper around Neovims native LSP formatting.
+    --     after = 'nvim-lspconfig',
+    --     event = 'BufReadPost',
+    --     config = [[require('zycore.one.lsp_format')]],
+    --     disable = true,
+    --   },
+  })
 
   -- Prettification
   -- use({
@@ -598,6 +600,7 @@ local function init()
   -- })
   use('goolord/alpha-nvim')
   use({ 'kyazdani42/nvim-tree.lua', config = [[require('zycore.one.nvim_tree')]] })
+  use({ 'b0o/incline.nvim', config = [[require('zycore.one.incline')]] })
   use('nvim-lualine/lualine.nvim')
   use('luozhiya/bufferline.nvim')
   use('rcarriga/nvim-notify')

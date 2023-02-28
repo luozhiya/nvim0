@@ -2,13 +2,36 @@ local keymap = vim.keymap.set
 local saga = require('lspsaga')
 
 local opts = {
+  diagnostic = {
+    show_code_action = true,
+    show_source = true,
+    jump_num_shortcut = true,
+    --1 is max
+    max_width = 0.7,
+    custom_fix = nil,
+    custom_msg = nil,
+    text_hl_follow = false,
+    border_follow = true,
+    keys = {
+      exec_action = 'o',
+      quit = 'q',
+      go_action = 'g',
+    },
+  },
+  lightbulb = {
+    enable = true,
+    enable_in_insert = true,
+    sign = true,
+    sign_priority = 40,
+    virtual_text = false,
+  },
   ui = {
     -- currently only round theme
     theme = 'round',
     -- this option only work in neovim 0.9
     title = false,
     -- border type can be single,double,rounded,solid,shadow.
-    border = 'single',
+    border = 'rounded',
     winblend = 0,
     expand = '',
     collapse = '',
@@ -22,7 +45,7 @@ local opts = {
       normal_bg = '#1d1536',
       --title background color
       title_bg = '#1e1e1e',
-      
+
       red = '#e95678',
       magenta = '#b33076',
       orange = '#FF8700',
@@ -39,6 +62,18 @@ local opts = {
 }
 
 saga.setup(opts)
+
+-- Show line diagnostics
+-- You can pass argument ++unfocus to
+-- unfocus the show_line_diagnostics floating window
+keymap('n', '<leader>sl', '<cmd>Lspsaga show_line_diagnostics<CR>')
+
+-- Show cursor diagnostics
+-- Like show_line_diagnostics, it supports passing the ++unfocus argument
+keymap('n', '<leader>sc', '<cmd>Lspsaga show_cursor_diagnostics<CR>')
+
+-- Show buffer diagnostics
+keymap('n', '<leader>sb', '<cmd>Lspsaga show_buf_diagnostics<CR>')
 
 -- -- Lsp finder find the symbol definition implement reference
 -- -- if there is no implement it will hide

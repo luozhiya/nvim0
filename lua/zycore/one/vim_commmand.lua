@@ -20,12 +20,12 @@ vim.api.nvim_create_user_command('FixLf', function()
   ]])
 end, {})
 
-vim.cmd([[
-augroup fixeol
-  autocmd!
-  autocmd BufWritePre * undojoin | FixLf
-augroup END
-]])
+-- vim.cmd([[
+-- augroup fixeol
+--   autocmd!
+--   autocmd BufWritePre * undojoin | FixLf
+-- augroup END
+-- ]])
 
 -- doesn't work
 -- W sudo保存文件

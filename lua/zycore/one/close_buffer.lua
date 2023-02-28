@@ -40,7 +40,7 @@ local xnoremap = hardworking.xnoremap
 vim.api.nvim_create_user_command('Only', function()
   vim.cmd([[
   :lua require("close_buffers").delete({type="other"})
-  :<ESC>
+  " :<ESC>
   ]])
 end, {})
 

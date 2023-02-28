@@ -47,11 +47,15 @@ local server_clangd = {
   single_file_support = true,
   on_attach = require('zycore.one.lsp.handler').on_attach,
   capabilities = require('zycore.one.lsp.handler').capabilities,
-  -- handlers = {
-  --   ['textDocument/publishDiagnostics'] = function(...)
-  --     return nil
-  --   end,
-  -- },
+  handlers = {
+    -- ['textDocument/publishDiagnostics'] = function(...)
+    --   return nil
+    -- end,
+    -- ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
+    --   border = 'rounded',
+    --   width = 60,
+    -- }),
+  },
 }
 
 local opts = {
@@ -133,10 +137,10 @@ local opts = {
       },
     },
     memory_usage = {
-      border = 'none',
+      border = 'rounded',
     },
     symbol_info = {
-      border = 'none',
+      border = 'rounded',
     },
   },
 }

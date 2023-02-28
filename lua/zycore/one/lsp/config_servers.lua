@@ -4,7 +4,7 @@ local hardworking = require('zycore.base.hardworking')
 local cxx_lsp = require('zycore.goforit').cxx_lsp
 
 -- Install jsonls with nvim-lsp-installer
-local servers = { 'jsonls', 'sumneko_lua', 'pyright', 'cmake', 'vimls', 'clojure_lsp' }
+local servers = { 'jsonls', 'lua_ls', 'pyright', 'cmake', 'vimls', 'clojure_lsp' }
 servers = hardworking.merge_simple_list(servers, cxx_lsp)
 
 local ignore_setup_servers = {}
@@ -49,6 +49,7 @@ for _, server in pairs(needed_setup_servers) do
   local opts = {
     on_attach = require('zycore.one.lsp.handler').on_attach,
     capabilities = require('zycore.one.lsp.handler').capabilities,
+    before_init = require('neodev.lsp').before_init,
   }
   if server == 'ccls' then
     -- opts.on_attach = {}
@@ -89,3 +90,5 @@ end
 -- }
 --
 -- lspconfig.fennel_language_server.setup{}
+
+require('zycore.one.lsp.handler').setup()

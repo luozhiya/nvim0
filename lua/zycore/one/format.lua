@@ -15,6 +15,12 @@ local M = {}
 -- ]])
 M.neoformat_setup = function()
   vim.cmd([[
+let g:neoformat_cpp_clangformat = {
+    \ 'exe': 'clang-format',
+\}
+let g:neoformat_enabled_cpp = ['clangformat']
+let g:neoformat_enabled_c = ['clangformat']
+    
 " Enable alignment
 let g:neoformat_basic_format_align = 1
 
@@ -25,10 +31,10 @@ let g:neoformat_basic_format_retab = 1
 let g:neoformat_basic_format_trim = 0
 
 " Perhaps run a formatter on save
-augroup fmt
-  autocmd!
-  autocmd BufWritePre * undojoin | Neoformat
-augroup END
+" augroup fmt
+"   autocmd!
+"   autocmd BufWritePre * undojoin | Neoformat
+" augroup END
   ]])
 end
 

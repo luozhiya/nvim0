@@ -19,7 +19,7 @@ dev.setup({
   -- With lspconfig, Neodev will automatically setup your lua-language-server
   -- If you disable this, then you have to set {before_init=require("neodev.lsp").before_init}
   -- in your lsp start options
-  lspconfig = true,
+  lspconfig = false,
 })
 
 -- Force resetup

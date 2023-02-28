@@ -53,7 +53,7 @@ local option = {
 
   -- View
   laststatus = 3, -- 始终显示状态栏, Only last window
-  cmdheight = 0, -- command-line 的行数 -- flash??
+  cmdheight = 1, -- command-line 的行数 -- flash??
   showmode = true, -- 当前 NVIM 的模式
   showcmd = true, -- 在非 : 模式下输入的 command 会显示在状态栏
   lazyredraw = true,
@@ -99,7 +99,7 @@ local option = {
   shiftround = true, -- 自动 indent 应该是 shiftwidth 的整数倍
   -- try to be smart (increase the indenting level after ‘{’,
   -- decrease it after ‘}’, and so on)
-  smartindent = true,
+  smartindent = false,
 
   -- keep indentation produced by 'autoindent' if leaving the line blank:
   -- cinoptions = vim.opt.cinoptions:append('I')
@@ -197,5 +197,7 @@ end
 -- })
 
 cmd([[
-autocmd Filetype log if getfsize(@%) > 1000000 | setlocal syntax=OFF | endif  
+autocmd Filetype log if getfsize(@%) > 1000000 | setlocal syntax=OFF | endif
+set autoread
+au FocusGained * :checktime
 ]])
