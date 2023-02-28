@@ -538,11 +538,11 @@ local function init()
   -- })
   use('Olical/vim-enmasse')
   use({ 'kevinhwang91/nvim-bqf', config = [[require('zycore.one.nvim_bqf')]] })
-  use({
-    'https://gitlab.com/yorickpeterse/nvim-pqf', -- Prettier quickfix/location list windows for NeoVim
-    as = 'nvim-pqf',
-    config = [[require('zycore.one.nvim_pqf')]],
-  })
+  -- use({
+  --   'https://gitlab.com/yorickpeterse/nvim-pqf', -- Prettier quickfix/location list windows for NeoVim
+  --   as = 'nvim-pqf',
+  --   config = [[require('zycore.one.nvim_pqf')]],
+  -- })
 
   -- Undo tree
   -- use({

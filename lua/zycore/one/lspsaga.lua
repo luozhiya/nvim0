@@ -25,6 +25,15 @@ local opts = {
     sign_priority = 40,
     virtual_text = false,
   },
+  symbol_in_winbar = {
+    enable = false,
+    separator = ' ',
+    hide_keyword = true,
+    show_file = true,
+    folder_level = 2,
+    respect_root = false,
+    color_mode = true,
+  },    
   ui = {
     -- currently only round theme
     theme = 'round',
