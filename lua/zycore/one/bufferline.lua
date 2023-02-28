@@ -122,9 +122,9 @@ bufferline.setup({
       delay = 200,
       reveal = { 'close' },
     },
-    max_name_length = 18,
+    max_name_length = 25,
     truncate_names = true, -- whether or not tab names should be truncated
-    tab_size = 18,
+    tab_size = 25,
     max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
     separator_style = 'none',
     enforce_regular_tabs = true,
