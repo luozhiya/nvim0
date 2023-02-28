@@ -119,3 +119,6 @@ nnoremap('<F9>', ':BreakpointToggle<CR>')
 -- nnoremap('', ':Lspsaga hover_doc<cr>')
 
 nnoremap('<F4>', ':Format<cr>')
+inoremap('<F4>', '<ESC>:Format<cr>')
+
+nnoremap('U', 'u')

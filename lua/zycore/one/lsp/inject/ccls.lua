@@ -11,6 +11,9 @@ local function lsp_ccls_capablities(client)
   client.server_capabilities.codeActionProvider = false
   client.server_capabilities.resolveProvider = false
   client.server_capabilities.documentSymbolProvider = false
+  client.server_capabilities.documentFormattingProvider = false
+  client.server_capabilities.documentRangeFormattingProvider = false
+  client.server_capabilities.documentOnTypeFormattingProvider = false
 end
 
 local ccls_on_attach = function(client, buffer)
@@ -54,6 +57,8 @@ local opts = {
     ['textDocument/definition'] = nil,
     ['textDocument/implementation'] = nil,
     ['textDocument/references'] = nil,
+    ['textDocument/formatting'] = nil,
+    ['textDocument/rangeFormatting'] = nil,
   },
   on_attach = ccls_on_attach,
 }
