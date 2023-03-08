@@ -3,8 +3,8 @@ local saga = require('lspsaga')
 
 local opts = {
   diagnostic = {
-    show_code_action = true,
-    show_source = true,
+    show_code_action = false,
+    show_source = false,
     jump_num_shortcut = true,
     --1 is max
     max_width = 0.7,
@@ -19,8 +19,8 @@ local opts = {
     },
   },
   lightbulb = {
-    enable = true,
-    enable_in_insert = true,
+    enable = false,
+    enable_in_insert = false,
     sign = true,
     sign_priority = 40,
     virtual_text = false,

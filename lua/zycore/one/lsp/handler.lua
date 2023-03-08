@@ -18,19 +18,19 @@ M.setup = function()
 
   local config = {
     -- disable virtual text
-    -- virtual_text = true,
-    virtual_text = {
-      prefix = style.icons.misc.circle,
-      only_current_line = true,
-    },
+    virtual_text = false,
+    -- virtual_text = {
+    --   prefix = style.icons.misc.circle,
+    --   only_current_line = true,
+    -- },
     -- show signs
     signs = true,
-    update_in_insert = true,
+    update_in_insert = false,
     underline = false,
     severity_sort = true,
     float = {
       focusable = false,
-      style = 'minimal',
+      style = 'normal',
       border = 'rounded',
       source = 'always',
       header = '',
@@ -77,8 +77,8 @@ local function lsp_keymaps(buffer)
   bnnoremap(buffer, 'gp', '<cmd>Lspsaga peek_definition<CR>')
   bnnoremap(buffer, 'gf', '<cmd>Lspsaga lsp_finder<CR>')
   bnnoremap(buffer, 'gh', '<cmd>lua vim.lsp.buf.hover()<CR>')
-  -- bnnoremap(buffer, 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
-  bnnoremap(buffer, 'K', '<cmd>Lspsaga hover_doc<CR>')
+  bnnoremap(buffer, 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
+  -- bnnoremap(buffer, 'K', '<cmd>Lspsaga hover_doc<CR>')
   bnnoremap(buffer, 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
   bnnoremap(buffer, 'ge', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
   bnnoremap(buffer, 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')

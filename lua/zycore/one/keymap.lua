@@ -122,3 +122,8 @@ nnoremap('<F4>', ':Format<cr>')
 inoremap('<F4>', '<ESC>:Format<cr>')
 
 nnoremap('U', 'u')
+nnoremap('W', 'w')
+
+vim.cmd([[
+    nnoremap S diw"0P
+]])
