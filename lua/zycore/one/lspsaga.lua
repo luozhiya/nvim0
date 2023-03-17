@@ -3,14 +3,14 @@ local saga = require('lspsaga')
 
 local opts = {
   diagnostic = {
-    show_code_action = false,
-    show_source = false,
+    show_code_action = true,
+    show_source = true,
     jump_num_shortcut = true,
     --1 is max
     max_width = 0.7,
     custom_fix = nil,
     custom_msg = nil,
-    text_hl_follow = false,
+    text_hl_follow = true,
     border_follow = true,
     keys = {
       exec_action = 'o',
@@ -23,11 +23,11 @@ local opts = {
     enable_in_insert = false,
     sign = true,
     sign_priority = 40,
-    virtual_text = false,
+    virtual_text = true,
   },
   symbol_in_winbar = {
-    enable = false,
-    separator = ' ',
+    enable = true,
+    separator = '-> ', -- 
     hide_keyword = true,
     show_file = true,
     folder_level = 2,
@@ -79,10 +79,10 @@ keymap('n', '<leader>sl', '<cmd>Lspsaga show_line_diagnostics<CR>')
 
 -- Show cursor diagnostics
 -- Like show_line_diagnostics, it supports passing the ++unfocus argument
-keymap('n', '<leader>sc', '<cmd>Lspsaga show_cursor_diagnostics<CR>')
+-- keymap('n', '<leader>sc', '<cmd>Lspsaga show_cursor_diagnostics<CR>')
 
 -- Show buffer diagnostics
-keymap('n', '<leader>sb', '<cmd>Lspsaga show_buf_diagnostics<CR>')
+-- keymap('n', '<leader>sb', '<cmd>Lspsaga show_buf_diagnostics<CR>')
 
 -- -- Lsp finder find the symbol definition implement reference
 -- -- if there is no implement it will hide

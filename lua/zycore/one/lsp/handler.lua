@@ -18,18 +18,18 @@ M.setup = function()
 
   local config = {
     -- disable virtual text
-    virtual_text = false,
-    -- virtual_text = {
-    --   prefix = style.icons.misc.circle,
-    --   only_current_line = true,
-    -- },
+    -- virtual_text = false,
+    virtual_text = {
+      prefix = style.icons.misc.circle,
+      only_current_line = true,
+    },
     -- show signs
     signs = true,
-    update_in_insert = false,
-    underline = false,
+    update_in_insert = true,
+    underline = true,
     severity_sort = true,
     float = {
-      focusable = false,
+      focusable = true,
       style = 'normal',
       border = 'rounded',
       source = 'always',
